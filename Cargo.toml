@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "crates/chrome-extensions", "crates/chrome-idl-parser",
+]
+resolver = "2"

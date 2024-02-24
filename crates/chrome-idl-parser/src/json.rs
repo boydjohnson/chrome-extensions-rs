@@ -7,9 +7,7 @@ use {
 #[serde(rename_all = "camelCase")]
 pub struct ChromeApi {
     pub namespace: String,
-    pub description: String,
-    #[serde(rename = "compiler_options")]
-    pub compiler_options: Option<BTreeMap<String, serde_json::Value>>,
+    pub description: Option<String>,
     pub properties: Option<BTreeMap<String, Feature>>,
     pub types: Option<Vec<Type>>,
     pub functions: Option<Vec<Function>>,
@@ -33,6 +31,7 @@ pub struct Feature {
 pub enum Value {
     Named((String, ValueType)),
     Value(i64),
+    Object(BTreeMap<String, String>),
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -64,8 +63,17 @@ pub struct TypeProperties {
     #[serde(rename = "$ref")]
     pub ref_field: Option<String>,
     pub optional: Option<bool>,
+    pub items: Option<SimpleType>,
+    pub description: Option<String>,
+    pub nodoc: Option<bool>,
+}
 
-    pub description: String,
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct SimpleType {
+    #[serde(rename = "type")]
+    pub type_field: Option<String>,
+    #[serde(rename = "$ref")]
+    pub ref_field: Option<String>,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -80,6 +88,7 @@ pub enum EnumField {
 pub struct WithDescription {
     pub name: String,
     pub description: String,
+    pub nodoc: Option<bool>,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -87,12 +96,12 @@ pub struct WithDescription {
 pub struct Function {
     pub name: String,
     #[serde(rename = "type")]
-    pub type_field: String,
+    pub type_field: Option<String>,
     pub nocompile: Option<bool>,
     pub deprecated: Option<String>,
     pub description: Option<String>,
     pub platforms: Option<Vec<String>>,
-    pub parameters: Vec<Parameter>,
+    pub parameters: Option<Vec<Parameter>>,
     #[serde(rename = "returns_async")]
     pub returns_async: Option<ReturnsAsync>,
     pub returns: Option<Returns>,
@@ -129,121 +138,10 @@ pub struct ParameterProperties {
     pub type_field: Option<String>,
     #[serde(rename = "$ref")]
     pub ref_field: Option<String>,
-
+    pub preserve_null: Option<bool>,
     pub optional: Option<bool>,
 
-    pub description: String,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Properties2 {
-    pub color: Option<Color>,
-    pub tab_id: TabId2,
-    pub text: Option<Text>,
-    pub popup: Option<Popup>,
-    pub image_data: Option<ImageData>,
-    pub path: Option<Path>,
-    pub title: Option<Title>,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Color {
-    pub description: String,
-    pub choices: Vec<Choice>,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Choice {
-    #[serde(rename = "type")]
-    pub type_field: Option<String>,
-    #[serde(rename = "$ref")]
-    pub ref_field: Option<String>,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct TabId2 {
-    #[serde(rename = "type")]
-    pub type_field: String,
-    pub optional: bool,
-    pub minimum: i64,
-    pub description: String,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Text {
-    #[serde(rename = "type")]
-    pub type_field: String,
-    pub optional: bool,
-    pub description: String,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Popup {
-    #[serde(rename = "type")]
-    pub type_field: String,
-    pub description: String,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct ImageData {
-    pub choices: Vec<Choice2>,
-    pub optional: bool,
-    pub description: String,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Choice2 {
-    #[serde(rename = "$ref")]
-    pub ref_field: Option<String>,
-    #[serde(rename = "type")]
-    pub type_field: Option<String>,
-    pub additional_properties: Option<AdditionalProperties>,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct AdditionalProperties {
-    #[serde(rename = "type")]
-    pub type_field: String,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Path {
-    pub choices: Vec<Choice3>,
-    pub optional: bool,
-    pub description: String,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Choice3 {
-    #[serde(rename = "type")]
-    pub type_field: String,
-    pub additional_properties: Option<AdditionalProperties2>,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct AdditionalProperties2 {
-    #[serde(rename = "type")]
-    pub type_field: String,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Title {
-    #[serde(rename = "type")]
-    pub type_field: String,
-    pub description: String,
+    pub description: Option<String>,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -270,8 +168,8 @@ pub struct Parameter2 {
 pub struct Event {
     pub name: String,
     #[serde(rename = "type")]
-    pub type_field: String,
-    pub description: String,
+    pub type_field: Option<String>,
+    pub description: Option<String>,
     pub parameters: Option<Vec<Parameter3>>,
 }
 

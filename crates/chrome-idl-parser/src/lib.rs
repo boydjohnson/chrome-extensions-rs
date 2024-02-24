@@ -18,6 +18,7 @@ pub fn generate(from: &Path, to: &Path) -> Result<(), Box<dyn std::error::Error>
             .into_string()
             .unwrap()
             .ends_with("private.json")
+            || entry.file_name().into_string().unwrap().starts_with("_")
         {
             continue;
         }
@@ -37,10 +38,10 @@ pub fn generate(from: &Path, to: &Path) -> Result<(), Box<dyn std::error::Error>
         let buf = buf
             .split('\n')
             .filter(|el| !el.starts_with("//"))
-            .flat_map(|e| e.chars())
-            .collect::<String>();
+            .collect::<Vec<_>>()
+            .join("\n");
 
-        match serde_json::from_str::<Vec<ChromeApi>>(&buf) {
+        match deser_hjson::from_str::<Vec<ChromeApi>>(&buf) {
             Ok(v) => {
                 println!("{i}");
                 i += 1;

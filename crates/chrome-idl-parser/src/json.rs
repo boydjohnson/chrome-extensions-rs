@@ -148,13 +148,13 @@ pub struct ParameterProperties {
 #[serde(rename_all = "camelCase")]
 pub struct ReturnsAsync {
     pub name: String,
-    pub parameters: Vec<Parameter2>,
+    pub parameters: Vec<ReturnParameter>,
     pub optional: Option<bool>,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct Parameter2 {
+pub struct ReturnParameter {
     pub name: String,
     #[serde(rename = "type")]
     pub type_field: Option<String>,
@@ -170,12 +170,12 @@ pub struct Event {
     #[serde(rename = "type")]
     pub type_field: Option<String>,
     pub description: Option<String>,
-    pub parameters: Option<Vec<Parameter3>>,
+    pub parameters: Option<Vec<EventParameter>>,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct Parameter3 {
+pub struct EventParameter {
     pub name: String,
     #[serde(rename = "$ref")]
     pub ref_field: Option<String>,

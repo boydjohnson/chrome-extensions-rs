@@ -1,4 +1,6 @@
 use {
+    crate::{utils::generate_js_class, ToWasmBindgen},
+    quote::quote,
     serde::{Deserialize, Serialize},
     std::collections::BTreeMap,
 };
@@ -12,6 +14,57 @@ pub struct ChromeApi {
     pub types: Option<Vec<Type>>,
     pub functions: Option<Vec<Function>>,
     pub events: Option<Vec<Event>>,
+}
+
+impl ToWasmBindgen for ChromeApi {
+    fn to_wasm_bindgen(&self) -> proc_macro2::TokenStream {
+        let doc_msg = if let Some(description) = &self.description {
+            description.to_owned()
+        } else {
+            "".into()
+        };
+
+        let mut internal = vec![];
+
+        if let Some(types) = &self.types {
+            for ty in types {
+                let ident = proc_macro2::Ident::new(&ty.id, proc_macro2::Span::call_site());
+
+                let msg = if let Some(dsc) = &ty.description {
+                    dsc.to_owned()
+                } else {
+                    "".into()
+                };
+
+                let js_class = generate_js_class(&ty.type_field);
+
+                let js_name = ty.id.clone();
+
+                internal.push(quote! {
+                    #[wasm_bindgen(extends = #js_class, js_name = #js_name, typescript_type = #js_name)]
+                    #[derive(Debug, Clone, PartialEq, Eq)]
+                    #[doc = #msg]
+                    pub type #ident;
+                });
+            }
+        }
+
+        let enclosing = quote! {
+            #![allow(unused_imports)]
+            #![allow(clippy::all)]
+            use super::*;
+            use wasm_bindgen::prelude::*;
+            #[doc = #doc_msg]
+            #[wasm_bindgen]
+            extern "C" {
+                #(#internal)*
+
+            }
+
+        };
+
+        enclosing
+    }
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]

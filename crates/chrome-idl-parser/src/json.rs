@@ -1,5 +1,6 @@
 use {
     crate::{utils::generate_js_class, ToWasmBindgen},
+    proc_macro2::{Ident, TokenStream},
     quote::quote,
     serde::{Deserialize, Serialize},
     std::collections::BTreeMap,
@@ -16,19 +17,11 @@ pub struct ChromeApi {
     pub events: Option<Vec<Event>>,
 }
 
-impl ToWasmBindgen for ChromeApi {
-    fn to_wasm_bindgen(&self) -> proc_macro2::TokenStream {
-        let doc_msg = if let Some(description) = &self.description {
-            description.to_owned()
-        } else {
-            "".into()
-        };
-
-        let mut internal = vec![];
-
+impl ChromeApi {
+    fn generate_types(&self, internal: &mut Vec<TokenStream>) {
         if let Some(types) = &self.types {
             for ty in types {
-                let ident = proc_macro2::Ident::new(&ty.id, proc_macro2::Span::call_site());
+                let ty_ident = proc_macro2::Ident::new(&ty.id, proc_macro2::Span::call_site());
 
                 let msg = if let Some(dsc) = &ty.description {
                     dsc.to_owned()
@@ -44,10 +37,79 @@ impl ToWasmBindgen for ChromeApi {
                     #[wasm_bindgen(extends = #js_class, js_name = #js_name, typescript_type = #js_name)]
                     #[derive(Debug, Clone, PartialEq, Eq)]
                     #[doc = #msg]
-                    pub type #ident;
+                    pub type #ty_ident;
                 });
+
+                if let Some(properties) = &ty.properties {
+                    for (key, value) in properties.iter() {
+                        let key = if key == "type" {
+                            "type_".into()
+                        } else {
+                            key.to_owned()
+                        };
+                        let ident = Ident::new(&key, proc_macro2::Span::call_site());
+
+                        let t = Ident::new(&ty.id, proc_macro2::Span::call_site());
+
+                        let msg = if let Some(dsc) = &value.description {
+                            dsc.to_owned()
+                        } else {
+                            "".into()
+                        };
+
+                        let optional = value.optional.unwrap_or(false);
+
+                        let return_type = if let Some(r) = &value.type_field {
+                            if r == "function" {
+                                continue;
+                            }
+                            let gen = generate_js_class(r);
+                            if optional {
+                                quote!(Option<#gen>)
+                            } else {
+                                gen
+                            }
+                        } else if let Some(r) = &value.ref_field {
+                            let gen = quote!(i32);
+
+                            if optional {
+                                quote!(Option<#gen>)
+                            } else {
+                                gen
+                            }
+
+                            // TODO: Fix this.
+                        } else if value.choices.is_some() {
+                            quote!(wasm_bindgen::JsValue)
+                        } else {
+                            panic!("no type, ref, or choices");
+                        };
+
+                        internal.push(quote! {
+                            #[wasm_bindgen(method, getter, js_class = #ty_ident)]
+                            #[doc = #msg]
+                            pub fn #ident(this: &#t) -> #return_type;
+
+
+                        });
+                    }
+                }
             }
         }
+    }
+}
+
+impl ToWasmBindgen for ChromeApi {
+    fn to_wasm_bindgen(&self) -> proc_macro2::TokenStream {
+        let doc_msg = if let Some(description) = &self.description {
+            description.to_owned()
+        } else {
+            "".into()
+        };
+
+        let mut internal = vec![];
+
+        self.generate_types(&mut internal);
 
         let enclosing = quote! {
             #![allow(unused_imports)]
@@ -115,6 +177,7 @@ pub struct TypeProperties {
     pub type_field: Option<String>,
     #[serde(rename = "$ref")]
     pub ref_field: Option<String>,
+    pub choices: Option<Vec<ValueType>>,
     pub optional: Option<bool>,
     pub items: Option<SimpleType>,
     pub description: Option<String>,

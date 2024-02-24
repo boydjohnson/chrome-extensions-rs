@@ -1,12 +1,7 @@
 use {
     crate::json::ChromeApi,
     quote::quote,
-    std::{
-        ffi::OsString,
-        fs::{read_dir, FileType},
-        io::Write,
-        path::Path,
-    },
+    std::{fs::read_dir, io::Write, path::Path},
 };
 
 pub mod json;
@@ -42,6 +37,8 @@ pub fn generate(from: &Path, to: &Path) -> Result<(), Box<dyn std::error::Error>
         }
 
         let buf = std::fs::read_to_string(&entry.path())?;
+
+        println!("{:?}", entry.path());
 
         let buf = buf
             .split('\n')

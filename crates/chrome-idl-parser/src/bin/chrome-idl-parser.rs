@@ -1,11 +1,4 @@
-use {
-    chrome_idl_parser::{generate, json::ChromeApi},
-    clap::Parser,
-    std::{
-        io::{stdin, stdout},
-        path::{Path, PathBuf},
-    },
-};
+use {chrome_idl_parser::generate, clap::Parser, std::path::PathBuf};
 
 fn main() {
     let args = Args::parse();
@@ -21,6 +14,6 @@ fn main() {
 struct Args {
     #[arg(help = "The path to the input directory with chrome json and idl files")]
     from: String,
-    #[arg(help = "The file path to the output file.")]
+    #[arg(help = "The file path to the src directory")]
     to: String,
 }

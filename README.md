@@ -1,5 +1,5 @@
 # Partial chrome web extensions Rust bindings
-Using the idl and json interface files at [chromium git repo](https://github.com/chromium/chromium/tree/main/chrome/common/extensions/api) to write Rust bindings to the [chrome web extensions](https://developer.chrome.com/docs/extensions).
+Using the idl and json interface files at [chromium git repo chrome specific](https://github.com/chromium/chromium/tree/main/chrome/common/extensions/api) and [chromium git repo not chrome specific](https://github.com/chromium/chromium/tree/main/extensions/common/api) to write Rust bindings to the [chrome web extensions](https://developer.chrome.com/docs/extensions).
 
 ## Other crates that provide bindings to web extensions
 [web-extensions](https://crates.io/crates/web-extensions)

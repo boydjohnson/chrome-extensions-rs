@@ -4,6 +4,7 @@ use {
     quote::quote,
     serde::{Deserialize, Serialize},
     std::collections::BTreeMap,
+    wasm_bindgen_backend::util::rust_ident,
 };
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -21,7 +22,15 @@ impl ChromeApi {
     fn generate_types(&self, internal: &mut Vec<TokenStream>) {
         if let Some(types) = &self.types {
             for ty in types {
-                let ty_ident = proc_macro2::Ident::new(&ty.id, proc_macro2::Span::call_site());
+                let type_name = if ty.id.contains('.') {
+                    let mut iter = ty.id.chars().skip_while(|el| *el != '.');
+                    iter.next();
+                    iter.collect::<String>()
+                } else {
+                    ty.id.clone()
+                };
+
+                let ty_ident = rust_ident(&type_name);
 
                 let msg = if let Some(dsc) = &ty.description {
                     dsc.to_owned()
@@ -29,16 +38,33 @@ impl ChromeApi {
                     "".into()
                 };
 
-                let js_class = generate_js_class(&ty.type_field);
-
                 let js_name = ty.id.clone();
 
-                internal.push(quote! {
-                    #[wasm_bindgen(extends = #js_class, js_name = #js_name, typescript_type = #js_name)]
-                    #[derive(Debug, Clone, PartialEq, Eq)]
-                    #[doc = #msg]
-                    pub type #ty_ident;
-                });
+                if let Some(t_field) = &ty.type_field {
+                    let js_class = generate_js_class(t_field);
+                    if t_field == "any" {
+                        internal.push(quote! {
+                            #[wasm_bindgen(extends = #js_class, js_name = #js_name, typescript_type = #js_name)]
+                            #[derive(Debug, Clone, PartialEq)]
+                            #[doc = #msg]
+                            pub type #ty_ident;
+                        });
+                    } else {
+                        internal.push(quote! {
+                        #[wasm_bindgen(extends = #js_class, js_name = #js_name, typescript_type = #js_name)]
+                        #[derive(Debug, Clone, PartialEq, Eq)]
+                        #[doc = #msg]
+                        pub type #ty_ident;
+                    });
+                    }
+                } else {
+                    internal.push(quote! {
+                        #[wasm_bindgen(js_name = #js_name, typescript_type = #js_name)]
+                        #[derive(Debug, Clone, PartialEq)]
+                        #[doc = #msg]
+                        pub type #ty_ident;
+                    });
+                };
 
                 if let Some(properties) = &ty.properties {
                     for (key, value) in properties.iter() {
@@ -49,7 +75,7 @@ impl ChromeApi {
                         };
                         let ident = Ident::new(&key, proc_macro2::Span::call_site());
 
-                        let t = Ident::new(&ty.id, proc_macro2::Span::call_site());
+                        let t = ty_ident.clone();
 
                         let msg = if let Some(dsc) = &value.description {
                             dsc.to_owned()
@@ -62,23 +88,28 @@ impl ChromeApi {
                         let return_type = if let Some(r) = &value.type_field {
                             if r == "function" {
                                 continue;
+                                // TODO: implement function return values.
                             }
-                            let gen = generate_js_class(r);
-                            if optional {
-                                quote!(Option<#gen>)
+
+                            if r == "any" {
+                                quote!(::wasm_bindgen::JsValue)
                             } else {
-                                gen
+                                let gen = generate_js_class(r);
+                                if optional {
+                                    quote!(Option<#gen>)
+                                } else {
+                                    gen
+                                }
                             }
                         } else if let Some(r) = &value.ref_field {
                             let gen = quote!(i32);
 
+                            // TODO: Implement returning a ref field.
                             if optional {
                                 quote!(Option<#gen>)
                             } else {
                                 gen
                             }
-
-                            // TODO: Fix this.
                         } else if value.choices.is_some() {
                             quote!(wasm_bindgen::JsValue)
                         } else {
@@ -147,6 +178,7 @@ pub enum Value {
     Named((String, ValueType)),
     Value(i64),
     Object(BTreeMap<String, String>),
+    Array(Vec<String>),
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -163,7 +195,7 @@ pub struct ValueType {
 pub struct Type {
     pub id: String,
     #[serde(rename = "type")]
-    pub type_field: String,
+    pub type_field: Option<String>,
     #[serde(rename = "enum")]
     pub enum_field: Option<Vec<EnumField>>,
     pub properties: Option<BTreeMap<String, TypeProperties>>,

@@ -14,14 +14,14 @@ trait ToWasmBindgen {
 pub fn generate(from: &Path, to: &Path) -> Result<(), Box<dyn std::error::Error>> {
     let mut mods = vec![];
 
-    for item in read_dir(&from)? {
+    for item in read_dir(from)? {
         let entry = item?;
         if entry
             .file_name()
             .into_string()
             .unwrap()
             .ends_with("private.json")
-            || entry.file_name().into_string().unwrap().starts_with("_")
+            || entry.file_name().into_string().unwrap().starts_with('_')
         {
             continue;
         }
@@ -58,7 +58,7 @@ pub fn generate(from: &Path, to: &Path) -> Result<(), Box<dyn std::error::Error>
                 for chrome in v {
                     let mut output = std::fs::File::create(&to_path)?;
 
-                    output.write(format!("{}", chrome.to_wasm_bindgen()).as_bytes())?;
+                    output.write_all(format!("{}", chrome.to_wasm_bindgen()).as_bytes())?;
                 }
             }
             Err(e) => {
@@ -81,7 +81,7 @@ pub fn generate(from: &Path, to: &Path) -> Result<(), Box<dyn std::error::Error>
 
     to_path.push("lib.rs");
 
-    std::fs::write(to_path, &format!("{}", token_stream))?;
+    std::fs::write(to_path, format!("{}", token_stream))?;
 
     Ok(())
 }

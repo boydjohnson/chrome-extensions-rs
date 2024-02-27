@@ -57,6 +57,6 @@ extern "C" {
     #[doc = ""]
     pub type UrlDetails;
     # [wasm_bindgen (method , getter , js_class = UrlDetails)]
-    #[doc = "The URL for the operation. It must be in the format as returned from a call to <code>history.search()</code>."]
+    #[doc = "The URL for the operation. It must be in the format as returned from a call to history.search."]
     pub fn url(this: &UrlDetails) -> ::js_sys::JsString;
 }

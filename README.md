@@ -8,14 +8,14 @@ Using the idl and json interface files at [chromium git repo chrome specific](ht
 This repo contains chrome-idl-parser and chrome-extensions crates.
 
 ```
-./target/release/chrome-idl-parser -h
-Usage: chrome-idl-parser <FROM> <TO>
+❯ ./target/release/chrome-idl-parser --help
+Usage: chrome-idl-parser --to <TO> [FROM]...
 
 Arguments:
-  <FROM>  The path to the input directory with chrome json and idl files
-  <TO>    The file path to the src directory
+  [FROM]...  The path to the input directory with chrome json and idl files
 
 Options:
+  -t, --to <TO>  The file path to the src directory
   -h, --help     Print help
   -V, --version  Print version
 ```

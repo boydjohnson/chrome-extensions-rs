@@ -1,6 +1,9 @@
 use {
-    crate::{utils::generate_js_class, ToWasmBindgen},
-    proc_macro2::{Ident, TokenStream},
+    crate::{
+        utils::{create_fully_qualified, generate_js_class},
+        ToWasmBindgen,
+    },
+    proc_macro2::{Ident, Span, TokenStream},
     quote::quote,
     serde::{Deserialize, Serialize},
     std::collections::BTreeMap,
@@ -87,6 +90,7 @@ impl ChromeApi {
 
                         let return_type = if let Some(r) = &value.type_field {
                             if r == "function" {
+                                // TODO: Fix this
                                 continue;
                                 // TODO: implement function return values.
                             }
@@ -102,7 +106,15 @@ impl ChromeApi {
                                 }
                             }
                         } else if let Some(r) = &value.ref_field {
-                            let gen = quote!(i32);
+                            let id = if r.contains('.') {
+                                create_fully_qualified(&r)
+                            } else {
+                                let ident = Ident::new(&r, Span::call_site());
+
+                                quote!(#ident)
+                            };
+
+                            let gen = quote!(#id);
 
                             // TODO: Implement returning a ref field.
                             if optional {

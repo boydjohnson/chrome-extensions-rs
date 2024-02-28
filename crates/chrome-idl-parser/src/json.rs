@@ -116,7 +116,6 @@ impl ChromeApi {
 
                             let gen = quote!(#id);
 
-                            // TODO: Implement returning a ref field.
                             if optional {
                                 quote!(Option<#gen>)
                             } else {

@@ -39,7 +39,7 @@ extern "C" {
     pub fn sessionId(this: &Window) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = Window)]
     #[doc = "The state of this browser window."]
-    pub fn state(this: &Window) -> Option<i32>;
+    pub fn state(this: &Window) -> Option<WindowState>;
     # [wasm_bindgen (method , getter , js_class = Window)]
     #[doc = "Array of $(ref:tabs.Tab) objects representing the current tabs in the window."]
     pub fn tabs(this: &Window) -> Option<::js_sys::Array>;
@@ -48,7 +48,7 @@ extern "C" {
     pub fn top(this: &Window) -> Option<::js_sys::Number>;
     # [wasm_bindgen (method , getter , js_class = Window)]
     #[doc = "The type of browser window this is."]
-    pub fn type_(this: &Window) -> Option<i32>;
+    pub fn type_(this: &Window) -> Option<WindowType>;
     # [wasm_bindgen (method , getter , js_class = Window)]
     #[doc = "The width of the window, including the frame, in pixels. In some circumstances a window may not be assigned a <code>width</code> property; for example, when querying closed windows from the $(ref:sessions) API."]
     pub fn width(this: &Window) -> Option<::js_sys::Number>;

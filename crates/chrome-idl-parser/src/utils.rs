@@ -1,4 +1,9 @@
-use quote::quote;
+use {
+    proc_macro2::{Ident, Span},
+    quote::quote,
+    syn::{punctuated::Punctuated, Path, PathSegment},
+    to_snake_case::ToSnakeCase,
+};
 
 pub fn generate_js_class(s: &str) -> proc_macro2::TokenStream {
     match s {
@@ -15,4 +20,27 @@ pub fn generate_js_class(s: &str) -> proc_macro2::TokenStream {
             panic!("found something other than string and object")
         }
     }
+}
+
+pub fn create_fully_qualified(s: &str) -> proc_macro2::TokenStream {
+    let mut both = s.split('.');
+
+    let first = both.next().unwrap().to_snake_case();
+    let second = both.next().unwrap();
+
+    let c = Ident::new("crate", Span::call_site());
+    let first = Ident::new(&first, Span::call_site());
+    let second = Ident::new(&second, Span::call_site());
+
+    let mut segments = Punctuated::new();
+    segments.push(PathSegment::from(c));
+    segments.push(PathSegment::from(first));
+    segments.push(PathSegment::from(second));
+
+    let path = Path {
+        leading_colon: None,
+        segments,
+    };
+
+    quote!(#path)
 }

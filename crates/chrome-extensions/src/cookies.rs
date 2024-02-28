@@ -36,13 +36,13 @@ extern "C" {
     pub fn name(this: &Cookie) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = Cookie)]
     #[doc = "The partition key for reading or modifying cookies with the Partitioned attribute."]
-    pub fn partitionKey(this: &Cookie) -> Option<i32>;
+    pub fn partitionKey(this: &Cookie) -> Option<CookiePartitionKey>;
     # [wasm_bindgen (method , getter , js_class = Cookie)]
     #[doc = "The path of the cookie."]
     pub fn path(this: &Cookie) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = Cookie)]
     #[doc = "The cookie's same-site status (i.e. whether the cookie is sent with cross-site requests)."]
-    pub fn sameSite(this: &Cookie) -> i32;
+    pub fn sameSite(this: &Cookie) -> SameSiteStatus;
     # [wasm_bindgen (method , getter , js_class = Cookie)]
     #[doc = "True if the cookie is marked as Secure (i.e. its scope is limited to secure channels, typically HTTPS)."]
     pub fn secure(this: &Cookie) -> ::js_sys::Boolean;
@@ -78,7 +78,7 @@ extern "C" {
     pub fn name(this: &CookieDetails) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = CookieDetails)]
     #[doc = "The partition key for reading or modifying cookies with the Partitioned attribute."]
-    pub fn partitionKey(this: &CookieDetails) -> Option<i32>;
+    pub fn partitionKey(this: &CookieDetails) -> Option<CookiePartitionKey>;
     # [wasm_bindgen (method , getter , js_class = CookieDetails)]
     #[doc = "The ID of the cookie store in which to look for the cookie. By default, the current execution context's cookie store will be used."]
     pub fn storeId(this: &CookieDetails) -> Option<::js_sys::JsString>;

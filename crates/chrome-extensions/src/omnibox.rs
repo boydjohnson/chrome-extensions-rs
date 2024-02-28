@@ -24,7 +24,7 @@ extern "C" {
     pub fn offset(this: &MatchClassification) -> ::js_sys::Number;
     # [wasm_bindgen (method , getter , js_class = MatchClassification)]
     #[doc = "The style type"]
-    pub fn type_(this: &MatchClassification) -> i32;
+    pub fn type_(this: &MatchClassification) -> DescriptionStyleType;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "SuggestResult" , typescript_type = "SuggestResult")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "A suggest result."]

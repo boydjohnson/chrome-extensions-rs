@@ -27,7 +27,7 @@ extern "C" {
     pub fn extensionId(this: &TtsOptions) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = TtsOptions)]
     #[doc = "Gender of voice for synthesized speech."]
-    pub fn gender(this: &TtsOptions) -> Option<i32>;
+    pub fn gender(this: &TtsOptions) -> Option<VoiceGender>;
     # [wasm_bindgen (method , getter , js_class = TtsOptions)]
     #[doc = "The language to be used for synthesis, in the form <em>language</em>-<em>region</em>. Examples: 'en', 'en-US', 'en-GB', 'zh-CN'."]
     pub fn lang(this: &TtsOptions) -> Option<::js_sys::JsString>;
@@ -67,7 +67,7 @@ extern "C" {
     pub fn srcId(this: &TtsEvent) -> Option<::js_sys::Number>;
     # [wasm_bindgen (method , getter , js_class = TtsEvent)]
     #[doc = "The type can be <code>start</code> as soon as speech has started, <code>word</code> when a word boundary is reached, <code>sentence</code> when a sentence boundary is reached, <code>marker</code> when an SSML mark element is reached, <code>end</code> when the end of the utterance is reached, <code>interrupted</code> when the utterance is stopped or interrupted before reaching the end, <code>cancelled</code> when it's removed from the queue before ever being synthesized, or <code>error</code> when any other error occurs. When pausing speech, a <code>pause</code> event is fired if a particular utterance is paused in the middle, and <code>resume</code> if an utterance resumes speech. Note that pause and resume events may not fire if speech is paused in-between utterances."]
-    pub fn type_(this: &TtsEvent) -> i32;
+    pub fn type_(this: &TtsEvent) -> EventType;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "TtsVoice" , typescript_type = "TtsVoice")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "A description of a voice available for speech synthesis."]
@@ -80,7 +80,7 @@ extern "C" {
     pub fn extensionId(this: &TtsVoice) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = TtsVoice)]
     #[doc = "This voice's gender."]
-    pub fn gender(this: &TtsVoice) -> Option<i32>;
+    pub fn gender(this: &TtsVoice) -> Option<VoiceGender>;
     # [wasm_bindgen (method , getter , js_class = TtsVoice)]
     #[doc = "The language that this voice supports, in the form <em>language</em>-<em>region</em>. Examples: 'en', 'en-US', 'en-GB', 'zh-CN'."]
     pub fn lang(this: &TtsVoice) -> Option<::js_sys::JsString>;

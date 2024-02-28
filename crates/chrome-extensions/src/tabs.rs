@@ -24,7 +24,7 @@ extern "C" {
     pub fn muted(this: &MutedInfo) -> ::js_sys::Boolean;
     # [wasm_bindgen (method , getter , js_class = MutedInfo)]
     #[doc = "The reason the tab was muted or unmuted. Not set if the tab's mute state has never been changed."]
-    pub fn reason(this: &MutedInfo) -> Option<i32>;
+    pub fn reason(this: &MutedInfo) -> Option<MutedInfoReason>;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "Tab" , typescript_type = "Tab")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
@@ -67,7 +67,7 @@ extern "C" {
     pub fn lastAccessed(this: &Tab) -> Option<::js_sys::Number>;
     # [wasm_bindgen (method , getter , js_class = Tab)]
     #[doc = "The tab's muted state and the reason for the last state change."]
-    pub fn mutedInfo(this: &Tab) -> Option<i32>;
+    pub fn mutedInfo(this: &Tab) -> Option<MutedInfo>;
     # [wasm_bindgen (method , getter , js_class = Tab)]
     #[doc = "The ID of the tab that opened this tab, if any. This property is only present if the opener tab still exists."]
     pub fn openerTabId(this: &Tab) -> Option<::js_sys::Number>;
@@ -85,7 +85,7 @@ extern "C" {
     pub fn sessionId(this: &Tab) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = Tab)]
     #[doc = "The tab's loading status."]
-    pub fn status(this: &Tab) -> Option<i32>;
+    pub fn status(this: &Tab) -> Option<TabStatus>;
     # [wasm_bindgen (method , getter , js_class = Tab)]
     #[doc = "The title of the tab. This property is only present if the extension's manifest includes the <code>\"tabs\"</code> permission."]
     pub fn title(this: &Tab) -> Option<::js_sys::JsString>;
@@ -115,10 +115,10 @@ extern "C" {
     pub fn defaultZoomFactor(this: &ZoomSettings) -> Option<::js_sys::Number>;
     # [wasm_bindgen (method , getter , js_class = ZoomSettings)]
     #[doc = "Defines how zoom changes are handled, i.e., which entity is responsible for the actual scaling of the page; defaults to <code>automatic</code>."]
-    pub fn mode(this: &ZoomSettings) -> Option<i32>;
+    pub fn mode(this: &ZoomSettings) -> Option<ZoomSettingsMode>;
     # [wasm_bindgen (method , getter , js_class = ZoomSettings)]
     #[doc = "Defines whether zoom changes persist for the page's origin, or only take effect in this tab; defaults to <code>per-origin</code> when in <code>automatic</code> mode, and <code>per-tab</code> otherwise."]
-    pub fn scope(this: &ZoomSettings) -> Option<i32>;
+    pub fn scope(this: &ZoomSettings) -> Option<ZoomSettingsScope>;
     # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "WindowType" , typescript_type = "WindowType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The type of window."]

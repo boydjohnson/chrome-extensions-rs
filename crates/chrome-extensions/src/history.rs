@@ -45,7 +45,7 @@ extern "C" {
     pub fn referringVisitId(this: &VisitItem) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = VisitItem)]
     #[doc = "The <a href='#transition_types'>transition type</a> for this visit from its referrer."]
-    pub fn transition(this: &VisitItem) -> i32;
+    pub fn transition(this: &VisitItem) -> TransitionType;
     # [wasm_bindgen (method , getter , js_class = VisitItem)]
     #[doc = "The unique identifier for this visit."]
     pub fn visitId(this: &VisitItem) -> ::js_sys::JsString;

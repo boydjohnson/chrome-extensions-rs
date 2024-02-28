@@ -79,10 +79,10 @@ extern "C" {
     pub fn redirectUrl(this: &BlockingResponse) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = BlockingResponse)]
     #[doc = "Only used as a response to the onBeforeSendHeaders event. If set, the request is made with these request headers instead."]
-    pub fn requestHeaders(this: &BlockingResponse) -> Option<i32>;
+    pub fn requestHeaders(this: &BlockingResponse) -> Option<HttpHeaders>;
     # [wasm_bindgen (method , getter , js_class = BlockingResponse)]
     #[doc = "Only used as a response to the onHeadersReceived event. If set, the server is assumed to have responded with these response headers instead. Only return <code>responseHeaders</code> if you really want to modify the headers in order to limit the number of conflicts (only one extension may modify <code>responseHeaders</code> for each request)."]
-    pub fn responseHeaders(this: &BlockingResponse) -> Option<i32>;
+    pub fn responseHeaders(this: &BlockingResponse) -> Option<HttpHeaders>;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "UploadData" , typescript_type = "UploadData")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Contains data uploaded in a URL request."]

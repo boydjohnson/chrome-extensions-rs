@@ -33,7 +33,7 @@ extern "C" {
     pub fn multiple_mounts(this: &FileSystemProviderCapabilities) -> Option<::js_sys::Boolean>;
     # [wasm_bindgen (method , getter , js_class = FileSystemProviderCapabilities)]
     #[doc = "Source of data for mounted file systems."]
-    pub fn source(this: &FileSystemProviderCapabilities) -> i32;
+    pub fn source(this: &FileSystemProviderCapabilities) -> FileSystemProviderSource;
     # [wasm_bindgen (method , getter , js_class = FileSystemProviderCapabilities)]
     #[doc = "Whether setting watchers and notifying about changes is supported. By default: <code>false</code>."]
     pub fn watchable(this: &FileSystemProviderCapabilities) -> Option<::js_sys::Boolean>;

@@ -45,7 +45,7 @@ extern "C" {
     pub fn description(this: &ExtensionInfo) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = ExtensionInfo)]
     #[doc = "A reason the item is disabled."]
-    pub fn disabledReason(this: &ExtensionInfo) -> Option<i32>;
+    pub fn disabledReason(this: &ExtensionInfo) -> Option<ExtensionDisabledReason>;
     # [wasm_bindgen (method , getter , js_class = ExtensionInfo)]
     #[doc = "Whether it is currently enabled or disabled."]
     pub fn enabled(this: &ExtensionInfo) -> ::js_sys::Boolean;
@@ -63,13 +63,13 @@ extern "C" {
     pub fn id(this: &ExtensionInfo) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = ExtensionInfo)]
     #[doc = "How the extension was installed."]
-    pub fn installType(this: &ExtensionInfo) -> i32;
+    pub fn installType(this: &ExtensionInfo) -> ExtensionInstallType;
     # [wasm_bindgen (method , getter , js_class = ExtensionInfo)]
     #[doc = "True if this is an app."]
     pub fn isApp(this: &ExtensionInfo) -> ::js_sys::Boolean;
     # [wasm_bindgen (method , getter , js_class = ExtensionInfo)]
     #[doc = "The app launch type (only present for apps)."]
-    pub fn launchType(this: &ExtensionInfo) -> Option<i32>;
+    pub fn launchType(this: &ExtensionInfo) -> Option<LaunchType>;
     # [wasm_bindgen (method , getter , js_class = ExtensionInfo)]
     #[doc = "Whether this extension can be disabled or uninstalled by the user."]
     pub fn mayDisable(this: &ExtensionInfo) -> ::js_sys::Boolean;
@@ -93,7 +93,7 @@ extern "C" {
     pub fn shortName(this: &ExtensionInfo) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = ExtensionInfo)]
     #[doc = "The type of this extension, app, or theme."]
-    pub fn type_(this: &ExtensionInfo) -> i32;
+    pub fn type_(this: &ExtensionInfo) -> ExtensionType;
     # [wasm_bindgen (method , getter , js_class = ExtensionInfo)]
     #[doc = "The update URL of this extension, app, or theme."]
     pub fn updateUrl(this: &ExtensionInfo) -> Option<::js_sys::JsString>;

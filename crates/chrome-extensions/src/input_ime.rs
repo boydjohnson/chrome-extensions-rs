@@ -44,7 +44,7 @@ extern "C" {
     pub fn shiftKey(this: &KeyboardEvent) -> Option<::js_sys::Boolean>;
     # [wasm_bindgen (method , getter , js_class = KeyboardEvent)]
     #[doc = "One of keyup or keydown."]
-    pub fn type_(this: &KeyboardEvent) -> i32;
+    pub fn type_(this: &KeyboardEvent) -> KeyboardEventType;
     # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "InputContextType" , typescript_type = "InputContextType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Type of value this text field edits, (Text, Number, URL, etc)"]
@@ -59,7 +59,7 @@ extern "C" {
     pub type InputContext;
     # [wasm_bindgen (method , getter , js_class = InputContext)]
     #[doc = "The auto-capitalize type of the text field."]
-    pub fn autoCapitalize(this: &InputContext) -> i32;
+    pub fn autoCapitalize(this: &InputContext) -> AutoCapitalizeType;
     # [wasm_bindgen (method , getter , js_class = InputContext)]
     #[doc = "Whether the text field wants auto-complete."]
     pub fn autoComplete(this: &InputContext) -> ::js_sys::Boolean;
@@ -77,7 +77,7 @@ extern "C" {
     pub fn spellCheck(this: &InputContext) -> ::js_sys::Boolean;
     # [wasm_bindgen (method , getter , js_class = InputContext)]
     #[doc = "Type of value this text field edits, (Text, Number, URL, etc)"]
-    pub fn type_(this: &InputContext) -> i32;
+    pub fn type_(this: &InputContext) -> InputContextType;
     # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "MenuItemStyle" , typescript_type = "MenuItemStyle")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The type of menu item. Radio buttons between separators are considered grouped."]
@@ -100,7 +100,7 @@ extern "C" {
     pub fn label(this: &MenuItem) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = MenuItem)]
     #[doc = "The type of menu item."]
-    pub fn style(this: &MenuItem) -> Option<i32>;
+    pub fn style(this: &MenuItem) -> Option<MenuItemStyle>;
     # [wasm_bindgen (method , getter , js_class = MenuItem)]
     #[doc = "Indicates this item is visible."]
     pub fn visible(this: &MenuItem) -> Option<::js_sys::Boolean>;
@@ -133,7 +133,7 @@ extern "C" {
     pub fn announceString(this: &AssistiveWindowProperties) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = AssistiveWindowProperties)]
     #[doc = ""]
-    pub fn type_(this: &AssistiveWindowProperties) -> i32;
+    pub fn type_(this: &AssistiveWindowProperties) -> AssistiveWindowType;
     # [wasm_bindgen (method , getter , js_class = AssistiveWindowProperties)]
     #[doc = "Sets true to show AssistiveWindow, sets false to hide."]
     pub fn visible(this: &AssistiveWindowProperties) -> ::js_sys::Boolean;

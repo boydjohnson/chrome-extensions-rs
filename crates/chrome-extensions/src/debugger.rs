@@ -49,7 +49,7 @@ extern "C" {
     pub fn title(this: &TargetInfo) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = TargetInfo)]
     #[doc = "Target type."]
-    pub fn type_(this: &TargetInfo) -> i32;
+    pub fn type_(this: &TargetInfo) -> TargetInfoType;
     # [wasm_bindgen (method , getter , js_class = TargetInfo)]
     #[doc = "Target URL."]
     pub fn url(this: &TargetInfo) -> ::js_sys::JsString;

@@ -82,7 +82,7 @@ extern "C" {
     pub fn title(this: &CreateProperties) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = CreateProperties)]
     #[doc = "The type of menu item. Defaults to <code>normal</code>."]
-    pub fn type_(this: &CreateProperties) -> Option<i32>;
+    pub fn type_(this: &CreateProperties) -> Option<ItemType>;
     # [wasm_bindgen (method , getter , js_class = CreateProperties)]
     #[doc = "Whether the item is visible in the menu."]
     pub fn visible(this: &CreateProperties) -> Option<::js_sys::Boolean>;

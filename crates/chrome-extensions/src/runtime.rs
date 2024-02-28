@@ -13,7 +13,7 @@ extern "C" {
     pub fn name(this: &Port) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = Port)]
     #[doc = "This property will <b>only</b> be present on ports passed to $(ref:runtime.onConnect onConnect) / $(ref:runtime.onConnectExternal onConnectExternal) / $(ref:runtime.onConnectExternal onConnectNative) listeners."]
-    pub fn sender(this: &Port) -> Option<i32>;
+    pub fn sender(this: &Port) -> Option<MessageSender>;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "MessageSender" , typescript_type = "MessageSender")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "An object containing information about the script context that sent a message or request."]
@@ -44,7 +44,7 @@ extern "C" {
     pub fn origin(this: &MessageSender) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = MessageSender)]
     #[doc = "The $(ref:tabs.Tab) which opened the connection, if any. This property will <strong>only</strong> be present when the connection was opened from a tab (including content scripts), and <strong>only</strong> if the receiver is an extension, not an app."]
-    pub fn tab(this: &MessageSender) -> Option<i32>;
+    pub fn tab(this: &MessageSender) -> Option<crate::tabs::Tab>;
     # [wasm_bindgen (method , getter , js_class = MessageSender)]
     #[doc = "The TLS channel ID of the page or frame that opened the connection, if requested by the extension or app, and if available."]
     pub fn tlsChannelId(this: &MessageSender) -> Option<::js_sys::JsString>;
@@ -69,13 +69,13 @@ extern "C" {
     pub type PlatformInfo;
     # [wasm_bindgen (method , getter , js_class = PlatformInfo)]
     #[doc = "The machine's processor architecture."]
-    pub fn arch(this: &PlatformInfo) -> i32;
+    pub fn arch(this: &PlatformInfo) -> PlatformArch;
     # [wasm_bindgen (method , getter , js_class = PlatformInfo)]
     #[doc = "The native client architecture. This may be different from arch on some platforms."]
-    pub fn nacl_arch(this: &PlatformInfo) -> i32;
+    pub fn nacl_arch(this: &PlatformInfo) -> PlatformNaclArch;
     # [wasm_bindgen (method , getter , js_class = PlatformInfo)]
     #[doc = "The operating system Chrome is running on."]
-    pub fn os(this: &PlatformInfo) -> i32;
+    pub fn os(this: &PlatformInfo) -> PlatformOs;
     # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "RequestUpdateCheckStatus" , typescript_type = "RequestUpdateCheckStatus")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Result of the update check."]
@@ -101,7 +101,7 @@ extern "C" {
     pub fn contextId(this: &ExtensionContext) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = ExtensionContext)]
     #[doc = "The type of context this corresponds to."]
-    pub fn contextType(this: &ExtensionContext) -> i32;
+    pub fn contextType(this: &ExtensionContext) -> ContextType;
     # [wasm_bindgen (method , getter , js_class = ExtensionContext)]
     #[doc = "A UUID for the document associated with this context, or undefined if this context is hosted not in a document."]
     pub fn documentId(this: &ExtensionContext) -> Option<::js_sys::JsString>;

@@ -73,7 +73,7 @@ extern "C" {
     pub fn all_frames(this: &ContentScriptDetails) -> Option<::js_sys::Boolean>;
     # [wasm_bindgen (method , getter , js_class = ContentScriptDetails)]
     #[doc = "The CSS code or a list of CSS files to be injected into matching pages. These are injected in the order they appear, before any DOM is constructed or displayed for the page."]
-    pub fn css(this: &ContentScriptDetails) -> Option<i32>;
+    pub fn css(this: &ContentScriptDetails) -> Option<InjectionItems>;
     # [wasm_bindgen (method , getter , js_class = ContentScriptDetails)]
     #[doc = "Applied after matches to exclude URLs that match this glob. Intended to emulate the @exclude Greasemonkey keyword."]
     pub fn exclude_globs(this: &ContentScriptDetails) -> Option<::js_sys::Array>;
@@ -85,7 +85,7 @@ extern "C" {
     pub fn include_globs(this: &ContentScriptDetails) -> Option<::js_sys::Array>;
     # [wasm_bindgen (method , getter , js_class = ContentScriptDetails)]
     #[doc = "The JavaScript code or a list of JavaScript files to be injected into matching pages. These are injected in the order they appear."]
-    pub fn js(this: &ContentScriptDetails) -> Option<i32>;
+    pub fn js(this: &ContentScriptDetails) -> Option<InjectionItems>;
     # [wasm_bindgen (method , getter , js_class = ContentScriptDetails)]
     #[doc = "Whether to insert the content script on about:blank and about:srcdoc. Content scripts will only be injected on pages when their inherit URL is matched by one of the declared patterns in the matches field. The inherit URL is the URL of the document that created the frame or window. Content scripts cannot be inserted in sandboxed frames."]
     pub fn match_about_blank(this: &ContentScriptDetails) -> Option<::js_sys::Boolean>;
@@ -97,5 +97,5 @@ extern "C" {
     pub fn name(this: &ContentScriptDetails) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = ContentScriptDetails)]
     #[doc = "The soonest that the JavaScript or CSS will be injected into the tab. Defaults to \"document_idle\"."]
-    pub fn run_at(this: &ContentScriptDetails) -> Option<i32>;
+    pub fn run_at(this: &ContentScriptDetails) -> Option<crate::extension_types::RunAt>;
 }

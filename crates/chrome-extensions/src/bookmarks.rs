@@ -38,7 +38,7 @@ extern "C" {
     pub fn title(this: &BookmarkTreeNode) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = BookmarkTreeNode)]
     #[doc = "Indicates the reason why this node is unmodifiable. The <var>managed</var> value indicates that this node was configured by the system administrator or by the custodian of a supervised user. Omitted if the node can be modified by the user and the extension (default)."]
-    pub fn unmodifiable(this: &BookmarkTreeNode) -> Option<i32>;
+    pub fn unmodifiable(this: &BookmarkTreeNode) -> Option<BookmarkTreeNodeUnmodifiable>;
     # [wasm_bindgen (method , getter , js_class = BookmarkTreeNode)]
     #[doc = "The URL navigated to when a user clicks the bookmark. Omitted for folders."]
     pub fn url(this: &BookmarkTreeNode) -> Option<::js_sys::JsString>;

@@ -14,7 +14,7 @@ extern "C" {
     pub type SpeakOptions;
     # [wasm_bindgen (method , getter , js_class = SpeakOptions)]
     #[doc = "Gender of voice for synthesized speech."]
-    pub fn gender(this: &SpeakOptions) -> Option<i32>;
+    pub fn gender(this: &SpeakOptions) -> Option<VoiceGender>;
     # [wasm_bindgen (method , getter , js_class = SpeakOptions)]
     #[doc = "The language to be used for synthesis, in the form <em>language</em>-<em>region</em>. Examples: 'en', 'en-US', 'en-GB', 'zh-CN'."]
     pub fn lang(this: &SpeakOptions) -> Option<::js_sys::JsString>;

@@ -14,7 +14,7 @@ extern "C" {
     pub type ImageDetails;
     # [wasm_bindgen (method , getter , js_class = ImageDetails)]
     #[doc = "The format of the resulting image.  Default is <code>\"jpeg\"</code>."]
-    pub fn format(this: &ImageDetails) -> Option<i32>;
+    pub fn format(this: &ImageDetails) -> Option<ImageFormat>;
     # [wasm_bindgen (method , getter , js_class = ImageDetails)]
     #[doc = "When format is <code>\"jpeg\"</code>, controls the quality of the resulting image.  This value is ignored for PNG images.  As quality is decreased, the resulting image will have more visual artifacts, and the number of bytes needed to store it will decrease."]
     pub fn quality(this: &ImageDetails) -> Option<::js_sys::Number>;
@@ -38,7 +38,7 @@ extern "C" {
     pub fn code(this: &InjectDetails) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = InjectDetails)]
     #[doc = "The <a href=\"https://www.w3.org/TR/css3-cascade/#cascading-origins\">origin</a> of the CSS to inject. This may only be specified for CSS, not JavaScript. Defaults to <code>\"author\"</code>."]
-    pub fn cssOrigin(this: &InjectDetails) -> Option<i32>;
+    pub fn cssOrigin(this: &InjectDetails) -> Option<CSSOrigin>;
     # [wasm_bindgen (method , getter , js_class = InjectDetails)]
     #[doc = "JavaScript or CSS file to inject."]
     pub fn file(this: &InjectDetails) -> Option<::js_sys::JsString>;
@@ -50,7 +50,7 @@ extern "C" {
     pub fn matchAboutBlank(this: &InjectDetails) -> Option<::js_sys::Boolean>;
     # [wasm_bindgen (method , getter , js_class = InjectDetails)]
     #[doc = "The soonest that the JavaScript or CSS will be injected into the tab. Defaults to \"document_idle\"."]
-    pub fn runAt(this: &InjectDetails) -> Option<i32>;
+    pub fn runAt(this: &InjectDetails) -> Option<RunAt>;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "DeleteInjectionDetails" , typescript_type = "DeleteInjectionDetails")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Details of the CSS to remove. Either the code or the file property must be set, but both may not be set at the same time."]
@@ -63,7 +63,7 @@ extern "C" {
     pub fn code(this: &DeleteInjectionDetails) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = DeleteInjectionDetails)]
     #[doc = "The <a href=\"https://www.w3.org/TR/css3-cascade/#cascading-origins\">origin</a> of the CSS to remove. Defaults to <code>\"author\"</code>."]
-    pub fn cssOrigin(this: &DeleteInjectionDetails) -> Option<i32>;
+    pub fn cssOrigin(this: &DeleteInjectionDetails) -> Option<CSSOrigin>;
     # [wasm_bindgen (method , getter , js_class = DeleteInjectionDetails)]
     #[doc = "CSS file to remove."]
     pub fn file(this: &DeleteInjectionDetails) -> Option<::js_sys::JsString>;

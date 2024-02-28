@@ -126,10 +126,10 @@ extern "C" {
     pub fn excludeResponseHeaders(this: &RequestMatcher) -> Option<::js_sys::Array>;
     # [wasm_bindgen (method , getter , js_class = RequestMatcher)]
     #[doc = "Matches if the conditions of the UrlFilter are fulfilled for the 'first party' URL of the request. The 'first party' URL of a request, when present, can be different from the request's target URL, and describes what is considered 'first party' for the sake of third-party checks for cookies."]
-    pub fn firstPartyForCookiesUrl(this: &RequestMatcher) -> Option<i32>;
+    pub fn firstPartyForCookiesUrl(this: &RequestMatcher) -> Option<crate::events::UrlFilter>;
     # [wasm_bindgen (method , getter , js_class = RequestMatcher)]
     #[doc = ""]
-    pub fn instanceType(this: &RequestMatcher) -> i32;
+    pub fn instanceType(this: &RequestMatcher) -> RequestMatcherInstanceType;
     # [wasm_bindgen (method , getter , js_class = RequestMatcher)]
     #[doc = "Matches if some of the request headers is matched by one of the HeaderFilters."]
     pub fn requestHeaders(this: &RequestMatcher) -> Option<::js_sys::Array>;
@@ -147,21 +147,21 @@ extern "C" {
     pub fn thirdPartyForCookies(this: &RequestMatcher) -> Option<::js_sys::Boolean>;
     # [wasm_bindgen (method , getter , js_class = RequestMatcher)]
     #[doc = "Matches if the conditions of the UrlFilter are fulfilled for the URL of the request."]
-    pub fn url(this: &RequestMatcher) -> Option<i32>;
+    pub fn url(this: &RequestMatcher) -> Option<crate::events::UrlFilter>;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "CancelRequest" , typescript_type = "CancelRequest")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Declarative event action that cancels a network request."]
     pub type CancelRequest;
     # [wasm_bindgen (method , getter , js_class = CancelRequest)]
     #[doc = ""]
-    pub fn instanceType(this: &CancelRequest) -> i32;
+    pub fn instanceType(this: &CancelRequest) -> CancelRequestInstanceType;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "RedirectRequest" , typescript_type = "RedirectRequest")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Declarative event action that redirects a network request."]
     pub type RedirectRequest;
     # [wasm_bindgen (method , getter , js_class = RedirectRequest)]
     #[doc = ""]
-    pub fn instanceType(this: &RedirectRequest) -> i32;
+    pub fn instanceType(this: &RedirectRequest) -> RedirectRequestInstanceType;
     # [wasm_bindgen (method , getter , js_class = RedirectRequest)]
     #[doc = "Destination to where the request is redirected."]
     pub fn redirectUrl(this: &RedirectRequest) -> ::js_sys::JsString;
@@ -171,14 +171,16 @@ extern "C" {
     pub type RedirectToTransparentImage;
     # [wasm_bindgen (method , getter , js_class = RedirectToTransparentImage)]
     #[doc = ""]
-    pub fn instanceType(this: &RedirectToTransparentImage) -> i32;
+    pub fn instanceType(
+        this: &RedirectToTransparentImage,
+    ) -> RedirectToTransparentImageInstanceType;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "declarativeWebRequest.RedirectToEmptyDocument" , typescript_type = "declarativeWebRequest.RedirectToEmptyDocument")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Declarative event action that redirects a network request to an empty document."]
     pub type RedirectToEmptyDocument;
     # [wasm_bindgen (method , getter , js_class = RedirectToEmptyDocument)]
     #[doc = ""]
-    pub fn instanceType(this: &RedirectToEmptyDocument) -> i32;
+    pub fn instanceType(this: &RedirectToEmptyDocument) -> RedirectToEmptyDocumentInstanceType;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "declarativeWebRequest.RedirectByRegEx" , typescript_type = "declarativeWebRequest.RedirectByRegEx")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Redirects a request by applying a regular expression on the URL. The regular expressions use the <a href=\"https://github.com/google/re2/blob/master/doc/syntax.txt\">RE2 syntax</a>."]
@@ -188,7 +190,7 @@ extern "C" {
     pub fn from(this: &RedirectByRegEx) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = RedirectByRegEx)]
     #[doc = ""]
-    pub fn instanceType(this: &RedirectByRegEx) -> i32;
+    pub fn instanceType(this: &RedirectByRegEx) -> RedirectByRegExInstanceType;
     # [wasm_bindgen (method , getter , js_class = RedirectByRegEx)]
     #[doc = "Destination pattern."]
     pub fn to(this: &RedirectByRegEx) -> ::js_sys::JsString;
@@ -198,7 +200,7 @@ extern "C" {
     pub type SetRequestHeader;
     # [wasm_bindgen (method , getter , js_class = SetRequestHeader)]
     #[doc = ""]
-    pub fn instanceType(this: &SetRequestHeader) -> i32;
+    pub fn instanceType(this: &SetRequestHeader) -> SetRequestHeaderInstanceType;
     # [wasm_bindgen (method , getter , js_class = SetRequestHeader)]
     #[doc = "HTTP request header name."]
     pub fn name(this: &SetRequestHeader) -> ::js_sys::JsString;
@@ -211,7 +213,7 @@ extern "C" {
     pub type RemoveRequestHeader;
     # [wasm_bindgen (method , getter , js_class = RemoveRequestHeader)]
     #[doc = ""]
-    pub fn instanceType(this: &RemoveRequestHeader) -> i32;
+    pub fn instanceType(this: &RemoveRequestHeader) -> RemoveRequestHeaderInstanceType;
     # [wasm_bindgen (method , getter , js_class = RemoveRequestHeader)]
     #[doc = "HTTP request header name (case-insensitive)."]
     pub fn name(this: &RemoveRequestHeader) -> ::js_sys::JsString;
@@ -221,7 +223,7 @@ extern "C" {
     pub type AddResponseHeader;
     # [wasm_bindgen (method , getter , js_class = AddResponseHeader)]
     #[doc = ""]
-    pub fn instanceType(this: &AddResponseHeader) -> i32;
+    pub fn instanceType(this: &AddResponseHeader) -> AddResponseHeaderInstanceType;
     # [wasm_bindgen (method , getter , js_class = AddResponseHeader)]
     #[doc = "HTTP response header name."]
     pub fn name(this: &AddResponseHeader) -> ::js_sys::JsString;
@@ -234,7 +236,7 @@ extern "C" {
     pub type RemoveResponseHeader;
     # [wasm_bindgen (method , getter , js_class = RemoveResponseHeader)]
     #[doc = ""]
-    pub fn instanceType(this: &RemoveResponseHeader) -> i32;
+    pub fn instanceType(this: &RemoveResponseHeader) -> RemoveResponseHeaderInstanceType;
     # [wasm_bindgen (method , getter , js_class = RemoveResponseHeader)]
     #[doc = "HTTP request header name (case-insensitive)."]
     pub fn name(this: &RemoveResponseHeader) -> ::js_sys::JsString;
@@ -250,7 +252,7 @@ extern "C" {
     pub fn hasTag(this: &IgnoreRules) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = IgnoreRules)]
     #[doc = ""]
-    pub fn instanceType(this: &IgnoreRules) -> i32;
+    pub fn instanceType(this: &IgnoreRules) -> IgnoreRulesInstanceType;
     # [wasm_bindgen (method , getter , js_class = IgnoreRules)]
     #[doc = "If set, rules with a lower priority than the specified value are ignored. This boundary is not persisted, it affects only rules and their actions of the same network request stage."]
     pub fn lowerPriorityThan(this: &IgnoreRules) -> Option<::js_sys::Number>;
@@ -260,7 +262,7 @@ extern "C" {
     pub type SendMessageToExtension;
     # [wasm_bindgen (method , getter , js_class = SendMessageToExtension)]
     #[doc = ""]
-    pub fn instanceType(this: &SendMessageToExtension) -> i32;
+    pub fn instanceType(this: &SendMessageToExtension) -> SendMessageToExtensionInstanceType;
     # [wasm_bindgen (method , getter , js_class = SendMessageToExtension)]
     #[doc = "The value that will be passed in the <code>message</code> attribute of the dictionary that is passed to the event handler."]
     pub fn message(this: &SendMessageToExtension) -> ::js_sys::JsString;
@@ -345,64 +347,70 @@ extern "C" {
     pub type AddRequestCookie;
     # [wasm_bindgen (method , getter , js_class = AddRequestCookie)]
     #[doc = "Cookie to be added to the request. No field may be undefined."]
-    pub fn cookie(this: &AddRequestCookie) -> i32;
+    pub fn cookie(this: &AddRequestCookie) -> crate::declarative_web_request::RequestCookie;
     # [wasm_bindgen (method , getter , js_class = AddRequestCookie)]
     #[doc = ""]
-    pub fn instanceType(this: &AddRequestCookie) -> i32;
+    pub fn instanceType(this: &AddRequestCookie) -> AddRequestCookieInstanceType;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "declarativeWebRequest.AddResponseCookie" , typescript_type = "declarativeWebRequest.AddResponseCookie")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Adds a cookie to the response or overrides a cookie, in case another cookie of the same name exists already. Note that it is preferred to use the Cookies API because this is computationally less expensive."]
     pub type AddResponseCookie;
     # [wasm_bindgen (method , getter , js_class = AddResponseCookie)]
     #[doc = "Cookie to be added to the response. The name and value need to be specified."]
-    pub fn cookie(this: &AddResponseCookie) -> i32;
+    pub fn cookie(this: &AddResponseCookie) -> crate::declarative_web_request::ResponseCookie;
     # [wasm_bindgen (method , getter , js_class = AddResponseCookie)]
     #[doc = ""]
-    pub fn instanceType(this: &AddResponseCookie) -> i32;
+    pub fn instanceType(this: &AddResponseCookie) -> AddResponseCookieInstanceType;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "declarativeWebRequest.EditRequestCookie" , typescript_type = "declarativeWebRequest.EditRequestCookie")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Edits one or more cookies of request. Note that it is preferred to use the Cookies API because this is computationally less expensive."]
     pub type EditRequestCookie;
     # [wasm_bindgen (method , getter , js_class = EditRequestCookie)]
     #[doc = "Filter for cookies that will be modified. All empty entries are ignored."]
-    pub fn filter(this: &EditRequestCookie) -> i32;
+    pub fn filter(this: &EditRequestCookie) -> crate::declarative_web_request::RequestCookie;
     # [wasm_bindgen (method , getter , js_class = EditRequestCookie)]
     #[doc = ""]
-    pub fn instanceType(this: &EditRequestCookie) -> i32;
+    pub fn instanceType(this: &EditRequestCookie) -> EditRequestCookieInstanceType;
     # [wasm_bindgen (method , getter , js_class = EditRequestCookie)]
     #[doc = "Attributes that shall be overridden in cookies that machted the filter. Attributes that are set to an empty string are removed."]
-    pub fn modification(this: &EditRequestCookie) -> i32;
+    pub fn modification(this: &EditRequestCookie) -> crate::declarative_web_request::RequestCookie;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "declarativeWebRequest.EditResponseCookie" , typescript_type = "declarativeWebRequest.EditResponseCookie")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Edits one or more cookies of response. Note that it is preferred to use the Cookies API because this is computationally less expensive."]
     pub type EditResponseCookie;
     # [wasm_bindgen (method , getter , js_class = EditResponseCookie)]
     #[doc = "Filter for cookies that will be modified. All empty entries are ignored."]
-    pub fn filter(this: &EditResponseCookie) -> i32;
+    pub fn filter(
+        this: &EditResponseCookie,
+    ) -> crate::declarative_web_request::FilterResponseCookie;
     # [wasm_bindgen (method , getter , js_class = EditResponseCookie)]
     #[doc = ""]
-    pub fn instanceType(this: &EditResponseCookie) -> i32;
+    pub fn instanceType(this: &EditResponseCookie) -> EditResponseCookieInstanceType;
     # [wasm_bindgen (method , getter , js_class = EditResponseCookie)]
     #[doc = "Attributes that shall be overridden in cookies that machted the filter. Attributes that are set to an empty string are removed."]
-    pub fn modification(this: &EditResponseCookie) -> i32;
+    pub fn modification(
+        this: &EditResponseCookie,
+    ) -> crate::declarative_web_request::ResponseCookie;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "declarativeWebRequest.RemoveRequestCookie" , typescript_type = "declarativeWebRequest.RemoveRequestCookie")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Removes one or more cookies of request. Note that it is preferred to use the Cookies API because this is computationally less expensive."]
     pub type RemoveRequestCookie;
     # [wasm_bindgen (method , getter , js_class = RemoveRequestCookie)]
     #[doc = "Filter for cookies that will be removed. All empty entries are ignored."]
-    pub fn filter(this: &RemoveRequestCookie) -> i32;
+    pub fn filter(this: &RemoveRequestCookie) -> crate::declarative_web_request::RequestCookie;
     # [wasm_bindgen (method , getter , js_class = RemoveRequestCookie)]
     #[doc = ""]
-    pub fn instanceType(this: &RemoveRequestCookie) -> i32;
+    pub fn instanceType(this: &RemoveRequestCookie) -> RemoveRequestCookieInstanceType;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "declarativeWebRequest.RemoveResponseCookie" , typescript_type = "declarativeWebRequest.RemoveResponseCookie")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Removes one or more cookies of response. Note that it is preferred to use the Cookies API because this is computationally less expensive."]
     pub type RemoveResponseCookie;
     # [wasm_bindgen (method , getter , js_class = RemoveResponseCookie)]
     #[doc = "Filter for cookies that will be removed. All empty entries are ignored."]
-    pub fn filter(this: &RemoveResponseCookie) -> i32;
+    pub fn filter(
+        this: &RemoveResponseCookie,
+    ) -> crate::declarative_web_request::FilterResponseCookie;
     # [wasm_bindgen (method , getter , js_class = RemoveResponseCookie)]
     #[doc = ""]
-    pub fn instanceType(this: &RemoveResponseCookie) -> i32;
+    pub fn instanceType(this: &RemoveResponseCookie) -> RemoveResponseCookieInstanceType;
 }

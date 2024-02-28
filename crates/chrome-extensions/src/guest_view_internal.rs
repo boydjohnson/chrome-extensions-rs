@@ -23,11 +23,11 @@ extern "C" {
     pub fn enableAutoSize(this: &SizeParams) -> Option<::js_sys::Boolean>;
     # [wasm_bindgen (method , getter , js_class = SizeParams)]
     #[doc = ""]
-    pub fn max(this: &SizeParams) -> Option<i32>;
+    pub fn max(this: &SizeParams) -> Option<Size>;
     # [wasm_bindgen (method , getter , js_class = SizeParams)]
     #[doc = ""]
-    pub fn min(this: &SizeParams) -> Option<i32>;
+    pub fn min(this: &SizeParams) -> Option<Size>;
     # [wasm_bindgen (method , getter , js_class = SizeParams)]
     #[doc = ""]
-    pub fn normal(this: &SizeParams) -> Option<i32>;
+    pub fn normal(this: &SizeParams) -> Option<Size>;
 }

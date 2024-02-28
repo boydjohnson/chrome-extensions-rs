@@ -17,7 +17,7 @@ extern "C" {
     pub fn collapsed(this: &TabGroup) -> ::js_sys::Boolean;
     # [wasm_bindgen (method , getter , js_class = TabGroup)]
     #[doc = "The group's color."]
-    pub fn color(this: &TabGroup) -> i32;
+    pub fn color(this: &TabGroup) -> Color;
     # [wasm_bindgen (method , getter , js_class = TabGroup)]
     #[doc = "The ID of the group. Group IDs are unique within a browser session."]
     pub fn id(this: &TabGroup) -> ::js_sys::Number;

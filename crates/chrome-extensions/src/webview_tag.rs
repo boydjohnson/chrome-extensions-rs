@@ -75,7 +75,7 @@ extern "C" {
     pub fn all_frames(this: &ContentScriptDetails) -> Option<::js_sys::Boolean>;
     # [wasm_bindgen (method , getter , js_class = ContentScriptDetails)]
     #[doc = "The CSS code or a list of CSS files to be injected into matching pages. These are injected in the order they appear, before any DOM is constructed or displayed for the page."]
-    pub fn css(this: &ContentScriptDetails) -> Option<i32>;
+    pub fn css(this: &ContentScriptDetails) -> Option<InjectionItems>;
     # [wasm_bindgen (method , getter , js_class = ContentScriptDetails)]
     #[doc = "Applied after matches to exclude URLs that match this glob. Intended to emulate the @exclude Greasemonkey keyword."]
     pub fn exclude_globs(this: &ContentScriptDetails) -> Option<::js_sys::Array>;
@@ -87,7 +87,7 @@ extern "C" {
     pub fn include_globs(this: &ContentScriptDetails) -> Option<::js_sys::Array>;
     # [wasm_bindgen (method , getter , js_class = ContentScriptDetails)]
     #[doc = "The JavaScript code or a list of JavaScript files to be injected into matching pages. These are injected in the order they appear."]
-    pub fn js(this: &ContentScriptDetails) -> Option<i32>;
+    pub fn js(this: &ContentScriptDetails) -> Option<InjectionItems>;
     # [wasm_bindgen (method , getter , js_class = ContentScriptDetails)]
     #[doc = "Whether to insert the content script on about:blank and about:srcdoc. Content scripts will only be injected on pages when their inherit URL is matched by one of the declared patterns in the matches field. The inherit URL is the URL of the document that created the frame or window. Content scripts cannot be inserted in sandboxed frames."]
     pub fn match_about_blank(this: &ContentScriptDetails) -> Option<::js_sys::Boolean>;
@@ -99,7 +99,7 @@ extern "C" {
     pub fn name(this: &ContentScriptDetails) -> ::js_sys::JsString;
     # [wasm_bindgen (method , getter , js_class = ContentScriptDetails)]
     #[doc = "The soonest that the JavaScript or CSS will be injected into the tab. Defaults to \"document_idle\"."]
-    pub fn run_at(this: &ContentScriptDetails) -> Option<i32>;
+    pub fn run_at(this: &ContentScriptDetails) -> Option<crate::extension_types::RunAt>;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ContextMenuCreateProperties" , typescript_type = "ContextMenuCreateProperties")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
@@ -130,7 +130,7 @@ extern "C" {
     pub fn title(this: &ContextMenuCreateProperties) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = ContextMenuCreateProperties)]
     #[doc = "The type of menu item. Defaults to 'normal' if not specified."]
-    pub fn type_(this: &ContextMenuCreateProperties) -> Option<i32>;
+    pub fn type_(this: &ContextMenuCreateProperties) -> Option<crate::context_menus::ItemType>;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ContextMenuUpdateProperties" , typescript_type = "ContextMenuUpdateProperties")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
@@ -158,7 +158,7 @@ extern "C" {
     pub fn title(this: &ContextMenuUpdateProperties) -> Option<::js_sys::JsString>;
     # [wasm_bindgen (method , getter , js_class = ContextMenuUpdateProperties)]
     #[doc = "The type of menu item."]
-    pub fn type_(this: &ContextMenuUpdateProperties) -> Option<i32>;
+    pub fn type_(this: &ContextMenuUpdateProperties) -> Option<crate::context_menus::ItemType>;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ContextMenus" , typescript_type = "ContextMenus")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
@@ -186,7 +186,7 @@ extern "C" {
     pub fn numberOfMatches(this: &FindCallbackResults) -> ::js_sys::Number;
     # [wasm_bindgen (method , getter , js_class = FindCallbackResults)]
     #[doc = "Describes a rectangle around the active match in screen coordinates."]
-    pub fn selectionRect(this: &FindCallbackResults) -> i32;
+    pub fn selectionRect(this: &FindCallbackResults) -> SelectionRect;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "FindOptions" , typescript_type = "FindOptions")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Options for the find request."]

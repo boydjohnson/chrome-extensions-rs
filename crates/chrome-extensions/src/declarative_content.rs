@@ -37,27 +37,27 @@ extern "C" {
     pub fn css(this: &PageStateMatcher) -> Option<::js_sys::Array>;
     # [wasm_bindgen (method , getter , js_class = PageStateMatcher)]
     #[doc = ""]
-    pub fn instanceType(this: &PageStateMatcher) -> i32;
+    pub fn instanceType(this: &PageStateMatcher) -> PageStateMatcherInstanceType;
     # [wasm_bindgen (method , getter , js_class = PageStateMatcher)]
     #[doc = "Matches if the bookmarked state of the page is equal to the specified value. Requres the <a href='/docs/extensions/develop/concepts/declare-permissions'>bookmarks permission</a>."]
     pub fn isBookmarked(this: &PageStateMatcher) -> Option<::js_sys::Boolean>;
     # [wasm_bindgen (method , getter , js_class = PageStateMatcher)]
     #[doc = "Matches if the conditions of the <code>UrlFilter</code> are fulfilled for the top-level URL of the page."]
-    pub fn pageUrl(this: &PageStateMatcher) -> Option<i32>;
+    pub fn pageUrl(this: &PageStateMatcher) -> Option<crate::events::UrlFilter>;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ShowPageAction" , typescript_type = "ShowPageAction")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "A declarative event action that sets the extension's $(ref:pageAction page action) to an enabled state while the corresponding conditions are met. This action can be used without <a href=\"/docs/extensions/develop/concepts/declare-permissions#host-permissions\">host permissions</a>, but the extension must have a page action. If the extension has the <a href=\"/docs/extensions/develop/concepts/activeTab\">activeTab</a> permission, clicking the page action grants access to the active tab.<p>On pages where the conditions are not met the extension's toolbar action will be grey-scale, and clicking it will open the context menu, instead of triggering the action.</p>"]
     pub type ShowPageAction;
     # [wasm_bindgen (method , getter , js_class = ShowPageAction)]
     #[doc = ""]
-    pub fn instanceType(this: &ShowPageAction) -> i32;
+    pub fn instanceType(this: &ShowPageAction) -> ShowPageActionInstanceType;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ShowAction" , typescript_type = "ShowAction")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "A declarative event action that sets the extension's toolbar $(ref:action action) to an enabled state while the corresponding conditions are met. This action can be used without <a href=\"/docs/extensions/develop/concepts/declare-permissions#host-permissions\">host permissions</a>. If the extension has the <a href=\"/docs/extensions/develop/concepts/activeTab\">activeTab</a> permission, clicking the page action grants access to the active tab.<p>On pages where the conditions are not met the extension's toolbar action will be grey-scale, and clicking it will open the context menu, instead of triggering the action.</p>"]
     pub type ShowAction;
     # [wasm_bindgen (method , getter , js_class = ShowAction)]
     #[doc = ""]
-    pub fn instanceType(this: &ShowAction) -> i32;
+    pub fn instanceType(this: &ShowAction) -> ShowActionInstanceType;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "SetIcon" , typescript_type = "SetIcon")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Declarative event action that sets the n-<abbr title=\"device-independent pixel\">dip</abbr> square icon for the extension's $(ref:pageAction page action) or $(ref:browserAction browser action) while the corresponding conditions are met. This action can be used without <a href=\"/docs/extensions/develop/concepts/declare-permissions#host-permissions\">host permissions</a>, but the extension must have a page or browser action.<p>Exactly one of <code>imageData</code> or <code>path</code> must be specified. Both are dictionaries mapping a number of pixels to an image representation. The image representation in <code>imageData</code> is an <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/ImageData\">ImageData</a> object; for example, from a <code>canvas</code> element, while the image representation in <code>path</code> is the path to an image file relative to the extension's manifest. If <code>scale</code> screen pixels fit into a device-independent pixel, the <code>scale * n</code> icon is used. If that scale is missing, another image is resized to the required size.</p>"]
@@ -67,7 +67,7 @@ extern "C" {
     pub fn imageData(this: &SetIcon) -> wasm_bindgen::JsValue;
     # [wasm_bindgen (method , getter , js_class = SetIcon)]
     #[doc = ""]
-    pub fn instanceType(this: &SetIcon) -> i32;
+    pub fn instanceType(this: &SetIcon) -> SetIconInstanceType;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "RequestContentScript" , typescript_type = "RequestContentScript")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Declarative event action that injects a content script. <p><b>WARNING:</b> This action is still experimental and is not supported on stable builds of Chrome.</p>"]
@@ -80,7 +80,7 @@ extern "C" {
     pub fn css(this: &RequestContentScript) -> Option<::js_sys::Array>;
     # [wasm_bindgen (method , getter , js_class = RequestContentScript)]
     #[doc = ""]
-    pub fn instanceType(this: &RequestContentScript) -> i32;
+    pub fn instanceType(this: &RequestContentScript) -> RequestContentScriptInstanceType;
     # [wasm_bindgen (method , getter , js_class = RequestContentScript)]
     #[doc = "Names of JavaScript files to be injected as a part of the content script."]
     pub fn js(this: &RequestContentScript) -> Option<::js_sys::Array>;

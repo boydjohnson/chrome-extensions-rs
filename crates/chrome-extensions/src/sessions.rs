@@ -20,10 +20,10 @@ extern "C" {
     pub fn lastModified(this: &Session) -> ::js_sys::Number;
     # [wasm_bindgen (method , getter , js_class = Session)]
     #[doc = "The $(ref:tabs.Tab), if this entry describes a tab. Either this or $(ref:sessions.Session.window) will be set."]
-    pub fn tab(this: &Session) -> Option<i32>;
+    pub fn tab(this: &Session) -> Option<crate::tabs::Tab>;
     # [wasm_bindgen (method , getter , js_class = Session)]
     #[doc = "The $(ref:windows.Window), if this entry describes a window. Either this or $(ref:sessions.Session.tab) will be set."]
-    pub fn window(this: &Session) -> Option<i32>;
+    pub fn window(this: &Session) -> Option<crate::windows::Window>;
     # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "Device" , typescript_type = "Device")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]

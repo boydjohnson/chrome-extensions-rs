@@ -2,13 +2,13 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "Use the <code>chrome.bookmarks</code> API to create, organize, and otherwise manipulate bookmarks. Also see <a href='override'>Override Pages</a>, which you can use to create a custom Bookmark Manager page."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "BookmarkTreeNodeUnmodifiable" , typescript_type = "BookmarkTreeNodeUnmodifiable")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "bookmarks.BookmarkTreeNodeUnmodifiable" , typescript_type = "bookmarks.BookmarkTreeNodeUnmodifiable")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Indicates the reason why this node is unmodifiable. The <var>managed</var> value indicates that this node was configured by the system administrator. Omitted if the node can be modified by the user and the extension (default)."]
     pub type BookmarkTreeNodeUnmodifiable;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "BookmarkTreeNode" , typescript_type = "BookmarkTreeNode")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "bookmarks.BookmarkTreeNode" , typescript_type = "bookmarks.BookmarkTreeNode")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "A node (either a bookmark or a folder) in the bookmark tree.  Child nodes are ordered within their parent folder."]
     pub type BookmarkTreeNode;
@@ -42,7 +42,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = BookmarkTreeNode)]
     #[doc = "The URL navigated to when a user clicks the bookmark. Omitted for folders."]
     pub fn url(this: &BookmarkTreeNode) -> Option<::js_sys::JsString>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "CreateDetails" , typescript_type = "CreateDetails")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "bookmarks.CreateDetails" , typescript_type = "bookmarks.CreateDetails")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Object passed to the create() function."]
     pub type CreateDetails;
@@ -58,4 +58,55 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = CreateDetails)]
     #[doc = ""]
     pub fn url(this: &CreateDetails) -> Option<::js_sys::JsString>;
+    #[doc = "Retrieves the specified BookmarkTreeNode(s)."]
+    #[wasm_bindgen(js_name = "bookmarks.get", catch)]
+    pub async fn get(
+        idOrIdList: ::wasm_bindgen::JsValue,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Retrieves the children of the specified BookmarkTreeNode id."]
+    #[wasm_bindgen(js_name = "bookmarks.getChildren", catch)]
+    pub async fn getChildren(
+        id: ::js_sys::JsString,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Retrieves the recently added bookmarks."]
+    #[wasm_bindgen(js_name = "bookmarks.getRecent", catch)]
+    pub async fn getRecent(
+        numberOfItems: ::js_sys::Number,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Retrieves the entire Bookmarks hierarchy."]
+    #[wasm_bindgen(js_name = "bookmarks.getTree", catch)]
+    pub async fn getTree() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Retrieves part of the Bookmarks hierarchy, starting at the specified node."]
+    #[wasm_bindgen(js_name = "bookmarks.getSubTree", catch)]
+    pub async fn getSubTree(
+        id: ::js_sys::JsString,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Searches for BookmarkTreeNodes matching the given query. Queries specified with an object produce BookmarkTreeNodes matching all specified properties."]
+    #[wasm_bindgen(js_name = "bookmarks.search", catch)]
+    pub async fn search(
+        query: ::wasm_bindgen::JsValue,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Creates a bookmark or folder under the specified parentId.  If url is NULL or missing, it will be a folder."]
+    #[wasm_bindgen(js_name = "bookmarks.create", catch)]
+    pub async fn create(
+        bookmark: CreateDetails,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Moves the specified BookmarkTreeNode to the provided location."]
+    #[wasm_bindgen(js_name = "bookmarks.move", catch)]
+    pub async fn move_(
+        id: ::js_sys::JsString,
+        destination: ::js_sys::Object,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Updates the properties of a bookmark or folder. Specify only the properties that you want to change; unspecified properties will be left unchanged.  <b>Note:</b> Currently, only 'title' and 'url' are supported."]
+    #[wasm_bindgen(js_name = "bookmarks.update", catch)]
+    pub async fn update(
+        id: ::js_sys::JsString,
+        changes: ::js_sys::Object,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Removes a bookmark or an empty bookmark folder."]
+    #[wasm_bindgen(js_name = "bookmarks.remove", catch)]
+    pub async fn remove(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Recursively removes a bookmark folder."]
+    #[wasm_bindgen(js_name = "bookmarks.removeTree", catch)]
+    pub async fn removeTree(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue>;
 }

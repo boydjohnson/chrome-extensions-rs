@@ -2,17 +2,17 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "Use the <code>chrome.windows</code> API to interact with browser windows. You can use this API to create, modify, and rearrange windows in the browser."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "WindowType" , typescript_type = "WindowType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "windows.WindowType" , typescript_type = "windows.WindowType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The type of browser window this is. In some circumstances a window may not be assigned a <code>type</code> property; for example, when querying closed windows from the $(ref:sessions) API."]
     pub type WindowType;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "WindowState" , typescript_type = "WindowState")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "windows.WindowState" , typescript_type = "windows.WindowState")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The state of this browser window. In some circumstances a window may not be assigned a <code>state</code> property; for example, when querying closed windows from the $(ref:sessions) API."]
     pub type WindowState;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "Window" , typescript_type = "Window")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "windows.Window" , typescript_type = "windows.Window")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type Window;
@@ -52,11 +52,11 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = Window)]
     #[doc = "The width of the window, including the frame, in pixels. In some circumstances a window may not be assigned a <code>width</code> property; for example, when querying closed windows from the $(ref:sessions) API."]
     pub fn width(this: &Window) -> Option<::js_sys::Number>;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "CreateType" , typescript_type = "CreateType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "windows.CreateType" , typescript_type = "windows.CreateType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Specifies what type of browser window to create. 'panel' is deprecated and is available only to existing allowlisted extensions on Chrome OS."]
     pub type CreateType;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "QueryOptions" , typescript_type = "QueryOptions")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "windows.QueryOptions" , typescript_type = "windows.QueryOptions")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type QueryOptions;
@@ -66,4 +66,39 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = QueryOptions)]
     #[doc = "If set, the $(ref:windows.Window) returned is filtered based on its type. If unset, the default filter is set to <code>['normal', 'popup']</code>."]
     pub fn windowTypes(this: &QueryOptions) -> Option<::js_sys::Array>;
+    #[doc = "Gets details about a window."]
+    #[wasm_bindgen(js_name = "windows.get", catch)]
+    pub async fn get(
+        windowId: ::js_sys::Number,
+        queryOptions: Option<QueryOptions>,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets the <a href='#current-window'>current window</a>."]
+    #[wasm_bindgen(js_name = "windows.getCurrent", catch)]
+    pub async fn getCurrent(
+        queryOptions: Option<QueryOptions>,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets the window that was most recently focused &mdash; typically the window 'on top'."]
+    #[wasm_bindgen(js_name = "windows.getLastFocused", catch)]
+    pub async fn getLastFocused(
+        queryOptions: Option<QueryOptions>,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets all windows."]
+    #[wasm_bindgen(js_name = "windows.getAll", catch)]
+    pub async fn getAll(
+        queryOptions: Option<QueryOptions>,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Creates (opens) a new browser window with any optional sizing, position, or default URL provided."]
+    #[wasm_bindgen(js_name = "windows.create", catch)]
+    pub async fn create(
+        createData: Option<::js_sys::Object>,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Updates the properties of a window. Specify only the properties that to be changed; unspecified properties are unchanged."]
+    #[wasm_bindgen(js_name = "windows.update", catch)]
+    pub async fn update(
+        windowId: ::js_sys::Number,
+        updateInfo: ::js_sys::Object,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Removes (closes) a window and all the tabs inside it."]
+    #[wasm_bindgen(js_name = "windows.remove", catch)]
+    pub async fn remove(windowId: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue>;
 }

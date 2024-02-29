@@ -45,7 +45,6 @@ pub mod sessions;
 pub mod storage;
 pub mod tab_groups;
 pub mod tabs;
-pub mod test;
 pub mod top_sites;
 pub mod tts;
 pub mod tts_engine;

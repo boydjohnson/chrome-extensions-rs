@@ -2,9 +2,9 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "Use the <code>chrome.browsingData</code> API to remove browsing data from a user's local profile."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "RemovalOptions" , typescript_type = "RemovalOptions")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "browsingData.RemovalOptions" , typescript_type = "browsingData.RemovalOptions")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Options that determine exactly what data will be removed."]
     pub type RemovalOptions;
@@ -20,7 +20,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = RemovalOptions)]
     #[doc = "Remove data accumulated on or after this date, represented in milliseconds since the epoch (accessible via the <code>getTime</code> method of the JavaScript <code>Date</code> object). If absent, defaults to 0 (which would remove all browsing data)."]
     pub fn since(this: &RemovalOptions) -> Option<::js_sys::Number>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "DataTypeSet" , typescript_type = "DataTypeSet")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "browsingData.DataTypeSet" , typescript_type = "browsingData.DataTypeSet")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "A set of data types. Missing data types are interpreted as <code>false</code>."]
     pub type DataTypeSet;
@@ -69,4 +69,59 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = DataTypeSet)]
     #[doc = "Websites' WebSQL data."]
     pub fn webSQL(this: &DataTypeSet) -> Option<::js_sys::Boolean>;
+    #[doc = "Reports which types of data are currently selected in the 'Clear browsing data' settings UI.  Note: some of the data types included in this API are not available in the settings UI, and some UI settings control more than one data type listed here."]
+    #[wasm_bindgen(js_name = "browsingData.settings", catch)]
+    pub async fn settings() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Clears various types of browsing data stored in a user's profile."]
+    #[wasm_bindgen(js_name = "browsingData.remove", catch)]
+    pub async fn remove(
+        options: RemovalOptions,
+        dataToRemove: DataTypeSet,
+    ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' appcache data."]
+    #[wasm_bindgen(js_name = "browsingData.removeAppcache", catch)]
+    pub async fn removeAppcache(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears the browser's cache."]
+    #[wasm_bindgen(js_name = "browsingData.removeCache", catch)]
+    pub async fn removeCache(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' cache storage data."]
+    #[wasm_bindgen(js_name = "browsingData.removeCacheStorage", catch)]
+    pub async fn removeCacheStorage(options: RemovalOptions)
+        -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears the browser's cookies and server-bound certificates modified within a particular timeframe."]
+    #[wasm_bindgen(js_name = "browsingData.removeCookies", catch)]
+    pub async fn removeCookies(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears the browser's list of downloaded files (<em>not</em> the downloaded files themselves)."]
+    #[wasm_bindgen(js_name = "browsingData.removeDownloads", catch)]
+    pub async fn removeDownloads(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' file system data."]
+    #[wasm_bindgen(js_name = "browsingData.removeFileSystems", catch)]
+    pub async fn removeFileSystems(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears the browser's stored form data (autofill)."]
+    #[wasm_bindgen(js_name = "browsingData.removeFormData", catch)]
+    pub async fn removeFormData(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears the browser's history."]
+    #[wasm_bindgen(js_name = "browsingData.removeHistory", catch)]
+    pub async fn removeHistory(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' IndexedDB data."]
+    #[wasm_bindgen(js_name = "browsingData.removeIndexedDB", catch)]
+    pub async fn removeIndexedDB(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' local storage data."]
+    #[wasm_bindgen(js_name = "browsingData.removeLocalStorage", catch)]
+    pub async fn removeLocalStorage(options: RemovalOptions)
+        -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears plugins' data."]
+    #[wasm_bindgen(js_name = "browsingData.removePluginData", catch)]
+    pub async fn removePluginData(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears the browser's stored passwords."]
+    #[wasm_bindgen(js_name = "browsingData.removePasswords", catch)]
+    pub async fn removePasswords(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' service workers."]
+    #[wasm_bindgen(js_name = "browsingData.removeServiceWorkers", catch)]
+    pub async fn removeServiceWorkers(
+        options: RemovalOptions,
+    ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' WebSQL data."]
+    #[wasm_bindgen(js_name = "browsingData.removeWebSQL", catch)]
+    pub async fn removeWebSQL(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
 }

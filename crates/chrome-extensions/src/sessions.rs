@@ -2,16 +2,16 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "Use the <code>chrome.sessions</code> API to query and restore tabs and windows from a browsing session."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "Filter" , typescript_type = "Filter")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "sessions.Filter" , typescript_type = "sessions.Filter")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type Filter;
     # [wasm_bindgen (method , getter , js_class = Filter)]
     #[doc = "The maximum number of entries to be fetched in the requested list. Omit this parameter to fetch the maximum number of entries ($(ref:sessions.MAX_SESSION_RESULTS))."]
     pub fn maxResults(this: &Filter) -> Option<::js_sys::Number>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "Session" , typescript_type = "Session")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "sessions.Session" , typescript_type = "sessions.Session")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type Session;
@@ -24,7 +24,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = Session)]
     #[doc = "The $(ref:windows.Window), if this entry describes a window. Either this or $(ref:sessions.Session.tab) will be set."]
     pub fn window(this: &Session) -> Option<crate::windows::Window>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "Device" , typescript_type = "Device")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "sessions.Device" , typescript_type = "sessions.Device")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type Device;
@@ -37,4 +37,19 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = Device)]
     #[doc = "A list of open window sessions for the foreign device, sorted from most recently to least recently modified session."]
     pub fn sessions(this: &Device) -> ::js_sys::Array;
+    #[doc = "Gets the list of recently closed tabs and/or windows."]
+    #[wasm_bindgen(js_name = "sessions.getRecentlyClosed", catch)]
+    pub async fn getRecentlyClosed(
+        filter: Option<Filter>,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Retrieves all devices with synced sessions."]
+    #[wasm_bindgen(js_name = "sessions.getDevices", catch)]
+    pub async fn getDevices(
+        filter: Option<Filter>,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Reopens a $(ref:windows.Window) or $(ref:tabs.Tab), with an optional callback to run when the entry has been restored."]
+    #[wasm_bindgen(js_name = "sessions.restore", catch)]
+    pub async fn restore(
+        sessionId: Option<::js_sys::JsString>,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }

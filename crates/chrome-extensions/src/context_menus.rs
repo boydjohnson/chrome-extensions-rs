@@ -2,17 +2,17 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "Use the <code>chrome.contextMenus</code> API to add items to Google Chrome's context menu. You can choose what types of objects your context menu additions apply to, such as images, hyperlinks, and pages."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "ContextType" , typescript_type = "ContextType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "contextMenus.ContextType" , typescript_type = "contextMenus.ContextType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The different contexts a menu can appear in. Specifying 'all' is equivalent to the combination of all other contexts except for 'launcher'. The 'launcher' context is only supported by apps and is used to add menu items to the context menu that appears when clicking the app icon in the launcher/taskbar/dock/etc. Different platforms might put limitations on what is actually supported in a launcher context menu."]
     pub type ContextType;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "ItemType" , typescript_type = "ItemType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "contextMenus.ItemType" , typescript_type = "contextMenus.ItemType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The type of menu item."]
     pub type ItemType;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "OnClickData" , typescript_type = "OnClickData")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "contextMenus.OnClickData" , typescript_type = "contextMenus.OnClickData")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Information sent when a context menu item is clicked."]
     pub type OnClickData;
@@ -52,7 +52,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = OnClickData)]
     #[doc = "A flag indicating the state of a checkbox or radio item before it was clicked."]
     pub fn wasChecked(this: &OnClickData) -> Option<::js_sys::Boolean>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "CreateProperties" , typescript_type = "CreateProperties")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "contextMenus.CreateProperties" , typescript_type = "contextMenus.CreateProperties")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Properties of the new context menu item."]
     pub type CreateProperties;
@@ -86,4 +86,20 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = CreateProperties)]
     #[doc = "Whether the item is visible in the menu."]
     pub fn visible(this: &CreateProperties) -> Option<::js_sys::Boolean>;
+    #[doc = "Creates a new context menu item. If an error occurs during creation, it may not be detected until the creation callback fires; details will be in $(ref:runtime.lastError)."]
+    #[wasm_bindgen(js_name = "contextMenus.create")]
+    pub fn create(createProperties: CreateProperties);
+    #[doc = "Updates a previously created context menu item."]
+    #[wasm_bindgen(js_name = "contextMenus.update", catch)]
+    pub async fn update(
+        id: ::wasm_bindgen::JsValue,
+        updateProperties: ::js_sys::Object,
+    ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Removes a context menu item."]
+    #[wasm_bindgen(js_name = "contextMenus.remove", catch)]
+    pub async fn remove(menuItemId: ::wasm_bindgen::JsValue)
+        -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Removes all context menu items added by this extension."]
+    #[wasm_bindgen(js_name = "contextMenus.removeAll", catch)]
+    pub async fn removeAll() -> Result<(), ::wasm_bindgen::JsValue>;
 }

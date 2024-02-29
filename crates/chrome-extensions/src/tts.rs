@@ -2,17 +2,17 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "Use the <code>chrome.tts</code> API to play synthesized text-to-speech (TTS). See also the related <a href='http://developer.chrome.com/extensions/ttsEngine'>ttsEngine</a> API, which allows an extension to implement a speech engine."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "EventType" , typescript_type = "EventType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "tts.EventType" , typescript_type = "tts.EventType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type EventType;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "VoiceGender" , typescript_type = "VoiceGender")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "tts.VoiceGender" , typescript_type = "tts.VoiceGender")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type VoiceGender;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "TtsOptions" , typescript_type = "TtsOptions")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "tts.TtsOptions" , typescript_type = "tts.TtsOptions")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The speech options for the TTS engine."]
     pub type TtsOptions;
@@ -46,7 +46,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = TtsOptions)]
     #[doc = "Speaking volume between 0 and 1 inclusive, with 0 being lowest and 1 being highest, with a default of 1.0."]
     pub fn volume(this: &TtsOptions) -> Option<::js_sys::Number>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "TtsEvent" , typescript_type = "TtsEvent")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "tts.TtsEvent" , typescript_type = "tts.TtsEvent")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "An event from the TTS engine to communicate the status of an utterance."]
     pub type TtsEvent;
@@ -68,7 +68,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = TtsEvent)]
     #[doc = "The type can be <code>start</code> as soon as speech has started, <code>word</code> when a word boundary is reached, <code>sentence</code> when a sentence boundary is reached, <code>marker</code> when an SSML mark element is reached, <code>end</code> when the end of the utterance is reached, <code>interrupted</code> when the utterance is stopped or interrupted before reaching the end, <code>cancelled</code> when it's removed from the queue before ever being synthesized, or <code>error</code> when any other error occurs. When pausing speech, a <code>pause</code> event is fired if a particular utterance is paused in the middle, and <code>resume</code> if an utterance resumes speech. Note that pause and resume events may not fire if speech is paused in-between utterances."]
     pub fn type_(this: &TtsEvent) -> EventType;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "TtsVoice" , typescript_type = "TtsVoice")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "tts.TtsVoice" , typescript_type = "tts.TtsVoice")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "A description of a voice available for speech synthesis."]
     pub type TtsVoice;
@@ -90,4 +90,16 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = TtsVoice)]
     #[doc = "The name of the voice."]
     pub fn voiceName(this: &TtsVoice) -> Option<::js_sys::JsString>;
+    #[doc = "Speaks text using a text-to-speech engine."]
+    #[wasm_bindgen(js_name = "tts.speak", catch)]
+    pub async fn speak(
+        utterance: ::js_sys::JsString,
+        options: Option<TtsOptions>,
+    ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Checks whether the engine is currently speaking. On Mac OS X, the result is true whenever the system speech engine is speaking, even if the speech wasn't initiated by Chrome."]
+    #[wasm_bindgen(js_name = "tts.isSpeaking", catch)]
+    pub async fn isSpeaking() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets an array of all available voices."]
+    #[wasm_bindgen(js_name = "tts.getVoices", catch)]
+    pub async fn getVoices() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }

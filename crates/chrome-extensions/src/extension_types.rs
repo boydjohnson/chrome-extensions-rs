@@ -2,13 +2,13 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "The <code>chrome.extensionTypes</code> API contains type declarations for Chrome extensions."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "ImageFormat" , typescript_type = "ImageFormat")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "extensionTypes.ImageFormat" , typescript_type = "extensionTypes.ImageFormat")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The format of an image."]
     pub type ImageFormat;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ImageDetails" , typescript_type = "ImageDetails")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "extensionTypes.ImageDetails" , typescript_type = "extensionTypes.ImageDetails")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Details about the format and quality of an image."]
     pub type ImageDetails;
@@ -18,15 +18,15 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = ImageDetails)]
     #[doc = "When format is <code>\"jpeg\"</code>, controls the quality of the resulting image.  This value is ignored for PNG images.  As quality is decreased, the resulting image will have more visual artifacts, and the number of bytes needed to store it will decrease."]
     pub fn quality(this: &ImageDetails) -> Option<::js_sys::Number>;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "RunAt" , typescript_type = "RunAt")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "extensionTypes.RunAt" , typescript_type = "extensionTypes.RunAt")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The soonest that the JavaScript or CSS will be injected into the tab."]
     pub type RunAt;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "CSSOrigin" , typescript_type = "CSSOrigin")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "extensionTypes.CSSOrigin" , typescript_type = "extensionTypes.CSSOrigin")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The <a href=\"https://www.w3.org/TR/css3-cascade/#cascading-origins\">origin</a> of injected CSS."]
     pub type CSSOrigin;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "InjectDetails" , typescript_type = "InjectDetails")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "extensionTypes.InjectDetails" , typescript_type = "extensionTypes.InjectDetails")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Details of the script or CSS to inject. Either the code or the file property must be set, but both may not be set at the same time."]
     pub type InjectDetails;
@@ -51,7 +51,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = InjectDetails)]
     #[doc = "The soonest that the JavaScript or CSS will be injected into the tab. Defaults to \"document_idle\"."]
     pub fn runAt(this: &InjectDetails) -> Option<RunAt>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "DeleteInjectionDetails" , typescript_type = "DeleteInjectionDetails")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "extensionTypes.DeleteInjectionDetails" , typescript_type = "extensionTypes.DeleteInjectionDetails")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Details of the CSS to remove. Either the code or the file property must be set, but both may not be set at the same time."]
     pub type DeleteInjectionDetails;
@@ -73,15 +73,15 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = DeleteInjectionDetails)]
     #[doc = "If matchAboutBlank is true, then the code is also removed from about:blank and about:srcdoc frames if your extension has access to its parent document. By default it is <code>false</code>."]
     pub fn matchAboutBlank(this: &DeleteInjectionDetails) -> Option<::js_sys::Boolean>;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "FrameType" , typescript_type = "FrameType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "extensionTypes.FrameType" , typescript_type = "extensionTypes.FrameType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The type of frame."]
     pub type FrameType;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "DocumentLifecycle" , typescript_type = "DocumentLifecycle")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "extensionTypes.DocumentLifecycle" , typescript_type = "extensionTypes.DocumentLifecycle")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The document lifecycle of the frame."]
     pub type DocumentLifecycle;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "ExecutionWorld" , typescript_type = "ExecutionWorld")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "extensionTypes.ExecutionWorld" , typescript_type = "extensionTypes.ExecutionWorld")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The JavaScript world for a script to execute within. Can either be an isolated world unique to this extension, the main world of the DOM which is shared with the page's JavaScript, or a user scripts world that is only available for scripts registered with the User Scripts API."]
     pub type ExecutionWorld;

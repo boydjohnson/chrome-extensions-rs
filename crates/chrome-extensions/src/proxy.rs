@@ -2,17 +2,17 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "Use the <code>chrome.proxy</code> API to manage Chrome's proxy settings. This API relies on the <a href='reference/api/types#type-ChromeSetting'>ChromeSetting prototype of the type API</a> for getting and setting the proxy configuration."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "Scheme" , typescript_type = "Scheme")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "proxy.Scheme" , typescript_type = "proxy.Scheme")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type Scheme;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "Mode" , typescript_type = "Mode")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "proxy.Mode" , typescript_type = "proxy.Mode")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type Mode;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ProxyServer" , typescript_type = "ProxyServer")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "proxy.ProxyServer" , typescript_type = "proxy.ProxyServer")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "An object encapsulating a single proxy server's specification."]
     pub type ProxyServer;
@@ -25,7 +25,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = ProxyServer)]
     #[doc = "The scheme (protocol) of the proxy server itself. Defaults to 'http'."]
     pub fn scheme(this: &ProxyServer) -> Option<Scheme>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ProxyRules" , typescript_type = "ProxyRules")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "proxy.ProxyRules" , typescript_type = "proxy.ProxyRules")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "An object encapsulating the set of proxy rules for all protocols. Use either 'singleProxy' or (a subset of) 'proxyForHttp', 'proxyForHttps', 'proxyForFtp' and 'fallbackProxy'."]
     pub type ProxyRules;
@@ -47,7 +47,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = ProxyRules)]
     #[doc = "The proxy server to be used for all per-URL requests (that is http, https, and ftp)."]
     pub fn singleProxy(this: &ProxyRules) -> Option<ProxyServer>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "PacScript" , typescript_type = "PacScript")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "proxy.PacScript" , typescript_type = "proxy.PacScript")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "An object holding proxy auto-config information. Exactly one of the fields should be non-empty."]
     pub type PacScript;
@@ -60,7 +60,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = PacScript)]
     #[doc = "URL of the PAC file to be used."]
     pub fn url(this: &PacScript) -> Option<::js_sys::JsString>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ProxyConfig" , typescript_type = "ProxyConfig")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "proxy.ProxyConfig" , typescript_type = "proxy.ProxyConfig")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "An object encapsulating a complete proxy configuration."]
     pub type ProxyConfig;

@@ -2,13 +2,13 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "Use the <code>chrome.ttsEngine</code> API to implement a text-to-speech(TTS) engine using an extension. If your extension registers using this API, it will receive events containing an utterance to be spoken and other parameters when any extension or Chrome App uses the <a href='tts'>tts</a> API to generate speech. Your extension can then use any available web technology to synthesize and output the speech, and send events back to the calling function to report the status."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "VoiceGender" , typescript_type = "VoiceGender")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "ttsEngine.VoiceGender" , typescript_type = "ttsEngine.VoiceGender")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type VoiceGender;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "SpeakOptions" , typescript_type = "SpeakOptions")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ttsEngine.SpeakOptions" , typescript_type = "ttsEngine.SpeakOptions")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Options specified to the tts.speak() method."]
     pub type SpeakOptions;
@@ -30,7 +30,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = SpeakOptions)]
     #[doc = "Speaking volume between 0 and 1 inclusive, with 0 being lowest and 1 being highest, with a default of 1.0."]
     pub fn volume(this: &SpeakOptions) -> Option<::js_sys::Number>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "AudioStreamOptions" , typescript_type = "AudioStreamOptions")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ttsEngine.AudioStreamOptions" , typescript_type = "ttsEngine.AudioStreamOptions")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Contains the audio stream format expected to be produced by an engine."]
     pub type AudioStreamOptions;
@@ -40,7 +40,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = AudioStreamOptions)]
     #[doc = "The sample rate expected in an audio buffer."]
     pub fn sampleRate(this: &AudioStreamOptions) -> ::js_sys::Number;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "AudioBuffer" , typescript_type = "AudioBuffer")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ttsEngine.AudioBuffer" , typescript_type = "ttsEngine.AudioBuffer")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Parameters containing an audio buffer and associated data."]
     pub type AudioBuffer;

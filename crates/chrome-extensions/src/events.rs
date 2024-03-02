@@ -2,9 +2,9 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "The <code>chrome.events</code> namespace contains common types used by APIs dispatching events to notify you when something interesting happens."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "Rule" , typescript_type = "Rule")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "events.Rule" , typescript_type = "events.Rule")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Description of a declarative rule for handling events."]
     pub type Rule;
@@ -23,11 +23,11 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = Rule)]
     #[doc = "Tags can be used to annotate rules and perform operations on sets of rules."]
     pub fn tags(this: &Rule) -> Option<::js_sys::Array>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "Event" , typescript_type = "Event")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "events.Event" , typescript_type = "events.Event")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "An object which allows the addition and removal of listeners for a Chrome event."]
     pub type Event;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "UrlFilter" , typescript_type = "UrlFilter")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "events.UrlFilter" , typescript_type = "events.UrlFilter")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Filters URLs for various criteria. See <a href='events#filtered'>event filtering</a>. All criteria are case sensitive."]
     pub type UrlFilter;

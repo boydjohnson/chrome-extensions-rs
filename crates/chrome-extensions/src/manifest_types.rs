@@ -2,9 +2,9 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "Schemas for structured manifest entries"]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ChromeSettingsOverrides" , typescript_type = "ChromeSettingsOverrides")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "manifestTypes.ChromeSettingsOverrides" , typescript_type = "manifestTypes.ChromeSettingsOverrides")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Chrome settings which can be overriden by an extension."]
     pub type ChromeSettingsOverrides;
@@ -17,11 +17,11 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = ChromeSettingsOverrides)]
     #[doc = "An array of length one containing a URL to be used as the startup page."]
     pub fn startup_pages(this: &ChromeSettingsOverrides) -> Option<::js_sys::Array>;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "FileSystemProviderSource" , typescript_type = "FileSystemProviderSource")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "manifestTypes.FileSystemProviderSource" , typescript_type = "manifestTypes.FileSystemProviderSource")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "For <code>\"file\"</code> the source is a file passed via <code>onLaunched</code> event. For <code>\"device\"</code> contents are fetched from an external device (eg. plugged via USB), without using <code>file_handlers</code>. Finally, for <code>\"network\"</code> source, contents should be fetched via network."]
     pub type FileSystemProviderSource;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "FileSystemProviderCapabilities" , typescript_type = "FileSystemProviderCapabilities")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "manifestTypes.FileSystemProviderCapabilities" , typescript_type = "manifestTypes.FileSystemProviderCapabilities")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Represents capabilities of a providing extension."]
     pub type FileSystemProviderCapabilities;

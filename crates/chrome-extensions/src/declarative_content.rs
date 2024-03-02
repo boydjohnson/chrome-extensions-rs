@@ -2,33 +2,33 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "Use the <code>chrome.declarativeContent</code> API to take actions depending on the content of a page, without requiring permission to read the page's content."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: web_sys :: Blob , js_name = "ImageDataType" , typescript_type = "ImageDataType")]
+    # [wasm_bindgen (extends = :: web_sys :: Blob , js_name = "declarativeContent.ImageDataType" , typescript_type = "declarativeContent.ImageDataType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "See <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/ImageData\">https://developer.mozilla.org/en-US/docs/Web/API/ImageData</a>."]
     pub type ImageDataType;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "PageStateMatcherInstanceType" , typescript_type = "PageStateMatcherInstanceType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "declarativeContent.PageStateMatcherInstanceType" , typescript_type = "declarativeContent.PageStateMatcherInstanceType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type PageStateMatcherInstanceType;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "ShowPageActionInstanceType" , typescript_type = "ShowPageActionInstanceType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "declarativeContent.ShowPageActionInstanceType" , typescript_type = "declarativeContent.ShowPageActionInstanceType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type ShowPageActionInstanceType;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "ShowActionInstanceType" , typescript_type = "ShowActionInstanceType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "declarativeContent.ShowActionInstanceType" , typescript_type = "declarativeContent.ShowActionInstanceType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type ShowActionInstanceType;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "SetIconInstanceType" , typescript_type = "SetIconInstanceType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "declarativeContent.SetIconInstanceType" , typescript_type = "declarativeContent.SetIconInstanceType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type SetIconInstanceType;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "RequestContentScriptInstanceType" , typescript_type = "RequestContentScriptInstanceType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "declarativeContent.RequestContentScriptInstanceType" , typescript_type = "declarativeContent.RequestContentScriptInstanceType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type RequestContentScriptInstanceType;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "PageStateMatcher" , typescript_type = "PageStateMatcher")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "declarativeContent.PageStateMatcher" , typescript_type = "declarativeContent.PageStateMatcher")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Matches the state of a web page based on various criteria."]
     pub type PageStateMatcher;
@@ -44,21 +44,21 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = PageStateMatcher)]
     #[doc = "Matches if the conditions of the <code>UrlFilter</code> are fulfilled for the top-level URL of the page."]
     pub fn pageUrl(this: &PageStateMatcher) -> Option<crate::events::UrlFilter>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ShowPageAction" , typescript_type = "ShowPageAction")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "declarativeContent.ShowPageAction" , typescript_type = "declarativeContent.ShowPageAction")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "A declarative event action that sets the extension's $(ref:pageAction page action) to an enabled state while the corresponding conditions are met. This action can be used without <a href=\"/docs/extensions/develop/concepts/declare-permissions#host-permissions\">host permissions</a>, but the extension must have a page action. If the extension has the <a href=\"/docs/extensions/develop/concepts/activeTab\">activeTab</a> permission, clicking the page action grants access to the active tab.<p>On pages where the conditions are not met the extension's toolbar action will be grey-scale, and clicking it will open the context menu, instead of triggering the action.</p>"]
     pub type ShowPageAction;
     # [wasm_bindgen (method , getter , js_class = ShowPageAction)]
     #[doc = ""]
     pub fn instanceType(this: &ShowPageAction) -> ShowPageActionInstanceType;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ShowAction" , typescript_type = "ShowAction")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "declarativeContent.ShowAction" , typescript_type = "declarativeContent.ShowAction")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "A declarative event action that sets the extension's toolbar $(ref:action action) to an enabled state while the corresponding conditions are met. This action can be used without <a href=\"/docs/extensions/develop/concepts/declare-permissions#host-permissions\">host permissions</a>. If the extension has the <a href=\"/docs/extensions/develop/concepts/activeTab\">activeTab</a> permission, clicking the page action grants access to the active tab.<p>On pages where the conditions are not met the extension's toolbar action will be grey-scale, and clicking it will open the context menu, instead of triggering the action.</p>"]
     pub type ShowAction;
     # [wasm_bindgen (method , getter , js_class = ShowAction)]
     #[doc = ""]
     pub fn instanceType(this: &ShowAction) -> ShowActionInstanceType;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "SetIcon" , typescript_type = "SetIcon")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "declarativeContent.SetIcon" , typescript_type = "declarativeContent.SetIcon")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Declarative event action that sets the n-<abbr title=\"device-independent pixel\">dip</abbr> square icon for the extension's $(ref:pageAction page action) or $(ref:browserAction browser action) while the corresponding conditions are met. This action can be used without <a href=\"/docs/extensions/develop/concepts/declare-permissions#host-permissions\">host permissions</a>, but the extension must have a page or browser action.<p>Exactly one of <code>imageData</code> or <code>path</code> must be specified. Both are dictionaries mapping a number of pixels to an image representation. The image representation in <code>imageData</code> is an <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/ImageData\">ImageData</a> object; for example, from a <code>canvas</code> element, while the image representation in <code>path</code> is the path to an image file relative to the extension's manifest. If <code>scale</code> screen pixels fit into a device-independent pixel, the <code>scale * n</code> icon is used. If that scale is missing, another image is resized to the required size.</p>"]
     pub type SetIcon;
@@ -68,7 +68,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = SetIcon)]
     #[doc = ""]
     pub fn instanceType(this: &SetIcon) -> SetIconInstanceType;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "RequestContentScript" , typescript_type = "RequestContentScript")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "declarativeContent.RequestContentScript" , typescript_type = "declarativeContent.RequestContentScript")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Declarative event action that injects a content script. <p><b>WARNING:</b> This action is still experimental and is not supported on stable builds of Chrome.</p>"]
     pub type RequestContentScript;

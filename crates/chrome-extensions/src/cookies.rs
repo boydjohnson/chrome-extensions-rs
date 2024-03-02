@@ -2,20 +2,20 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "Use the <code>chrome.cookies</code> API to query and modify cookies, and to be notified when they change."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "SameSiteStatus" , typescript_type = "SameSiteStatus")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "cookies.SameSiteStatus" , typescript_type = "cookies.SameSiteStatus")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "A cookie's 'SameSite' state (https://tools.ietf.org/html/draft-west-first-party-cookies). 'no_restriction' corresponds to a cookie set with 'SameSite=None', 'lax' to 'SameSite=Lax', and 'strict' to 'SameSite=Strict'. 'unspecified' corresponds to a cookie set without the SameSite attribute."]
     pub type SameSiteStatus;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "CookiePartitionKey" , typescript_type = "CookiePartitionKey")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "cookies.CookiePartitionKey" , typescript_type = "cookies.CookiePartitionKey")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Represents a partitioned cookie's partition key."]
     pub type CookiePartitionKey;
     # [wasm_bindgen (method , getter , js_class = CookiePartitionKey)]
     #[doc = "The top-level site the partitioned cookie is available in."]
     pub fn topLevelSite(this: &CookiePartitionKey) -> Option<::js_sys::JsString>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "Cookie" , typescript_type = "Cookie")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "cookies.Cookie" , typescript_type = "cookies.Cookie")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Represents information about an HTTP cookie."]
     pub type Cookie;
@@ -55,7 +55,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = Cookie)]
     #[doc = "The value of the cookie."]
     pub fn value(this: &Cookie) -> ::js_sys::JsString;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "CookieStore" , typescript_type = "CookieStore")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "cookies.CookieStore" , typescript_type = "cookies.CookieStore")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Represents a cookie store in the browser. An incognito mode window, for instance, uses a separate cookie store from a non-incognito window."]
     pub type CookieStore;
@@ -65,11 +65,11 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = CookieStore)]
     #[doc = "Identifiers of all the browser tabs that share this cookie store."]
     pub fn tabIds(this: &CookieStore) -> ::js_sys::Array;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "OnChangedCause" , typescript_type = "OnChangedCause")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "cookies.OnChangedCause" , typescript_type = "cookies.OnChangedCause")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The underlying reason behind the cookie's change. If a cookie was inserted, or removed via an explicit call to \"chrome.cookies.remove\", \"cause\" will be \"explicit\". If a cookie was automatically removed due to expiry, \"cause\" will be \"expired\". If a cookie was removed due to being overwritten with an already-expired expiration date, \"cause\" will be set to \"expired_overwrite\".  If a cookie was automatically removed due to garbage collection, \"cause\" will be \"evicted\".  If a cookie was automatically removed due to a \"set\" call that overwrote it, \"cause\" will be \"overwrite\". Plan your response accordingly."]
     pub type OnChangedCause;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "CookieDetails" , typescript_type = "CookieDetails")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "cookies.CookieDetails" , typescript_type = "cookies.CookieDetails")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Details to identify the cookie."]
     pub type CookieDetails;
@@ -85,4 +85,56 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = CookieDetails)]
     #[doc = "The URL with which the cookie to access is associated. This argument may be a full URL, in which case any data following the URL path (e.g. the query string) is simply ignored. If host permissions for this URL are not specified in the manifest file, the API call will fail."]
     pub fn url(this: &CookieDetails) -> ::js_sys::JsString;
+    #[doc = "Retrieves information about a single cookie. If more than one cookie of the same name exists for the given URL, the one with the longest path will be returned. For cookies with the same path length, the cookie with the earliest creation time will be returned."]
+    #[wasm_bindgen(js_name = "cookies.get", catch)]
+    pub async fn get(
+        details: CookieDetails,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Retrieves all cookies from a single cookie store that match the given information. The cookies returned will be sorted, with those with the longest path first. If multiple cookies have the same path length, those with the earliest creation time will be first. This method only retrieves cookies for domains that the extension has host permissions to."]
+    #[wasm_bindgen(js_name = "cookies.getAll", catch)]
+    pub async fn getAll(
+        details: ::js_sys::Object,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist."]
+    #[wasm_bindgen(js_name = "cookies.set", catch)]
+    pub async fn set(
+        details: ::js_sys::Object,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Deletes a cookie by name."]
+    #[wasm_bindgen(js_name = "cookies.remove", catch)]
+    pub async fn remove(
+        details: CookieDetails,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Lists all existing cookie stores."]
+    #[wasm_bindgen(js_name = "cookies.getAllCookieStores", catch)]
+    pub async fn getAllCookieStores() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+}
+#[wasm_bindgen]
+pub async fn cookies_get(
+    details: CookieDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    get(details).await
+}
+#[wasm_bindgen]
+pub async fn cookies_get_all(
+    details: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getAll(details).await
+}
+#[wasm_bindgen]
+pub async fn cookies_set(
+    details: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    set(details).await
+}
+#[wasm_bindgen]
+pub async fn cookies_remove(
+    details: CookieDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    remove(details).await
+}
+#[wasm_bindgen]
+pub async fn cookies_get_all_cookie_stores(
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getAllCookieStores().await
 }

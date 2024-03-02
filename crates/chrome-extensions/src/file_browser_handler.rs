@@ -2,9 +2,9 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "Use the <code>chrome.fileBrowserHandler</code> API to extend the Chrome OS file browser. For example, you can use this API to enable users to upload files to your website."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "FileHandlerExecuteEventDetails" , typescript_type = "FileHandlerExecuteEventDetails")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "fileBrowserHandler.FileHandlerExecuteEventDetails" , typescript_type = "fileBrowserHandler.FileHandlerExecuteEventDetails")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Event details payload for fileBrowserHandler.onExecute event."]
     pub type FileHandlerExecuteEventDetails;

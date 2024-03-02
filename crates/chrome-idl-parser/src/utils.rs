@@ -15,6 +15,7 @@ pub fn generate_js_class(s: &str) -> proc_macro2::TokenStream {
         "number" => quote!(::js_sys::Number),
         "boolean" => quote!(::js_sys::Boolean),
         "any" => quote!(::wasm_bindgen::JsValue),
+        "function" => quote!(::js_sys::Function),
         e => {
             println!("{}", e);
             panic!("found something other than string and object")

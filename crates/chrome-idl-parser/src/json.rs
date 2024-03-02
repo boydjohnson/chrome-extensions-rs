@@ -7,6 +7,7 @@ use {
     quote::quote,
     serde::{Deserialize, Serialize},
     std::collections::BTreeMap,
+    to_snake_case::ToSnakeCase,
     wasm_bindgen_backend::util::rust_ident,
 };
 
@@ -22,6 +23,181 @@ pub struct ChromeApi {
 }
 
 impl ChromeApi {
+    fn generate_parameters(param: &Parameter) -> TokenStream {
+        let typ = if let Some(type_field) = &param.type_field {
+            generate_js_class(type_field)
+        } else if let Some(ref_field) = &param.ref_field {
+            if ref_field.contains('.') {
+                create_fully_qualified(&ref_field)
+            } else {
+                let ident = Ident::new(&ref_field, Span::call_site());
+
+                quote!(#ident)
+            }
+        } else if param.choices.is_some() {
+            quote!(::wasm_bindgen::JsValue)
+        } else {
+            panic!("Missing type and ref")
+        };
+
+        let typ = if param.optional.unwrap_or(false)
+            && !param.choices.is_some()
+            && param.type_field != Some("any".to_string())
+        {
+            quote!(Option<#typ>)
+        } else {
+            typ
+        };
+
+        let ident_name = Ident::new(&param.name, Span::call_site());
+
+        quote!(#ident_name: #typ)
+    }
+
+    fn generate_arguments(param: &Parameter) -> TokenStream {
+        let ident_name = Ident::new(&param.name, Span::call_site());
+
+        quote!(#ident_name)
+    }
+
+    fn generate_functions(&self, internal: &mut Vec<TokenStream>, external: &mut Vec<TokenStream>) {
+        for func in self.functions.iter().flat_map(|v| v.iter()) {
+            let js_name = self.namespace.clone() + "." + func.name.as_str();
+            let ident = rust_ident(&func.name.clone());
+
+            let ext_rust_function_name = rust_ident(
+                &(self.namespace.clone().replace('.', "_").to_snake_case()
+                    + "_"
+                    + func.name.to_snake_case().as_str()),
+            );
+
+            let params: Vec<TokenStream> = func
+                .parameters
+                .iter()
+                .flat_map(|el| el.iter())
+                .map(Self::generate_parameters)
+                .collect();
+            let args: Vec<_> = func
+                .parameters
+                .iter()
+                .flat_map(|el| el.iter())
+                .map(Self::generate_arguments)
+                .collect();
+
+            let msg = func.description.clone().unwrap_or_default();
+
+            if let Some(ret) = &func.returns {
+                let ret_val = if let Some(type_field) = &ret.type_field {
+                    Some(generate_js_class(type_field))
+                } else if let Some(ref_field) = &ret.ref_field {
+                    if ref_field.contains('.') {
+                        Some(create_fully_qualified(&ref_field))
+                    } else {
+                        let ident = Ident::new(&ref_field, Span::call_site());
+
+                        Some(quote!(#ident))
+                    }
+                } else {
+                    None
+                };
+
+                if let Some(ret_val) = ret_val {
+                    internal.push(quote!(
+                            #[doc = #msg]
+                            #[wasm_bindgen(js_name = #js_name)]
+                            pub fn #ident(#(#params),*) -> #ret_val;
+
+                    ));
+                    external.push(quote!(
+
+                        #[wasm_bindgen]
+                        pub fn #ext_rust_function_name(#(#params),*) -> #ret_val {
+                            #ident(#(#args),*)
+                        }
+                    ));
+                } else {
+                    internal.push(quote!(
+                            #[doc = #msg]
+                            #[wasm_bindgen(js_name = #js_name)]
+                            pub fn #ident(#(#params),*);
+
+                    ));
+                    external.push(quote!(
+
+                        #[wasm_bindgen]
+                        pub fn #ext_rust_function_name(#(#params),*) {
+                            #ident(#(#args),*)
+                        }
+                    ));
+                }
+            } else if let Some(ret) = &func.returns_async {
+                let ret_val = if let Some(type_field) = &ret.type_field {
+                    Some(generate_js_class(type_field))
+                } else if let Some(ref_field) = &ret.ref_field {
+                    if ref_field.contains('.') {
+                        Some(create_fully_qualified(&ref_field))
+                    } else {
+                        let ident = Ident::new(&ref_field, Span::call_site());
+
+                        Some(quote!(#ident))
+                    }
+                } else if let Some(params) = &ret.parameters {
+                    let param = params.first();
+
+                    if let Some(param) = param {
+                        if let Some(type_field) = &param.type_field {
+                            Some(generate_js_class(type_field))
+                        } else if let Some(ref_field) = &param.ref_field {
+                            if ref_field.contains('.') {
+                                Some(create_fully_qualified(&ref_field))
+                            } else {
+                                let ident = Ident::new(&ref_field, Span::call_site());
+
+                                Some(quote!(#ident))
+                            }
+                        } else if param.choices.is_some() {
+                            Some(quote!(::wasm_bindgen::JsValue))
+                        } else {
+                            panic!("missing ref and type field")
+                        }
+                    } else {
+                        None
+                    }
+                } else {
+                    panic!("missing ref and type field")
+                };
+
+                if let Some(ret_val) = ret_val {
+                    internal.push(quote!(
+                           #[doc = #msg]
+                           #[wasm_bindgen(js_name = #js_name, catch)]
+                           pub async fn #ident(#(#params),*) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+                    ));
+                    external.push(quote!(
+
+                        #[wasm_bindgen]
+                        pub async fn #ext_rust_function_name(#(#params),*) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+                            #ident(#(#args),*).await
+                        }
+                    ));
+                } else {
+                    internal.push(quote!(
+                           #[doc = #msg]
+                           #[wasm_bindgen(js_name = #js_name, catch)]
+                           pub async fn #ident(#(#params),*) -> Result<(), ::wasm_bindgen::JsValue>;
+                    ));
+                    external.push(quote!(
+
+                        #[wasm_bindgen]
+                        pub async fn #ext_rust_function_name(#(#params),*) -> Result<(), ::wasm_bindgen::JsValue> {
+                            #ident(#(#args),*).await
+                        }
+                    ));
+                }
+            }
+        }
+    }
+
     fn generate_types(&self, internal: &mut Vec<TokenStream>) {
         if let Some(types) = &self.types {
             for ty in types {
@@ -41,7 +217,7 @@ impl ChromeApi {
                     "".into()
                 };
 
-                let js_name = ty.id.clone();
+                let js_name = self.namespace.clone() + "." + ty.id.as_str();
 
                 if let Some(t_field) = &ty.type_field {
                     let js_class = generate_js_class(t_field);
@@ -116,7 +292,6 @@ impl ChromeApi {
 
                             let gen = quote!(#id);
 
-                            // TODO: Implement returning a ref field.
                             if optional {
                                 quote!(Option<#gen>)
                             } else {
@@ -151,8 +326,11 @@ impl ToWasmBindgen for ChromeApi {
         };
 
         let mut internal = vec![];
+        let mut external = vec![];
 
         self.generate_types(&mut internal);
+
+        self.generate_functions(&mut internal, &mut external);
 
         let enclosing = quote! {
             #![allow(unused_imports)]
@@ -160,12 +338,12 @@ impl ToWasmBindgen for ChromeApi {
             use super::*;
             use wasm_bindgen::prelude::*;
             #[doc = #doc_msg]
-            #[wasm_bindgen]
+            #[wasm_bindgen(js_namespace = chrome)]
             extern "C" {
                 #(#internal)*
 
             }
-
+            #(#external)*
         };
 
         enclosing
@@ -274,6 +452,7 @@ pub struct Returns {
     pub type_field: Option<String>,
     #[serde(rename = "$ref")]
     pub ref_field: Option<String>,
+    pub optional: Option<bool>,
     pub description: Option<String>,
 }
 
@@ -286,6 +465,7 @@ pub struct Parameter {
     pub properties: Option<BTreeMap<String, ParameterProperties>>,
     #[serde(rename = "$ref")]
     pub ref_field: Option<String>,
+    pub choices: Option<Vec<ValueType>>,
     pub optional: Option<bool>,
     pub minimum: Option<i64>,
     pub description: Option<String>,
@@ -308,7 +488,11 @@ pub struct ParameterProperties {
 #[serde(rename_all = "camelCase")]
 pub struct ReturnsAsync {
     pub name: String,
-    pub parameters: Vec<ReturnParameter>,
+    #[serde(rename = "type")]
+    pub type_field: Option<String>,
+    #[serde(rename = "$ref")]
+    pub ref_field: Option<String>,
+    pub parameters: Option<Vec<ReturnParameter>>,
     pub optional: Option<bool>,
 }
 
@@ -320,6 +504,7 @@ pub struct ReturnParameter {
     pub type_field: Option<String>,
     #[serde(rename = "$ref")]
     pub ref_field: Option<String>,
+    pub choices: Option<Vec<ValueType>>,
     pub description: Option<String>,
 }
 

@@ -2,16 +2,16 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "Use the <code>webview</code> tag to actively load live content from the web over the network and embed it in your Chrome App. Your app can control the appearance of the <code>webview</code> and interact with the web content, initiate navigations in an embedded web page, react to error events that happen within it, and more (see <a href=\"#usage\">Usage</a>)."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ClearDataOptions" , typescript_type = "ClearDataOptions")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.ClearDataOptions" , typescript_type = "webviewTag.ClearDataOptions")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Options that determine what data should be cleared by <code>clearData</code>."]
     pub type ClearDataOptions;
     # [wasm_bindgen (method , getter , js_class = ClearDataOptions)]
     #[doc = "Clear data accumulated on or after this date, represented in milliseconds since the epoch (accessible via the getTime method of the JavaScript <code>Date</code> object). If absent, defaults to <code>0</code> (which would remove all browsing data)."]
     pub fn since(this: &ClearDataOptions) -> Option<::js_sys::Number>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ClearDataTypeSet" , typescript_type = "ClearDataTypeSet")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.ClearDataTypeSet" , typescript_type = "webviewTag.ClearDataTypeSet")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "A set of data types. Missing properties are interpreted as <code>false</code>."]
     pub type ClearDataTypeSet;
@@ -42,11 +42,11 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = ClearDataTypeSet)]
     #[doc = "Websites' WebSQL data."]
     pub fn webSQL(this: &ClearDataTypeSet) -> Option<::js_sys::Boolean>;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "ContextType" , typescript_type = "ContextType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "webviewTag.ContextType" , typescript_type = "webviewTag.ContextType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The different contexts a menu can appear in. Specifying 'all' is equivalent to the combination of all other contexts."]
     pub type ContextType;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "InjectDetails" , typescript_type = "InjectDetails")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.InjectDetails" , typescript_type = "webviewTag.InjectDetails")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Details of the script or CSS to inject. Either the code or the file property must be set, but both may not be set at the same time."]
     pub type InjectDetails;
@@ -56,7 +56,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = InjectDetails)]
     #[doc = "JavaScript or CSS file to inject."]
     pub fn file(this: &InjectDetails) -> Option<::js_sys::JsString>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "InjectionItems" , typescript_type = "InjectionItems")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.InjectionItems" , typescript_type = "webviewTag.InjectionItems")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The type of injection item: code or a set of files."]
     pub type InjectionItems;
@@ -66,7 +66,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = InjectionItems)]
     #[doc = "The list of JavaScript or CSS files to be injected into matching pages. These are injected in the order they appear in this array."]
     pub fn files(this: &InjectionItems) -> Option<::js_sys::Array>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ContentScriptDetails" , typescript_type = "ContentScriptDetails")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.ContentScriptDetails" , typescript_type = "webviewTag.ContentScriptDetails")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Details of the content script to inject. Refer to the <a href='/extensions/content_scripts'>content scripts</a> documentation for more details."]
     pub type ContentScriptDetails;
@@ -100,7 +100,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = ContentScriptDetails)]
     #[doc = "The soonest that the JavaScript or CSS will be injected into the tab. Defaults to \"document_idle\"."]
     pub fn run_at(this: &ContentScriptDetails) -> Option<crate::extension_types::RunAt>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ContextMenuCreateProperties" , typescript_type = "ContextMenuCreateProperties")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.ContextMenuCreateProperties" , typescript_type = "webviewTag.ContextMenuCreateProperties")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type ContextMenuCreateProperties;
@@ -131,7 +131,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = ContextMenuCreateProperties)]
     #[doc = "The type of menu item. Defaults to 'normal' if not specified."]
     pub fn type_(this: &ContextMenuCreateProperties) -> Option<crate::context_menus::ItemType>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ContextMenuUpdateProperties" , typescript_type = "ContextMenuUpdateProperties")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.ContextMenuUpdateProperties" , typescript_type = "webviewTag.ContextMenuUpdateProperties")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type ContextMenuUpdateProperties;
@@ -159,19 +159,19 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = ContextMenuUpdateProperties)]
     #[doc = "The type of menu item."]
     pub fn type_(this: &ContextMenuUpdateProperties) -> Option<crate::context_menus::ItemType>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ContextMenus" , typescript_type = "ContextMenus")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.ContextMenus" , typescript_type = "webviewTag.ContextMenus")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = ""]
     pub type ContextMenus;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "ContentWindow" , typescript_type = "ContentWindow")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.ContentWindow" , typescript_type = "webviewTag.ContentWindow")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Messaging handle to a guest window."]
     pub type ContentWindow;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "DialogController" , typescript_type = "DialogController")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.DialogController" , typescript_type = "webviewTag.DialogController")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Interface attached to <code>dialog</code> DOM events."]
     pub type DialogController;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "FindCallbackResults" , typescript_type = "FindCallbackResults")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.FindCallbackResults" , typescript_type = "webviewTag.FindCallbackResults")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Contains all of the results of the find request."]
     pub type FindCallbackResults;
@@ -187,7 +187,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = FindCallbackResults)]
     #[doc = "Describes a rectangle around the active match in screen coordinates."]
     pub fn selectionRect(this: &FindCallbackResults) -> SelectionRect;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "FindOptions" , typescript_type = "FindOptions")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.FindOptions" , typescript_type = "webviewTag.FindOptions")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Options for the find request."]
     pub type FindOptions;
@@ -197,25 +197,25 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = FindOptions)]
     #[doc = "Flag to match with case-sensitivity. The default value is <code>false</code>."]
     pub fn matchCase(this: &FindOptions) -> Option<::js_sys::Boolean>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "NewWindow" , typescript_type = "NewWindow")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.NewWindow" , typescript_type = "webviewTag.NewWindow")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Interface attached to <code>newwindow</code> DOM events."]
     pub type NewWindow;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "MediaPermissionRequest" , typescript_type = "MediaPermissionRequest")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.MediaPermissionRequest" , typescript_type = "webviewTag.MediaPermissionRequest")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The type of <code>request</code> object which accompanies a <code>media</code> <a href=\"#event-permissionrequest\">permissionrequest</a></code> DOM event."]
     pub type MediaPermissionRequest;
     # [wasm_bindgen (method , getter , js_class = MediaPermissionRequest)]
     #[doc = "The URL of the frame requesting access to user media."]
     pub fn url(this: &MediaPermissionRequest) -> ::js_sys::JsString;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "GeolocationPermissionRequest" , typescript_type = "GeolocationPermissionRequest")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.GeolocationPermissionRequest" , typescript_type = "webviewTag.GeolocationPermissionRequest")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The type of <code>request</code> object which accompanies a <code>geolocation</code> <a href=\"#event-permissionrequest\">permissionrequest</a></code> DOM event."]
     pub type GeolocationPermissionRequest;
     # [wasm_bindgen (method , getter , js_class = GeolocationPermissionRequest)]
     #[doc = "The URL of the frame requesting access to geolocation data."]
     pub fn url(this: &GeolocationPermissionRequest) -> ::js_sys::JsString;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "PointerLockPermissionRequest" , typescript_type = "PointerLockPermissionRequest")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.PointerLockPermissionRequest" , typescript_type = "webviewTag.PointerLockPermissionRequest")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The type of <code>request</code> object which accompanies a <code>pointerLock</code> <a href=\"#event-permissionrequest\">permissionrequest</a></code> DOM event."]
     pub type PointerLockPermissionRequest;
@@ -228,7 +228,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = PointerLockPermissionRequest)]
     #[doc = "Whether or not pointer lock was requested as a result of a user input gesture."]
     pub fn userGesture(this: &PointerLockPermissionRequest) -> ::js_sys::Boolean;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "DownloadPermissionRequest" , typescript_type = "DownloadPermissionRequest")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.DownloadPermissionRequest" , typescript_type = "webviewTag.DownloadPermissionRequest")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The type of <code>request</code> object which accompanies a <code>download</code> <a href=\"#event-permissionrequest\">permissionrequest</a></code> DOM event."]
     pub type DownloadPermissionRequest;
@@ -238,21 +238,21 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = DownloadPermissionRequest)]
     #[doc = "The requested download URL."]
     pub fn url(this: &DownloadPermissionRequest) -> ::js_sys::JsString;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "FileSystemPermissionRequest" , typescript_type = "FileSystemPermissionRequest")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.FileSystemPermissionRequest" , typescript_type = "webviewTag.FileSystemPermissionRequest")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The type of <code>request</code> object which accompanies a <code>filesystem</code> <a href=\"#event-permissionrequest\">permissionrequest</a></code> DOM event."]
     pub type FileSystemPermissionRequest;
     # [wasm_bindgen (method , getter , js_class = FileSystemPermissionRequest)]
     #[doc = "The URL of the frame requesting access to local file system."]
     pub fn url(this: &FileSystemPermissionRequest) -> ::js_sys::JsString;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "FullscreenPermissionRequest" , typescript_type = "FullscreenPermissionRequest")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.FullscreenPermissionRequest" , typescript_type = "webviewTag.FullscreenPermissionRequest")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The type of <code>request</code> object which accompanies a <code>fullscreen</code> <a href=\"#event-permissionrequest\">permissionrequest</a> DOM event.<p>"]
     pub type FullscreenPermissionRequest;
     # [wasm_bindgen (method , getter , js_class = FullscreenPermissionRequest)]
     #[doc = "The origin of the frame inside the <code>webview</code> that initiated the fullscreen request."]
     pub fn origin(this: &FullscreenPermissionRequest) -> ::js_sys::JsString;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "LoadPluginPermissionRequest" , typescript_type = "LoadPluginPermissionRequest")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.LoadPluginPermissionRequest" , typescript_type = "webviewTag.LoadPluginPermissionRequest")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The type of <code>request</code> object which accompanies a <code>loadplugin</code> <a href=\"#event-permissionrequest\">permissionrequest</a> DOM event.<p>"]
     pub type LoadPluginPermissionRequest;
@@ -262,7 +262,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = LoadPluginPermissionRequest)]
     #[doc = "The plugin's display name."]
     pub fn name(this: &LoadPluginPermissionRequest) -> ::js_sys::JsString;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "SelectionRect" , typescript_type = "SelectionRect")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.SelectionRect" , typescript_type = "webviewTag.SelectionRect")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "<p>Describes a rectangle in screen coordinates.</p><p>The containment semantics are array-like; that is, the coordinate <code>(left, top)</code> is considered to be contained by the rectangle, but the coordinate <code>(left + width, top)</code> is not.</p>"]
     pub type SelectionRect;
@@ -278,12 +278,40 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = SelectionRect)]
     #[doc = "Width of the rectangle."]
     pub fn width(this: &SelectionRect) -> ::js_sys::Number;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "WebRequestEventInterface" , typescript_type = "WebRequestEventInterface")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "webviewTag.WebRequestEventInterface" , typescript_type = "webviewTag.WebRequestEventInterface")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Interface which provides access to webRequest events on the guest page. See the <a href=\"http://developer.chrome.com/extensions/webRequest\">chrome.webRequest</a> extensions API for details on webRequest life cycle and related concepts. Note: The <a href=\"/extensions/webRequest#event-onActionIgnored\">chrome.webRequest.onActionIgnored</a> event is not supported for webviews. <p>To illustrate how usage differs from the extensions webRequest API, consider the following example code which blocks any guest requests for URLs which match <code>*://www.evil.com/*</code>:</p><pre>webview.request.onBeforeRequest.addListener(\r  function(details) { return {cancel: true}; },\r  {urls: [\"*://www.evil.com/*\"]},\r  [\"blocking\"]);</pre><p>Additionally, this interface supports declarative webRequest rules through <code>onRequest</code> and <code>onMessage</code> events. See <a href=\"http://developer.chrome.com/extensions/declarativeWebRequest.html\">declarativeWebRequest</a> for API details.</p>Note that conditions and actions for declarative webview webRequests should be instantiated from their <code>chrome.webViewRequest.*</code> counterparts. The following example code declaratively blocks all requests to <code>\"example.com\"</code> on the webview <code>myWebview</code>:</p><pre>var rule = {\r  conditions: [\r    new chrome.webViewRequest.RequestMatcher({ url: { hostSuffix: 'example.com' } })\r  ],\r  actions: [ new chrome.webViewRequest.CancelRequest() ]\r};\rmyWebview.request.onRequest.addRules([rule]);</pre>"]
     pub type WebRequestEventInterface;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "ZoomMode" , typescript_type = "ZoomMode")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "webviewTag.ZoomMode" , typescript_type = "webviewTag.ZoomMode")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Defines the how zooming is handled in the <code>webview</code>."]
     pub type ZoomMode;
+    #[doc = "Indicates whether or not it is possible to navigate backward through history. The state of this function is cached, and updated before each <code>loadcommit</code>, so the best place to call it is on <code>loadcommit</code>."]
+    #[wasm_bindgen(js_name = "webviewTag.canGoBack")]
+    pub fn canGoBack() -> ::js_sys::Boolean;
+    #[doc = "Indicates whether or not it is possible to navigate forward through history. The state of this function is cached, and updated before each <code>loadcommit</code>, so the best place to call it is on <code>loadcommit</code>."]
+    #[wasm_bindgen(js_name = "webviewTag.canGoForward")]
+    pub fn canGoForward() -> ::js_sys::Boolean;
+    #[doc = "Returns Chrome's internal process ID for the guest web page's current process, allowing embedders to know how many guests would be affected by terminating the process. Two guests will share a process only if they belong to the same app and have the same <a href=\"#partition\">storage partition ID</a>. The call is synchronous and returns the embedder's cached notion of the current process ID. The process ID isn't the same as the operating system's process ID."]
+    #[wasm_bindgen(js_name = "webviewTag.getProcessId")]
+    pub fn getProcessId() -> ::js_sys::Number;
+    #[doc = "Returns the user agent string used by the <code>webview</code> for guest page requests."]
+    #[wasm_bindgen(js_name = "webviewTag.getUserAgent")]
+    pub fn getUserAgent() -> ::js_sys::JsString;
+}
+#[wasm_bindgen]
+pub fn webview_tag_can_go_back() -> ::js_sys::Boolean {
+    canGoBack()
+}
+#[wasm_bindgen]
+pub fn webview_tag_can_go_forward() -> ::js_sys::Boolean {
+    canGoForward()
+}
+#[wasm_bindgen]
+pub fn webview_tag_get_process_id() -> ::js_sys::Number {
+    getProcessId()
+}
+#[wasm_bindgen]
+pub fn webview_tag_get_user_agent() -> ::js_sys::JsString {
+    getUserAgent()
 }

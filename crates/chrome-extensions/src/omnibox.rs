@@ -2,17 +2,17 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "The omnibox API allows you to register a keyword with Google Chrome's address bar, which is also known as the omnibox."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "DescriptionStyleType" , typescript_type = "DescriptionStyleType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "omnibox.DescriptionStyleType" , typescript_type = "omnibox.DescriptionStyleType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The style type."]
     pub type DescriptionStyleType;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "OnInputEnteredDisposition" , typescript_type = "OnInputEnteredDisposition")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "omnibox.OnInputEnteredDisposition" , typescript_type = "omnibox.OnInputEnteredDisposition")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The window disposition for the omnibox query. This is the recommended context to display results. For example, if the omnibox command is to navigate to a certain URL, a disposition of 'newForegroundTab' means the navigation should take place in a new selected tab."]
     pub type OnInputEnteredDisposition;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "MatchClassification" , typescript_type = "MatchClassification")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "omnibox.MatchClassification" , typescript_type = "omnibox.MatchClassification")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The style ranges for the description, as provided by the extension."]
     pub type MatchClassification;
@@ -25,7 +25,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = MatchClassification)]
     #[doc = "The style type"]
     pub fn type_(this: &MatchClassification) -> DescriptionStyleType;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "SuggestResult" , typescript_type = "SuggestResult")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "omnibox.SuggestResult" , typescript_type = "omnibox.SuggestResult")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "A suggest result."]
     pub type SuggestResult;
@@ -41,7 +41,7 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = SuggestResult)]
     #[doc = "An array of style ranges for the description, as provided by the extension."]
     pub fn descriptionStyles(this: &SuggestResult) -> Option<::js_sys::Array>;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "DefaultSuggestResult" , typescript_type = "DefaultSuggestResult")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "omnibox.DefaultSuggestResult" , typescript_type = "omnibox.DefaultSuggestResult")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "A suggest result."]
     pub type DefaultSuggestResult;
@@ -51,4 +51,15 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = DefaultSuggestResult)]
     #[doc = "An array of style ranges for the description, as provided by the extension."]
     pub fn descriptionStyles(this: &DefaultSuggestResult) -> Option<::js_sys::Array>;
+    #[doc = "Sets the description and styling for the default suggestion. The default suggestion is the text that is displayed in the first suggestion row underneath the URL bar."]
+    #[wasm_bindgen(js_name = "omnibox.setDefaultSuggestion", catch)]
+    pub async fn setDefaultSuggestion(
+        suggestion: DefaultSuggestResult,
+    ) -> Result<(), ::wasm_bindgen::JsValue>;
+}
+#[wasm_bindgen]
+pub async fn omnibox_set_default_suggestion(
+    suggestion: DefaultSuggestResult,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setDefaultSuggestion(suggestion).await
 }

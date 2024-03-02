@@ -2,9 +2,9 @@
 #![allow(clippy::all)]
 use {super::*, wasm_bindgen::prelude::*};
 #[doc = "The <code>chrome.debugger</code> API serves as an alternate transport for Chrome's <a href='https://developer.chrome.com/devtools/docs/debugger-protocol'>remote debugging protocol</a>. Use <code>chrome.debugger</code> to attach to one or more tabs to instrument network interaction, debug JavaScript, mutate the DOM and CSS, etc. Use the Debuggee <code>tabId</code> to target tabs with sendCommand and route events by <code>tabId</code> from onEvent callbacks."]
-#[wasm_bindgen]
+# [wasm_bindgen (js_namespace = chrome)]
 extern "C" {
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "Debuggee" , typescript_type = "Debuggee")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "debugger.Debuggee" , typescript_type = "debugger.Debuggee")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Debuggee identifier. Either tabId or extensionId must be specified"]
     pub type Debuggee;
@@ -17,15 +17,15 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = Debuggee)]
     #[doc = "The opaque id of the debug target."]
     pub fn targetId(this: &Debuggee) -> Option<::js_sys::JsString>;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "TargetInfoType" , typescript_type = "TargetInfoType")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "debugger.TargetInfoType" , typescript_type = "debugger.TargetInfoType")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Target type."]
     pub type TargetInfoType;
-    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "DetachReason" , typescript_type = "DetachReason")]
+    # [wasm_bindgen (extends = :: js_sys :: JsString , js_name = "debugger.DetachReason" , typescript_type = "debugger.DetachReason")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Connection termination reason."]
     pub type DetachReason;
-    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "TargetInfo" , typescript_type = "TargetInfo")]
+    # [wasm_bindgen (extends = :: js_sys :: Object , js_name = "debugger.TargetInfo" , typescript_type = "debugger.TargetInfo")]
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "Debug target information"]
     pub type TargetInfo;
@@ -53,4 +53,46 @@ extern "C" {
     # [wasm_bindgen (method , getter , js_class = TargetInfo)]
     #[doc = "Target URL."]
     pub fn url(this: &TargetInfo) -> ::js_sys::JsString;
+    #[doc = "Attaches debugger to the given target."]
+    #[wasm_bindgen(js_name = "debugger.attach", catch)]
+    pub async fn attach(
+        target: Debuggee,
+        requiredVersion: ::js_sys::JsString,
+    ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Detaches debugger from the given target."]
+    #[wasm_bindgen(js_name = "debugger.detach", catch)]
+    pub async fn detach(target: Debuggee) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Sends given command to the debugging target."]
+    #[wasm_bindgen(js_name = "debugger.sendCommand", catch)]
+    pub async fn sendCommand(
+        target: Debuggee,
+        method: ::js_sys::JsString,
+        commandParams: Option<::js_sys::Object>,
+    ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Returns the list of available debug targets."]
+    #[wasm_bindgen(js_name = "debugger.getTargets", catch)]
+    pub async fn getTargets() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+}
+#[wasm_bindgen]
+pub async fn debugger_attach(
+    target: Debuggee,
+    requiredVersion: ::js_sys::JsString,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    attach(target, requiredVersion).await
+}
+#[wasm_bindgen]
+pub async fn debugger_detach(target: Debuggee) -> Result<(), ::wasm_bindgen::JsValue> {
+    detach(target).await
+}
+#[wasm_bindgen]
+pub async fn debugger_send_command(
+    target: Debuggee,
+    method: ::js_sys::JsString,
+    commandParams: Option<::js_sys::Object>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    sendCommand(target, method, commandParams).await
+}
+#[wasm_bindgen]
+pub async fn debugger_get_targets() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getTargets().await
 }

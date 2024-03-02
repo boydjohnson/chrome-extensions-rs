@@ -1,4 +1,5 @@
 import {
+  windows_get,
   windows_get_all,
   windows_get_current,
   windows_get_last_focused,
@@ -177,6 +178,28 @@ describe("windows.GetLastFocused", () => {
       alwaysOnTop: true,
       incognito: true,
       type: "popup",
+    });
+  });
+});
+
+describe("windows.get", () => {
+  it("Should return a window", async () => {
+    jest.spyOn(chrome.windows, "get").mockImplementation((windowId: number) =>
+      Promise.resolve({
+        id: 123,
+        focused: true,
+        alwaysOnTop: false,
+        incognito: false,
+      }),
+    );
+
+    const window = await windows_get(123);
+
+    expect(window).toEqual({
+      id: 123,
+      focused: true,
+      alwaysOnTop: false,
+      incognito: false,
     });
   });
 });

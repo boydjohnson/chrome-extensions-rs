@@ -7,6 +7,7 @@ use {
     quote::quote,
     serde::{Deserialize, Serialize},
     std::collections::BTreeMap,
+    to_snake_case::ToSnakeCase,
     wasm_bindgen_backend::util::rust_ident,
 };
 
@@ -53,16 +54,34 @@ impl ChromeApi {
         quote!(#ident_name: #typ)
     }
 
-    fn generate_functions(&self, internal: &mut Vec<TokenStream>) {
+    fn generate_arguments(param: &Parameter) -> TokenStream {
+        let ident_name = Ident::new(&param.name, Span::call_site());
+
+        quote!(#ident_name)
+    }
+
+    fn generate_functions(&self, internal: &mut Vec<TokenStream>, external: &mut Vec<TokenStream>) {
         for func in self.functions.iter().flat_map(|v| v.iter()) {
             let js_name = self.namespace.clone() + "." + func.name.as_str();
             let ident = rust_ident(&func.name.clone());
+
+            let ext_rust_function_name = rust_ident(
+                &(self.namespace.clone().replace('.', "_").to_snake_case()
+                    + "_"
+                    + func.name.to_snake_case().as_str()),
+            );
 
             let params: Vec<TokenStream> = func
                 .parameters
                 .iter()
                 .flat_map(|el| el.iter())
                 .map(Self::generate_parameters)
+                .collect();
+            let args: Vec<_> = func
+                .parameters
+                .iter()
+                .flat_map(|el| el.iter())
+                .map(Self::generate_arguments)
                 .collect();
 
             let msg = func.description.clone().unwrap_or_default();
@@ -89,12 +108,26 @@ impl ChromeApi {
                             pub fn #ident(#(#params),*) -> #ret_val;
 
                     ));
+                    external.push(quote!(
+
+                        #[wasm_bindgen]
+                        pub fn #ext_rust_function_name(#(#params),*) -> #ret_val {
+                            #ident(#(#args),*)
+                        }
+                    ));
                 } else {
                     internal.push(quote!(
                             #[doc = #msg]
                             #[wasm_bindgen(js_name = #js_name)]
                             pub fn #ident(#(#params),*);
 
+                    ));
+                    external.push(quote!(
+
+                        #[wasm_bindgen]
+                        pub fn #ext_rust_function_name(#(#params),*) {
+                            #ident(#(#args),*)
+                        }
                     ));
                 }
             } else if let Some(ret) = &func.returns_async {
@@ -140,11 +173,25 @@ impl ChromeApi {
                            #[wasm_bindgen(js_name = #js_name, catch)]
                            pub async fn #ident(#(#params),*) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
                     ));
+                    external.push(quote!(
+
+                        #[wasm_bindgen]
+                        pub async fn #ext_rust_function_name(#(#params),*) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+                            #ident(#(#args),*).await
+                        }
+                    ));
                 } else {
                     internal.push(quote!(
                            #[doc = #msg]
                            #[wasm_bindgen(js_name = #js_name, catch)]
                            pub async fn #ident(#(#params),*) -> Result<(), ::wasm_bindgen::JsValue>;
+                    ));
+                    external.push(quote!(
+
+                        #[wasm_bindgen]
+                        pub async fn #ext_rust_function_name(#(#params),*) -> Result<(), ::wasm_bindgen::JsValue> {
+                            #ident(#(#args),*).await
+                        }
                     ));
                 }
             }
@@ -279,10 +326,11 @@ impl ToWasmBindgen for ChromeApi {
         };
 
         let mut internal = vec![];
+        let mut external = vec![];
 
         self.generate_types(&mut internal);
 
-        self.generate_functions(&mut internal);
+        self.generate_functions(&mut internal, &mut external);
 
         let enclosing = quote! {
             #![allow(unused_imports)]
@@ -295,7 +343,7 @@ impl ToWasmBindgen for ChromeApi {
                 #(#internal)*
 
             }
-
+            #(#external)*
         };
 
         enclosing

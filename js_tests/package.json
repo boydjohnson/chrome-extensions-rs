@@ -1,0 +1,29 @@
+{
+  "name": "chrome-extension-wasm",
+  "version": "1.0.0",
+  "description": "A Chrome extension project using Rust, WebAssembly, and TypeScript",
+  "scripts": {
+    "test": "jest"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-typescript": "^7.14.5",
+    "@types/chrome": "^0.0.262",
+    "@types/jest": "^27",
+    "@types/node": "^15.12.5",
+    "babel-jest": "^27.5.1",
+    "jest": "^27",
+    "jest-chrome": "^0.8.0",
+    "ts-jest": "^27.1.5",
+    "typescript": "^4.3.2"
+  },
+  "babel": {
+    "presets": ["@babel/preset-env", "@babel/preset-typescript"]
+  },
+  "tsconfig": "tsconfig.json"
+}

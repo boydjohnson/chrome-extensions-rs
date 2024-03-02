@@ -27,3 +27,26 @@ extern "C" {
         text: ::js_sys::JsString,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn i18n_get_accept_languages() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>
+{
+    getAcceptLanguages().await
+}
+#[wasm_bindgen]
+pub fn i18n_get_message(
+    messageName: ::js_sys::JsString,
+    substitutions: ::wasm_bindgen::JsValue,
+    options: Option<::js_sys::Object>,
+) -> ::js_sys::JsString {
+    getMessage(messageName, substitutions, options)
+}
+#[wasm_bindgen]
+pub fn i18n_get_ui_language() -> ::js_sys::JsString {
+    getUILanguage()
+}
+#[wasm_bindgen]
+pub async fn i18n_detect_language(
+    text: ::js_sys::JsString,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    detectLanguage(text).await
+}

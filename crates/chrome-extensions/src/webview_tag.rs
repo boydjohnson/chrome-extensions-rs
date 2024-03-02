@@ -299,3 +299,19 @@ extern "C" {
     #[wasm_bindgen(js_name = "webviewTag.getUserAgent")]
     pub fn getUserAgent() -> ::js_sys::JsString;
 }
+#[wasm_bindgen]
+pub fn webview_tag_can_go_back() -> ::js_sys::Boolean {
+    canGoBack()
+}
+#[wasm_bindgen]
+pub fn webview_tag_can_go_forward() -> ::js_sys::Boolean {
+    canGoForward()
+}
+#[wasm_bindgen]
+pub fn webview_tag_get_process_id() -> ::js_sys::Number {
+    getProcessId()
+}
+#[wasm_bindgen]
+pub fn webview_tag_get_user_agent() -> ::js_sys::JsString {
+    getUserAgent()
+}

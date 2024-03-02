@@ -10,3 +10,9 @@ extern "C" {
         details: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn page_capture_save_as_mhtml(
+    details: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    saveAsMHTML(details).await
+}

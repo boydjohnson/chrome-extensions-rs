@@ -24,3 +24,28 @@ extern "C" {
     #[wasm_bindgen(js_name = "instanceID.deleteID", catch)]
     pub async fn deleteID() -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn instance_id_get_id() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getID().await
+}
+#[wasm_bindgen]
+pub async fn instance_id_get_creation_time(
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getCreationTime().await
+}
+#[wasm_bindgen]
+pub async fn instance_id_get_token(
+    getTokenParams: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getToken(getTokenParams).await
+}
+#[wasm_bindgen]
+pub async fn instance_id_delete_token(
+    deleteTokenParams: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    deleteToken(deleteTokenParams).await
+}
+#[wasm_bindgen]
+pub async fn instance_id_delete_id() -> Result<(), ::wasm_bindgen::JsValue> {
+    deleteID().await
+}

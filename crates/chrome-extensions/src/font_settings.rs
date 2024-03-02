@@ -86,3 +86,80 @@ extern "C" {
         details: ::js_sys::Object,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn font_settings_clear_font(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    clearFont(details).await
+}
+#[wasm_bindgen]
+pub async fn font_settings_get_font(
+    details: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getFont(details).await
+}
+#[wasm_bindgen]
+pub async fn font_settings_set_font(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setFont(details).await
+}
+#[wasm_bindgen]
+pub async fn font_settings_get_font_list(
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getFontList().await
+}
+#[wasm_bindgen]
+pub async fn font_settings_clear_default_font_size(
+    details: Option<::js_sys::Object>,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    clearDefaultFontSize(details).await
+}
+#[wasm_bindgen]
+pub async fn font_settings_get_default_font_size(
+    details: Option<::js_sys::Object>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getDefaultFontSize(details).await
+}
+#[wasm_bindgen]
+pub async fn font_settings_set_default_font_size(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setDefaultFontSize(details).await
+}
+#[wasm_bindgen]
+pub async fn font_settings_clear_default_fixed_font_size(
+    details: Option<::js_sys::Object>,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    clearDefaultFixedFontSize(details).await
+}
+#[wasm_bindgen]
+pub async fn font_settings_get_default_fixed_font_size(
+    details: Option<::js_sys::Object>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getDefaultFixedFontSize(details).await
+}
+#[wasm_bindgen]
+pub async fn font_settings_set_default_fixed_font_size(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setDefaultFixedFontSize(details).await
+}
+#[wasm_bindgen]
+pub async fn font_settings_clear_minimum_font_size(
+    details: Option<::js_sys::Object>,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    clearMinimumFontSize(details).await
+}
+#[wasm_bindgen]
+pub async fn font_settings_get_minimum_font_size(
+    details: Option<::js_sys::Object>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getMinimumFontSize(details).await
+}
+#[wasm_bindgen]
+pub async fn font_settings_set_minimum_font_size(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setMinimumFontSize(details).await
+}

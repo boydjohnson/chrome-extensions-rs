@@ -102,3 +102,45 @@ extern "C" {
     #[wasm_bindgen(js_name = "windows.remove", catch)]
     pub async fn remove(windowId: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn windows_get(
+    windowId: ::js_sys::Number,
+    queryOptions: Option<QueryOptions>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    get(windowId, queryOptions).await
+}
+#[wasm_bindgen]
+pub async fn windows_get_current(
+    queryOptions: Option<QueryOptions>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getCurrent(queryOptions).await
+}
+#[wasm_bindgen]
+pub async fn windows_get_last_focused(
+    queryOptions: Option<QueryOptions>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getLastFocused(queryOptions).await
+}
+#[wasm_bindgen]
+pub async fn windows_get_all(
+    queryOptions: Option<QueryOptions>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getAll(queryOptions).await
+}
+#[wasm_bindgen]
+pub async fn windows_create(
+    createData: Option<::js_sys::Object>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    create(createData).await
+}
+#[wasm_bindgen]
+pub async fn windows_update(
+    windowId: ::js_sys::Number,
+    updateInfo: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    update(windowId, updateInfo).await
+}
+#[wasm_bindgen]
+pub async fn windows_remove(windowId: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue> {
+    remove(windowId).await
+}

@@ -41,3 +41,41 @@ extern "C" {
         details: TabDetails,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn page_action_show(tabId: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue> {
+    show(tabId).await
+}
+#[wasm_bindgen]
+pub async fn page_action_hide(tabId: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue> {
+    hide(tabId).await
+}
+#[wasm_bindgen]
+pub async fn page_action_set_title(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setTitle(details).await
+}
+#[wasm_bindgen]
+pub async fn page_action_get_title(
+    details: TabDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getTitle(details).await
+}
+#[wasm_bindgen]
+pub async fn page_action_set_icon(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setIcon(details).await
+}
+#[wasm_bindgen]
+pub async fn page_action_set_popup(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setPopup(details).await
+}
+#[wasm_bindgen]
+pub async fn page_action_get_popup(
+    details: TabDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getPopup(details).await
+}

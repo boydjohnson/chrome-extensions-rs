@@ -8,3 +8,7 @@ extern "C" {
     #[wasm_bindgen(js_name = "dom.openOrClosedShadowRoot")]
     pub fn openOrClosedShadowRoot(element: ::js_sys::Object) -> ::js_sys::Object;
 }
+#[wasm_bindgen]
+pub fn dom_open_or_closed_shadow_root(element: ::js_sys::Object) -> ::js_sys::Object {
+    openOrClosedShadowRoot(element)
+}

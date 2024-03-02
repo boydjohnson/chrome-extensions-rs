@@ -66,3 +66,74 @@ extern "C" {
     #[wasm_bindgen(js_name = "browserAction.openPopup", catch)]
     pub async fn openPopup() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn browser_action_set_title(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setTitle(details).await
+}
+#[wasm_bindgen]
+pub async fn browser_action_get_title(
+    details: TabDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getTitle(details).await
+}
+#[wasm_bindgen]
+pub async fn browser_action_set_icon(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setIcon(details).await
+}
+#[wasm_bindgen]
+pub async fn browser_action_set_popup(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setPopup(details).await
+}
+#[wasm_bindgen]
+pub async fn browser_action_get_popup(
+    details: TabDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getPopup(details).await
+}
+#[wasm_bindgen]
+pub async fn browser_action_set_badge_text(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setBadgeText(details).await
+}
+#[wasm_bindgen]
+pub async fn browser_action_get_badge_text(
+    details: TabDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getBadgeText(details).await
+}
+#[wasm_bindgen]
+pub async fn browser_action_set_badge_background_color(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setBadgeBackgroundColor(details).await
+}
+#[wasm_bindgen]
+pub async fn browser_action_get_badge_background_color(
+    details: TabDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getBadgeBackgroundColor(details).await
+}
+#[wasm_bindgen]
+pub async fn browser_action_enable(
+    tabId: Option<::js_sys::Number>,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    enable(tabId).await
+}
+#[wasm_bindgen]
+pub async fn browser_action_disable(
+    tabId: Option<::js_sys::Number>,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    disable(tabId).await
+}
+#[wasm_bindgen]
+pub async fn browser_action_open_popup() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>
+{
+    openPopup().await
+}

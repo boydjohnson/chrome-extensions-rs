@@ -36,3 +36,31 @@ extern "C" {
         instanceId: ::js_sys::Number,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub fn chrome_web_view_internal_context_menus_create(
+    instanceId: ::js_sys::Number,
+    createProperties: ::js_sys::Object,
+) {
+    contextMenusCreate(instanceId, createProperties)
+}
+#[wasm_bindgen]
+pub async fn chrome_web_view_internal_context_menus_update(
+    instanceId: ::js_sys::Number,
+    id: ::wasm_bindgen::JsValue,
+    updateProperties: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    contextMenusUpdate(instanceId, id, updateProperties).await
+}
+#[wasm_bindgen]
+pub async fn chrome_web_view_internal_context_menus_remove(
+    instanceId: ::js_sys::Number,
+    menuItemId: ::wasm_bindgen::JsValue,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    contextMenusRemove(instanceId, menuItemId).await
+}
+#[wasm_bindgen]
+pub async fn chrome_web_view_internal_context_menus_remove_all(
+    instanceId: ::js_sys::Number,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    contextMenusRemoveAll(instanceId).await
+}

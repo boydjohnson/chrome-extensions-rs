@@ -23,3 +23,15 @@ extern "C" {
         details: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn web_navigation_get_frame(
+    details: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getFrame(details).await
+}
+#[wasm_bindgen]
+pub async fn web_navigation_get_all_frames(
+    details: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getAllFrames(details).await
+}

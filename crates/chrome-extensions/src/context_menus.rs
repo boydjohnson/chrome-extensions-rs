@@ -103,3 +103,24 @@ extern "C" {
     #[wasm_bindgen(js_name = "contextMenus.removeAll", catch)]
     pub async fn removeAll() -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub fn context_menus_create(createProperties: CreateProperties) {
+    create(createProperties)
+}
+#[wasm_bindgen]
+pub async fn context_menus_update(
+    id: ::wasm_bindgen::JsValue,
+    updateProperties: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    update(id, updateProperties).await
+}
+#[wasm_bindgen]
+pub async fn context_menus_remove(
+    menuItemId: ::wasm_bindgen::JsValue,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    remove(menuItemId).await
+}
+#[wasm_bindgen]
+pub async fn context_menus_remove_all() -> Result<(), ::wasm_bindgen::JsValue> {
+    removeAll().await
+}

@@ -53,3 +53,21 @@ extern "C" {
         sessionId: Option<::js_sys::JsString>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn sessions_get_recently_closed(
+    filter: Option<Filter>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getRecentlyClosed(filter).await
+}
+#[wasm_bindgen]
+pub async fn sessions_get_devices(
+    filter: Option<Filter>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getDevices(filter).await
+}
+#[wasm_bindgen]
+pub async fn sessions_restore(
+    sessionId: Option<::js_sys::JsString>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    restore(sessionId).await
+}

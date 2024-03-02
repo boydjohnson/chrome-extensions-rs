@@ -17,3 +17,14 @@ extern "C" {
     #[wasm_bindgen(js_name = "idle.getAutoLockDelay", catch)]
     pub async fn getAutoLockDelay() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn idle_query_state(
+    detectionIntervalInSeconds: ::js_sys::Number,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    queryState(detectionIntervalInSeconds).await
+}
+#[wasm_bindgen]
+pub async fn idle_get_auto_lock_delay() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>
+{
+    getAutoLockDelay().await
+}

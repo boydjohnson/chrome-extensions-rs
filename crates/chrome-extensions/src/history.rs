@@ -82,3 +82,31 @@ extern "C" {
     #[wasm_bindgen(js_name = "history.deleteAll", catch)]
     pub async fn deleteAll() -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn history_search(
+    query: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    search(query).await
+}
+#[wasm_bindgen]
+pub async fn history_get_visits(
+    details: UrlDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getVisits(details).await
+}
+#[wasm_bindgen]
+pub async fn history_add_url(details: UrlDetails) -> Result<(), ::wasm_bindgen::JsValue> {
+    addUrl(details).await
+}
+#[wasm_bindgen]
+pub async fn history_delete_url(details: UrlDetails) -> Result<(), ::wasm_bindgen::JsValue> {
+    deleteUrl(details).await
+}
+#[wasm_bindgen]
+pub async fn history_delete_range(range: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue> {
+    deleteRange(range).await
+}
+#[wasm_bindgen]
+pub async fn history_delete_all() -> Result<(), ::wasm_bindgen::JsValue> {
+    deleteAll().await
+}

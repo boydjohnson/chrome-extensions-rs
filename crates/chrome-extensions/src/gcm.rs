@@ -18,3 +18,19 @@ extern "C" {
         message: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn gcm_register(
+    senderIds: ::js_sys::Array,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    register(senderIds).await
+}
+#[wasm_bindgen]
+pub async fn gcm_unregister() -> Result<(), ::wasm_bindgen::JsValue> {
+    unregister().await
+}
+#[wasm_bindgen]
+pub async fn gcm_send(
+    message: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    send(message).await
+}

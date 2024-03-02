@@ -33,3 +33,19 @@ extern "C" {
     #[wasm_bindgen(js_name = "app.getDetails")]
     pub fn getDetails() -> Details;
 }
+#[wasm_bindgen]
+pub fn app_get_is_installed() -> ::js_sys::Boolean {
+    getIsInstalled()
+}
+#[wasm_bindgen]
+pub async fn app_install_state() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    installState().await
+}
+#[wasm_bindgen]
+pub fn app_running_state() -> RunningState {
+    runningState()
+}
+#[wasm_bindgen]
+pub fn app_get_details() -> Details {
+    getDetails()
+}

@@ -50,3 +50,29 @@ extern "C" {
         moveProperties: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn tab_groups_get(
+    groupId: ::js_sys::Number,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    get(groupId).await
+}
+#[wasm_bindgen]
+pub async fn tab_groups_query(
+    queryInfo: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    query(queryInfo).await
+}
+#[wasm_bindgen]
+pub async fn tab_groups_update(
+    groupId: ::js_sys::Number,
+    updateProperties: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    update(groupId, updateProperties).await
+}
+#[wasm_bindgen]
+pub async fn tab_groups_move(
+    groupId: ::js_sys::Number,
+    moveProperties: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    move_(groupId, moveProperties).await
+}

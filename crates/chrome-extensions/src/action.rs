@@ -92,3 +92,90 @@ extern "C" {
         options: Option<OpenPopupOptions>,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn action_set_title(details: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue> {
+    setTitle(details).await
+}
+#[wasm_bindgen]
+pub async fn action_get_title(
+    details: TabDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getTitle(details).await
+}
+#[wasm_bindgen]
+pub async fn action_set_icon(details: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue> {
+    setIcon(details).await
+}
+#[wasm_bindgen]
+pub async fn action_set_popup(details: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue> {
+    setPopup(details).await
+}
+#[wasm_bindgen]
+pub async fn action_get_popup(
+    details: TabDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getPopup(details).await
+}
+#[wasm_bindgen]
+pub async fn action_set_badge_text(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setBadgeText(details).await
+}
+#[wasm_bindgen]
+pub async fn action_get_badge_text(
+    details: TabDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getBadgeText(details).await
+}
+#[wasm_bindgen]
+pub async fn action_set_badge_background_color(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setBadgeBackgroundColor(details).await
+}
+#[wasm_bindgen]
+pub async fn action_get_badge_background_color(
+    details: TabDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getBadgeBackgroundColor(details).await
+}
+#[wasm_bindgen]
+pub async fn action_set_badge_text_color(
+    details: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setBadgeTextColor(details).await
+}
+#[wasm_bindgen]
+pub async fn action_get_badge_text_color(
+    details: TabDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getBadgeTextColor(details).await
+}
+#[wasm_bindgen]
+pub async fn action_enable(tabId: Option<::js_sys::Number>) -> Result<(), ::wasm_bindgen::JsValue> {
+    enable(tabId).await
+}
+#[wasm_bindgen]
+pub async fn action_disable(
+    tabId: Option<::js_sys::Number>,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    disable(tabId).await
+}
+#[wasm_bindgen]
+pub async fn action_is_enabled(
+    tabId: Option<::js_sys::Number>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    isEnabled(tabId).await
+}
+#[wasm_bindgen]
+pub async fn action_get_user_settings() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>
+{
+    getUserSettings().await
+}
+#[wasm_bindgen]
+pub async fn action_open_popup(
+    options: Option<OpenPopupOptions>,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    openPopup(options).await
+}

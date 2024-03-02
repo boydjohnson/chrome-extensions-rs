@@ -212,3 +212,79 @@ extern "C" {
         filter: ContextFilter,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn runtime_get_background_page(
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getBackgroundPage().await
+}
+#[wasm_bindgen]
+pub async fn runtime_open_options_page() -> Result<(), ::wasm_bindgen::JsValue> {
+    openOptionsPage().await
+}
+#[wasm_bindgen]
+pub fn runtime_get_manifest() -> ::js_sys::Object {
+    getManifest()
+}
+#[wasm_bindgen]
+pub fn runtime_get_url(path: ::js_sys::JsString) -> ::js_sys::JsString {
+    getURL(path)
+}
+#[wasm_bindgen]
+pub async fn runtime_set_uninstall_url(
+    url: ::js_sys::JsString,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setUninstallURL(url).await
+}
+#[wasm_bindgen]
+pub async fn runtime_request_update_check(
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    requestUpdateCheck().await
+}
+#[wasm_bindgen]
+pub async fn runtime_restart_after_delay(
+    seconds: ::js_sys::Number,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    restartAfterDelay(seconds).await
+}
+#[wasm_bindgen]
+pub fn runtime_connect(
+    extensionId: Option<::js_sys::JsString>,
+    connectInfo: Option<::js_sys::Object>,
+) -> Port {
+    connect(extensionId, connectInfo)
+}
+#[wasm_bindgen]
+pub fn runtime_connect_native(application: ::js_sys::JsString) -> Port {
+    connectNative(application)
+}
+#[wasm_bindgen]
+pub async fn runtime_send_message(
+    extensionId: Option<::js_sys::JsString>,
+    message: ::wasm_bindgen::JsValue,
+    options: Option<::js_sys::Object>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    sendMessage(extensionId, message, options).await
+}
+#[wasm_bindgen]
+pub async fn runtime_send_native_message(
+    application: ::js_sys::JsString,
+    message: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    sendNativeMessage(application, message).await
+}
+#[wasm_bindgen]
+pub async fn runtime_get_platform_info() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>
+{
+    getPlatformInfo().await
+}
+#[wasm_bindgen]
+pub async fn runtime_get_package_directory_entry(
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getPackageDirectoryEntry().await
+}
+#[wasm_bindgen]
+pub async fn runtime_get_contexts(
+    filter: ContextFilter,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getContexts(filter).await
+}

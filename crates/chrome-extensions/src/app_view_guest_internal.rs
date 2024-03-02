@@ -11,3 +11,10 @@ extern "C" {
         guestInstanceId: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn app_view_guest_internal_attach_frame(
+    url: ::js_sys::JsString,
+    guestInstanceId: ::js_sys::Number,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    attachFrame(url, guestInstanceId).await
+}

@@ -108,3 +108,7 @@ extern "C" {
     #[wasm_bindgen(js_name = "webRequest.handlerBehaviorChanged", catch)]
     pub async fn handlerBehaviorChanged() -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn web_request_handler_behavior_changed() -> Result<(), ::wasm_bindgen::JsValue> {
+    handlerBehaviorChanged().await
+}

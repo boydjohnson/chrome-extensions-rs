@@ -33,3 +33,25 @@ extern "C" {
         permissions: Permissions,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn permissions_get_all() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getAll().await
+}
+#[wasm_bindgen]
+pub async fn permissions_contains(
+    permissions: Permissions,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    contains(permissions).await
+}
+#[wasm_bindgen]
+pub async fn permissions_request(
+    permissions: Permissions,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    request(permissions).await
+}
+#[wasm_bindgen]
+pub async fn permissions_remove(
+    permissions: Permissions,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    remove(permissions).await
+}

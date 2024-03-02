@@ -57,3 +57,9 @@ extern "C" {
         suggestion: DefaultSuggestResult,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn omnibox_set_default_suggestion(
+    suggestion: DefaultSuggestResult,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setDefaultSuggestion(suggestion).await
+}

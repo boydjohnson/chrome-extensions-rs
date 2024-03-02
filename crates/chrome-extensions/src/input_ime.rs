@@ -208,3 +208,75 @@ extern "C" {
         parameters: ::js_sys::Object,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn input_ime_set_composition(
+    parameters: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    setComposition(parameters).await
+}
+#[wasm_bindgen]
+pub async fn input_ime_clear_composition(
+    parameters: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    clearComposition(parameters).await
+}
+#[wasm_bindgen]
+pub async fn input_ime_commit_text(
+    parameters: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    commitText(parameters).await
+}
+#[wasm_bindgen]
+pub async fn input_ime_send_key_events(
+    parameters: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    sendKeyEvents(parameters).await
+}
+#[wasm_bindgen]
+pub async fn input_ime_set_candidate_window_properties(
+    parameters: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    setCandidateWindowProperties(parameters).await
+}
+#[wasm_bindgen]
+pub async fn input_ime_set_candidates(
+    parameters: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    setCandidates(parameters).await
+}
+#[wasm_bindgen]
+pub async fn input_ime_set_cursor_position(
+    parameters: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    setCursorPosition(parameters).await
+}
+#[wasm_bindgen]
+pub async fn input_ime_set_assistive_window_properties(
+    parameters: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    setAssistiveWindowProperties(parameters).await
+}
+#[wasm_bindgen]
+pub async fn input_ime_set_assistive_window_button_highlighted(
+    parameters: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setAssistiveWindowButtonHighlighted(parameters).await
+}
+#[wasm_bindgen]
+pub async fn input_ime_set_menu_items(
+    parameters: MenuParameters,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setMenuItems(parameters).await
+}
+#[wasm_bindgen]
+pub async fn input_ime_update_menu_items(
+    parameters: MenuParameters,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    updateMenuItems(parameters).await
+}
+#[wasm_bindgen]
+pub async fn input_ime_delete_surrounding_text(
+    parameters: ::js_sys::Object,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    deleteSurroundingText(parameters).await
+}

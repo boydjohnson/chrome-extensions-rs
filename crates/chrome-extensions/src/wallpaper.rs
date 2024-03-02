@@ -14,3 +14,9 @@ extern "C" {
         details: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn wallpaper_set_wallpaper(
+    details: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    setWallpaper(details).await
+}

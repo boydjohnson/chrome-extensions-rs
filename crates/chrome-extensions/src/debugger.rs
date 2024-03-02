@@ -73,3 +73,26 @@ extern "C" {
     #[wasm_bindgen(js_name = "debugger.getTargets", catch)]
     pub async fn getTargets() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn debugger_attach(
+    target: Debuggee,
+    requiredVersion: ::js_sys::JsString,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    attach(target, requiredVersion).await
+}
+#[wasm_bindgen]
+pub async fn debugger_detach(target: Debuggee) -> Result<(), ::wasm_bindgen::JsValue> {
+    detach(target).await
+}
+#[wasm_bindgen]
+pub async fn debugger_send_command(
+    target: Debuggee,
+    method: ::js_sys::JsString,
+    commandParams: Option<::js_sys::Object>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    sendCommand(target, method, commandParams).await
+}
+#[wasm_bindgen]
+pub async fn debugger_get_targets() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getTargets().await
+}

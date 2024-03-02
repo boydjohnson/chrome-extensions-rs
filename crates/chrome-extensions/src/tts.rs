@@ -103,3 +103,18 @@ extern "C" {
     #[wasm_bindgen(js_name = "tts.getVoices", catch)]
     pub async fn getVoices() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn tts_speak(
+    utterance: ::js_sys::JsString,
+    options: Option<TtsOptions>,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    speak(utterance, options).await
+}
+#[wasm_bindgen]
+pub async fn tts_is_speaking() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    isSpeaking().await
+}
+#[wasm_bindgen]
+pub async fn tts_get_voices() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getVoices().await
+}

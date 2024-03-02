@@ -21,3 +21,7 @@ extern "C" {
     #[wasm_bindgen(js_name = "commands.getAll", catch)]
     pub async fn getAll() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn commands_get_all() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getAll().await
+}

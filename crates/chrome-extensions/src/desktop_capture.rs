@@ -24,3 +24,11 @@ extern "C" {
         options: Option<::js_sys::Object>,
     ) -> ::js_sys::Number;
 }
+#[wasm_bindgen]
+pub fn desktop_capture_choose_desktop_media(
+    sources: ::js_sys::Array,
+    targetTab: Option<crate::tabs::Tab>,
+    options: Option<::js_sys::Object>,
+) -> ::js_sys::Number {
+    chooseDesktopMedia(sources, targetTab, options)
+}

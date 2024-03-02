@@ -110,3 +110,65 @@ extern "C" {
     #[wasm_bindgen(js_name = "bookmarks.removeTree", catch)]
     pub async fn removeTree(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn bookmarks_get(
+    idOrIdList: ::wasm_bindgen::JsValue,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    get(idOrIdList).await
+}
+#[wasm_bindgen]
+pub async fn bookmarks_get_children(
+    id: ::js_sys::JsString,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getChildren(id).await
+}
+#[wasm_bindgen]
+pub async fn bookmarks_get_recent(
+    numberOfItems: ::js_sys::Number,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getRecent(numberOfItems).await
+}
+#[wasm_bindgen]
+pub async fn bookmarks_get_tree() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getTree().await
+}
+#[wasm_bindgen]
+pub async fn bookmarks_get_sub_tree(
+    id: ::js_sys::JsString,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getSubTree(id).await
+}
+#[wasm_bindgen]
+pub async fn bookmarks_search(
+    query: ::wasm_bindgen::JsValue,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    search(query).await
+}
+#[wasm_bindgen]
+pub async fn bookmarks_create(
+    bookmark: CreateDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    create(bookmark).await
+}
+#[wasm_bindgen]
+pub async fn bookmarks_move(
+    id: ::js_sys::JsString,
+    destination: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    move_(id, destination).await
+}
+#[wasm_bindgen]
+pub async fn bookmarks_update(
+    id: ::js_sys::JsString,
+    changes: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    update(id, changes).await
+}
+#[wasm_bindgen]
+pub async fn bookmarks_remove(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue> {
+    remove(id).await
+}
+#[wasm_bindgen]
+pub async fn bookmarks_remove_tree(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue> {
+    removeTree(id).await
+}

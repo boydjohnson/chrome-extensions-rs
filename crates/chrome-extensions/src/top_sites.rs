@@ -18,3 +18,7 @@ extern "C" {
     #[wasm_bindgen(js_name = "topSites.get", catch)]
     pub async fn get() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn top_sites_get() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    get().await
+}

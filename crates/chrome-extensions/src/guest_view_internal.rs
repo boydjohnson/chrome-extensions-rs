@@ -44,3 +44,18 @@ extern "C" {
         params: SizeParams,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn guest_view_internal_create_guest(
+    viewType: ::js_sys::JsString,
+    ownerFrameToken: ::js_sys::JsString,
+    createParams: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    createGuest(viewType, ownerFrameToken, createParams).await
+}
+#[wasm_bindgen]
+pub async fn guest_view_internal_set_size(
+    instanceId: ::js_sys::Number,
+    params: SizeParams,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setSize(instanceId, params).await
+}

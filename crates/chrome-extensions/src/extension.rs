@@ -35,3 +35,36 @@ extern "C" {
     pub async fn isAllowedFileSchemeAccess(
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn extension_send_request(
+    extensionId: Option<::js_sys::JsString>,
+    request: ::wasm_bindgen::JsValue,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    sendRequest(extensionId, request).await
+}
+#[wasm_bindgen]
+pub fn extension_get_url(path: ::js_sys::JsString) -> ::js_sys::JsString {
+    getURL(path)
+}
+#[wasm_bindgen]
+pub fn extension_get_views(fetchProperties: Option<::js_sys::Object>) -> ::js_sys::Array {
+    getViews(fetchProperties)
+}
+#[wasm_bindgen]
+pub fn extension_get_background_page() -> ::js_sys::Object {
+    getBackgroundPage()
+}
+#[wasm_bindgen]
+pub fn extension_get_extension_tabs(windowId: Option<::js_sys::Number>) -> ::js_sys::Array {
+    getExtensionTabs(windowId)
+}
+#[wasm_bindgen]
+pub async fn extension_is_allowed_incognito_access(
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    isAllowedIncognitoAccess().await
+}
+#[wasm_bindgen]
+pub async fn extension_is_allowed_file_scheme_access(
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    isAllowedFileSchemeAccess().await
+}

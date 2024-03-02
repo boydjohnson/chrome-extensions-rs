@@ -192,3 +192,111 @@ extern "C" {
         dataToRemove: DataTypeSet,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn web_view_internal_get_audio_state(
+    instanceId: ::js_sys::Number,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getAudioState(instanceId).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_is_audio_muted(
+    instanceId: ::js_sys::Number,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    isAudioMuted(instanceId).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_execute_script(
+    instanceId: ::js_sys::Number,
+    src: ::js_sys::JsString,
+    details: crate::extension_types::InjectDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    executeScript(instanceId, src, details).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_insert_css(
+    instanceId: ::js_sys::Number,
+    src: ::js_sys::JsString,
+    details: crate::extension_types::InjectDetails,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    insertCSS(instanceId, src, details).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_set_zoom(
+    instanceId: ::js_sys::Number,
+    zoomFactor: ::js_sys::Number,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setZoom(instanceId, zoomFactor).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_get_zoom(
+    instanceId: ::js_sys::Number,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getZoom(instanceId).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_set_zoom_mode(
+    instanceId: ::js_sys::Number,
+    ZoomMode: ZoomMode,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setZoomMode(instanceId, ZoomMode).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_get_zoom_mode(
+    instanceId: ::js_sys::Number,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getZoomMode(instanceId).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_find(
+    instanceId: ::js_sys::Number,
+    searchText: ::js_sys::JsString,
+    options: Option<::js_sys::Object>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    find(instanceId, searchText, options).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_load_data_with_base_url(
+    instanceId: ::js_sys::Number,
+    dataUrl: ::js_sys::JsString,
+    baseUrl: ::js_sys::JsString,
+    virtualUrl: Option<::js_sys::JsString>,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    loadDataWithBaseUrl(instanceId, dataUrl, baseUrl, virtualUrl).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_go(
+    instanceId: ::js_sys::Number,
+    relativeIndex: ::js_sys::Number,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    go(instanceId, relativeIndex).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_set_permission(
+    instanceId: ::js_sys::Number,
+    requestId: ::js_sys::Number,
+    action: SetPermissionAction,
+    userInput: Option<::js_sys::JsString>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    setPermission(instanceId, requestId, action, userInput).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_capture_visible_region(
+    instanceId: ::js_sys::Number,
+    options: Option<crate::extension_types::ImageDetails>,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    captureVisibleRegion(instanceId, options).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_is_spatial_navigation_enabled(
+    instanceId: ::js_sys::Number,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    isSpatialNavigationEnabled(instanceId).await
+}
+#[wasm_bindgen]
+pub async fn web_view_internal_clear_data(
+    instanceId: ::js_sys::Number,
+    options: RemovalOptions,
+    dataToRemove: DataTypeSet,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    clearData(instanceId, options, dataToRemove).await
+}

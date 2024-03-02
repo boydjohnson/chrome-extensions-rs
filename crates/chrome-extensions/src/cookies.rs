@@ -109,3 +109,32 @@ extern "C" {
     #[wasm_bindgen(js_name = "cookies.getAllCookieStores", catch)]
     pub async fn getAllCookieStores() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn cookies_get(
+    details: CookieDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    get(details).await
+}
+#[wasm_bindgen]
+pub async fn cookies_get_all(
+    details: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getAll(details).await
+}
+#[wasm_bindgen]
+pub async fn cookies_set(
+    details: ::js_sys::Object,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    set(details).await
+}
+#[wasm_bindgen]
+pub async fn cookies_remove(
+    details: CookieDetails,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    remove(details).await
+}
+#[wasm_bindgen]
+pub async fn cookies_get_all_cookie_stores(
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getAllCookieStores().await
+}

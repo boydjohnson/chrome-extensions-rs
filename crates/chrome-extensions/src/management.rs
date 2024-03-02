@@ -170,3 +170,77 @@ extern "C" {
     #[wasm_bindgen(js_name = "management.installReplacementWebApp", catch)]
     pub async fn installReplacementWebApp() -> Result<(), ::wasm_bindgen::JsValue>;
 }
+#[wasm_bindgen]
+pub async fn management_get_all() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getAll().await
+}
+#[wasm_bindgen]
+pub async fn management_get(
+    id: ::js_sys::JsString,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    get(id).await
+}
+#[wasm_bindgen]
+pub async fn management_get_self() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getSelf().await
+}
+#[wasm_bindgen]
+pub async fn management_get_permission_warnings_by_id(
+    id: ::js_sys::JsString,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getPermissionWarningsById(id).await
+}
+#[wasm_bindgen]
+pub async fn management_get_permission_warnings_by_manifest(
+    manifestStr: ::js_sys::JsString,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    getPermissionWarningsByManifest(manifestStr).await
+}
+#[wasm_bindgen]
+pub async fn management_set_enabled(
+    id: ::js_sys::JsString,
+    enabled: ::js_sys::Boolean,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    setEnabled(id, enabled).await
+}
+#[wasm_bindgen]
+pub async fn management_uninstall(
+    id: ::js_sys::JsString,
+    options: Option<UninstallOptions>,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    uninstall(id, options).await
+}
+#[wasm_bindgen]
+pub async fn management_uninstall_self(
+    options: Option<UninstallOptions>,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    uninstallSelf(options).await
+}
+#[wasm_bindgen]
+pub async fn management_launch_app(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue> {
+    launchApp(id).await
+}
+#[wasm_bindgen]
+pub async fn management_create_app_shortcut(
+    id: ::js_sys::JsString,
+) -> Result<(), ::wasm_bindgen::JsValue> {
+    createAppShortcut(id).await
+}
+#[wasm_bindgen]
+pub async fn management_set_launch_type(
+    id: ::js_sys::JsString,
+    launchType: LaunchType,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    setLaunchType(id, launchType).await
+}
+#[wasm_bindgen]
+pub async fn management_generate_app_for_link(
+    url: ::js_sys::JsString,
+    title: ::js_sys::JsString,
+) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
+    generateAppForLink(url, title).await
+}
+#[wasm_bindgen]
+pub async fn management_install_replacement_web_app() -> Result<(), ::wasm_bindgen::JsValue> {
+    installReplacementWebApp().await
+}

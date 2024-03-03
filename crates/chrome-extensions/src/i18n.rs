@@ -17,7 +17,7 @@ extern "C" {
     #[doc = "Gets the localized string for the specified message. If the message is missing, this method returns an empty string (''). If the format of the <code>getMessage()</code> call is wrong &mdash; for example, <em>messageName</em> is not a string or the <em>substitutions</em> array has more than 9 elements &mdash; this method returns <code>undefined</code>."]
     #[wasm_bindgen(js_name = "i18n.getMessage")]
     pub fn get_message(
-        messageName: ::js_sys::JsString,
+        message_name: ::js_sys::JsString,
         substitutions: ::wasm_bindgen::JsValue,
         options: Option<::js_sys::Object>,
     ) -> ::js_sys::JsString;
@@ -44,11 +44,11 @@ pub fn i18n_get_accept_languages_callback(callback: &::js_sys::Function) {
 }
 #[wasm_bindgen]
 pub fn i18n_get_message(
-    messageName: ::js_sys::JsString,
+    message_name: ::js_sys::JsString,
     substitutions: ::wasm_bindgen::JsValue,
     options: Option<::js_sys::Object>,
 ) -> ::js_sys::JsString {
-    get_message(messageName, substitutions, options)
+    get_message(message_name, substitutions, options)
 }
 #[wasm_bindgen]
 pub fn i18n_get_ui_language() -> ::js_sys::JsString {

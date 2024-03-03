@@ -49,13 +49,13 @@ impl ChromeApi {
             typ
         };
 
-        let ident_name = Ident::new(&param.name, Span::call_site());
+        let ident_name = Ident::new(&param.name.to_snake_case(), Span::call_site());
 
         quote!(#ident_name: #typ)
     }
 
     fn generate_arguments(param: &Parameter) -> TokenStream {
-        let ident_name = Ident::new(&param.name, Span::call_site());
+        let ident_name = Ident::new(&param.name.to_snake_case(), Span::call_site());
 
         quote!(#ident_name)
     }

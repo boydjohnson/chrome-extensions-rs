@@ -20,15 +20,15 @@ extern "C" {
     #[wasm_bindgen(js_name = "desktopCapture.chooseDesktopMedia")]
     pub fn choose_desktop_media(
         sources: ::js_sys::Array,
-        targetTab: Option<crate::tabs::Tab>,
+        target_tab: Option<crate::tabs::Tab>,
         options: Option<::js_sys::Object>,
     ) -> ::js_sys::Number;
 }
 #[wasm_bindgen]
 pub fn desktop_capture_choose_desktop_media(
     sources: ::js_sys::Array,
-    targetTab: Option<crate::tabs::Tab>,
+    target_tab: Option<crate::tabs::Tab>,
     options: Option<::js_sys::Object>,
 ) -> ::js_sys::Number {
-    choose_desktop_media(sources, targetTab, options)
+    choose_desktop_media(sources, target_tab, options)
 }

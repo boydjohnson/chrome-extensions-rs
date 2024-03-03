@@ -195,8 +195,8 @@ extern "C" {
     #[doc = "Attempts to connect listeners within an extension/app (such as the background page), or other extensions/apps. This is useful for content scripts connecting to their extension processes, inter-app/extension communication, and <a href=\"/docs/extensions/manifest/externally_connectable\">web messaging</a>. Note that this does not connect to any listeners in a content script. Extensions may connect to content scripts embedded in tabs via $(ref:tabs.connect)."]
     #[wasm_bindgen(js_name = "runtime.connect")]
     pub fn connect(
-        extensionId: Option<::js_sys::JsString>,
-        connectInfo: Option<::js_sys::Object>,
+        extension_id: Option<::js_sys::JsString>,
+        connect_info: Option<::js_sys::Object>,
     ) -> Port;
     #[doc = "Connects to a native application in the host machine. This method requires the <code>\"nativeMessaging\"</code> permission. See <a href=\"develop/concepts/native-messaging\">Native Messaging</a> for more information."]
     #[wasm_bindgen(js_name = "runtime.connectNative")]
@@ -204,14 +204,14 @@ extern "C" {
     #[doc = "Sends a single message to event listeners within your extension/app or a different extension/app. Similar to $(ref:runtime.connect) but only sends a single message, with an optional response. If sending to your extension, the $(ref:runtime.onMessage) event will be fired in every frame of your extension (except for the sender's frame), or $(ref:runtime.onMessageExternal), if a different extension. Note that extensions cannot send messages to content scripts using this method. To send messages to content scripts, use $(ref:tabs.sendMessage)."]
     #[wasm_bindgen(js_name = "runtime.sendMessage", catch)]
     pub async fn send_message(
-        extensionId: Option<::js_sys::JsString>,
+        extension_id: Option<::js_sys::JsString>,
         message: ::wasm_bindgen::JsValue,
         options: Option<::js_sys::Object>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Sends a single message to event listeners within your extension/app or a different extension/app. Similar to $(ref:runtime.connect) but only sends a single message, with an optional response. If sending to your extension, the $(ref:runtime.onMessage) event will be fired in every frame of your extension (except for the sender's frame), or $(ref:runtime.onMessageExternal), if a different extension. Note that extensions cannot send messages to content scripts using this method. To send messages to content scripts, use $(ref:tabs.sendMessage)."]
     #[wasm_bindgen(js_name = "runtime.sendMessage")]
     pub fn send_message_callback(
-        extensionId: Option<::js_sys::JsString>,
+        extension_id: Option<::js_sys::JsString>,
         message: ::wasm_bindgen::JsValue,
         options: Option<::js_sys::Object>,
         callback: &::js_sys::Function,
@@ -310,10 +310,10 @@ pub fn runtime_restart_after_delay_callback(
 }
 #[wasm_bindgen]
 pub fn runtime_connect(
-    extensionId: Option<::js_sys::JsString>,
-    connectInfo: Option<::js_sys::Object>,
+    extension_id: Option<::js_sys::JsString>,
+    connect_info: Option<::js_sys::Object>,
 ) -> Port {
-    connect(extensionId, connectInfo)
+    connect(extension_id, connect_info)
 }
 #[wasm_bindgen]
 pub fn runtime_connect_native(application: ::js_sys::JsString) -> Port {
@@ -321,20 +321,20 @@ pub fn runtime_connect_native(application: ::js_sys::JsString) -> Port {
 }
 #[wasm_bindgen]
 pub async fn runtime_send_message(
-    extensionId: Option<::js_sys::JsString>,
+    extension_id: Option<::js_sys::JsString>,
     message: ::wasm_bindgen::JsValue,
     options: Option<::js_sys::Object>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    send_message(extensionId, message, options).await
+    send_message(extension_id, message, options).await
 }
 #[wasm_bindgen]
 pub fn runtime_send_message_callback(
-    extensionId: Option<::js_sys::JsString>,
+    extension_id: Option<::js_sys::JsString>,
     message: ::wasm_bindgen::JsValue,
     options: Option<::js_sys::Object>,
     callback: &::js_sys::Function,
 ) {
-    send_message_callback(extensionId, message, options, callback);
+    send_message_callback(extension_id, message, options, callback);
 }
 #[wasm_bindgen]
 pub async fn runtime_send_native_message(

@@ -126,11 +126,11 @@ extern "C" {
     #[doc = "Retrieves details about the specified tab."]
     #[wasm_bindgen(js_name = "tabs.get", catch)]
     pub async fn get(
-        tabId: ::js_sys::Number,
+        tab_id: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Retrieves details about the specified tab."]
     #[wasm_bindgen(js_name = "tabs.get")]
-    pub fn get_callback(tabId: ::js_sys::Number, callback: &::js_sys::Function);
+    pub fn get_callback(tab_id: ::js_sys::Number, callback: &::js_sys::Function);
     #[doc = "Gets the tab that this script call is being made from. Returns <code>undefined</code> if called from a non-tab context (for example, a background page or popup view)."]
     #[wasm_bindgen(js_name = "tabs.getCurrent", catch)]
     pub async fn get_current() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
@@ -140,33 +140,33 @@ extern "C" {
     #[doc = "Connects to the content script(s) in the specified tab. The $(ref:runtime.onConnect) event is fired in each content script running in the specified tab for the current extension. For more details, see <a href='messaging'>Content Script Messaging</a>."]
     #[wasm_bindgen(js_name = "tabs.connect")]
     pub fn connect(
-        tabId: ::js_sys::Number,
-        connectInfo: Option<::js_sys::Object>,
+        tab_id: ::js_sys::Number,
+        connect_info: Option<::js_sys::Object>,
     ) -> crate::runtime::Port;
     #[doc = "Sends a single request to the content script(s) in the specified tab, with an optional callback to run when a response is sent back.  The $(ref:extension.onRequest) event is fired in each content script running in the specified tab for the current extension."]
     #[wasm_bindgen(js_name = "tabs.sendRequest", catch)]
     pub async fn send_request(
-        tabId: ::js_sys::Number,
+        tab_id: ::js_sys::Number,
         request: ::wasm_bindgen::JsValue,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Sends a single request to the content script(s) in the specified tab, with an optional callback to run when a response is sent back.  The $(ref:extension.onRequest) event is fired in each content script running in the specified tab for the current extension."]
     #[wasm_bindgen(js_name = "tabs.sendRequest")]
     pub fn send_request_callback(
-        tabId: ::js_sys::Number,
+        tab_id: ::js_sys::Number,
         request: ::wasm_bindgen::JsValue,
         callback: &::js_sys::Function,
     );
     #[doc = "Sends a single message to the content script(s) in the specified tab, with an optional callback to run when a response is sent back.  The $(ref:runtime.onMessage) event is fired in each content script running in the specified tab for the current extension."]
     #[wasm_bindgen(js_name = "tabs.sendMessage", catch)]
     pub async fn send_message(
-        tabId: ::js_sys::Number,
+        tab_id: ::js_sys::Number,
         message: ::wasm_bindgen::JsValue,
         options: Option<::js_sys::Object>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Sends a single message to the content script(s) in the specified tab, with an optional callback to run when a response is sent back.  The $(ref:runtime.onMessage) event is fired in each content script running in the specified tab for the current extension."]
     #[wasm_bindgen(js_name = "tabs.sendMessage")]
     pub fn send_message_callback(
-        tabId: ::js_sys::Number,
+        tab_id: ::js_sys::Number,
         message: ::wasm_bindgen::JsValue,
         options: Option<::js_sys::Object>,
         callback: &::js_sys::Function,
@@ -174,99 +174,102 @@ extern "C" {
     #[doc = "Gets the tab that is selected in the specified window."]
     #[wasm_bindgen(js_name = "tabs.getSelected", catch)]
     pub async fn get_selected(
-        windowId: Option<::js_sys::Number>,
+        window_id: Option<::js_sys::Number>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Gets the tab that is selected in the specified window."]
     #[wasm_bindgen(js_name = "tabs.getSelected")]
-    pub fn get_selected_callback(windowId: Option<::js_sys::Number>, callback: &::js_sys::Function);
+    pub fn get_selected_callback(
+        window_id: Option<::js_sys::Number>,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Gets details about all tabs in the specified window."]
     #[wasm_bindgen(js_name = "tabs.getAllInWindow", catch)]
     pub async fn get_all_in_window(
-        windowId: Option<::js_sys::Number>,
+        window_id: Option<::js_sys::Number>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Gets details about all tabs in the specified window."]
     #[wasm_bindgen(js_name = "tabs.getAllInWindow")]
     pub fn get_all_in_window_callback(
-        windowId: Option<::js_sys::Number>,
+        window_id: Option<::js_sys::Number>,
         callback: &::js_sys::Function,
     );
     #[doc = "Creates a new tab."]
     #[wasm_bindgen(js_name = "tabs.create", catch)]
     pub async fn create(
-        createProperties: ::js_sys::Object,
+        create_properties: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Creates a new tab."]
     #[wasm_bindgen(js_name = "tabs.create")]
-    pub fn create_callback(createProperties: ::js_sys::Object, callback: &::js_sys::Function);
+    pub fn create_callback(create_properties: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Duplicates a tab."]
     #[wasm_bindgen(js_name = "tabs.duplicate", catch)]
     pub async fn duplicate(
-        tabId: ::js_sys::Number,
+        tab_id: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Duplicates a tab."]
     #[wasm_bindgen(js_name = "tabs.duplicate")]
-    pub fn duplicate_callback(tabId: ::js_sys::Number, callback: &::js_sys::Function);
+    pub fn duplicate_callback(tab_id: ::js_sys::Number, callback: &::js_sys::Function);
     #[doc = "Gets all tabs that have the specified properties, or all tabs if no properties are specified."]
     #[wasm_bindgen(js_name = "tabs.query", catch)]
     pub async fn query(
-        queryInfo: ::js_sys::Object,
+        query_info: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Gets all tabs that have the specified properties, or all tabs if no properties are specified."]
     #[wasm_bindgen(js_name = "tabs.query")]
-    pub fn query_callback(queryInfo: ::js_sys::Object, callback: &::js_sys::Function);
+    pub fn query_callback(query_info: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Highlights the given tabs and focuses on the first of group. Will appear to do nothing if the specified tab is currently active."]
     #[wasm_bindgen(js_name = "tabs.highlight", catch)]
     pub async fn highlight(
-        highlightInfo: ::js_sys::Object,
+        highlight_info: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Highlights the given tabs and focuses on the first of group. Will appear to do nothing if the specified tab is currently active."]
     #[wasm_bindgen(js_name = "tabs.highlight")]
-    pub fn highlight_callback(highlightInfo: ::js_sys::Object, callback: &::js_sys::Function);
+    pub fn highlight_callback(highlight_info: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Modifies the properties of a tab. Properties that are not specified in <var>updateProperties</var> are not modified."]
     #[wasm_bindgen(js_name = "tabs.update", catch)]
     pub async fn update(
-        tabId: Option<::js_sys::Number>,
-        updateProperties: ::js_sys::Object,
+        tab_id: Option<::js_sys::Number>,
+        update_properties: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Modifies the properties of a tab. Properties that are not specified in <var>updateProperties</var> are not modified."]
     #[wasm_bindgen(js_name = "tabs.update")]
     pub fn update_callback(
-        tabId: Option<::js_sys::Number>,
-        updateProperties: ::js_sys::Object,
+        tab_id: Option<::js_sys::Number>,
+        update_properties: ::js_sys::Object,
         callback: &::js_sys::Function,
     );
     #[doc = "Moves one or more tabs to a new position within its window, or to a new window. Note that tabs can only be moved to and from normal (window.type === \"normal\") windows."]
     #[wasm_bindgen(js_name = "tabs.move", catch)]
     pub async fn move_(
-        tabIds: ::wasm_bindgen::JsValue,
-        moveProperties: ::js_sys::Object,
+        tab_ids: ::wasm_bindgen::JsValue,
+        move_properties: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Moves one or more tabs to a new position within its window, or to a new window. Note that tabs can only be moved to and from normal (window.type === \"normal\") windows."]
     #[wasm_bindgen(js_name = "tabs.move")]
     pub fn move_callback(
-        tabIds: ::wasm_bindgen::JsValue,
-        moveProperties: ::js_sys::Object,
+        tab_ids: ::wasm_bindgen::JsValue,
+        move_properties: ::js_sys::Object,
         callback: &::js_sys::Function,
     );
     #[doc = "Reload a tab."]
     #[wasm_bindgen(js_name = "tabs.reload", catch)]
     pub async fn reload(
-        tabId: Option<::js_sys::Number>,
-        reloadProperties: Option<::js_sys::Object>,
+        tab_id: Option<::js_sys::Number>,
+        reload_properties: Option<::js_sys::Object>,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Reload a tab."]
     #[wasm_bindgen(js_name = "tabs.reload")]
     pub fn reload_callback(
-        tabId: Option<::js_sys::Number>,
-        reloadProperties: Option<::js_sys::Object>,
+        tab_id: Option<::js_sys::Number>,
+        reload_properties: Option<::js_sys::Object>,
         callback: &::js_sys::Function,
     );
     #[doc = "Closes one or more tabs."]
     #[wasm_bindgen(js_name = "tabs.remove", catch)]
-    pub async fn remove(tabIds: ::wasm_bindgen::JsValue) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn remove(tab_ids: ::wasm_bindgen::JsValue) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Closes one or more tabs."]
     #[wasm_bindgen(js_name = "tabs.remove")]
-    pub fn remove_callback(tabIds: ::wasm_bindgen::JsValue, callback: &::js_sys::Function);
+    pub fn remove_callback(tab_ids: ::wasm_bindgen::JsValue, callback: &::js_sys::Function);
     #[doc = "Adds one or more tabs to a specified group, or if no group is specified, adds the given tabs to a newly created group."]
     #[wasm_bindgen(js_name = "tabs.group", catch)]
     pub async fn group(
@@ -277,146 +280,150 @@ extern "C" {
     pub fn group_callback(options: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Removes one or more tabs from their respective groups. If any groups become empty, they are deleted."]
     #[wasm_bindgen(js_name = "tabs.ungroup", catch)]
-    pub async fn ungroup(tabIds: ::wasm_bindgen::JsValue) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn ungroup(tab_ids: ::wasm_bindgen::JsValue) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Removes one or more tabs from their respective groups. If any groups become empty, they are deleted."]
     #[wasm_bindgen(js_name = "tabs.ungroup")]
-    pub fn ungroup_callback(tabIds: ::wasm_bindgen::JsValue, callback: &::js_sys::Function);
+    pub fn ungroup_callback(tab_ids: ::wasm_bindgen::JsValue, callback: &::js_sys::Function);
     #[doc = "Detects the primary language of the content in a tab."]
     #[wasm_bindgen(js_name = "tabs.detectLanguage", catch)]
     pub async fn detect_language(
-        tabId: Option<::js_sys::Number>,
+        tab_id: Option<::js_sys::Number>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Detects the primary language of the content in a tab."]
     #[wasm_bindgen(js_name = "tabs.detectLanguage")]
-    pub fn detect_language_callback(tabId: Option<::js_sys::Number>, callback: &::js_sys::Function);
+    pub fn detect_language_callback(
+        tab_id: Option<::js_sys::Number>,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Captures the visible area of the currently active tab in the specified window. In order to call this method, the extension must have either the <a href='develop/concepts/declare-permissions'>&lt;all_urls&gt;</a> permission or the <a href='develop/concepts/activeTab'>activeTab</a> permission. In addition to sites that extensions can normally access, this method allows extensions to capture sensitive sites that are otherwise restricted, including chrome:-scheme pages, other extensions' pages, and data: URLs. These sensitive sites can only be captured with the activeTab permission. File URLs may be captured only if the extension has been granted file access."]
     #[wasm_bindgen(js_name = "tabs.captureVisibleTab", catch)]
     pub async fn capture_visible_tab(
-        windowId: Option<::js_sys::Number>,
+        window_id: Option<::js_sys::Number>,
         options: Option<crate::extension_types::ImageDetails>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Captures the visible area of the currently active tab in the specified window. In order to call this method, the extension must have either the <a href='develop/concepts/declare-permissions'>&lt;all_urls&gt;</a> permission or the <a href='develop/concepts/activeTab'>activeTab</a> permission. In addition to sites that extensions can normally access, this method allows extensions to capture sensitive sites that are otherwise restricted, including chrome:-scheme pages, other extensions' pages, and data: URLs. These sensitive sites can only be captured with the activeTab permission. File URLs may be captured only if the extension has been granted file access."]
     #[wasm_bindgen(js_name = "tabs.captureVisibleTab")]
     pub fn capture_visible_tab_callback(
-        windowId: Option<::js_sys::Number>,
+        window_id: Option<::js_sys::Number>,
         options: Option<crate::extension_types::ImageDetails>,
         callback: &::js_sys::Function,
     );
     #[doc = "Injects JavaScript code into a page. For details, see the <a href='/docs/extensions/develop/concepts/content-scripts#programmatic'>programmatic injection</a> section of the content scripts doc."]
     #[wasm_bindgen(js_name = "tabs.executeScript", catch)]
     pub async fn execute_script(
-        tabId: Option<::js_sys::Number>,
+        tab_id: Option<::js_sys::Number>,
         details: crate::extension_types::InjectDetails,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Injects JavaScript code into a page. For details, see the <a href='/docs/extensions/develop/concepts/content-scripts#programmatic'>programmatic injection</a> section of the content scripts doc."]
     #[wasm_bindgen(js_name = "tabs.executeScript")]
     pub fn execute_script_callback(
-        tabId: Option<::js_sys::Number>,
+        tab_id: Option<::js_sys::Number>,
         details: crate::extension_types::InjectDetails,
         callback: &::js_sys::Function,
     );
     #[doc = "Injects CSS into a page. Styles inserted with this method can be removed with $(ref:scripting.removeCSS). For details, see the <a href='/docs/extensions/develop/concepts/content-scripts#programmatic'>programmatic injection</a> section of the content scripts doc."]
     #[wasm_bindgen(js_name = "tabs.insertCSS", catch)]
     pub async fn insert_css(
-        tabId: Option<::js_sys::Number>,
+        tab_id: Option<::js_sys::Number>,
         details: crate::extension_types::InjectDetails,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Injects CSS into a page. Styles inserted with this method can be removed with $(ref:scripting.removeCSS). For details, see the <a href='/docs/extensions/develop/concepts/content-scripts#programmatic'>programmatic injection</a> section of the content scripts doc."]
     #[wasm_bindgen(js_name = "tabs.insertCSS")]
     pub fn insert_css_callback(
-        tabId: Option<::js_sys::Number>,
+        tab_id: Option<::js_sys::Number>,
         details: crate::extension_types::InjectDetails,
         callback: &::js_sys::Function,
     );
     #[doc = "Removes from a page CSS that was previously injected by a call to $(ref:scripting.insertCSS)."]
     #[wasm_bindgen(js_name = "tabs.removeCSS", catch)]
     pub async fn remove_css(
-        tabId: Option<::js_sys::Number>,
+        tab_id: Option<::js_sys::Number>,
         details: crate::extension_types::DeleteInjectionDetails,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Removes from a page CSS that was previously injected by a call to $(ref:scripting.insertCSS)."]
     #[wasm_bindgen(js_name = "tabs.removeCSS")]
     pub fn remove_css_callback(
-        tabId: Option<::js_sys::Number>,
+        tab_id: Option<::js_sys::Number>,
         details: crate::extension_types::DeleteInjectionDetails,
         callback: &::js_sys::Function,
     );
     #[doc = "Zooms a specified tab."]
     #[wasm_bindgen(js_name = "tabs.setZoom", catch)]
     pub async fn set_zoom(
-        tabId: Option<::js_sys::Number>,
-        zoomFactor: ::js_sys::Number,
+        tab_id: Option<::js_sys::Number>,
+        zoom_factor: ::js_sys::Number,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Zooms a specified tab."]
     #[wasm_bindgen(js_name = "tabs.setZoom")]
     pub fn set_zoom_callback(
-        tabId: Option<::js_sys::Number>,
-        zoomFactor: ::js_sys::Number,
+        tab_id: Option<::js_sys::Number>,
+        zoom_factor: ::js_sys::Number,
         callback: &::js_sys::Function,
     );
     #[doc = "Gets the current zoom factor of a specified tab."]
     #[wasm_bindgen(js_name = "tabs.getZoom", catch)]
     pub async fn get_zoom(
-        tabId: Option<::js_sys::Number>,
+        tab_id: Option<::js_sys::Number>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Gets the current zoom factor of a specified tab."]
     #[wasm_bindgen(js_name = "tabs.getZoom")]
-    pub fn get_zoom_callback(tabId: Option<::js_sys::Number>, callback: &::js_sys::Function);
+    pub fn get_zoom_callback(tab_id: Option<::js_sys::Number>, callback: &::js_sys::Function);
     #[doc = "Sets the zoom settings for a specified tab, which define how zoom changes are handled. These settings are reset to defaults upon navigating the tab."]
     #[wasm_bindgen(js_name = "tabs.setZoomSettings", catch)]
     pub async fn set_zoom_settings(
-        tabId: Option<::js_sys::Number>,
-        zoomSettings: ZoomSettings,
+        tab_id: Option<::js_sys::Number>,
+        zoom_settings: ZoomSettings,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Sets the zoom settings for a specified tab, which define how zoom changes are handled. These settings are reset to defaults upon navigating the tab."]
     #[wasm_bindgen(js_name = "tabs.setZoomSettings")]
     pub fn set_zoom_settings_callback(
-        tabId: Option<::js_sys::Number>,
-        zoomSettings: ZoomSettings,
+        tab_id: Option<::js_sys::Number>,
+        zoom_settings: ZoomSettings,
         callback: &::js_sys::Function,
     );
     #[doc = "Gets the current zoom settings of a specified tab."]
     #[wasm_bindgen(js_name = "tabs.getZoomSettings", catch)]
     pub async fn get_zoom_settings(
-        tabId: Option<::js_sys::Number>,
+        tab_id: Option<::js_sys::Number>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Gets the current zoom settings of a specified tab."]
     #[wasm_bindgen(js_name = "tabs.getZoomSettings")]
     pub fn get_zoom_settings_callback(
-        tabId: Option<::js_sys::Number>,
+        tab_id: Option<::js_sys::Number>,
         callback: &::js_sys::Function,
     );
     #[doc = "Discards a tab from memory. Discarded tabs are still visible on the tab strip and are reloaded when activated."]
     #[wasm_bindgen(js_name = "tabs.discard", catch)]
     pub async fn discard(
-        tabId: Option<::js_sys::Number>,
+        tab_id: Option<::js_sys::Number>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Discards a tab from memory. Discarded tabs are still visible on the tab strip and are reloaded when activated."]
     #[wasm_bindgen(js_name = "tabs.discard")]
-    pub fn discard_callback(tabId: Option<::js_sys::Number>, callback: &::js_sys::Function);
+    pub fn discard_callback(tab_id: Option<::js_sys::Number>, callback: &::js_sys::Function);
     #[doc = "Go foward to the next page, if one is available."]
     #[wasm_bindgen(js_name = "tabs.goForward", catch)]
-    pub async fn go_forward(tabId: Option<::js_sys::Number>)
-        -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn go_forward(
+        tab_id: Option<::js_sys::Number>,
+    ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Go foward to the next page, if one is available."]
     #[wasm_bindgen(js_name = "tabs.goForward")]
-    pub fn go_forward_callback(tabId: Option<::js_sys::Number>, callback: &::js_sys::Function);
+    pub fn go_forward_callback(tab_id: Option<::js_sys::Number>, callback: &::js_sys::Function);
     #[doc = "Go back to the previous page, if one is available."]
     #[wasm_bindgen(js_name = "tabs.goBack", catch)]
-    pub async fn go_back(tabId: Option<::js_sys::Number>) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn go_back(tab_id: Option<::js_sys::Number>) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Go back to the previous page, if one is available."]
     #[wasm_bindgen(js_name = "tabs.goBack")]
-    pub fn go_back_callback(tabId: Option<::js_sys::Number>, callback: &::js_sys::Function);
+    pub fn go_back_callback(tab_id: Option<::js_sys::Number>, callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn tabs_get(
-    tabId: ::js_sys::Number,
+    tab_id: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    get(tabId).await
+    get(tab_id).await
 }
 #[wasm_bindgen]
-pub fn tabs_get_callback(tabId: ::js_sys::Number, callback: &::js_sys::Function) {
-    get_callback(tabId, callback);
+pub fn tabs_get_callback(tab_id: ::js_sys::Number, callback: &::js_sys::Function) {
+    get_callback(tab_id, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_get_current() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
@@ -428,161 +435,161 @@ pub fn tabs_get_current_callback(callback: &::js_sys::Function) {
 }
 #[wasm_bindgen]
 pub fn tabs_connect(
-    tabId: ::js_sys::Number,
-    connectInfo: Option<::js_sys::Object>,
+    tab_id: ::js_sys::Number,
+    connect_info: Option<::js_sys::Object>,
 ) -> crate::runtime::Port {
-    connect(tabId, connectInfo)
+    connect(tab_id, connect_info)
 }
 #[wasm_bindgen]
 pub async fn tabs_send_request(
-    tabId: ::js_sys::Number,
+    tab_id: ::js_sys::Number,
     request: ::wasm_bindgen::JsValue,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    send_request(tabId, request).await
+    send_request(tab_id, request).await
 }
 #[wasm_bindgen]
 pub fn tabs_send_request_callback(
-    tabId: ::js_sys::Number,
+    tab_id: ::js_sys::Number,
     request: ::wasm_bindgen::JsValue,
     callback: &::js_sys::Function,
 ) {
-    send_request_callback(tabId, request, callback);
+    send_request_callback(tab_id, request, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_send_message(
-    tabId: ::js_sys::Number,
+    tab_id: ::js_sys::Number,
     message: ::wasm_bindgen::JsValue,
     options: Option<::js_sys::Object>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    send_message(tabId, message, options).await
+    send_message(tab_id, message, options).await
 }
 #[wasm_bindgen]
 pub fn tabs_send_message_callback(
-    tabId: ::js_sys::Number,
+    tab_id: ::js_sys::Number,
     message: ::wasm_bindgen::JsValue,
     options: Option<::js_sys::Object>,
     callback: &::js_sys::Function,
 ) {
-    send_message_callback(tabId, message, options, callback);
+    send_message_callback(tab_id, message, options, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_get_selected(
-    windowId: Option<::js_sys::Number>,
+    window_id: Option<::js_sys::Number>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    get_selected(windowId).await
+    get_selected(window_id).await
 }
 #[wasm_bindgen]
 pub fn tabs_get_selected_callback(
-    windowId: Option<::js_sys::Number>,
+    window_id: Option<::js_sys::Number>,
     callback: &::js_sys::Function,
 ) {
-    get_selected_callback(windowId, callback);
+    get_selected_callback(window_id, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_get_all_in_window(
-    windowId: Option<::js_sys::Number>,
+    window_id: Option<::js_sys::Number>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    get_all_in_window(windowId).await
+    get_all_in_window(window_id).await
 }
 #[wasm_bindgen]
 pub fn tabs_get_all_in_window_callback(
-    windowId: Option<::js_sys::Number>,
+    window_id: Option<::js_sys::Number>,
     callback: &::js_sys::Function,
 ) {
-    get_all_in_window_callback(windowId, callback);
+    get_all_in_window_callback(window_id, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_create(
-    createProperties: ::js_sys::Object,
+    create_properties: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    create(createProperties).await
+    create(create_properties).await
 }
 #[wasm_bindgen]
-pub fn tabs_create_callback(createProperties: ::js_sys::Object, callback: &::js_sys::Function) {
-    create_callback(createProperties, callback);
+pub fn tabs_create_callback(create_properties: ::js_sys::Object, callback: &::js_sys::Function) {
+    create_callback(create_properties, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_duplicate(
-    tabId: ::js_sys::Number,
+    tab_id: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    duplicate(tabId).await
+    duplicate(tab_id).await
 }
 #[wasm_bindgen]
-pub fn tabs_duplicate_callback(tabId: ::js_sys::Number, callback: &::js_sys::Function) {
-    duplicate_callback(tabId, callback);
+pub fn tabs_duplicate_callback(tab_id: ::js_sys::Number, callback: &::js_sys::Function) {
+    duplicate_callback(tab_id, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_query(
-    queryInfo: ::js_sys::Object,
+    query_info: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    query(queryInfo).await
+    query(query_info).await
 }
 #[wasm_bindgen]
-pub fn tabs_query_callback(queryInfo: ::js_sys::Object, callback: &::js_sys::Function) {
-    query_callback(queryInfo, callback);
+pub fn tabs_query_callback(query_info: ::js_sys::Object, callback: &::js_sys::Function) {
+    query_callback(query_info, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_highlight(
-    highlightInfo: ::js_sys::Object,
+    highlight_info: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    highlight(highlightInfo).await
+    highlight(highlight_info).await
 }
 #[wasm_bindgen]
-pub fn tabs_highlight_callback(highlightInfo: ::js_sys::Object, callback: &::js_sys::Function) {
-    highlight_callback(highlightInfo, callback);
+pub fn tabs_highlight_callback(highlight_info: ::js_sys::Object, callback: &::js_sys::Function) {
+    highlight_callback(highlight_info, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_update(
-    tabId: Option<::js_sys::Number>,
-    updateProperties: ::js_sys::Object,
+    tab_id: Option<::js_sys::Number>,
+    update_properties: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    update(tabId, updateProperties).await
+    update(tab_id, update_properties).await
 }
 #[wasm_bindgen]
 pub fn tabs_update_callback(
-    tabId: Option<::js_sys::Number>,
-    updateProperties: ::js_sys::Object,
+    tab_id: Option<::js_sys::Number>,
+    update_properties: ::js_sys::Object,
     callback: &::js_sys::Function,
 ) {
-    update_callback(tabId, updateProperties, callback);
+    update_callback(tab_id, update_properties, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_move(
-    tabIds: ::wasm_bindgen::JsValue,
-    moveProperties: ::js_sys::Object,
+    tab_ids: ::wasm_bindgen::JsValue,
+    move_properties: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    move_(tabIds, moveProperties).await
+    move_(tab_ids, move_properties).await
 }
 #[wasm_bindgen]
 pub fn tabs_move_callback(
-    tabIds: ::wasm_bindgen::JsValue,
-    moveProperties: ::js_sys::Object,
+    tab_ids: ::wasm_bindgen::JsValue,
+    move_properties: ::js_sys::Object,
     callback: &::js_sys::Function,
 ) {
-    move_callback(tabIds, moveProperties, callback);
+    move_callback(tab_ids, move_properties, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_reload(
-    tabId: Option<::js_sys::Number>,
-    reloadProperties: Option<::js_sys::Object>,
+    tab_id: Option<::js_sys::Number>,
+    reload_properties: Option<::js_sys::Object>,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    reload(tabId, reloadProperties).await
+    reload(tab_id, reload_properties).await
 }
 #[wasm_bindgen]
 pub fn tabs_reload_callback(
-    tabId: Option<::js_sys::Number>,
-    reloadProperties: Option<::js_sys::Object>,
+    tab_id: Option<::js_sys::Number>,
+    reload_properties: Option<::js_sys::Object>,
     callback: &::js_sys::Function,
 ) {
-    reload_callback(tabId, reloadProperties, callback);
+    reload_callback(tab_id, reload_properties, callback);
 }
 #[wasm_bindgen]
-pub async fn tabs_remove(tabIds: ::wasm_bindgen::JsValue) -> Result<(), ::wasm_bindgen::JsValue> {
-    remove(tabIds).await
+pub async fn tabs_remove(tab_ids: ::wasm_bindgen::JsValue) -> Result<(), ::wasm_bindgen::JsValue> {
+    remove(tab_ids).await
 }
 #[wasm_bindgen]
-pub fn tabs_remove_callback(tabIds: ::wasm_bindgen::JsValue, callback: &::js_sys::Function) {
-    remove_callback(tabIds, callback);
+pub fn tabs_remove_callback(tab_ids: ::wasm_bindgen::JsValue, callback: &::js_sys::Function) {
+    remove_callback(tab_ids, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_group(
@@ -595,164 +602,164 @@ pub fn tabs_group_callback(options: ::js_sys::Object, callback: &::js_sys::Funct
     group_callback(options, callback);
 }
 #[wasm_bindgen]
-pub async fn tabs_ungroup(tabIds: ::wasm_bindgen::JsValue) -> Result<(), ::wasm_bindgen::JsValue> {
-    ungroup(tabIds).await
+pub async fn tabs_ungroup(tab_ids: ::wasm_bindgen::JsValue) -> Result<(), ::wasm_bindgen::JsValue> {
+    ungroup(tab_ids).await
 }
 #[wasm_bindgen]
-pub fn tabs_ungroup_callback(tabIds: ::wasm_bindgen::JsValue, callback: &::js_sys::Function) {
-    ungroup_callback(tabIds, callback);
+pub fn tabs_ungroup_callback(tab_ids: ::wasm_bindgen::JsValue, callback: &::js_sys::Function) {
+    ungroup_callback(tab_ids, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_detect_language(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    detect_language(tabId).await
+    detect_language(tab_id).await
 }
 #[wasm_bindgen]
 pub fn tabs_detect_language_callback(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
     callback: &::js_sys::Function,
 ) {
-    detect_language_callback(tabId, callback);
+    detect_language_callback(tab_id, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_capture_visible_tab(
-    windowId: Option<::js_sys::Number>,
+    window_id: Option<::js_sys::Number>,
     options: Option<crate::extension_types::ImageDetails>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    capture_visible_tab(windowId, options).await
+    capture_visible_tab(window_id, options).await
 }
 #[wasm_bindgen]
 pub fn tabs_capture_visible_tab_callback(
-    windowId: Option<::js_sys::Number>,
+    window_id: Option<::js_sys::Number>,
     options: Option<crate::extension_types::ImageDetails>,
     callback: &::js_sys::Function,
 ) {
-    capture_visible_tab_callback(windowId, options, callback);
+    capture_visible_tab_callback(window_id, options, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_execute_script(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
     details: crate::extension_types::InjectDetails,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    execute_script(tabId, details).await
+    execute_script(tab_id, details).await
 }
 #[wasm_bindgen]
 pub fn tabs_execute_script_callback(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
     details: crate::extension_types::InjectDetails,
     callback: &::js_sys::Function,
 ) {
-    execute_script_callback(tabId, details, callback);
+    execute_script_callback(tab_id, details, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_insert_css(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
     details: crate::extension_types::InjectDetails,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    insert_css(tabId, details).await
+    insert_css(tab_id, details).await
 }
 #[wasm_bindgen]
 pub fn tabs_insert_css_callback(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
     details: crate::extension_types::InjectDetails,
     callback: &::js_sys::Function,
 ) {
-    insert_css_callback(tabId, details, callback);
+    insert_css_callback(tab_id, details, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_remove_css(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
     details: crate::extension_types::DeleteInjectionDetails,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    remove_css(tabId, details).await
+    remove_css(tab_id, details).await
 }
 #[wasm_bindgen]
 pub fn tabs_remove_css_callback(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
     details: crate::extension_types::DeleteInjectionDetails,
     callback: &::js_sys::Function,
 ) {
-    remove_css_callback(tabId, details, callback);
+    remove_css_callback(tab_id, details, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_set_zoom(
-    tabId: Option<::js_sys::Number>,
-    zoomFactor: ::js_sys::Number,
+    tab_id: Option<::js_sys::Number>,
+    zoom_factor: ::js_sys::Number,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    set_zoom(tabId, zoomFactor).await
+    set_zoom(tab_id, zoom_factor).await
 }
 #[wasm_bindgen]
 pub fn tabs_set_zoom_callback(
-    tabId: Option<::js_sys::Number>,
-    zoomFactor: ::js_sys::Number,
+    tab_id: Option<::js_sys::Number>,
+    zoom_factor: ::js_sys::Number,
     callback: &::js_sys::Function,
 ) {
-    set_zoom_callback(tabId, zoomFactor, callback);
+    set_zoom_callback(tab_id, zoom_factor, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_get_zoom(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    get_zoom(tabId).await
+    get_zoom(tab_id).await
 }
 #[wasm_bindgen]
-pub fn tabs_get_zoom_callback(tabId: Option<::js_sys::Number>, callback: &::js_sys::Function) {
-    get_zoom_callback(tabId, callback);
+pub fn tabs_get_zoom_callback(tab_id: Option<::js_sys::Number>, callback: &::js_sys::Function) {
+    get_zoom_callback(tab_id, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_set_zoom_settings(
-    tabId: Option<::js_sys::Number>,
-    zoomSettings: ZoomSettings,
+    tab_id: Option<::js_sys::Number>,
+    zoom_settings: ZoomSettings,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    set_zoom_settings(tabId, zoomSettings).await
+    set_zoom_settings(tab_id, zoom_settings).await
 }
 #[wasm_bindgen]
 pub fn tabs_set_zoom_settings_callback(
-    tabId: Option<::js_sys::Number>,
-    zoomSettings: ZoomSettings,
+    tab_id: Option<::js_sys::Number>,
+    zoom_settings: ZoomSettings,
     callback: &::js_sys::Function,
 ) {
-    set_zoom_settings_callback(tabId, zoomSettings, callback);
+    set_zoom_settings_callback(tab_id, zoom_settings, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_get_zoom_settings(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    get_zoom_settings(tabId).await
+    get_zoom_settings(tab_id).await
 }
 #[wasm_bindgen]
 pub fn tabs_get_zoom_settings_callback(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
     callback: &::js_sys::Function,
 ) {
-    get_zoom_settings_callback(tabId, callback);
+    get_zoom_settings_callback(tab_id, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_discard(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    discard(tabId).await
+    discard(tab_id).await
 }
 #[wasm_bindgen]
-pub fn tabs_discard_callback(tabId: Option<::js_sys::Number>, callback: &::js_sys::Function) {
-    discard_callback(tabId, callback);
+pub fn tabs_discard_callback(tab_id: Option<::js_sys::Number>, callback: &::js_sys::Function) {
+    discard_callback(tab_id, callback);
 }
 #[wasm_bindgen]
 pub async fn tabs_go_forward(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    go_forward(tabId).await
+    go_forward(tab_id).await
 }
 #[wasm_bindgen]
-pub fn tabs_go_forward_callback(tabId: Option<::js_sys::Number>, callback: &::js_sys::Function) {
-    go_forward_callback(tabId, callback);
+pub fn tabs_go_forward_callback(tab_id: Option<::js_sys::Number>, callback: &::js_sys::Function) {
+    go_forward_callback(tab_id, callback);
 }
 #[wasm_bindgen]
-pub async fn tabs_go_back(tabId: Option<::js_sys::Number>) -> Result<(), ::wasm_bindgen::JsValue> {
-    go_back(tabId).await
+pub async fn tabs_go_back(tab_id: Option<::js_sys::Number>) -> Result<(), ::wasm_bindgen::JsValue> {
+    go_back(tab_id).await
 }
 #[wasm_bindgen]
-pub fn tabs_go_back_callback(tabId: Option<::js_sys::Number>, callback: &::js_sys::Function) {
-    go_back_callback(tabId, callback);
+pub fn tabs_go_back_callback(tab_id: Option<::js_sys::Number>, callback: &::js_sys::Function) {
+    go_back_callback(tab_id, callback);
 }

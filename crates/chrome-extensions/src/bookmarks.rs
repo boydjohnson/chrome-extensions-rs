@@ -61,11 +61,11 @@ extern "C" {
     #[doc = "Retrieves the specified BookmarkTreeNode(s)."]
     #[wasm_bindgen(js_name = "bookmarks.get", catch)]
     pub async fn get(
-        idOrIdList: ::wasm_bindgen::JsValue,
+        id_or_id_list: ::wasm_bindgen::JsValue,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Retrieves the specified BookmarkTreeNode(s)."]
     #[wasm_bindgen(js_name = "bookmarks.get")]
-    pub fn get_callback(idOrIdList: ::wasm_bindgen::JsValue, callback: &::js_sys::Function);
+    pub fn get_callback(id_or_id_list: ::wasm_bindgen::JsValue, callback: &::js_sys::Function);
     #[doc = "Retrieves the children of the specified BookmarkTreeNode id."]
     #[wasm_bindgen(js_name = "bookmarks.getChildren", catch)]
     pub async fn get_children(
@@ -77,11 +77,11 @@ extern "C" {
     #[doc = "Retrieves the recently added bookmarks."]
     #[wasm_bindgen(js_name = "bookmarks.getRecent", catch)]
     pub async fn get_recent(
-        numberOfItems: ::js_sys::Number,
+        number_of_items: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Retrieves the recently added bookmarks."]
     #[wasm_bindgen(js_name = "bookmarks.getRecent")]
-    pub fn get_recent_callback(numberOfItems: ::js_sys::Number, callback: &::js_sys::Function);
+    pub fn get_recent_callback(number_of_items: ::js_sys::Number, callback: &::js_sys::Function);
     #[doc = "Retrieves the entire Bookmarks hierarchy."]
     #[wasm_bindgen(js_name = "bookmarks.getTree", catch)]
     pub async fn get_tree() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
@@ -153,13 +153,16 @@ extern "C" {
 }
 #[wasm_bindgen]
 pub async fn bookmarks_get(
-    idOrIdList: ::wasm_bindgen::JsValue,
+    id_or_id_list: ::wasm_bindgen::JsValue,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    get(idOrIdList).await
+    get(id_or_id_list).await
 }
 #[wasm_bindgen]
-pub fn bookmarks_get_callback(idOrIdList: ::wasm_bindgen::JsValue, callback: &::js_sys::Function) {
-    get_callback(idOrIdList, callback);
+pub fn bookmarks_get_callback(
+    id_or_id_list: ::wasm_bindgen::JsValue,
+    callback: &::js_sys::Function,
+) {
+    get_callback(id_or_id_list, callback);
 }
 #[wasm_bindgen]
 pub async fn bookmarks_get_children(
@@ -173,16 +176,16 @@ pub fn bookmarks_get_children_callback(id: ::js_sys::JsString, callback: &::js_s
 }
 #[wasm_bindgen]
 pub async fn bookmarks_get_recent(
-    numberOfItems: ::js_sys::Number,
+    number_of_items: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    get_recent(numberOfItems).await
+    get_recent(number_of_items).await
 }
 #[wasm_bindgen]
 pub fn bookmarks_get_recent_callback(
-    numberOfItems: ::js_sys::Number,
+    number_of_items: ::js_sys::Number,
     callback: &::js_sys::Function,
 ) {
-    get_recent_callback(numberOfItems, callback);
+    get_recent_callback(number_of_items, callback);
 }
 #[wasm_bindgen]
 pub async fn bookmarks_get_tree() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {

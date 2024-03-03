@@ -88,27 +88,28 @@ extern "C" {
     pub fn visible(this: &CreateProperties) -> Option<::js_sys::Boolean>;
     #[doc = "Creates a new context menu item. If an error occurs during creation, it may not be detected until the creation callback fires; details will be in $(ref:runtime.lastError)."]
     #[wasm_bindgen(js_name = "contextMenus.create")]
-    pub fn create(createProperties: CreateProperties);
+    pub fn create(create_properties: CreateProperties);
     #[doc = "Updates a previously created context menu item."]
     #[wasm_bindgen(js_name = "contextMenus.update", catch)]
     pub async fn update(
         id: ::wasm_bindgen::JsValue,
-        updateProperties: ::js_sys::Object,
+        update_properties: ::js_sys::Object,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Updates a previously created context menu item."]
     #[wasm_bindgen(js_name = "contextMenus.update")]
     pub fn update_callback(
         id: ::wasm_bindgen::JsValue,
-        updateProperties: ::js_sys::Object,
+        update_properties: ::js_sys::Object,
         callback: &::js_sys::Function,
     );
     #[doc = "Removes a context menu item."]
     #[wasm_bindgen(js_name = "contextMenus.remove", catch)]
-    pub async fn remove(menuItemId: ::wasm_bindgen::JsValue)
-        -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn remove(
+        menu_item_id: ::wasm_bindgen::JsValue,
+    ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Removes a context menu item."]
     #[wasm_bindgen(js_name = "contextMenus.remove")]
-    pub fn remove_callback(menuItemId: ::wasm_bindgen::JsValue, callback: &::js_sys::Function);
+    pub fn remove_callback(menu_item_id: ::wasm_bindgen::JsValue, callback: &::js_sys::Function);
     #[doc = "Removes all context menu items added by this extension."]
     #[wasm_bindgen(js_name = "contextMenus.removeAll", catch)]
     pub async fn remove_all() -> Result<(), ::wasm_bindgen::JsValue>;
@@ -117,36 +118,36 @@ extern "C" {
     pub fn remove_all_callback(callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
-pub fn context_menus_create(createProperties: CreateProperties) {
-    create(createProperties)
+pub fn context_menus_create(create_properties: CreateProperties) {
+    create(create_properties)
 }
 #[wasm_bindgen]
 pub async fn context_menus_update(
     id: ::wasm_bindgen::JsValue,
-    updateProperties: ::js_sys::Object,
+    update_properties: ::js_sys::Object,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    update(id, updateProperties).await
+    update(id, update_properties).await
 }
 #[wasm_bindgen]
 pub fn context_menus_update_callback(
     id: ::wasm_bindgen::JsValue,
-    updateProperties: ::js_sys::Object,
+    update_properties: ::js_sys::Object,
     callback: &::js_sys::Function,
 ) {
-    update_callback(id, updateProperties, callback);
+    update_callback(id, update_properties, callback);
 }
 #[wasm_bindgen]
 pub async fn context_menus_remove(
-    menuItemId: ::wasm_bindgen::JsValue,
+    menu_item_id: ::wasm_bindgen::JsValue,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    remove(menuItemId).await
+    remove(menu_item_id).await
 }
 #[wasm_bindgen]
 pub fn context_menus_remove_callback(
-    menuItemId: ::wasm_bindgen::JsValue,
+    menu_item_id: ::wasm_bindgen::JsValue,
     callback: &::js_sys::Function,
 ) {
-    remove_callback(menuItemId, callback);
+    remove_callback(menu_item_id, callback);
 }
 #[wasm_bindgen]
 pub async fn context_menus_remove_all() -> Result<(), ::wasm_bindgen::JsValue> {

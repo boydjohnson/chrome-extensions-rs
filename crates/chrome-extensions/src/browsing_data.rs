@@ -79,13 +79,13 @@ extern "C" {
     #[wasm_bindgen(js_name = "browsingData.remove", catch)]
     pub async fn remove(
         options: RemovalOptions,
-        dataToRemove: DataTypeSet,
+        data_to_remove: DataTypeSet,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Clears various types of browsing data stored in a user's profile."]
     #[wasm_bindgen(js_name = "browsingData.remove")]
     pub fn remove_callback(
         options: RemovalOptions,
-        dataToRemove: DataTypeSet,
+        data_to_remove: DataTypeSet,
         callback: &::js_sys::Function,
     );
     #[doc = "Clears websites' appcache data."]
@@ -193,17 +193,17 @@ pub fn browsing_data_settings_callback(callback: &::js_sys::Function) {
 #[wasm_bindgen]
 pub async fn browsing_data_remove(
     options: RemovalOptions,
-    dataToRemove: DataTypeSet,
+    data_to_remove: DataTypeSet,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    remove(options, dataToRemove).await
+    remove(options, data_to_remove).await
 }
 #[wasm_bindgen]
 pub fn browsing_data_remove_callback(
     options: RemovalOptions,
-    dataToRemove: DataTypeSet,
+    data_to_remove: DataTypeSet,
     callback: &::js_sys::Function,
 ) {
-    remove_callback(options, dataToRemove, callback);
+    remove_callback(options, data_to_remove, callback);
 }
 #[wasm_bindgen]
 pub async fn browsing_data_remove_appcache(

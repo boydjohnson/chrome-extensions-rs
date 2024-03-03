@@ -88,16 +88,16 @@ extern "C" {
     pub fn get_badge_background_color_callback(details: TabDetails, callback: &::js_sys::Function);
     #[doc = "Enables the browser action for a tab. Defaults to enabled."]
     #[wasm_bindgen(js_name = "browserAction.enable", catch)]
-    pub async fn enable(tabId: Option<::js_sys::Number>) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn enable(tab_id: Option<::js_sys::Number>) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Enables the browser action for a tab. Defaults to enabled."]
     #[wasm_bindgen(js_name = "browserAction.enable")]
-    pub fn enable_callback(tabId: Option<::js_sys::Number>, callback: &::js_sys::Function);
+    pub fn enable_callback(tab_id: Option<::js_sys::Number>, callback: &::js_sys::Function);
     #[doc = "Disables the browser action for a tab."]
     #[wasm_bindgen(js_name = "browserAction.disable", catch)]
-    pub async fn disable(tabId: Option<::js_sys::Number>) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn disable(tab_id: Option<::js_sys::Number>) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Disables the browser action for a tab."]
     #[wasm_bindgen(js_name = "browserAction.disable")]
-    pub fn disable_callback(tabId: Option<::js_sys::Number>, callback: &::js_sys::Function);
+    pub fn disable_callback(tab_id: Option<::js_sys::Number>, callback: &::js_sys::Function);
     #[doc = "Opens the extension popup window in the active window but does not grant tab permissions."]
     #[wasm_bindgen(js_name = "browserAction.openPopup", catch)]
     pub async fn open_popup() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
@@ -206,29 +206,29 @@ pub fn browser_action_get_badge_background_color_callback(
 }
 #[wasm_bindgen]
 pub async fn browser_action_enable(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    enable(tabId).await
+    enable(tab_id).await
 }
 #[wasm_bindgen]
 pub fn browser_action_enable_callback(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
     callback: &::js_sys::Function,
 ) {
-    enable_callback(tabId, callback);
+    enable_callback(tab_id, callback);
 }
 #[wasm_bindgen]
 pub async fn browser_action_disable(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    disable(tabId).await
+    disable(tab_id).await
 }
 #[wasm_bindgen]
 pub fn browser_action_disable_callback(
-    tabId: Option<::js_sys::Number>,
+    tab_id: Option<::js_sys::Number>,
     callback: &::js_sys::Function,
 ) {
-    disable_callback(tabId, callback);
+    disable_callback(tab_id, callback);
 }
 #[wasm_bindgen]
 pub async fn browser_action_open_popup() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>

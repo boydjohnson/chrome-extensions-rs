@@ -144,12 +144,12 @@ extern "C" {
     #[doc = "Returns a list of <a href='develop/concepts/permission-warnings'>permission warnings</a> for the given extension manifest string. Note: This function can be used without requesting the 'management' permission in the manifest."]
     #[wasm_bindgen(js_name = "management.getPermissionWarningsByManifest", catch)]
     pub async fn get_permission_warnings_by_manifest(
-        manifestStr: ::js_sys::JsString,
+        manifest_str: ::js_sys::JsString,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Returns a list of <a href='develop/concepts/permission-warnings'>permission warnings</a> for the given extension manifest string. Note: This function can be used without requesting the 'management' permission in the manifest."]
     #[wasm_bindgen(js_name = "management.getPermissionWarningsByManifest")]
     pub fn get_permission_warnings_by_manifest_callback(
-        manifestStr: ::js_sys::JsString,
+        manifest_str: ::js_sys::JsString,
         callback: &::js_sys::Function,
     );
     #[doc = "Enables or disables an app or extension. In most cases this function must be called in the context of a user gesture (e.g. an onclick handler for a button), and may present the user with a native confirmation UI as a way of preventing abuse."]
@@ -206,13 +206,13 @@ extern "C" {
     #[wasm_bindgen(js_name = "management.setLaunchType", catch)]
     pub async fn set_launch_type(
         id: ::js_sys::JsString,
-        launchType: LaunchType,
+        launch_type: LaunchType,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Set the launch type of an app."]
     #[wasm_bindgen(js_name = "management.setLaunchType")]
     pub fn set_launch_type_callback(
         id: ::js_sys::JsString,
-        launchType: LaunchType,
+        launch_type: LaunchType,
         callback: &::js_sys::Function,
     );
     #[doc = "Generate an app for a URL. Returns the generated bookmark app."]
@@ -276,16 +276,16 @@ pub fn management_get_permission_warnings_by_id_callback(
 }
 #[wasm_bindgen]
 pub async fn management_get_permission_warnings_by_manifest(
-    manifestStr: ::js_sys::JsString,
+    manifest_str: ::js_sys::JsString,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    get_permission_warnings_by_manifest(manifestStr).await
+    get_permission_warnings_by_manifest(manifest_str).await
 }
 #[wasm_bindgen]
 pub fn management_get_permission_warnings_by_manifest_callback(
-    manifestStr: ::js_sys::JsString,
+    manifest_str: ::js_sys::JsString,
     callback: &::js_sys::Function,
 ) {
-    get_permission_warnings_by_manifest_callback(manifestStr, callback);
+    get_permission_warnings_by_manifest_callback(manifest_str, callback);
 }
 #[wasm_bindgen]
 pub async fn management_set_enabled(
@@ -354,17 +354,17 @@ pub fn management_create_app_shortcut_callback(
 #[wasm_bindgen]
 pub async fn management_set_launch_type(
     id: ::js_sys::JsString,
-    launchType: LaunchType,
+    launch_type: LaunchType,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    set_launch_type(id, launchType).await
+    set_launch_type(id, launch_type).await
 }
 #[wasm_bindgen]
 pub fn management_set_launch_type_callback(
     id: ::js_sys::JsString,
-    launchType: LaunchType,
+    launch_type: LaunchType,
     callback: &::js_sys::Function,
 ) {
-    set_launch_type_callback(id, launchType, callback);
+    set_launch_type_callback(id, launch_type, callback);
 }
 #[wasm_bindgen]
 pub async fn management_generate_app_for_link(

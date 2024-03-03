@@ -17,16 +17,16 @@ extern "C" {
     pub fn tabId(this: &TabDetails) -> Option<::js_sys::Number>;
     #[doc = "Shows the page action. The page action is shown whenever the tab is selected."]
     #[wasm_bindgen(js_name = "pageAction.show", catch)]
-    pub async fn show(tabId: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn show(tab_id: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Shows the page action. The page action is shown whenever the tab is selected."]
     #[wasm_bindgen(js_name = "pageAction.show")]
-    pub fn show_callback(tabId: ::js_sys::Number, callback: &::js_sys::Function);
+    pub fn show_callback(tab_id: ::js_sys::Number, callback: &::js_sys::Function);
     #[doc = "Hides the page action. Hidden page actions still appear in the Chrome toolbar, but are grayed out."]
     #[wasm_bindgen(js_name = "pageAction.hide", catch)]
-    pub async fn hide(tabId: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn hide(tab_id: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Hides the page action. Hidden page actions still appear in the Chrome toolbar, but are grayed out."]
     #[wasm_bindgen(js_name = "pageAction.hide")]
-    pub fn hide_callback(tabId: ::js_sys::Number, callback: &::js_sys::Function);
+    pub fn hide_callback(tab_id: ::js_sys::Number, callback: &::js_sys::Function);
     #[doc = "Sets the title of the page action. This is displayed in a tooltip over the page action."]
     #[wasm_bindgen(js_name = "pageAction.setTitle", catch)]
     pub async fn set_title(details: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue>;
@@ -63,20 +63,20 @@ extern "C" {
     pub fn get_popup_callback(details: TabDetails, callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
-pub async fn page_action_show(tabId: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue> {
-    show(tabId).await
+pub async fn page_action_show(tab_id: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue> {
+    show(tab_id).await
 }
 #[wasm_bindgen]
-pub fn page_action_show_callback(tabId: ::js_sys::Number, callback: &::js_sys::Function) {
-    show_callback(tabId, callback);
+pub fn page_action_show_callback(tab_id: ::js_sys::Number, callback: &::js_sys::Function) {
+    show_callback(tab_id, callback);
 }
 #[wasm_bindgen]
-pub async fn page_action_hide(tabId: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue> {
-    hide(tabId).await
+pub async fn page_action_hide(tab_id: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue> {
+    hide(tab_id).await
 }
 #[wasm_bindgen]
-pub fn page_action_hide_callback(tabId: ::js_sys::Number, callback: &::js_sys::Function) {
-    hide_callback(tabId, callback);
+pub fn page_action_hide_callback(tab_id: ::js_sys::Number, callback: &::js_sys::Function) {
+    hide_callback(tab_id, callback);
 }
 #[wasm_bindgen]
 pub async fn page_action_set_title(

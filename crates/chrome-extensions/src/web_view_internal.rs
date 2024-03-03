@@ -101,30 +101,30 @@ extern "C" {
     #[doc = "Callback that returns audio state."]
     #[wasm_bindgen(js_name = "webViewInternal.getAudioState", catch)]
     pub async fn get_audio_state(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Callback that returns audio state."]
     #[wasm_bindgen(js_name = "webViewInternal.getAudioState")]
-    pub fn get_audio_state_callback(instanceId: ::js_sys::Number, callback: &::js_sys::Function);
+    pub fn get_audio_state_callback(instance_id: ::js_sys::Number, callback: &::js_sys::Function);
     #[doc = "Callback that returns whether audio is muted."]
     #[wasm_bindgen(js_name = "webViewInternal.isAudioMuted", catch)]
     pub async fn is_audio_muted(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Callback that returns whether audio is muted."]
     #[wasm_bindgen(js_name = "webViewInternal.isAudioMuted")]
-    pub fn is_audio_muted_callback(instanceId: ::js_sys::Number, callback: &::js_sys::Function);
+    pub fn is_audio_muted_callback(instance_id: ::js_sys::Number, callback: &::js_sys::Function);
     #[doc = "Injects JavaScript code into a <webview> page."]
     #[wasm_bindgen(js_name = "webViewInternal.executeScript", catch)]
     pub async fn execute_script(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
         src: ::js_sys::JsString,
         details: crate::extension_types::InjectDetails,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Injects JavaScript code into a <webview> page."]
     #[wasm_bindgen(js_name = "webViewInternal.executeScript")]
     pub fn execute_script_callback(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
         src: ::js_sys::JsString,
         details: crate::extension_types::InjectDetails,
         callback: &::js_sys::Function,
@@ -132,14 +132,14 @@ extern "C" {
     #[doc = "Injects CSS into a <webview> page. For details, see the <a href='/extensions/content_scripts#pi'>programmatic injection</a> section of the content scripts doc."]
     #[wasm_bindgen(js_name = "webViewInternal.insertCSS", catch)]
     pub async fn insert_css(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
         src: ::js_sys::JsString,
         details: crate::extension_types::InjectDetails,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Injects CSS into a <webview> page. For details, see the <a href='/extensions/content_scripts#pi'>programmatic injection</a> section of the content scripts doc."]
     #[wasm_bindgen(js_name = "webViewInternal.insertCSS")]
     pub fn insert_css_callback(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
         src: ::js_sys::JsString,
         details: crate::extension_types::InjectDetails,
         callback: &::js_sys::Function,
@@ -147,375 +147,375 @@ extern "C" {
     #[doc = ""]
     #[wasm_bindgen(js_name = "webViewInternal.setZoom", catch)]
     pub async fn set_zoom(
-        instanceId: ::js_sys::Number,
-        zoomFactor: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
+        zoom_factor: ::js_sys::Number,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = ""]
     #[wasm_bindgen(js_name = "webViewInternal.setZoom")]
     pub fn set_zoom_callback(
-        instanceId: ::js_sys::Number,
-        zoomFactor: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
+        zoom_factor: ::js_sys::Number,
         callback: &::js_sys::Function,
     );
     #[doc = ""]
     #[wasm_bindgen(js_name = "webViewInternal.getZoom", catch)]
     pub async fn get_zoom(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = ""]
     #[wasm_bindgen(js_name = "webViewInternal.getZoom")]
-    pub fn get_zoom_callback(instanceId: ::js_sys::Number, callback: &::js_sys::Function);
+    pub fn get_zoom_callback(instance_id: ::js_sys::Number, callback: &::js_sys::Function);
     #[doc = "Sets the zoom mode of the webview."]
     #[wasm_bindgen(js_name = "webViewInternal.setZoomMode", catch)]
     pub async fn set_zoom_mode(
-        instanceId: ::js_sys::Number,
-        ZoomMode: ZoomMode,
+        instance_id: ::js_sys::Number,
+        zoom_mode: ZoomMode,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Sets the zoom mode of the webview."]
     #[wasm_bindgen(js_name = "webViewInternal.setZoomMode")]
     pub fn set_zoom_mode_callback(
-        instanceId: ::js_sys::Number,
-        ZoomMode: ZoomMode,
+        instance_id: ::js_sys::Number,
+        zoom_mode: ZoomMode,
         callback: &::js_sys::Function,
     );
     #[doc = "Gets the current zoom mode."]
     #[wasm_bindgen(js_name = "webViewInternal.getZoomMode", catch)]
     pub async fn get_zoom_mode(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Gets the current zoom mode."]
     #[wasm_bindgen(js_name = "webViewInternal.getZoomMode")]
-    pub fn get_zoom_mode_callback(instanceId: ::js_sys::Number, callback: &::js_sys::Function);
+    pub fn get_zoom_mode_callback(instance_id: ::js_sys::Number, callback: &::js_sys::Function);
     #[doc = "Initiates a find-in-page request."]
     #[wasm_bindgen(js_name = "webViewInternal.find", catch)]
     pub async fn find(
-        instanceId: ::js_sys::Number,
-        searchText: ::js_sys::JsString,
+        instance_id: ::js_sys::Number,
+        search_text: ::js_sys::JsString,
         options: Option<::js_sys::Object>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Initiates a find-in-page request."]
     #[wasm_bindgen(js_name = "webViewInternal.find")]
     pub fn find_callback(
-        instanceId: ::js_sys::Number,
-        searchText: ::js_sys::JsString,
+        instance_id: ::js_sys::Number,
+        search_text: ::js_sys::JsString,
         options: Option<::js_sys::Object>,
         callback: &::js_sys::Function,
     );
     #[doc = "Loads a data URL with a specified base URL used for relative links. Optionally, a virtual URL can be provided to be shown to the user instead of the data URL."]
     #[wasm_bindgen(js_name = "webViewInternal.loadDataWithBaseUrl", catch)]
     pub async fn load_data_with_base_url(
-        instanceId: ::js_sys::Number,
-        dataUrl: ::js_sys::JsString,
-        baseUrl: ::js_sys::JsString,
-        virtualUrl: Option<::js_sys::JsString>,
+        instance_id: ::js_sys::Number,
+        data_url: ::js_sys::JsString,
+        base_url: ::js_sys::JsString,
+        virtual_url: Option<::js_sys::JsString>,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Loads a data URL with a specified base URL used for relative links. Optionally, a virtual URL can be provided to be shown to the user instead of the data URL."]
     #[wasm_bindgen(js_name = "webViewInternal.loadDataWithBaseUrl")]
     pub fn load_data_with_base_url_callback(
-        instanceId: ::js_sys::Number,
-        dataUrl: ::js_sys::JsString,
-        baseUrl: ::js_sys::JsString,
-        virtualUrl: Option<::js_sys::JsString>,
+        instance_id: ::js_sys::Number,
+        data_url: ::js_sys::JsString,
+        base_url: ::js_sys::JsString,
+        virtual_url: Option<::js_sys::JsString>,
         callback: &::js_sys::Function,
     );
     #[doc = ""]
     #[wasm_bindgen(js_name = "webViewInternal.go", catch)]
     pub async fn go(
-        instanceId: ::js_sys::Number,
-        relativeIndex: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
+        relative_index: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = ""]
     #[wasm_bindgen(js_name = "webViewInternal.go")]
     pub fn go_callback(
-        instanceId: ::js_sys::Number,
-        relativeIndex: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
+        relative_index: ::js_sys::Number,
         callback: &::js_sys::Function,
     );
     #[doc = ""]
     #[wasm_bindgen(js_name = "webViewInternal.setPermission", catch)]
     pub async fn set_permission(
-        instanceId: ::js_sys::Number,
-        requestId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
+        request_id: ::js_sys::Number,
         action: SetPermissionAction,
-        userInput: Option<::js_sys::JsString>,
+        user_input: Option<::js_sys::JsString>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = ""]
     #[wasm_bindgen(js_name = "webViewInternal.setPermission")]
     pub fn set_permission_callback(
-        instanceId: ::js_sys::Number,
-        requestId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
+        request_id: ::js_sys::Number,
         action: SetPermissionAction,
-        userInput: Option<::js_sys::JsString>,
+        user_input: Option<::js_sys::JsString>,
         callback: &::js_sys::Function,
     );
     #[doc = "foo"]
     #[wasm_bindgen(js_name = "webViewInternal.captureVisibleRegion", catch)]
     pub async fn capture_visible_region(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
         options: Option<crate::extension_types::ImageDetails>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "foo"]
     #[wasm_bindgen(js_name = "webViewInternal.captureVisibleRegion")]
     pub fn capture_visible_region_callback(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
         options: Option<crate::extension_types::ImageDetails>,
         callback: &::js_sys::Function,
     );
     #[doc = "Callback that returns whether whether spatial navigation is enabled for the webview."]
     #[wasm_bindgen(js_name = "webViewInternal.isSpatialNavigationEnabled", catch)]
     pub async fn is_spatial_navigation_enabled(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Callback that returns whether whether spatial navigation is enabled for the webview."]
     #[wasm_bindgen(js_name = "webViewInternal.isSpatialNavigationEnabled")]
     pub fn is_spatial_navigation_enabled_callback(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
         callback: &::js_sys::Function,
     );
     #[doc = "Clears various types of browsing data stored in a storage partition of a <webview>."]
     #[wasm_bindgen(js_name = "webViewInternal.clearData", catch)]
     pub async fn clear_data(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
         options: RemovalOptions,
-        dataToRemove: DataTypeSet,
+        data_to_remove: DataTypeSet,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Clears various types of browsing data stored in a storage partition of a <webview>."]
     #[wasm_bindgen(js_name = "webViewInternal.clearData")]
     pub fn clear_data_callback(
-        instanceId: ::js_sys::Number,
+        instance_id: ::js_sys::Number,
         options: RemovalOptions,
-        dataToRemove: DataTypeSet,
+        data_to_remove: DataTypeSet,
         callback: &::js_sys::Function,
     );
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_get_audio_state(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    get_audio_state(instanceId).await
+    get_audio_state(instance_id).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_get_audio_state_callback(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
     callback: &::js_sys::Function,
 ) {
-    get_audio_state_callback(instanceId, callback);
+    get_audio_state_callback(instance_id, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_is_audio_muted(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    is_audio_muted(instanceId).await
+    is_audio_muted(instance_id).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_is_audio_muted_callback(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
     callback: &::js_sys::Function,
 ) {
-    is_audio_muted_callback(instanceId, callback);
+    is_audio_muted_callback(instance_id, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_execute_script(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
     src: ::js_sys::JsString,
     details: crate::extension_types::InjectDetails,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    execute_script(instanceId, src, details).await
+    execute_script(instance_id, src, details).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_execute_script_callback(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
     src: ::js_sys::JsString,
     details: crate::extension_types::InjectDetails,
     callback: &::js_sys::Function,
 ) {
-    execute_script_callback(instanceId, src, details, callback);
+    execute_script_callback(instance_id, src, details, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_insert_css(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
     src: ::js_sys::JsString,
     details: crate::extension_types::InjectDetails,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    insert_css(instanceId, src, details).await
+    insert_css(instance_id, src, details).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_insert_css_callback(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
     src: ::js_sys::JsString,
     details: crate::extension_types::InjectDetails,
     callback: &::js_sys::Function,
 ) {
-    insert_css_callback(instanceId, src, details, callback);
+    insert_css_callback(instance_id, src, details, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_set_zoom(
-    instanceId: ::js_sys::Number,
-    zoomFactor: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
+    zoom_factor: ::js_sys::Number,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    set_zoom(instanceId, zoomFactor).await
+    set_zoom(instance_id, zoom_factor).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_set_zoom_callback(
-    instanceId: ::js_sys::Number,
-    zoomFactor: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
+    zoom_factor: ::js_sys::Number,
     callback: &::js_sys::Function,
 ) {
-    set_zoom_callback(instanceId, zoomFactor, callback);
+    set_zoom_callback(instance_id, zoom_factor, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_get_zoom(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    get_zoom(instanceId).await
+    get_zoom(instance_id).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_get_zoom_callback(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
     callback: &::js_sys::Function,
 ) {
-    get_zoom_callback(instanceId, callback);
+    get_zoom_callback(instance_id, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_set_zoom_mode(
-    instanceId: ::js_sys::Number,
-    ZoomMode: ZoomMode,
+    instance_id: ::js_sys::Number,
+    zoom_mode: ZoomMode,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    set_zoom_mode(instanceId, ZoomMode).await
+    set_zoom_mode(instance_id, zoom_mode).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_set_zoom_mode_callback(
-    instanceId: ::js_sys::Number,
-    ZoomMode: ZoomMode,
+    instance_id: ::js_sys::Number,
+    zoom_mode: ZoomMode,
     callback: &::js_sys::Function,
 ) {
-    set_zoom_mode_callback(instanceId, ZoomMode, callback);
+    set_zoom_mode_callback(instance_id, zoom_mode, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_get_zoom_mode(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    get_zoom_mode(instanceId).await
+    get_zoom_mode(instance_id).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_get_zoom_mode_callback(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
     callback: &::js_sys::Function,
 ) {
-    get_zoom_mode_callback(instanceId, callback);
+    get_zoom_mode_callback(instance_id, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_find(
-    instanceId: ::js_sys::Number,
-    searchText: ::js_sys::JsString,
+    instance_id: ::js_sys::Number,
+    search_text: ::js_sys::JsString,
     options: Option<::js_sys::Object>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    find(instanceId, searchText, options).await
+    find(instance_id, search_text, options).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_find_callback(
-    instanceId: ::js_sys::Number,
-    searchText: ::js_sys::JsString,
+    instance_id: ::js_sys::Number,
+    search_text: ::js_sys::JsString,
     options: Option<::js_sys::Object>,
     callback: &::js_sys::Function,
 ) {
-    find_callback(instanceId, searchText, options, callback);
+    find_callback(instance_id, search_text, options, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_load_data_with_base_url(
-    instanceId: ::js_sys::Number,
-    dataUrl: ::js_sys::JsString,
-    baseUrl: ::js_sys::JsString,
-    virtualUrl: Option<::js_sys::JsString>,
+    instance_id: ::js_sys::Number,
+    data_url: ::js_sys::JsString,
+    base_url: ::js_sys::JsString,
+    virtual_url: Option<::js_sys::JsString>,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    load_data_with_base_url(instanceId, dataUrl, baseUrl, virtualUrl).await
+    load_data_with_base_url(instance_id, data_url, base_url, virtual_url).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_load_data_with_base_url_callback(
-    instanceId: ::js_sys::Number,
-    dataUrl: ::js_sys::JsString,
-    baseUrl: ::js_sys::JsString,
-    virtualUrl: Option<::js_sys::JsString>,
+    instance_id: ::js_sys::Number,
+    data_url: ::js_sys::JsString,
+    base_url: ::js_sys::JsString,
+    virtual_url: Option<::js_sys::JsString>,
     callback: &::js_sys::Function,
 ) {
-    load_data_with_base_url_callback(instanceId, dataUrl, baseUrl, virtualUrl, callback);
+    load_data_with_base_url_callback(instance_id, data_url, base_url, virtual_url, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_go(
-    instanceId: ::js_sys::Number,
-    relativeIndex: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
+    relative_index: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    go(instanceId, relativeIndex).await
+    go(instance_id, relative_index).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_go_callback(
-    instanceId: ::js_sys::Number,
-    relativeIndex: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
+    relative_index: ::js_sys::Number,
     callback: &::js_sys::Function,
 ) {
-    go_callback(instanceId, relativeIndex, callback);
+    go_callback(instance_id, relative_index, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_set_permission(
-    instanceId: ::js_sys::Number,
-    requestId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
+    request_id: ::js_sys::Number,
     action: SetPermissionAction,
-    userInput: Option<::js_sys::JsString>,
+    user_input: Option<::js_sys::JsString>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    set_permission(instanceId, requestId, action, userInput).await
+    set_permission(instance_id, request_id, action, user_input).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_set_permission_callback(
-    instanceId: ::js_sys::Number,
-    requestId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
+    request_id: ::js_sys::Number,
     action: SetPermissionAction,
-    userInput: Option<::js_sys::JsString>,
+    user_input: Option<::js_sys::JsString>,
     callback: &::js_sys::Function,
 ) {
-    set_permission_callback(instanceId, requestId, action, userInput, callback);
+    set_permission_callback(instance_id, request_id, action, user_input, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_capture_visible_region(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
     options: Option<crate::extension_types::ImageDetails>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    capture_visible_region(instanceId, options).await
+    capture_visible_region(instance_id, options).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_capture_visible_region_callback(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
     options: Option<crate::extension_types::ImageDetails>,
     callback: &::js_sys::Function,
 ) {
-    capture_visible_region_callback(instanceId, options, callback);
+    capture_visible_region_callback(instance_id, options, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_is_spatial_navigation_enabled(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    is_spatial_navigation_enabled(instanceId).await
+    is_spatial_navigation_enabled(instance_id).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_is_spatial_navigation_enabled_callback(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
     callback: &::js_sys::Function,
 ) {
-    is_spatial_navigation_enabled_callback(instanceId, callback);
+    is_spatial_navigation_enabled_callback(instance_id, callback);
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_clear_data(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
     options: RemovalOptions,
-    dataToRemove: DataTypeSet,
+    data_to_remove: DataTypeSet,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    clear_data(instanceId, options, dataToRemove).await
+    clear_data(instance_id, options, data_to_remove).await
 }
 #[wasm_bindgen]
 pub fn web_view_internal_clear_data_callback(
-    instanceId: ::js_sys::Number,
+    instance_id: ::js_sys::Number,
     options: RemovalOptions,
-    dataToRemove: DataTypeSet,
+    data_to_remove: DataTypeSet,
     callback: &::js_sys::Function,
 ) {
-    clear_data_callback(instanceId, options, dataToRemove, callback);
+    clear_data_callback(instance_id, options, data_to_remove, callback);
 }

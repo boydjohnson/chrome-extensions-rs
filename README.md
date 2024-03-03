@@ -1,9 +1,10 @@
 # Partial chrome web extensions Rust bindings
+
 Using the idl and json interface files at [chromium git repo chrome specific](https://github.com/chromium/chromium/tree/main/chrome/common/extensions/api) and [chromium git repo not chrome specific](https://github.com/chromium/chromium/tree/main/extensions/common/api) to write Rust bindings to the [chrome web extensions](https://developer.chrome.com/docs/extensions).
 
 ## Other crates that provide bindings to web extensions
-[web-extensions](https://crates.io/crates/web-extensions)
 
+[web-extensions](https://crates.io/crates/web-extensions)
 
 This repo contains chrome-idl-parser and chrome-extensions crates.
 
@@ -21,4 +22,6 @@ Options:
 ```
 
 ## Bindings
-As of February 2024 only the types and the types' properties are being generated.
+
+-As of February 2024 only the types and the types' properties are being generated.
+-As of March 2024 async, callback, and regular functions are being generated. Some of the functions are tested against `@types/chrome` with `jest-chrome`.

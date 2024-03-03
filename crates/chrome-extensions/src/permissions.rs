@@ -16,7 +16,7 @@ extern "C" {
     pub fn permissions(this: &Permissions) -> Option<::js_sys::Array>;
     #[doc = "Gets the extension's current set of permissions."]
     #[wasm_bindgen(js_name = "permissions.getAll", catch)]
-    pub async fn getAll() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_all() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Checks if the extension has the specified permissions."]
     #[wasm_bindgen(js_name = "permissions.contains", catch)]
     pub async fn contains(
@@ -35,7 +35,7 @@ extern "C" {
 }
 #[wasm_bindgen]
 pub async fn permissions_get_all() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getAll().await
+    get_all().await
 }
 #[wasm_bindgen]
 pub async fn permissions_contains(

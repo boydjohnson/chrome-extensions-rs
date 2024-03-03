@@ -14,12 +14,12 @@ extern "C" {
     pub type TransitionQualifier;
     #[doc = "Retrieves information about the given frame. A frame refers to an &lt;iframe&gt; or a &lt;frame&gt; of a web page and is identified by a tab ID and a frame ID."]
     #[wasm_bindgen(js_name = "webNavigation.getFrame", catch)]
-    pub async fn getFrame(
+    pub async fn get_frame(
         details: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Retrieves information about all frames of a given tab."]
     #[wasm_bindgen(js_name = "webNavigation.getAllFrames", catch)]
-    pub async fn getAllFrames(
+    pub async fn get_all_frames(
         details: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
@@ -27,11 +27,11 @@ extern "C" {
 pub async fn web_navigation_get_frame(
     details: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getFrame(details).await
+    get_frame(details).await
 }
 #[wasm_bindgen]
 pub async fn web_navigation_get_all_frames(
     details: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getAllFrames(details).await
+    get_all_frames(details).await
 }

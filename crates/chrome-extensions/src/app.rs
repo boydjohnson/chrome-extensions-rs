@@ -22,30 +22,30 @@ extern "C" {
     pub type RunningState;
     #[doc = "TODO"]
     #[wasm_bindgen(js_name = "app.getIsInstalled")]
-    pub fn getIsInstalled() -> ::js_sys::Boolean;
+    pub fn get_is_installed() -> ::js_sys::Boolean;
     #[doc = "TODO"]
     #[wasm_bindgen(js_name = "app.installState", catch)]
-    pub async fn installState() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn install_state() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "TODO"]
     #[wasm_bindgen(js_name = "app.runningState")]
-    pub fn runningState() -> RunningState;
+    pub fn running_state() -> RunningState;
     #[doc = "TODO"]
     #[wasm_bindgen(js_name = "app.getDetails")]
-    pub fn getDetails() -> Details;
+    pub fn get_details() -> Details;
 }
 #[wasm_bindgen]
 pub fn app_get_is_installed() -> ::js_sys::Boolean {
-    getIsInstalled()
+    get_is_installed()
 }
 #[wasm_bindgen]
 pub async fn app_install_state() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    installState().await
+    install_state().await
 }
 #[wasm_bindgen]
 pub fn app_running_state() -> RunningState {
-    runningState()
+    running_state()
 }
 #[wasm_bindgen]
 pub fn app_get_details() -> Details {
-    getDetails()
+    get_details()
 }

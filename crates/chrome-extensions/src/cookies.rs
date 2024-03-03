@@ -92,7 +92,7 @@ extern "C" {
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Retrieves all cookies from a single cookie store that match the given information. The cookies returned will be sorted, with those with the longest path first. If multiple cookies have the same path length, those with the earliest creation time will be first. This method only retrieves cookies for domains that the extension has host permissions to."]
     #[wasm_bindgen(js_name = "cookies.getAll", catch)]
-    pub async fn getAll(
+    pub async fn get_all(
         details: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist."]
@@ -107,7 +107,7 @@ extern "C" {
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Lists all existing cookie stores."]
     #[wasm_bindgen(js_name = "cookies.getAllCookieStores", catch)]
-    pub async fn getAllCookieStores() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_all_cookie_stores() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
 #[wasm_bindgen]
 pub async fn cookies_get(
@@ -119,7 +119,7 @@ pub async fn cookies_get(
 pub async fn cookies_get_all(
     details: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getAll(details).await
+    get_all(details).await
 }
 #[wasm_bindgen]
 pub async fn cookies_set(
@@ -136,5 +136,5 @@ pub async fn cookies_remove(
 #[wasm_bindgen]
 pub async fn cookies_get_all_cookie_stores(
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getAllCookieStores().await
+    get_all_cookie_stores().await
 }

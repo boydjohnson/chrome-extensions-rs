@@ -153,58 +153,60 @@ extern "C" {
     pub fn items(this: &MenuParameters) -> ::js_sys::Array;
     #[doc = "Set the current composition. If this extension does not own the active IME, this fails."]
     #[wasm_bindgen(js_name = "input.ime.setComposition", catch)]
-    pub async fn setComposition(
+    pub async fn set_composition(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Clear the current composition. If this extension does not own the active IME, this fails."]
     #[wasm_bindgen(js_name = "input.ime.clearComposition", catch)]
-    pub async fn clearComposition(
+    pub async fn clear_composition(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Commits the provided text to the current input."]
     #[wasm_bindgen(js_name = "input.ime.commitText", catch)]
-    pub async fn commitText(
+    pub async fn commit_text(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Sends the key events.  This function is expected to be used by virtual keyboards.  When key(s) on a virtual keyboard is pressed by a user, this function is used to propagate that event to the system."]
     #[wasm_bindgen(js_name = "input.ime.sendKeyEvents", catch)]
-    pub async fn sendKeyEvents(parameters: ::js_sys::Object)
-        -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn send_key_events(
+        parameters: ::js_sys::Object,
+    ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Sets the properties of the candidate window. This fails if the extension doesn't own the active IME"]
     #[wasm_bindgen(js_name = "input.ime.setCandidateWindowProperties", catch)]
-    pub async fn setCandidateWindowProperties(
+    pub async fn set_candidate_window_properties(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Sets the current candidate list. This fails if this extension doesn't own the active IME"]
     #[wasm_bindgen(js_name = "input.ime.setCandidates", catch)]
-    pub async fn setCandidates(
+    pub async fn set_candidates(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Set the position of the cursor in the candidate window. This is a no-op if this extension does not own the active IME."]
     #[wasm_bindgen(js_name = "input.ime.setCursorPosition", catch)]
-    pub async fn setCursorPosition(
+    pub async fn set_cursor_position(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Shows/Hides an assistive window with the given properties."]
     #[wasm_bindgen(js_name = "input.ime.setAssistiveWindowProperties", catch)]
-    pub async fn setAssistiveWindowProperties(
+    pub async fn set_assistive_window_properties(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Highlights/Unhighlights a button in an assistive window."]
     #[wasm_bindgen(js_name = "input.ime.setAssistiveWindowButtonHighlighted", catch)]
-    pub async fn setAssistiveWindowButtonHighlighted(
+    pub async fn set_assistive_window_button_highlighted(
         parameters: ::js_sys::Object,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Adds the provided menu items to the language menu when this IME is active."]
     #[wasm_bindgen(js_name = "input.ime.setMenuItems", catch)]
-    pub async fn setMenuItems(parameters: MenuParameters) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn set_menu_items(parameters: MenuParameters) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Updates the state of the MenuItems specified"]
     #[wasm_bindgen(js_name = "input.ime.updateMenuItems", catch)]
-    pub async fn updateMenuItems(parameters: MenuParameters)
-        -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn update_menu_items(
+        parameters: MenuParameters,
+    ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Deletes the text around the caret."]
     #[wasm_bindgen(js_name = "input.ime.deleteSurroundingText", catch)]
-    pub async fn deleteSurroundingText(
+    pub async fn delete_surrounding_text(
         parameters: ::js_sys::Object,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
 }
@@ -212,71 +214,71 @@ extern "C" {
 pub async fn input_ime_set_composition(
     parameters: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    setComposition(parameters).await
+    set_composition(parameters).await
 }
 #[wasm_bindgen]
 pub async fn input_ime_clear_composition(
     parameters: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    clearComposition(parameters).await
+    clear_composition(parameters).await
 }
 #[wasm_bindgen]
 pub async fn input_ime_commit_text(
     parameters: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    commitText(parameters).await
+    commit_text(parameters).await
 }
 #[wasm_bindgen]
 pub async fn input_ime_send_key_events(
     parameters: ::js_sys::Object,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    sendKeyEvents(parameters).await
+    send_key_events(parameters).await
 }
 #[wasm_bindgen]
 pub async fn input_ime_set_candidate_window_properties(
     parameters: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    setCandidateWindowProperties(parameters).await
+    set_candidate_window_properties(parameters).await
 }
 #[wasm_bindgen]
 pub async fn input_ime_set_candidates(
     parameters: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    setCandidates(parameters).await
+    set_candidates(parameters).await
 }
 #[wasm_bindgen]
 pub async fn input_ime_set_cursor_position(
     parameters: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    setCursorPosition(parameters).await
+    set_cursor_position(parameters).await
 }
 #[wasm_bindgen]
 pub async fn input_ime_set_assistive_window_properties(
     parameters: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    setAssistiveWindowProperties(parameters).await
+    set_assistive_window_properties(parameters).await
 }
 #[wasm_bindgen]
 pub async fn input_ime_set_assistive_window_button_highlighted(
     parameters: ::js_sys::Object,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    setAssistiveWindowButtonHighlighted(parameters).await
+    set_assistive_window_button_highlighted(parameters).await
 }
 #[wasm_bindgen]
 pub async fn input_ime_set_menu_items(
     parameters: MenuParameters,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    setMenuItems(parameters).await
+    set_menu_items(parameters).await
 }
 #[wasm_bindgen]
 pub async fn input_ime_update_menu_items(
     parameters: MenuParameters,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    updateMenuItems(parameters).await
+    update_menu_items(parameters).await
 }
 #[wasm_bindgen]
 pub async fn input_ime_delete_surrounding_text(
     parameters: ::js_sys::Object,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    deleteSurroundingText(parameters).await
+    delete_surrounding_text(parameters).await
 }

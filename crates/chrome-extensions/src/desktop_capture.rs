@@ -18,7 +18,7 @@ extern "C" {
     pub type SelfCapturePreferenceEnum;
     #[doc = "Shows desktop media picker UI with the specified set of sources."]
     #[wasm_bindgen(js_name = "desktopCapture.chooseDesktopMedia")]
-    pub fn chooseDesktopMedia(
+    pub fn choose_desktop_media(
         sources: ::js_sys::Array,
         targetTab: Option<crate::tabs::Tab>,
         options: Option<::js_sys::Object>,
@@ -30,5 +30,5 @@ pub fn desktop_capture_choose_desktop_media(
     targetTab: Option<crate::tabs::Tab>,
     options: Option<::js_sys::Object>,
 ) -> ::js_sys::Number {
-    chooseDesktopMedia(sources, targetTab, options)
+    choose_desktop_media(sources, targetTab, options)
 }

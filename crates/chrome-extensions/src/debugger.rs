@@ -64,14 +64,14 @@ extern "C" {
     pub async fn detach(target: Debuggee) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Sends given command to the debugging target."]
     #[wasm_bindgen(js_name = "debugger.sendCommand", catch)]
-    pub async fn sendCommand(
+    pub async fn send_command(
         target: Debuggee,
         method: ::js_sys::JsString,
         commandParams: Option<::js_sys::Object>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Returns the list of available debug targets."]
     #[wasm_bindgen(js_name = "debugger.getTargets", catch)]
-    pub async fn getTargets() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_targets() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
 #[wasm_bindgen]
 pub async fn debugger_attach(
@@ -90,9 +90,9 @@ pub async fn debugger_send_command(
     method: ::js_sys::JsString,
     commandParams: Option<::js_sys::Object>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    sendCommand(target, method, commandParams).await
+    send_command(target, method, commandParams).await
 }
 #[wasm_bindgen]
 pub async fn debugger_get_targets() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getTargets().await
+    get_targets().await
 }

@@ -130,7 +130,7 @@ extern "C" {
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Gets the tab that this script call is being made from. Returns <code>undefined</code> if called from a non-tab context (for example, a background page or popup view)."]
     #[wasm_bindgen(js_name = "tabs.getCurrent", catch)]
-    pub async fn getCurrent() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_current() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Connects to the content script(s) in the specified tab. The $(ref:runtime.onConnect) event is fired in each content script running in the specified tab for the current extension. For more details, see <a href='messaging'>Content Script Messaging</a>."]
     #[wasm_bindgen(js_name = "tabs.connect")]
     pub fn connect(
@@ -139,25 +139,25 @@ extern "C" {
     ) -> crate::runtime::Port;
     #[doc = "Sends a single request to the content script(s) in the specified tab, with an optional callback to run when a response is sent back.  The $(ref:extension.onRequest) event is fired in each content script running in the specified tab for the current extension."]
     #[wasm_bindgen(js_name = "tabs.sendRequest", catch)]
-    pub async fn sendRequest(
+    pub async fn send_request(
         tabId: ::js_sys::Number,
         request: ::wasm_bindgen::JsValue,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Sends a single message to the content script(s) in the specified tab, with an optional callback to run when a response is sent back.  The $(ref:runtime.onMessage) event is fired in each content script running in the specified tab for the current extension."]
     #[wasm_bindgen(js_name = "tabs.sendMessage", catch)]
-    pub async fn sendMessage(
+    pub async fn send_message(
         tabId: ::js_sys::Number,
         message: ::wasm_bindgen::JsValue,
         options: Option<::js_sys::Object>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Gets the tab that is selected in the specified window."]
     #[wasm_bindgen(js_name = "tabs.getSelected", catch)]
-    pub async fn getSelected(
+    pub async fn get_selected(
         windowId: Option<::js_sys::Number>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Gets details about all tabs in the specified window."]
     #[wasm_bindgen(js_name = "tabs.getAllInWindow", catch)]
-    pub async fn getAllInWindow(
+    pub async fn get_all_in_window(
         windowId: Option<::js_sys::Number>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Creates a new tab."]
@@ -211,53 +211,53 @@ extern "C" {
     pub async fn ungroup(tabIds: ::wasm_bindgen::JsValue) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Detects the primary language of the content in a tab."]
     #[wasm_bindgen(js_name = "tabs.detectLanguage", catch)]
-    pub async fn detectLanguage(
+    pub async fn detect_language(
         tabId: Option<::js_sys::Number>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Captures the visible area of the currently active tab in the specified window. In order to call this method, the extension must have either the <a href='develop/concepts/declare-permissions'>&lt;all_urls&gt;</a> permission or the <a href='develop/concepts/activeTab'>activeTab</a> permission. In addition to sites that extensions can normally access, this method allows extensions to capture sensitive sites that are otherwise restricted, including chrome:-scheme pages, other extensions' pages, and data: URLs. These sensitive sites can only be captured with the activeTab permission. File URLs may be captured only if the extension has been granted file access."]
     #[wasm_bindgen(js_name = "tabs.captureVisibleTab", catch)]
-    pub async fn captureVisibleTab(
+    pub async fn capture_visible_tab(
         windowId: Option<::js_sys::Number>,
         options: Option<crate::extension_types::ImageDetails>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Injects JavaScript code into a page. For details, see the <a href='/docs/extensions/develop/concepts/content-scripts#programmatic'>programmatic injection</a> section of the content scripts doc."]
     #[wasm_bindgen(js_name = "tabs.executeScript", catch)]
-    pub async fn executeScript(
+    pub async fn execute_script(
         tabId: Option<::js_sys::Number>,
         details: crate::extension_types::InjectDetails,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Injects CSS into a page. Styles inserted with this method can be removed with $(ref:scripting.removeCSS). For details, see the <a href='/docs/extensions/develop/concepts/content-scripts#programmatic'>programmatic injection</a> section of the content scripts doc."]
     #[wasm_bindgen(js_name = "tabs.insertCSS", catch)]
-    pub async fn insertCSS(
+    pub async fn insert_css(
         tabId: Option<::js_sys::Number>,
         details: crate::extension_types::InjectDetails,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Removes from a page CSS that was previously injected by a call to $(ref:scripting.insertCSS)."]
     #[wasm_bindgen(js_name = "tabs.removeCSS", catch)]
-    pub async fn removeCSS(
+    pub async fn remove_css(
         tabId: Option<::js_sys::Number>,
         details: crate::extension_types::DeleteInjectionDetails,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Zooms a specified tab."]
     #[wasm_bindgen(js_name = "tabs.setZoom", catch)]
-    pub async fn setZoom(
+    pub async fn set_zoom(
         tabId: Option<::js_sys::Number>,
         zoomFactor: ::js_sys::Number,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Gets the current zoom factor of a specified tab."]
     #[wasm_bindgen(js_name = "tabs.getZoom", catch)]
-    pub async fn getZoom(
+    pub async fn get_zoom(
         tabId: Option<::js_sys::Number>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Sets the zoom settings for a specified tab, which define how zoom changes are handled. These settings are reset to defaults upon navigating the tab."]
     #[wasm_bindgen(js_name = "tabs.setZoomSettings", catch)]
-    pub async fn setZoomSettings(
+    pub async fn set_zoom_settings(
         tabId: Option<::js_sys::Number>,
         zoomSettings: ZoomSettings,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Gets the current zoom settings of a specified tab."]
     #[wasm_bindgen(js_name = "tabs.getZoomSettings", catch)]
-    pub async fn getZoomSettings(
+    pub async fn get_zoom_settings(
         tabId: Option<::js_sys::Number>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Discards a tab from memory. Discarded tabs are still visible on the tab strip and are reloaded when activated."]
@@ -267,10 +267,11 @@ extern "C" {
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Go foward to the next page, if one is available."]
     #[wasm_bindgen(js_name = "tabs.goForward", catch)]
-    pub async fn goForward(tabId: Option<::js_sys::Number>) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn go_forward(tabId: Option<::js_sys::Number>)
+        -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Go back to the previous page, if one is available."]
     #[wasm_bindgen(js_name = "tabs.goBack", catch)]
-    pub async fn goBack(tabId: Option<::js_sys::Number>) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn go_back(tabId: Option<::js_sys::Number>) -> Result<(), ::wasm_bindgen::JsValue>;
 }
 #[wasm_bindgen]
 pub async fn tabs_get(
@@ -280,7 +281,7 @@ pub async fn tabs_get(
 }
 #[wasm_bindgen]
 pub async fn tabs_get_current() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getCurrent().await
+    get_current().await
 }
 #[wasm_bindgen]
 pub fn tabs_connect(
@@ -294,7 +295,7 @@ pub async fn tabs_send_request(
     tabId: ::js_sys::Number,
     request: ::wasm_bindgen::JsValue,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    sendRequest(tabId, request).await
+    send_request(tabId, request).await
 }
 #[wasm_bindgen]
 pub async fn tabs_send_message(
@@ -302,19 +303,19 @@ pub async fn tabs_send_message(
     message: ::wasm_bindgen::JsValue,
     options: Option<::js_sys::Object>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    sendMessage(tabId, message, options).await
+    send_message(tabId, message, options).await
 }
 #[wasm_bindgen]
 pub async fn tabs_get_selected(
     windowId: Option<::js_sys::Number>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getSelected(windowId).await
+    get_selected(windowId).await
 }
 #[wasm_bindgen]
 pub async fn tabs_get_all_in_window(
     windowId: Option<::js_sys::Number>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getAllInWindow(windowId).await
+    get_all_in_window(windowId).await
 }
 #[wasm_bindgen]
 pub async fn tabs_create(
@@ -379,61 +380,61 @@ pub async fn tabs_ungroup(tabIds: ::wasm_bindgen::JsValue) -> Result<(), ::wasm_
 pub async fn tabs_detect_language(
     tabId: Option<::js_sys::Number>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    detectLanguage(tabId).await
+    detect_language(tabId).await
 }
 #[wasm_bindgen]
 pub async fn tabs_capture_visible_tab(
     windowId: Option<::js_sys::Number>,
     options: Option<crate::extension_types::ImageDetails>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    captureVisibleTab(windowId, options).await
+    capture_visible_tab(windowId, options).await
 }
 #[wasm_bindgen]
 pub async fn tabs_execute_script(
     tabId: Option<::js_sys::Number>,
     details: crate::extension_types::InjectDetails,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    executeScript(tabId, details).await
+    execute_script(tabId, details).await
 }
 #[wasm_bindgen]
 pub async fn tabs_insert_css(
     tabId: Option<::js_sys::Number>,
     details: crate::extension_types::InjectDetails,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    insertCSS(tabId, details).await
+    insert_css(tabId, details).await
 }
 #[wasm_bindgen]
 pub async fn tabs_remove_css(
     tabId: Option<::js_sys::Number>,
     details: crate::extension_types::DeleteInjectionDetails,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    removeCSS(tabId, details).await
+    remove_css(tabId, details).await
 }
 #[wasm_bindgen]
 pub async fn tabs_set_zoom(
     tabId: Option<::js_sys::Number>,
     zoomFactor: ::js_sys::Number,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    setZoom(tabId, zoomFactor).await
+    set_zoom(tabId, zoomFactor).await
 }
 #[wasm_bindgen]
 pub async fn tabs_get_zoom(
     tabId: Option<::js_sys::Number>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getZoom(tabId).await
+    get_zoom(tabId).await
 }
 #[wasm_bindgen]
 pub async fn tabs_set_zoom_settings(
     tabId: Option<::js_sys::Number>,
     zoomSettings: ZoomSettings,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    setZoomSettings(tabId, zoomSettings).await
+    set_zoom_settings(tabId, zoomSettings).await
 }
 #[wasm_bindgen]
 pub async fn tabs_get_zoom_settings(
     tabId: Option<::js_sys::Number>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getZoomSettings(tabId).await
+    get_zoom_settings(tabId).await
 }
 #[wasm_bindgen]
 pub async fn tabs_discard(
@@ -445,9 +446,9 @@ pub async fn tabs_discard(
 pub async fn tabs_go_forward(
     tabId: Option<::js_sys::Number>,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    goForward(tabId).await
+    go_forward(tabId).await
 }
 #[wasm_bindgen]
 pub async fn tabs_go_back(tabId: Option<::js_sys::Number>) -> Result<(), ::wasm_bindgen::JsValue> {
-    goBack(tabId).await
+    go_back(tabId).await
 }

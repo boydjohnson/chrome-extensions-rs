@@ -98,10 +98,10 @@ extern "C" {
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Checks whether the engine is currently speaking. On Mac OS X, the result is true whenever the system speech engine is speaking, even if the speech wasn't initiated by Chrome."]
     #[wasm_bindgen(js_name = "tts.isSpeaking", catch)]
-    pub async fn isSpeaking() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn is_speaking() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Gets an array of all available voices."]
     #[wasm_bindgen(js_name = "tts.getVoices", catch)]
-    pub async fn getVoices() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_voices() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
 #[wasm_bindgen]
 pub async fn tts_speak(
@@ -112,9 +112,9 @@ pub async fn tts_speak(
 }
 #[wasm_bindgen]
 pub async fn tts_is_speaking() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    isSpeaking().await
+    is_speaking().await
 }
 #[wasm_bindgen]
 pub async fn tts_get_voices() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getVoices().await
+    get_voices().await
 }

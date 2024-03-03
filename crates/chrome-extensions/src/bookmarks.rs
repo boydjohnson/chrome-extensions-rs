@@ -65,20 +65,20 @@ extern "C" {
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Retrieves the children of the specified BookmarkTreeNode id."]
     #[wasm_bindgen(js_name = "bookmarks.getChildren", catch)]
-    pub async fn getChildren(
+    pub async fn get_children(
         id: ::js_sys::JsString,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Retrieves the recently added bookmarks."]
     #[wasm_bindgen(js_name = "bookmarks.getRecent", catch)]
-    pub async fn getRecent(
+    pub async fn get_recent(
         numberOfItems: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Retrieves the entire Bookmarks hierarchy."]
     #[wasm_bindgen(js_name = "bookmarks.getTree", catch)]
-    pub async fn getTree() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_tree() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Retrieves part of the Bookmarks hierarchy, starting at the specified node."]
     #[wasm_bindgen(js_name = "bookmarks.getSubTree", catch)]
-    pub async fn getSubTree(
+    pub async fn get_sub_tree(
         id: ::js_sys::JsString,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Searches for BookmarkTreeNodes matching the given query. Queries specified with an object produce BookmarkTreeNodes matching all specified properties."]
@@ -108,7 +108,7 @@ extern "C" {
     pub async fn remove(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Recursively removes a bookmark folder."]
     #[wasm_bindgen(js_name = "bookmarks.removeTree", catch)]
-    pub async fn removeTree(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn remove_tree(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue>;
 }
 #[wasm_bindgen]
 pub async fn bookmarks_get(
@@ -120,23 +120,23 @@ pub async fn bookmarks_get(
 pub async fn bookmarks_get_children(
     id: ::js_sys::JsString,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getChildren(id).await
+    get_children(id).await
 }
 #[wasm_bindgen]
 pub async fn bookmarks_get_recent(
     numberOfItems: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getRecent(numberOfItems).await
+    get_recent(numberOfItems).await
 }
 #[wasm_bindgen]
 pub async fn bookmarks_get_tree() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getTree().await
+    get_tree().await
 }
 #[wasm_bindgen]
 pub async fn bookmarks_get_sub_tree(
     id: ::js_sys::JsString,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getSubTree(id).await
+    get_sub_tree(id).await
 }
 #[wasm_bindgen]
 pub async fn bookmarks_search(
@@ -170,5 +170,5 @@ pub async fn bookmarks_remove(id: ::js_sys::JsString) -> Result<(), ::wasm_bindg
 }
 #[wasm_bindgen]
 pub async fn bookmarks_remove_tree(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue> {
-    removeTree(id).await
+    remove_tree(id).await
 }

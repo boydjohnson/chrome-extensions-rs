@@ -74,17 +74,17 @@ extern "C" {
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Gets the <a href='#current-window'>current window</a>."]
     #[wasm_bindgen(js_name = "windows.getCurrent", catch)]
-    pub async fn getCurrent(
+    pub async fn get_current(
         queryOptions: Option<QueryOptions>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Gets the window that was most recently focused &mdash; typically the window 'on top'."]
     #[wasm_bindgen(js_name = "windows.getLastFocused", catch)]
-    pub async fn getLastFocused(
+    pub async fn get_last_focused(
         queryOptions: Option<QueryOptions>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Gets all windows."]
     #[wasm_bindgen(js_name = "windows.getAll", catch)]
-    pub async fn getAll(
+    pub async fn get_all(
         queryOptions: Option<QueryOptions>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Creates (opens) a new browser window with any optional sizing, position, or default URL provided."]
@@ -113,19 +113,19 @@ pub async fn windows_get(
 pub async fn windows_get_current(
     queryOptions: Option<QueryOptions>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getCurrent(queryOptions).await
+    get_current(queryOptions).await
 }
 #[wasm_bindgen]
 pub async fn windows_get_last_focused(
     queryOptions: Option<QueryOptions>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getLastFocused(queryOptions).await
+    get_last_focused(queryOptions).await
 }
 #[wasm_bindgen]
 pub async fn windows_get_all(
     queryOptions: Option<QueryOptions>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getAll(queryOptions).await
+    get_all(queryOptions).await
 }
 #[wasm_bindgen]
 pub async fn windows_create(

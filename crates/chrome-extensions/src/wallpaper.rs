@@ -10,7 +10,7 @@ extern "C" {
     pub type WallpaperLayout;
     #[doc = "Sets wallpaper to the image at <em>url</em> or <em>wallpaperData</em> with the specified <em>layout</em>"]
     #[wasm_bindgen(js_name = "wallpaper.setWallpaper", catch)]
-    pub async fn setWallpaper(
+    pub async fn set_wallpaper(
         details: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
@@ -18,5 +18,5 @@ extern "C" {
 pub async fn wallpaper_set_wallpaper(
     details: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    setWallpaper(details).await
+    set_wallpaper(details).await
 }

@@ -23,21 +23,21 @@ extern "C" {
     pub async fn hide(tabId: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Sets the title of the page action. This is displayed in a tooltip over the page action."]
     #[wasm_bindgen(js_name = "pageAction.setTitle", catch)]
-    pub async fn setTitle(details: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn set_title(details: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Gets the title of the page action."]
     #[wasm_bindgen(js_name = "pageAction.getTitle", catch)]
-    pub async fn getTitle(
+    pub async fn get_title(
         details: TabDetails,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Sets the icon for the page action. The icon can be specified either as the path to an image file or as the pixel data from a canvas element, or as dictionary of either one of those. Either the <b>path</b> or the <b>imageData</b> property must be specified."]
     #[wasm_bindgen(js_name = "pageAction.setIcon", catch)]
-    pub async fn setIcon(details: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn set_icon(details: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Sets the HTML document to be opened as a popup when the user clicks on the page action's icon."]
     #[wasm_bindgen(js_name = "pageAction.setPopup", catch)]
-    pub async fn setPopup(details: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn set_popup(details: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Gets the html document set as the popup for this page action."]
     #[wasm_bindgen(js_name = "pageAction.getPopup", catch)]
-    pub async fn getPopup(
+    pub async fn get_popup(
         details: TabDetails,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
 }
@@ -53,29 +53,29 @@ pub async fn page_action_hide(tabId: ::js_sys::Number) -> Result<(), ::wasm_bind
 pub async fn page_action_set_title(
     details: ::js_sys::Object,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    setTitle(details).await
+    set_title(details).await
 }
 #[wasm_bindgen]
 pub async fn page_action_get_title(
     details: TabDetails,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getTitle(details).await
+    get_title(details).await
 }
 #[wasm_bindgen]
 pub async fn page_action_set_icon(
     details: ::js_sys::Object,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    setIcon(details).await
+    set_icon(details).await
 }
 #[wasm_bindgen]
 pub async fn page_action_set_popup(
     details: ::js_sys::Object,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    setPopup(details).await
+    set_popup(details).await
 }
 #[wasm_bindgen]
 pub async fn page_action_get_popup(
     details: TabDetails,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getPopup(details).await
+    get_popup(details).await
 }

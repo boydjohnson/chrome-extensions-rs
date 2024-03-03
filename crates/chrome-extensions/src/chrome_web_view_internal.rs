@@ -16,23 +16,23 @@ extern "C" {
     pub fn label(this: &ContextMenuItem) -> Option<::js_sys::JsString>;
     #[doc = ""]
     #[wasm_bindgen(js_name = "chromeWebViewInternal.contextMenusCreate")]
-    pub fn contextMenusCreate(instanceId: ::js_sys::Number, createProperties: ::js_sys::Object);
+    pub fn context_menus_create(instanceId: ::js_sys::Number, createProperties: ::js_sys::Object);
     #[doc = "Updates a previously created context menu item."]
     #[wasm_bindgen(js_name = "chromeWebViewInternal.contextMenusUpdate", catch)]
-    pub async fn contextMenusUpdate(
+    pub async fn context_menus_update(
         instanceId: ::js_sys::Number,
         id: ::wasm_bindgen::JsValue,
         updateProperties: ::js_sys::Object,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Removes a context menu item."]
     #[wasm_bindgen(js_name = "chromeWebViewInternal.contextMenusRemove", catch)]
-    pub async fn contextMenusRemove(
+    pub async fn context_menus_remove(
         instanceId: ::js_sys::Number,
         menuItemId: ::wasm_bindgen::JsValue,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Removes all context menu items added by this webview."]
     #[wasm_bindgen(js_name = "chromeWebViewInternal.contextMenusRemoveAll", catch)]
-    pub async fn contextMenusRemoveAll(
+    pub async fn context_menus_remove_all(
         instanceId: ::js_sys::Number,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
 }
@@ -41,7 +41,7 @@ pub fn chrome_web_view_internal_context_menus_create(
     instanceId: ::js_sys::Number,
     createProperties: ::js_sys::Object,
 ) {
-    contextMenusCreate(instanceId, createProperties)
+    context_menus_create(instanceId, createProperties)
 }
 #[wasm_bindgen]
 pub async fn chrome_web_view_internal_context_menus_update(
@@ -49,18 +49,18 @@ pub async fn chrome_web_view_internal_context_menus_update(
     id: ::wasm_bindgen::JsValue,
     updateProperties: ::js_sys::Object,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    contextMenusUpdate(instanceId, id, updateProperties).await
+    context_menus_update(instanceId, id, updateProperties).await
 }
 #[wasm_bindgen]
 pub async fn chrome_web_view_internal_context_menus_remove(
     instanceId: ::js_sys::Number,
     menuItemId: ::wasm_bindgen::JsValue,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    contextMenusRemove(instanceId, menuItemId).await
+    context_menus_remove(instanceId, menuItemId).await
 }
 #[wasm_bindgen]
 pub async fn chrome_web_view_internal_context_menus_remove_all(
     instanceId: ::js_sys::Number,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    contextMenusRemoveAll(instanceId).await
+    context_menus_remove_all(instanceId).await
 }

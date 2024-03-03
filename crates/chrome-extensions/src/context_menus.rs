@@ -101,7 +101,7 @@ extern "C" {
         -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Removes all context menu items added by this extension."]
     #[wasm_bindgen(js_name = "contextMenus.removeAll", catch)]
-    pub async fn removeAll() -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn remove_all() -> Result<(), ::wasm_bindgen::JsValue>;
 }
 #[wasm_bindgen]
 pub fn context_menus_create(createProperties: CreateProperties) {
@@ -122,5 +122,5 @@ pub async fn context_menus_remove(
 }
 #[wasm_bindgen]
 pub async fn context_menus_remove_all() -> Result<(), ::wasm_bindgen::JsValue> {
-    removeAll().await
+    remove_all().await
 }

@@ -100,48 +100,48 @@ extern "C" {
     pub fn run_at(this: &ContentScriptDetails) -> Option<crate::extension_types::RunAt>;
     #[doc = "Callback that returns audio state."]
     #[wasm_bindgen(js_name = "webViewInternal.getAudioState", catch)]
-    pub async fn getAudioState(
+    pub async fn get_audio_state(
         instanceId: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Callback that returns whether audio is muted."]
     #[wasm_bindgen(js_name = "webViewInternal.isAudioMuted", catch)]
-    pub async fn isAudioMuted(
+    pub async fn is_audio_muted(
         instanceId: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Injects JavaScript code into a <webview> page."]
     #[wasm_bindgen(js_name = "webViewInternal.executeScript", catch)]
-    pub async fn executeScript(
+    pub async fn execute_script(
         instanceId: ::js_sys::Number,
         src: ::js_sys::JsString,
         details: crate::extension_types::InjectDetails,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Injects CSS into a <webview> page. For details, see the <a href='/extensions/content_scripts#pi'>programmatic injection</a> section of the content scripts doc."]
     #[wasm_bindgen(js_name = "webViewInternal.insertCSS", catch)]
-    pub async fn insertCSS(
+    pub async fn insert_css(
         instanceId: ::js_sys::Number,
         src: ::js_sys::JsString,
         details: crate::extension_types::InjectDetails,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = ""]
     #[wasm_bindgen(js_name = "webViewInternal.setZoom", catch)]
-    pub async fn setZoom(
+    pub async fn set_zoom(
         instanceId: ::js_sys::Number,
         zoomFactor: ::js_sys::Number,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = ""]
     #[wasm_bindgen(js_name = "webViewInternal.getZoom", catch)]
-    pub async fn getZoom(
+    pub async fn get_zoom(
         instanceId: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Sets the zoom mode of the webview."]
     #[wasm_bindgen(js_name = "webViewInternal.setZoomMode", catch)]
-    pub async fn setZoomMode(
+    pub async fn set_zoom_mode(
         instanceId: ::js_sys::Number,
         ZoomMode: ZoomMode,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
     #[doc = "Gets the current zoom mode."]
     #[wasm_bindgen(js_name = "webViewInternal.getZoomMode", catch)]
-    pub async fn getZoomMode(
+    pub async fn get_zoom_mode(
         instanceId: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Initiates a find-in-page request."]
@@ -153,7 +153,7 @@ extern "C" {
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Loads a data URL with a specified base URL used for relative links. Optionally, a virtual URL can be provided to be shown to the user instead of the data URL."]
     #[wasm_bindgen(js_name = "webViewInternal.loadDataWithBaseUrl", catch)]
-    pub async fn loadDataWithBaseUrl(
+    pub async fn load_data_with_base_url(
         instanceId: ::js_sys::Number,
         dataUrl: ::js_sys::JsString,
         baseUrl: ::js_sys::JsString,
@@ -167,7 +167,7 @@ extern "C" {
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = ""]
     #[wasm_bindgen(js_name = "webViewInternal.setPermission", catch)]
-    pub async fn setPermission(
+    pub async fn set_permission(
         instanceId: ::js_sys::Number,
         requestId: ::js_sys::Number,
         action: SetPermissionAction,
@@ -175,18 +175,18 @@ extern "C" {
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "foo"]
     #[wasm_bindgen(js_name = "webViewInternal.captureVisibleRegion", catch)]
-    pub async fn captureVisibleRegion(
+    pub async fn capture_visible_region(
         instanceId: ::js_sys::Number,
         options: Option<crate::extension_types::ImageDetails>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Callback that returns whether whether spatial navigation is enabled for the webview."]
     #[wasm_bindgen(js_name = "webViewInternal.isSpatialNavigationEnabled", catch)]
-    pub async fn isSpatialNavigationEnabled(
+    pub async fn is_spatial_navigation_enabled(
         instanceId: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Clears various types of browsing data stored in a storage partition of a <webview>."]
     #[wasm_bindgen(js_name = "webViewInternal.clearData", catch)]
-    pub async fn clearData(
+    pub async fn clear_data(
         instanceId: ::js_sys::Number,
         options: RemovalOptions,
         dataToRemove: DataTypeSet,
@@ -196,13 +196,13 @@ extern "C" {
 pub async fn web_view_internal_get_audio_state(
     instanceId: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getAudioState(instanceId).await
+    get_audio_state(instanceId).await
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_is_audio_muted(
     instanceId: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    isAudioMuted(instanceId).await
+    is_audio_muted(instanceId).await
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_execute_script(
@@ -210,7 +210,7 @@ pub async fn web_view_internal_execute_script(
     src: ::js_sys::JsString,
     details: crate::extension_types::InjectDetails,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    executeScript(instanceId, src, details).await
+    execute_script(instanceId, src, details).await
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_insert_css(
@@ -218,33 +218,33 @@ pub async fn web_view_internal_insert_css(
     src: ::js_sys::JsString,
     details: crate::extension_types::InjectDetails,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    insertCSS(instanceId, src, details).await
+    insert_css(instanceId, src, details).await
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_set_zoom(
     instanceId: ::js_sys::Number,
     zoomFactor: ::js_sys::Number,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    setZoom(instanceId, zoomFactor).await
+    set_zoom(instanceId, zoomFactor).await
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_get_zoom(
     instanceId: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getZoom(instanceId).await
+    get_zoom(instanceId).await
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_set_zoom_mode(
     instanceId: ::js_sys::Number,
     ZoomMode: ZoomMode,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    setZoomMode(instanceId, ZoomMode).await
+    set_zoom_mode(instanceId, ZoomMode).await
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_get_zoom_mode(
     instanceId: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getZoomMode(instanceId).await
+    get_zoom_mode(instanceId).await
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_find(
@@ -261,7 +261,7 @@ pub async fn web_view_internal_load_data_with_base_url(
     baseUrl: ::js_sys::JsString,
     virtualUrl: Option<::js_sys::JsString>,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    loadDataWithBaseUrl(instanceId, dataUrl, baseUrl, virtualUrl).await
+    load_data_with_base_url(instanceId, dataUrl, baseUrl, virtualUrl).await
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_go(
@@ -277,20 +277,20 @@ pub async fn web_view_internal_set_permission(
     action: SetPermissionAction,
     userInput: Option<::js_sys::JsString>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    setPermission(instanceId, requestId, action, userInput).await
+    set_permission(instanceId, requestId, action, userInput).await
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_capture_visible_region(
     instanceId: ::js_sys::Number,
     options: Option<crate::extension_types::ImageDetails>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    captureVisibleRegion(instanceId, options).await
+    capture_visible_region(instanceId, options).await
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_is_spatial_navigation_enabled(
     instanceId: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    isSpatialNavigationEnabled(instanceId).await
+    is_spatial_navigation_enabled(instanceId).await
 }
 #[wasm_bindgen]
 pub async fn web_view_internal_clear_data(
@@ -298,5 +298,5 @@ pub async fn web_view_internal_clear_data(
     options: RemovalOptions,
     dataToRemove: DataTypeSet,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    clearData(instanceId, options, dataToRemove).await
+    clear_data(instanceId, options, dataToRemove).await
 }

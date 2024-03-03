@@ -32,14 +32,14 @@ extern "C" {
     pub fn normal(this: &SizeParams) -> Option<Size>;
     #[doc = ""]
     #[wasm_bindgen(js_name = "guestViewInternal.createGuest", catch)]
-    pub async fn createGuest(
+    pub async fn create_guest(
         viewType: ::js_sys::JsString,
         ownerFrameToken: ::js_sys::JsString,
         createParams: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = ""]
     #[wasm_bindgen(js_name = "guestViewInternal.setSize", catch)]
-    pub async fn setSize(
+    pub async fn set_size(
         instanceId: ::js_sys::Number,
         params: SizeParams,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
@@ -50,12 +50,12 @@ pub async fn guest_view_internal_create_guest(
     ownerFrameToken: ::js_sys::JsString,
     createParams: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    createGuest(viewType, ownerFrameToken, createParams).await
+    create_guest(viewType, ownerFrameToken, createParams).await
 }
 #[wasm_bindgen]
 pub async fn guest_view_internal_set_size(
     instanceId: ::js_sys::Number,
     params: SizeParams,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    setSize(instanceId, params).await
+    set_size(instanceId, params).await
 }

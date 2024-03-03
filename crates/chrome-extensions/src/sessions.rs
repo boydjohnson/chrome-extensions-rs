@@ -39,12 +39,12 @@ extern "C" {
     pub fn sessions(this: &Device) -> ::js_sys::Array;
     #[doc = "Gets the list of recently closed tabs and/or windows."]
     #[wasm_bindgen(js_name = "sessions.getRecentlyClosed", catch)]
-    pub async fn getRecentlyClosed(
+    pub async fn get_recently_closed(
         filter: Option<Filter>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Retrieves all devices with synced sessions."]
     #[wasm_bindgen(js_name = "sessions.getDevices", catch)]
-    pub async fn getDevices(
+    pub async fn get_devices(
         filter: Option<Filter>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "Reopens a $(ref:windows.Window) or $(ref:tabs.Tab), with an optional callback to run when the entry has been restored."]
@@ -57,13 +57,13 @@ extern "C" {
 pub async fn sessions_get_recently_closed(
     filter: Option<Filter>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getRecentlyClosed(filter).await
+    get_recently_closed(filter).await
 }
 #[wasm_bindgen]
 pub async fn sessions_get_devices(
     filter: Option<Filter>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getDevices(filter).await
+    get_devices(filter).await
 }
 #[wasm_bindgen]
 pub async fn sessions_restore(

@@ -1,4 +1,5 @@
 import {
+  windows_create_callback,
   windows_get,
   windows_get_all,
   windows_get_current,
@@ -201,5 +202,46 @@ describe("windows.get", () => {
       alwaysOnTop: false,
       incognito: false,
     });
+  });
+});
+
+describe("windows.create", () => {
+  it("Should call the callback with the created window", (done) => {
+    jest
+      .spyOn(chrome.windows, "create")
+      .mockImplementation(
+        (
+          createInfo: chrome.windows.CreateData,
+          callback: (window?: chrome.windows.Window) => any,
+        ) =>
+          callback({
+            id: 123,
+            focused: true,
+            alwaysOnTop: false,
+            incognito: false,
+          }),
+      );
+
+    windows_create_callback(
+      {
+        id: 123,
+        focused: true,
+        alwaysOnTop: false,
+        incognito: false,
+      },
+      (window?: chrome.windows.Window) => {
+        try {
+          expect(window).toEqual({
+            id: 123,
+            focused: true,
+            alwaysOnTop: false,
+            incognito: false,
+          });
+          done(); // Indicate that the test is complete
+        } catch (error) {
+          done(error); // Pass error to done if assertion fails
+        }
+      },
+    );
   });
 });

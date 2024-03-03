@@ -23,5 +23,5 @@ Options:
 
 ## Bindings
 
--As of February 2024 only the types and the types' properties are being generated.
--As of March 2024 async, callback, and regular functions are being generated. Some of the functions are tested against `@types/chrome` with `jest-chrome`.
+- As of February 2024 only the types and the types' properties are being generated.
+- As of March 2024 async, callback, and regular functions are being generated. Some of the functions are tested against `@types/chrome` with `jest-chrome`.

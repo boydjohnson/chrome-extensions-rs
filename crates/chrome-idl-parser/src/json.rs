@@ -63,7 +63,7 @@ impl ChromeApi {
     fn generate_functions(&self, internal: &mut Vec<TokenStream>, external: &mut Vec<TokenStream>) {
         for func in self.functions.iter().flat_map(|v| v.iter()) {
             let js_name = self.namespace.clone() + "." + func.name.as_str();
-            let ident = rust_ident(&func.name.clone());
+            let ident = rust_ident(&func.name.clone().to_snake_case());
 
             let ext_rust_function_name = rust_ident(
                 &(self.namespace.clone().replace('.', "_").to_snake_case()

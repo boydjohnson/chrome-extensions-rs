@@ -27,6 +27,9 @@ extern "C" {
     #[wasm_bindgen(js_name = "app.installState", catch)]
     pub async fn install_state() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = "TODO"]
+    #[wasm_bindgen(js_name = "app.installState")]
+    pub fn install_state_callback(callback: &::js_sys::Function);
+    #[doc = "TODO"]
     #[wasm_bindgen(js_name = "app.runningState")]
     pub fn running_state() -> RunningState;
     #[doc = "TODO"]
@@ -40,6 +43,10 @@ pub fn app_get_is_installed() -> ::js_sys::Boolean {
 #[wasm_bindgen]
 pub async fn app_install_state() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     install_state().await
+}
+#[wasm_bindgen]
+pub fn app_install_state_callback(callback: &::js_sys::Function) {
+    install_state_callback(callback);
 }
 #[wasm_bindgen]
 pub fn app_running_state() -> RunningState {

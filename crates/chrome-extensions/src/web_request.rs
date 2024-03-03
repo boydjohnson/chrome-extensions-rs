@@ -107,8 +107,15 @@ extern "C" {
     #[doc = "Needs to be called when the behavior of the webRequest handlers has changed to prevent incorrect handling due to caching. This function call is expensive. Don't call it often."]
     #[wasm_bindgen(js_name = "webRequest.handlerBehaviorChanged", catch)]
     pub async fn handler_behavior_changed() -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Needs to be called when the behavior of the webRequest handlers has changed to prevent incorrect handling due to caching. This function call is expensive. Don't call it often."]
+    #[wasm_bindgen(js_name = "webRequest.handlerBehaviorChanged")]
+    pub fn handler_behavior_changed_callback(callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn web_request_handler_behavior_changed() -> Result<(), ::wasm_bindgen::JsValue> {
     handler_behavior_changed().await
+}
+#[wasm_bindgen]
+pub fn web_request_handler_behavior_changed_callback(callback: &::js_sys::Function) {
+    handler_behavior_changed_callback(callback);
 }

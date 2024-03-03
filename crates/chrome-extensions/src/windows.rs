@@ -72,35 +72,67 @@ extern "C" {
         windowId: ::js_sys::Number,
         queryOptions: Option<QueryOptions>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets details about a window."]
+    #[wasm_bindgen(js_name = "windows.get")]
+    pub fn get_callback(
+        windowId: ::js_sys::Number,
+        queryOptions: Option<QueryOptions>,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Gets the <a href='#current-window'>current window</a>."]
     #[wasm_bindgen(js_name = "windows.getCurrent", catch)]
     pub async fn get_current(
         queryOptions: Option<QueryOptions>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets the <a href='#current-window'>current window</a>."]
+    #[wasm_bindgen(js_name = "windows.getCurrent")]
+    pub fn get_current_callback(queryOptions: Option<QueryOptions>, callback: &::js_sys::Function);
     #[doc = "Gets the window that was most recently focused &mdash; typically the window 'on top'."]
     #[wasm_bindgen(js_name = "windows.getLastFocused", catch)]
     pub async fn get_last_focused(
         queryOptions: Option<QueryOptions>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets the window that was most recently focused &mdash; typically the window 'on top'."]
+    #[wasm_bindgen(js_name = "windows.getLastFocused")]
+    pub fn get_last_focused_callback(
+        queryOptions: Option<QueryOptions>,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Gets all windows."]
     #[wasm_bindgen(js_name = "windows.getAll", catch)]
     pub async fn get_all(
         queryOptions: Option<QueryOptions>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets all windows."]
+    #[wasm_bindgen(js_name = "windows.getAll")]
+    pub fn get_all_callback(queryOptions: Option<QueryOptions>, callback: &::js_sys::Function);
     #[doc = "Creates (opens) a new browser window with any optional sizing, position, or default URL provided."]
     #[wasm_bindgen(js_name = "windows.create", catch)]
     pub async fn create(
         createData: Option<::js_sys::Object>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Creates (opens) a new browser window with any optional sizing, position, or default URL provided."]
+    #[wasm_bindgen(js_name = "windows.create")]
+    pub fn create_callback(createData: Option<::js_sys::Object>, callback: &::js_sys::Function);
     #[doc = "Updates the properties of a window. Specify only the properties that to be changed; unspecified properties are unchanged."]
     #[wasm_bindgen(js_name = "windows.update", catch)]
     pub async fn update(
         windowId: ::js_sys::Number,
         updateInfo: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Updates the properties of a window. Specify only the properties that to be changed; unspecified properties are unchanged."]
+    #[wasm_bindgen(js_name = "windows.update")]
+    pub fn update_callback(
+        windowId: ::js_sys::Number,
+        updateInfo: ::js_sys::Object,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Removes (closes) a window and all the tabs inside it."]
     #[wasm_bindgen(js_name = "windows.remove", catch)]
     pub async fn remove(windowId: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Removes (closes) a window and all the tabs inside it."]
+    #[wasm_bindgen(js_name = "windows.remove")]
+    pub fn remove_callback(windowId: ::js_sys::Number, callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn windows_get(
@@ -110,10 +142,25 @@ pub async fn windows_get(
     get(windowId, queryOptions).await
 }
 #[wasm_bindgen]
+pub fn windows_get_callback(
+    windowId: ::js_sys::Number,
+    queryOptions: Option<QueryOptions>,
+    callback: &::js_sys::Function,
+) {
+    get_callback(windowId, queryOptions, callback);
+}
+#[wasm_bindgen]
 pub async fn windows_get_current(
     queryOptions: Option<QueryOptions>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     get_current(queryOptions).await
+}
+#[wasm_bindgen]
+pub fn windows_get_current_callback(
+    queryOptions: Option<QueryOptions>,
+    callback: &::js_sys::Function,
+) {
+    get_current_callback(queryOptions, callback);
 }
 #[wasm_bindgen]
 pub async fn windows_get_last_focused(
@@ -122,16 +169,34 @@ pub async fn windows_get_last_focused(
     get_last_focused(queryOptions).await
 }
 #[wasm_bindgen]
+pub fn windows_get_last_focused_callback(
+    queryOptions: Option<QueryOptions>,
+    callback: &::js_sys::Function,
+) {
+    get_last_focused_callback(queryOptions, callback);
+}
+#[wasm_bindgen]
 pub async fn windows_get_all(
     queryOptions: Option<QueryOptions>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     get_all(queryOptions).await
 }
 #[wasm_bindgen]
+pub fn windows_get_all_callback(queryOptions: Option<QueryOptions>, callback: &::js_sys::Function) {
+    get_all_callback(queryOptions, callback);
+}
+#[wasm_bindgen]
 pub async fn windows_create(
     createData: Option<::js_sys::Object>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     create(createData).await
+}
+#[wasm_bindgen]
+pub fn windows_create_callback(
+    createData: Option<::js_sys::Object>,
+    callback: &::js_sys::Function,
+) {
+    create_callback(createData, callback);
 }
 #[wasm_bindgen]
 pub async fn windows_update(
@@ -141,6 +206,18 @@ pub async fn windows_update(
     update(windowId, updateInfo).await
 }
 #[wasm_bindgen]
+pub fn windows_update_callback(
+    windowId: ::js_sys::Number,
+    updateInfo: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    update_callback(windowId, updateInfo, callback);
+}
+#[wasm_bindgen]
 pub async fn windows_remove(windowId: ::js_sys::Number) -> Result<(), ::wasm_bindgen::JsValue> {
     remove(windowId).await
+}
+#[wasm_bindgen]
+pub fn windows_remove_callback(windowId: ::js_sys::Number, callback: &::js_sys::Function) {
+    remove_callback(windowId, callback);
 }

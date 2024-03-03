@@ -10,6 +10,13 @@ extern "C" {
         url: ::js_sys::JsString,
         guestInstanceId: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Attaches the specified url to the AppView with the provided instance ID."]
+    #[wasm_bindgen(js_name = "appViewGuestInternal.attachFrame")]
+    pub fn attach_frame_callback(
+        url: ::js_sys::JsString,
+        guestInstanceId: ::js_sys::Number,
+        callback: &::js_sys::Function,
+    );
 }
 #[wasm_bindgen]
 pub async fn app_view_guest_internal_attach_frame(
@@ -17,4 +24,12 @@ pub async fn app_view_guest_internal_attach_frame(
     guestInstanceId: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     attach_frame(url, guestInstanceId).await
+}
+#[wasm_bindgen]
+pub fn app_view_guest_internal_attach_frame_callback(
+    url: ::js_sys::JsString,
+    guestInstanceId: ::js_sys::Number,
+    callback: &::js_sys::Function,
+) {
+    attach_frame_callback(url, guestInstanceId, callback);
 }

@@ -72,67 +72,123 @@ extern "C" {
     #[doc = "Reports which types of data are currently selected in the 'Clear browsing data' settings UI.  Note: some of the data types included in this API are not available in the settings UI, and some UI settings control more than one data type listed here."]
     #[wasm_bindgen(js_name = "browsingData.settings", catch)]
     pub async fn settings() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Reports which types of data are currently selected in the 'Clear browsing data' settings UI.  Note: some of the data types included in this API are not available in the settings UI, and some UI settings control more than one data type listed here."]
+    #[wasm_bindgen(js_name = "browsingData.settings")]
+    pub fn settings_callback(callback: &::js_sys::Function);
     #[doc = "Clears various types of browsing data stored in a user's profile."]
     #[wasm_bindgen(js_name = "browsingData.remove", catch)]
     pub async fn remove(
         options: RemovalOptions,
         dataToRemove: DataTypeSet,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears various types of browsing data stored in a user's profile."]
+    #[wasm_bindgen(js_name = "browsingData.remove")]
+    pub fn remove_callback(
+        options: RemovalOptions,
+        dataToRemove: DataTypeSet,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Clears websites' appcache data."]
     #[wasm_bindgen(js_name = "browsingData.removeAppcache", catch)]
     pub async fn remove_appcache(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' appcache data."]
+    #[wasm_bindgen(js_name = "browsingData.removeAppcache")]
+    pub fn remove_appcache_callback(options: RemovalOptions, callback: &::js_sys::Function);
     #[doc = "Clears the browser's cache."]
     #[wasm_bindgen(js_name = "browsingData.removeCache", catch)]
     pub async fn remove_cache(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears the browser's cache."]
+    #[wasm_bindgen(js_name = "browsingData.removeCache")]
+    pub fn remove_cache_callback(options: RemovalOptions, callback: &::js_sys::Function);
     #[doc = "Clears websites' cache storage data."]
     #[wasm_bindgen(js_name = "browsingData.removeCacheStorage", catch)]
     pub async fn remove_cache_storage(
         options: RemovalOptions,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' cache storage data."]
+    #[wasm_bindgen(js_name = "browsingData.removeCacheStorage")]
+    pub fn remove_cache_storage_callback(options: RemovalOptions, callback: &::js_sys::Function);
     #[doc = "Clears the browser's cookies and server-bound certificates modified within a particular timeframe."]
     #[wasm_bindgen(js_name = "browsingData.removeCookies", catch)]
     pub async fn remove_cookies(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears the browser's cookies and server-bound certificates modified within a particular timeframe."]
+    #[wasm_bindgen(js_name = "browsingData.removeCookies")]
+    pub fn remove_cookies_callback(options: RemovalOptions, callback: &::js_sys::Function);
     #[doc = "Clears the browser's list of downloaded files (<em>not</em> the downloaded files themselves)."]
     #[wasm_bindgen(js_name = "browsingData.removeDownloads", catch)]
     pub async fn remove_downloads(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears the browser's list of downloaded files (<em>not</em> the downloaded files themselves)."]
+    #[wasm_bindgen(js_name = "browsingData.removeDownloads")]
+    pub fn remove_downloads_callback(options: RemovalOptions, callback: &::js_sys::Function);
     #[doc = "Clears websites' file system data."]
     #[wasm_bindgen(js_name = "browsingData.removeFileSystems", catch)]
     pub async fn remove_file_systems(
         options: RemovalOptions,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' file system data."]
+    #[wasm_bindgen(js_name = "browsingData.removeFileSystems")]
+    pub fn remove_file_systems_callback(options: RemovalOptions, callback: &::js_sys::Function);
     #[doc = "Clears the browser's stored form data (autofill)."]
     #[wasm_bindgen(js_name = "browsingData.removeFormData", catch)]
     pub async fn remove_form_data(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears the browser's stored form data (autofill)."]
+    #[wasm_bindgen(js_name = "browsingData.removeFormData")]
+    pub fn remove_form_data_callback(options: RemovalOptions, callback: &::js_sys::Function);
     #[doc = "Clears the browser's history."]
     #[wasm_bindgen(js_name = "browsingData.removeHistory", catch)]
     pub async fn remove_history(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears the browser's history."]
+    #[wasm_bindgen(js_name = "browsingData.removeHistory")]
+    pub fn remove_history_callback(options: RemovalOptions, callback: &::js_sys::Function);
     #[doc = "Clears websites' IndexedDB data."]
     #[wasm_bindgen(js_name = "browsingData.removeIndexedDB", catch)]
     pub async fn remove_indexed_db(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' IndexedDB data."]
+    #[wasm_bindgen(js_name = "browsingData.removeIndexedDB")]
+    pub fn remove_indexed_db_callback(options: RemovalOptions, callback: &::js_sys::Function);
     #[doc = "Clears websites' local storage data."]
     #[wasm_bindgen(js_name = "browsingData.removeLocalStorage", catch)]
     pub async fn remove_local_storage(
         options: RemovalOptions,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' local storage data."]
+    #[wasm_bindgen(js_name = "browsingData.removeLocalStorage")]
+    pub fn remove_local_storage_callback(options: RemovalOptions, callback: &::js_sys::Function);
     #[doc = "Clears plugins' data."]
     #[wasm_bindgen(js_name = "browsingData.removePluginData", catch)]
     pub async fn remove_plugin_data(options: RemovalOptions)
         -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears plugins' data."]
+    #[wasm_bindgen(js_name = "browsingData.removePluginData")]
+    pub fn remove_plugin_data_callback(options: RemovalOptions, callback: &::js_sys::Function);
     #[doc = "Clears the browser's stored passwords."]
     #[wasm_bindgen(js_name = "browsingData.removePasswords", catch)]
     pub async fn remove_passwords(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears the browser's stored passwords."]
+    #[wasm_bindgen(js_name = "browsingData.removePasswords")]
+    pub fn remove_passwords_callback(options: RemovalOptions, callback: &::js_sys::Function);
     #[doc = "Clears websites' service workers."]
     #[wasm_bindgen(js_name = "browsingData.removeServiceWorkers", catch)]
     pub async fn remove_service_workers(
         options: RemovalOptions,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' service workers."]
+    #[wasm_bindgen(js_name = "browsingData.removeServiceWorkers")]
+    pub fn remove_service_workers_callback(options: RemovalOptions, callback: &::js_sys::Function);
     #[doc = "Clears websites' WebSQL data."]
     #[wasm_bindgen(js_name = "browsingData.removeWebSQL", catch)]
     pub async fn remove_web_sql(options: RemovalOptions) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Clears websites' WebSQL data."]
+    #[wasm_bindgen(js_name = "browsingData.removeWebSQL")]
+    pub fn remove_web_sql_callback(options: RemovalOptions, callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn browsing_data_settings() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     settings().await
+}
+#[wasm_bindgen]
+pub fn browsing_data_settings_callback(callback: &::js_sys::Function) {
+    settings_callback(callback);
 }
 #[wasm_bindgen]
 pub async fn browsing_data_remove(
@@ -142,10 +198,25 @@ pub async fn browsing_data_remove(
     remove(options, dataToRemove).await
 }
 #[wasm_bindgen]
+pub fn browsing_data_remove_callback(
+    options: RemovalOptions,
+    dataToRemove: DataTypeSet,
+    callback: &::js_sys::Function,
+) {
+    remove_callback(options, dataToRemove, callback);
+}
+#[wasm_bindgen]
 pub async fn browsing_data_remove_appcache(
     options: RemovalOptions,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
     remove_appcache(options).await
+}
+#[wasm_bindgen]
+pub fn browsing_data_remove_appcache_callback(
+    options: RemovalOptions,
+    callback: &::js_sys::Function,
+) {
+    remove_appcache_callback(options, callback);
 }
 #[wasm_bindgen]
 pub async fn browsing_data_remove_cache(
@@ -154,10 +225,21 @@ pub async fn browsing_data_remove_cache(
     remove_cache(options).await
 }
 #[wasm_bindgen]
+pub fn browsing_data_remove_cache_callback(options: RemovalOptions, callback: &::js_sys::Function) {
+    remove_cache_callback(options, callback);
+}
+#[wasm_bindgen]
 pub async fn browsing_data_remove_cache_storage(
     options: RemovalOptions,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
     remove_cache_storage(options).await
+}
+#[wasm_bindgen]
+pub fn browsing_data_remove_cache_storage_callback(
+    options: RemovalOptions,
+    callback: &::js_sys::Function,
+) {
+    remove_cache_storage_callback(options, callback);
 }
 #[wasm_bindgen]
 pub async fn browsing_data_remove_cookies(
@@ -166,10 +248,24 @@ pub async fn browsing_data_remove_cookies(
     remove_cookies(options).await
 }
 #[wasm_bindgen]
+pub fn browsing_data_remove_cookies_callback(
+    options: RemovalOptions,
+    callback: &::js_sys::Function,
+) {
+    remove_cookies_callback(options, callback);
+}
+#[wasm_bindgen]
 pub async fn browsing_data_remove_downloads(
     options: RemovalOptions,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
     remove_downloads(options).await
+}
+#[wasm_bindgen]
+pub fn browsing_data_remove_downloads_callback(
+    options: RemovalOptions,
+    callback: &::js_sys::Function,
+) {
+    remove_downloads_callback(options, callback);
 }
 #[wasm_bindgen]
 pub async fn browsing_data_remove_file_systems(
@@ -178,10 +274,24 @@ pub async fn browsing_data_remove_file_systems(
     remove_file_systems(options).await
 }
 #[wasm_bindgen]
+pub fn browsing_data_remove_file_systems_callback(
+    options: RemovalOptions,
+    callback: &::js_sys::Function,
+) {
+    remove_file_systems_callback(options, callback);
+}
+#[wasm_bindgen]
 pub async fn browsing_data_remove_form_data(
     options: RemovalOptions,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
     remove_form_data(options).await
+}
+#[wasm_bindgen]
+pub fn browsing_data_remove_form_data_callback(
+    options: RemovalOptions,
+    callback: &::js_sys::Function,
+) {
+    remove_form_data_callback(options, callback);
 }
 #[wasm_bindgen]
 pub async fn browsing_data_remove_history(
@@ -190,10 +300,24 @@ pub async fn browsing_data_remove_history(
     remove_history(options).await
 }
 #[wasm_bindgen]
+pub fn browsing_data_remove_history_callback(
+    options: RemovalOptions,
+    callback: &::js_sys::Function,
+) {
+    remove_history_callback(options, callback);
+}
+#[wasm_bindgen]
 pub async fn browsing_data_remove_indexed_db(
     options: RemovalOptions,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
     remove_indexed_db(options).await
+}
+#[wasm_bindgen]
+pub fn browsing_data_remove_indexed_db_callback(
+    options: RemovalOptions,
+    callback: &::js_sys::Function,
+) {
+    remove_indexed_db_callback(options, callback);
 }
 #[wasm_bindgen]
 pub async fn browsing_data_remove_local_storage(
@@ -202,10 +326,24 @@ pub async fn browsing_data_remove_local_storage(
     remove_local_storage(options).await
 }
 #[wasm_bindgen]
+pub fn browsing_data_remove_local_storage_callback(
+    options: RemovalOptions,
+    callback: &::js_sys::Function,
+) {
+    remove_local_storage_callback(options, callback);
+}
+#[wasm_bindgen]
 pub async fn browsing_data_remove_plugin_data(
     options: RemovalOptions,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
     remove_plugin_data(options).await
+}
+#[wasm_bindgen]
+pub fn browsing_data_remove_plugin_data_callback(
+    options: RemovalOptions,
+    callback: &::js_sys::Function,
+) {
+    remove_plugin_data_callback(options, callback);
 }
 #[wasm_bindgen]
 pub async fn browsing_data_remove_passwords(
@@ -214,14 +352,35 @@ pub async fn browsing_data_remove_passwords(
     remove_passwords(options).await
 }
 #[wasm_bindgen]
+pub fn browsing_data_remove_passwords_callback(
+    options: RemovalOptions,
+    callback: &::js_sys::Function,
+) {
+    remove_passwords_callback(options, callback);
+}
+#[wasm_bindgen]
 pub async fn browsing_data_remove_service_workers(
     options: RemovalOptions,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
     remove_service_workers(options).await
 }
 #[wasm_bindgen]
+pub fn browsing_data_remove_service_workers_callback(
+    options: RemovalOptions,
+    callback: &::js_sys::Function,
+) {
+    remove_service_workers_callback(options, callback);
+}
+#[wasm_bindgen]
 pub async fn browsing_data_remove_web_sql(
     options: RemovalOptions,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
     remove_web_sql(options).await
+}
+#[wasm_bindgen]
+pub fn browsing_data_remove_web_sql_callback(
+    options: RemovalOptions,
+    callback: &::js_sys::Function,
+) {
+    remove_web_sql_callback(options, callback);
 }

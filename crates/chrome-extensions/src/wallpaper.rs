@@ -13,10 +13,17 @@ extern "C" {
     pub async fn set_wallpaper(
         details: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Sets wallpaper to the image at <em>url</em> or <em>wallpaperData</em> with the specified <em>layout</em>"]
+    #[wasm_bindgen(js_name = "wallpaper.setWallpaper")]
+    pub fn set_wallpaper_callback(details: ::js_sys::Object, callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn wallpaper_set_wallpaper(
     details: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     set_wallpaper(details).await
+}
+#[wasm_bindgen]
+pub fn wallpaper_set_wallpaper_callback(details: ::js_sys::Object, callback: &::js_sys::Function) {
+    set_wallpaper_callback(details, callback);
 }

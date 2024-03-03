@@ -17,8 +17,15 @@ extern "C" {
     #[doc = "Gets a list of top sites."]
     #[wasm_bindgen(js_name = "topSites.get", catch)]
     pub async fn get() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets a list of top sites."]
+    #[wasm_bindgen(js_name = "topSites.get")]
+    pub fn get_callback(callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn top_sites_get() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     get().await
+}
+#[wasm_bindgen]
+pub fn top_sites_get_callback(callback: &::js_sys::Function) {
+    get_callback(callback);
 }

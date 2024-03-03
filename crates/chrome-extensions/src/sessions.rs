@@ -42,16 +42,25 @@ extern "C" {
     pub async fn get_recently_closed(
         filter: Option<Filter>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets the list of recently closed tabs and/or windows."]
+    #[wasm_bindgen(js_name = "sessions.getRecentlyClosed")]
+    pub fn get_recently_closed_callback(filter: Option<Filter>, callback: &::js_sys::Function);
     #[doc = "Retrieves all devices with synced sessions."]
     #[wasm_bindgen(js_name = "sessions.getDevices", catch)]
     pub async fn get_devices(
         filter: Option<Filter>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Retrieves all devices with synced sessions."]
+    #[wasm_bindgen(js_name = "sessions.getDevices")]
+    pub fn get_devices_callback(filter: Option<Filter>, callback: &::js_sys::Function);
     #[doc = "Reopens a $(ref:windows.Window) or $(ref:tabs.Tab), with an optional callback to run when the entry has been restored."]
     #[wasm_bindgen(js_name = "sessions.restore", catch)]
     pub async fn restore(
         sessionId: Option<::js_sys::JsString>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Reopens a $(ref:windows.Window) or $(ref:tabs.Tab), with an optional callback to run when the entry has been restored."]
+    #[wasm_bindgen(js_name = "sessions.restore")]
+    pub fn restore_callback(sessionId: Option<::js_sys::JsString>, callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn sessions_get_recently_closed(
@@ -60,14 +69,32 @@ pub async fn sessions_get_recently_closed(
     get_recently_closed(filter).await
 }
 #[wasm_bindgen]
+pub fn sessions_get_recently_closed_callback(
+    filter: Option<Filter>,
+    callback: &::js_sys::Function,
+) {
+    get_recently_closed_callback(filter, callback);
+}
+#[wasm_bindgen]
 pub async fn sessions_get_devices(
     filter: Option<Filter>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     get_devices(filter).await
 }
 #[wasm_bindgen]
+pub fn sessions_get_devices_callback(filter: Option<Filter>, callback: &::js_sys::Function) {
+    get_devices_callback(filter, callback);
+}
+#[wasm_bindgen]
 pub async fn sessions_restore(
     sessionId: Option<::js_sys::JsString>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     restore(sessionId).await
+}
+#[wasm_bindgen]
+pub fn sessions_restore_callback(
+    sessionId: Option<::js_sys::JsString>,
+    callback: &::js_sys::Function,
+) {
+    restore_callback(sessionId, callback);
 }

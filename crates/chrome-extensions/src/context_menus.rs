@@ -95,13 +95,26 @@ extern "C" {
         id: ::wasm_bindgen::JsValue,
         updateProperties: ::js_sys::Object,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Updates a previously created context menu item."]
+    #[wasm_bindgen(js_name = "contextMenus.update")]
+    pub fn update_callback(
+        id: ::wasm_bindgen::JsValue,
+        updateProperties: ::js_sys::Object,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Removes a context menu item."]
     #[wasm_bindgen(js_name = "contextMenus.remove", catch)]
     pub async fn remove(menuItemId: ::wasm_bindgen::JsValue)
         -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Removes a context menu item."]
+    #[wasm_bindgen(js_name = "contextMenus.remove")]
+    pub fn remove_callback(menuItemId: ::wasm_bindgen::JsValue, callback: &::js_sys::Function);
     #[doc = "Removes all context menu items added by this extension."]
     #[wasm_bindgen(js_name = "contextMenus.removeAll", catch)]
     pub async fn remove_all() -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Removes all context menu items added by this extension."]
+    #[wasm_bindgen(js_name = "contextMenus.removeAll")]
+    pub fn remove_all_callback(callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub fn context_menus_create(createProperties: CreateProperties) {
@@ -115,12 +128,31 @@ pub async fn context_menus_update(
     update(id, updateProperties).await
 }
 #[wasm_bindgen]
+pub fn context_menus_update_callback(
+    id: ::wasm_bindgen::JsValue,
+    updateProperties: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    update_callback(id, updateProperties, callback);
+}
+#[wasm_bindgen]
 pub async fn context_menus_remove(
     menuItemId: ::wasm_bindgen::JsValue,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
     remove(menuItemId).await
 }
 #[wasm_bindgen]
+pub fn context_menus_remove_callback(
+    menuItemId: ::wasm_bindgen::JsValue,
+    callback: &::js_sys::Function,
+) {
+    remove_callback(menuItemId, callback);
+}
+#[wasm_bindgen]
 pub async fn context_menus_remove_all() -> Result<(), ::wasm_bindgen::JsValue> {
     remove_all().await
+}
+#[wasm_bindgen]
+pub fn context_menus_remove_all_callback(callback: &::js_sys::Function) {
+    remove_all_callback(callback);
 }

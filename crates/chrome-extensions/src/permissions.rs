@@ -17,25 +17,41 @@ extern "C" {
     #[doc = "Gets the extension's current set of permissions."]
     #[wasm_bindgen(js_name = "permissions.getAll", catch)]
     pub async fn get_all() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets the extension's current set of permissions."]
+    #[wasm_bindgen(js_name = "permissions.getAll")]
+    pub fn get_all_callback(callback: &::js_sys::Function);
     #[doc = "Checks if the extension has the specified permissions."]
     #[wasm_bindgen(js_name = "permissions.contains", catch)]
     pub async fn contains(
         permissions: Permissions,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Checks if the extension has the specified permissions."]
+    #[wasm_bindgen(js_name = "permissions.contains")]
+    pub fn contains_callback(permissions: Permissions, callback: &::js_sys::Function);
     #[doc = "Requests access to the specified permissions, displaying a prompt to the user if necessary. These permissions must either be defined in the <code>optional_permissions</code> field of the manifest or be required permissions that were withheld by the user. Paths on origin patterns will be ignored. You can request subsets of optional origin permissions; for example, if you specify <code>*://*/*</code> in the <code>optional_permissions</code> section of the manifest, you can request <code>http://example.com/</code>. If there are any problems requesting the permissions, $(ref:runtime.lastError) will be set."]
     #[wasm_bindgen(js_name = "permissions.request", catch)]
     pub async fn request(
         permissions: Permissions,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Requests access to the specified permissions, displaying a prompt to the user if necessary. These permissions must either be defined in the <code>optional_permissions</code> field of the manifest or be required permissions that were withheld by the user. Paths on origin patterns will be ignored. You can request subsets of optional origin permissions; for example, if you specify <code>*://*/*</code> in the <code>optional_permissions</code> section of the manifest, you can request <code>http://example.com/</code>. If there are any problems requesting the permissions, $(ref:runtime.lastError) will be set."]
+    #[wasm_bindgen(js_name = "permissions.request")]
+    pub fn request_callback(permissions: Permissions, callback: &::js_sys::Function);
     #[doc = "Removes access to the specified permissions. If there are any problems removing the permissions, $(ref:runtime.lastError) will be set."]
     #[wasm_bindgen(js_name = "permissions.remove", catch)]
     pub async fn remove(
         permissions: Permissions,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Removes access to the specified permissions. If there are any problems removing the permissions, $(ref:runtime.lastError) will be set."]
+    #[wasm_bindgen(js_name = "permissions.remove")]
+    pub fn remove_callback(permissions: Permissions, callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn permissions_get_all() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     get_all().await
+}
+#[wasm_bindgen]
+pub fn permissions_get_all_callback(callback: &::js_sys::Function) {
+    get_all_callback(callback);
 }
 #[wasm_bindgen]
 pub async fn permissions_contains(
@@ -44,14 +60,26 @@ pub async fn permissions_contains(
     contains(permissions).await
 }
 #[wasm_bindgen]
+pub fn permissions_contains_callback(permissions: Permissions, callback: &::js_sys::Function) {
+    contains_callback(permissions, callback);
+}
+#[wasm_bindgen]
 pub async fn permissions_request(
     permissions: Permissions,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     request(permissions).await
 }
 #[wasm_bindgen]
+pub fn permissions_request_callback(permissions: Permissions, callback: &::js_sys::Function) {
+    request_callback(permissions, callback);
+}
+#[wasm_bindgen]
 pub async fn permissions_remove(
     permissions: Permissions,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     remove(permissions).await
+}
+#[wasm_bindgen]
+pub fn permissions_remove_callback(permissions: Permissions, callback: &::js_sys::Function) {
+    remove_callback(permissions, callback);
 }

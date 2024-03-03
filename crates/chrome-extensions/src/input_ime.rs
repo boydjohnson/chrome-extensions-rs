@@ -156,59 +156,110 @@ extern "C" {
     pub async fn set_composition(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Set the current composition. If this extension does not own the active IME, this fails."]
+    #[wasm_bindgen(js_name = "input.ime.setComposition")]
+    pub fn set_composition_callback(parameters: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Clear the current composition. If this extension does not own the active IME, this fails."]
     #[wasm_bindgen(js_name = "input.ime.clearComposition", catch)]
     pub async fn clear_composition(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Clear the current composition. If this extension does not own the active IME, this fails."]
+    #[wasm_bindgen(js_name = "input.ime.clearComposition")]
+    pub fn clear_composition_callback(parameters: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Commits the provided text to the current input."]
     #[wasm_bindgen(js_name = "input.ime.commitText", catch)]
     pub async fn commit_text(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Commits the provided text to the current input."]
+    #[wasm_bindgen(js_name = "input.ime.commitText")]
+    pub fn commit_text_callback(parameters: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Sends the key events.  This function is expected to be used by virtual keyboards.  When key(s) on a virtual keyboard is pressed by a user, this function is used to propagate that event to the system."]
     #[wasm_bindgen(js_name = "input.ime.sendKeyEvents", catch)]
     pub async fn send_key_events(
         parameters: ::js_sys::Object,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Sends the key events.  This function is expected to be used by virtual keyboards.  When key(s) on a virtual keyboard is pressed by a user, this function is used to propagate that event to the system."]
+    #[wasm_bindgen(js_name = "input.ime.sendKeyEvents")]
+    pub fn send_key_events_callback(parameters: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Sets the properties of the candidate window. This fails if the extension doesn't own the active IME"]
     #[wasm_bindgen(js_name = "input.ime.setCandidateWindowProperties", catch)]
     pub async fn set_candidate_window_properties(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Sets the properties of the candidate window. This fails if the extension doesn't own the active IME"]
+    #[wasm_bindgen(js_name = "input.ime.setCandidateWindowProperties")]
+    pub fn set_candidate_window_properties_callback(
+        parameters: ::js_sys::Object,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Sets the current candidate list. This fails if this extension doesn't own the active IME"]
     #[wasm_bindgen(js_name = "input.ime.setCandidates", catch)]
     pub async fn set_candidates(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Sets the current candidate list. This fails if this extension doesn't own the active IME"]
+    #[wasm_bindgen(js_name = "input.ime.setCandidates")]
+    pub fn set_candidates_callback(parameters: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Set the position of the cursor in the candidate window. This is a no-op if this extension does not own the active IME."]
     #[wasm_bindgen(js_name = "input.ime.setCursorPosition", catch)]
     pub async fn set_cursor_position(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Set the position of the cursor in the candidate window. This is a no-op if this extension does not own the active IME."]
+    #[wasm_bindgen(js_name = "input.ime.setCursorPosition")]
+    pub fn set_cursor_position_callback(
+        parameters: ::js_sys::Object,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Shows/Hides an assistive window with the given properties."]
     #[wasm_bindgen(js_name = "input.ime.setAssistiveWindowProperties", catch)]
     pub async fn set_assistive_window_properties(
         parameters: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Shows/Hides an assistive window with the given properties."]
+    #[wasm_bindgen(js_name = "input.ime.setAssistiveWindowProperties")]
+    pub fn set_assistive_window_properties_callback(
+        parameters: ::js_sys::Object,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Highlights/Unhighlights a button in an assistive window."]
     #[wasm_bindgen(js_name = "input.ime.setAssistiveWindowButtonHighlighted", catch)]
     pub async fn set_assistive_window_button_highlighted(
         parameters: ::js_sys::Object,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Highlights/Unhighlights a button in an assistive window."]
+    #[wasm_bindgen(js_name = "input.ime.setAssistiveWindowButtonHighlighted")]
+    pub fn set_assistive_window_button_highlighted_callback(
+        parameters: ::js_sys::Object,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Adds the provided menu items to the language menu when this IME is active."]
     #[wasm_bindgen(js_name = "input.ime.setMenuItems", catch)]
     pub async fn set_menu_items(parameters: MenuParameters) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Adds the provided menu items to the language menu when this IME is active."]
+    #[wasm_bindgen(js_name = "input.ime.setMenuItems")]
+    pub fn set_menu_items_callback(parameters: MenuParameters, callback: &::js_sys::Function);
     #[doc = "Updates the state of the MenuItems specified"]
     #[wasm_bindgen(js_name = "input.ime.updateMenuItems", catch)]
     pub async fn update_menu_items(
         parameters: MenuParameters,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Updates the state of the MenuItems specified"]
+    #[wasm_bindgen(js_name = "input.ime.updateMenuItems")]
+    pub fn update_menu_items_callback(parameters: MenuParameters, callback: &::js_sys::Function);
     #[doc = "Deletes the text around the caret."]
     #[wasm_bindgen(js_name = "input.ime.deleteSurroundingText", catch)]
     pub async fn delete_surrounding_text(
         parameters: ::js_sys::Object,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Deletes the text around the caret."]
+    #[wasm_bindgen(js_name = "input.ime.deleteSurroundingText")]
+    pub fn delete_surrounding_text_callback(
+        parameters: ::js_sys::Object,
+        callback: &::js_sys::Function,
+    );
 }
 #[wasm_bindgen]
 pub async fn input_ime_set_composition(
@@ -217,10 +268,24 @@ pub async fn input_ime_set_composition(
     set_composition(parameters).await
 }
 #[wasm_bindgen]
+pub fn input_ime_set_composition_callback(
+    parameters: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    set_composition_callback(parameters, callback);
+}
+#[wasm_bindgen]
 pub async fn input_ime_clear_composition(
     parameters: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     clear_composition(parameters).await
+}
+#[wasm_bindgen]
+pub fn input_ime_clear_composition_callback(
+    parameters: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    clear_composition_callback(parameters, callback);
 }
 #[wasm_bindgen]
 pub async fn input_ime_commit_text(
@@ -229,10 +294,21 @@ pub async fn input_ime_commit_text(
     commit_text(parameters).await
 }
 #[wasm_bindgen]
+pub fn input_ime_commit_text_callback(parameters: ::js_sys::Object, callback: &::js_sys::Function) {
+    commit_text_callback(parameters, callback);
+}
+#[wasm_bindgen]
 pub async fn input_ime_send_key_events(
     parameters: ::js_sys::Object,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
     send_key_events(parameters).await
+}
+#[wasm_bindgen]
+pub fn input_ime_send_key_events_callback(
+    parameters: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    send_key_events_callback(parameters, callback);
 }
 #[wasm_bindgen]
 pub async fn input_ime_set_candidate_window_properties(
@@ -241,10 +317,24 @@ pub async fn input_ime_set_candidate_window_properties(
     set_candidate_window_properties(parameters).await
 }
 #[wasm_bindgen]
+pub fn input_ime_set_candidate_window_properties_callback(
+    parameters: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    set_candidate_window_properties_callback(parameters, callback);
+}
+#[wasm_bindgen]
 pub async fn input_ime_set_candidates(
     parameters: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     set_candidates(parameters).await
+}
+#[wasm_bindgen]
+pub fn input_ime_set_candidates_callback(
+    parameters: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    set_candidates_callback(parameters, callback);
 }
 #[wasm_bindgen]
 pub async fn input_ime_set_cursor_position(
@@ -253,10 +343,24 @@ pub async fn input_ime_set_cursor_position(
     set_cursor_position(parameters).await
 }
 #[wasm_bindgen]
+pub fn input_ime_set_cursor_position_callback(
+    parameters: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    set_cursor_position_callback(parameters, callback);
+}
+#[wasm_bindgen]
 pub async fn input_ime_set_assistive_window_properties(
     parameters: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     set_assistive_window_properties(parameters).await
+}
+#[wasm_bindgen]
+pub fn input_ime_set_assistive_window_properties_callback(
+    parameters: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    set_assistive_window_properties_callback(parameters, callback);
 }
 #[wasm_bindgen]
 pub async fn input_ime_set_assistive_window_button_highlighted(
@@ -265,10 +369,24 @@ pub async fn input_ime_set_assistive_window_button_highlighted(
     set_assistive_window_button_highlighted(parameters).await
 }
 #[wasm_bindgen]
+pub fn input_ime_set_assistive_window_button_highlighted_callback(
+    parameters: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    set_assistive_window_button_highlighted_callback(parameters, callback);
+}
+#[wasm_bindgen]
 pub async fn input_ime_set_menu_items(
     parameters: MenuParameters,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
     set_menu_items(parameters).await
+}
+#[wasm_bindgen]
+pub fn input_ime_set_menu_items_callback(
+    parameters: MenuParameters,
+    callback: &::js_sys::Function,
+) {
+    set_menu_items_callback(parameters, callback);
 }
 #[wasm_bindgen]
 pub async fn input_ime_update_menu_items(
@@ -277,8 +395,22 @@ pub async fn input_ime_update_menu_items(
     update_menu_items(parameters).await
 }
 #[wasm_bindgen]
+pub fn input_ime_update_menu_items_callback(
+    parameters: MenuParameters,
+    callback: &::js_sys::Function,
+) {
+    update_menu_items_callback(parameters, callback);
+}
+#[wasm_bindgen]
 pub async fn input_ime_delete_surrounding_text(
     parameters: ::js_sys::Object,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
     delete_surrounding_text(parameters).await
+}
+#[wasm_bindgen]
+pub fn input_ime_delete_surrounding_text_callback(
+    parameters: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    delete_surrounding_text_callback(parameters, callback);
 }

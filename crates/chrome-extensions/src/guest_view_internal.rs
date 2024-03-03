@@ -38,11 +38,26 @@ extern "C" {
         createParams: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
     #[doc = ""]
+    #[wasm_bindgen(js_name = "guestViewInternal.createGuest")]
+    pub fn create_guest_callback(
+        viewType: ::js_sys::JsString,
+        ownerFrameToken: ::js_sys::JsString,
+        createParams: ::js_sys::Object,
+        callback: &::js_sys::Function,
+    );
+    #[doc = ""]
     #[wasm_bindgen(js_name = "guestViewInternal.setSize", catch)]
     pub async fn set_size(
         instanceId: ::js_sys::Number,
         params: SizeParams,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = ""]
+    #[wasm_bindgen(js_name = "guestViewInternal.setSize")]
+    pub fn set_size_callback(
+        instanceId: ::js_sys::Number,
+        params: SizeParams,
+        callback: &::js_sys::Function,
+    );
 }
 #[wasm_bindgen]
 pub async fn guest_view_internal_create_guest(
@@ -53,9 +68,26 @@ pub async fn guest_view_internal_create_guest(
     create_guest(viewType, ownerFrameToken, createParams).await
 }
 #[wasm_bindgen]
+pub fn guest_view_internal_create_guest_callback(
+    viewType: ::js_sys::JsString,
+    ownerFrameToken: ::js_sys::JsString,
+    createParams: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    create_guest_callback(viewType, ownerFrameToken, createParams, callback);
+}
+#[wasm_bindgen]
 pub async fn guest_view_internal_set_size(
     instanceId: ::js_sys::Number,
     params: SizeParams,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
     set_size(instanceId, params).await
+}
+#[wasm_bindgen]
+pub fn guest_view_internal_set_size_callback(
+    instanceId: ::js_sys::Number,
+    params: SizeParams,
+    callback: &::js_sys::Function,
+) {
+    set_size_callback(instanceId, params, callback);
 }

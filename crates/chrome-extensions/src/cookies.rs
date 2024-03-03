@@ -90,24 +90,39 @@ extern "C" {
     pub async fn get(
         details: CookieDetails,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Retrieves information about a single cookie. If more than one cookie of the same name exists for the given URL, the one with the longest path will be returned. For cookies with the same path length, the cookie with the earliest creation time will be returned."]
+    #[wasm_bindgen(js_name = "cookies.get")]
+    pub fn get_callback(details: CookieDetails, callback: &::js_sys::Function);
     #[doc = "Retrieves all cookies from a single cookie store that match the given information. The cookies returned will be sorted, with those with the longest path first. If multiple cookies have the same path length, those with the earliest creation time will be first. This method only retrieves cookies for domains that the extension has host permissions to."]
     #[wasm_bindgen(js_name = "cookies.getAll", catch)]
-    pub async fn getAll(
+    pub async fn get_all(
         details: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Retrieves all cookies from a single cookie store that match the given information. The cookies returned will be sorted, with those with the longest path first. If multiple cookies have the same path length, those with the earliest creation time will be first. This method only retrieves cookies for domains that the extension has host permissions to."]
+    #[wasm_bindgen(js_name = "cookies.getAll")]
+    pub fn get_all_callback(details: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist."]
     #[wasm_bindgen(js_name = "cookies.set", catch)]
     pub async fn set(
         details: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist."]
+    #[wasm_bindgen(js_name = "cookies.set")]
+    pub fn set_callback(details: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Deletes a cookie by name."]
     #[wasm_bindgen(js_name = "cookies.remove", catch)]
     pub async fn remove(
         details: CookieDetails,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Deletes a cookie by name."]
+    #[wasm_bindgen(js_name = "cookies.remove")]
+    pub fn remove_callback(details: CookieDetails, callback: &::js_sys::Function);
     #[doc = "Lists all existing cookie stores."]
     #[wasm_bindgen(js_name = "cookies.getAllCookieStores", catch)]
-    pub async fn getAllCookieStores() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_all_cookie_stores() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Lists all existing cookie stores."]
+    #[wasm_bindgen(js_name = "cookies.getAllCookieStores")]
+    pub fn get_all_cookie_stores_callback(callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn cookies_get(
@@ -116,10 +131,18 @@ pub async fn cookies_get(
     get(details).await
 }
 #[wasm_bindgen]
+pub fn cookies_get_callback(details: CookieDetails, callback: &::js_sys::Function) {
+    get_callback(details, callback);
+}
+#[wasm_bindgen]
 pub async fn cookies_get_all(
     details: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getAll(details).await
+    get_all(details).await
+}
+#[wasm_bindgen]
+pub fn cookies_get_all_callback(details: ::js_sys::Object, callback: &::js_sys::Function) {
+    get_all_callback(details, callback);
 }
 #[wasm_bindgen]
 pub async fn cookies_set(
@@ -128,13 +151,25 @@ pub async fn cookies_set(
     set(details).await
 }
 #[wasm_bindgen]
+pub fn cookies_set_callback(details: ::js_sys::Object, callback: &::js_sys::Function) {
+    set_callback(details, callback);
+}
+#[wasm_bindgen]
 pub async fn cookies_remove(
     details: CookieDetails,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
     remove(details).await
 }
 #[wasm_bindgen]
+pub fn cookies_remove_callback(details: CookieDetails, callback: &::js_sys::Function) {
+    remove_callback(details, callback);
+}
+#[wasm_bindgen]
 pub async fn cookies_get_all_cookie_stores(
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getAllCookieStores().await
+    get_all_cookie_stores().await
+}
+#[wasm_bindgen]
+pub fn cookies_get_all_cookie_stores_callback(callback: &::js_sys::Function) {
+    get_all_cookie_stores_callback(callback);
 }

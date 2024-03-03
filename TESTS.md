@@ -2,15 +2,15 @@
 
 ## windows
 
-| Name           | Tested |
-| -------------- | ------ |
-| get            | ✅     |
-| getAll         | ✅     |
-| getCurrent     | ✅     |
-| getLastFocused | ✅     |
-| create         | ❌     |
-| update         |        |
-| remove         |        |
+| Name             | Tested |
+| ---------------- | ------ |
+| get              | ✅     |
+| get_all          | ✅     |
+| get_current      | ✅     |
+| get_last_focused | ✅     |
+| create           | ❌     |
+| update           |        |
+| remove           |        |
 
 ### Notes:
 

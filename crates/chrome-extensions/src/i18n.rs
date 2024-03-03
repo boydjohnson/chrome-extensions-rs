@@ -10,43 +10,57 @@ extern "C" {
     pub type LanguageCode;
     #[doc = "Gets the accept-languages of the browser. This is different from the locale used by the browser; to get the locale, use $(ref:i18n.getUILanguage)."]
     #[wasm_bindgen(js_name = "i18n.getAcceptLanguages", catch)]
-    pub async fn getAcceptLanguages() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_accept_languages() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets the accept-languages of the browser. This is different from the locale used by the browser; to get the locale, use $(ref:i18n.getUILanguage)."]
+    #[wasm_bindgen(js_name = "i18n.getAcceptLanguages")]
+    pub fn get_accept_languages_callback(callback: &::js_sys::Function);
     #[doc = "Gets the localized string for the specified message. If the message is missing, this method returns an empty string (''). If the format of the <code>getMessage()</code> call is wrong &mdash; for example, <em>messageName</em> is not a string or the <em>substitutions</em> array has more than 9 elements &mdash; this method returns <code>undefined</code>."]
     #[wasm_bindgen(js_name = "i18n.getMessage")]
-    pub fn getMessage(
-        messageName: ::js_sys::JsString,
+    pub fn get_message(
+        message_name: ::js_sys::JsString,
         substitutions: ::wasm_bindgen::JsValue,
         options: Option<::js_sys::Object>,
     ) -> ::js_sys::JsString;
     #[doc = "Gets the browser UI language of the browser. This is different from $(ref:i18n.getAcceptLanguages) which returns the preferred user languages."]
     #[wasm_bindgen(js_name = "i18n.getUILanguage")]
-    pub fn getUILanguage() -> ::js_sys::JsString;
+    pub fn get_ui_language() -> ::js_sys::JsString;
     #[doc = "Detects the language of the provided text using CLD."]
     #[wasm_bindgen(js_name = "i18n.detectLanguage", catch)]
-    pub async fn detectLanguage(
+    pub async fn detect_language(
         text: ::js_sys::JsString,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Detects the language of the provided text using CLD."]
+    #[wasm_bindgen(js_name = "i18n.detectLanguage")]
+    pub fn detect_language_callback(text: ::js_sys::JsString, callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn i18n_get_accept_languages() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>
 {
-    getAcceptLanguages().await
+    get_accept_languages().await
+}
+#[wasm_bindgen]
+pub fn i18n_get_accept_languages_callback(callback: &::js_sys::Function) {
+    get_accept_languages_callback(callback);
 }
 #[wasm_bindgen]
 pub fn i18n_get_message(
-    messageName: ::js_sys::JsString,
+    message_name: ::js_sys::JsString,
     substitutions: ::wasm_bindgen::JsValue,
     options: Option<::js_sys::Object>,
 ) -> ::js_sys::JsString {
-    getMessage(messageName, substitutions, options)
+    get_message(message_name, substitutions, options)
 }
 #[wasm_bindgen]
 pub fn i18n_get_ui_language() -> ::js_sys::JsString {
-    getUILanguage()
+    get_ui_language()
 }
 #[wasm_bindgen]
 pub async fn i18n_detect_language(
     text: ::js_sys::JsString,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    detectLanguage(text).await
+    detect_language(text).await
+}
+#[wasm_bindgen]
+pub fn i18n_detect_language_callback(text: ::js_sys::JsString, callback: &::js_sys::Function) {
+    detect_language_callback(text, callback);
 }

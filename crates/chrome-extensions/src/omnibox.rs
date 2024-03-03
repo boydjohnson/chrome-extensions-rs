@@ -53,13 +53,26 @@ extern "C" {
     pub fn descriptionStyles(this: &DefaultSuggestResult) -> Option<::js_sys::Array>;
     #[doc = "Sets the description and styling for the default suggestion. The default suggestion is the text that is displayed in the first suggestion row underneath the URL bar."]
     #[wasm_bindgen(js_name = "omnibox.setDefaultSuggestion", catch)]
-    pub async fn setDefaultSuggestion(
+    pub async fn set_default_suggestion(
         suggestion: DefaultSuggestResult,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Sets the description and styling for the default suggestion. The default suggestion is the text that is displayed in the first suggestion row underneath the URL bar."]
+    #[wasm_bindgen(js_name = "omnibox.setDefaultSuggestion")]
+    pub fn set_default_suggestion_callback(
+        suggestion: DefaultSuggestResult,
+        callback: &::js_sys::Function,
+    );
 }
 #[wasm_bindgen]
 pub async fn omnibox_set_default_suggestion(
     suggestion: DefaultSuggestResult,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    setDefaultSuggestion(suggestion).await
+    set_default_suggestion(suggestion).await
+}
+#[wasm_bindgen]
+pub fn omnibox_set_default_suggestion_callback(
+    suggestion: DefaultSuggestResult,
+    callback: &::js_sys::Function,
+) {
+    set_default_suggestion_callback(suggestion, callback);
 }

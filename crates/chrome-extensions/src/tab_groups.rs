@@ -30,49 +30,93 @@ extern "C" {
     #[doc = "Retrieves details about the specified group."]
     #[wasm_bindgen(js_name = "tabGroups.get", catch)]
     pub async fn get(
-        groupId: ::js_sys::Number,
+        group_id: ::js_sys::Number,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Retrieves details about the specified group."]
+    #[wasm_bindgen(js_name = "tabGroups.get")]
+    pub fn get_callback(group_id: ::js_sys::Number, callback: &::js_sys::Function);
     #[doc = "Gets all groups that have the specified properties, or all groups if no properties are specified."]
     #[wasm_bindgen(js_name = "tabGroups.query", catch)]
     pub async fn query(
-        queryInfo: ::js_sys::Object,
+        query_info: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets all groups that have the specified properties, or all groups if no properties are specified."]
+    #[wasm_bindgen(js_name = "tabGroups.query")]
+    pub fn query_callback(query_info: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Modifies the properties of a group. Properties that are not specified in <var>updateProperties</var> are not modified."]
     #[wasm_bindgen(js_name = "tabGroups.update", catch)]
     pub async fn update(
-        groupId: ::js_sys::Number,
-        updateProperties: ::js_sys::Object,
+        group_id: ::js_sys::Number,
+        update_properties: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Modifies the properties of a group. Properties that are not specified in <var>updateProperties</var> are not modified."]
+    #[wasm_bindgen(js_name = "tabGroups.update")]
+    pub fn update_callback(
+        group_id: ::js_sys::Number,
+        update_properties: ::js_sys::Object,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Moves the group and all its tabs within its window, or to a new window."]
     #[wasm_bindgen(js_name = "tabGroups.move", catch)]
     pub async fn move_(
-        groupId: ::js_sys::Number,
-        moveProperties: ::js_sys::Object,
+        group_id: ::js_sys::Number,
+        move_properties: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Moves the group and all its tabs within its window, or to a new window."]
+    #[wasm_bindgen(js_name = "tabGroups.move")]
+    pub fn move_callback(
+        group_id: ::js_sys::Number,
+        move_properties: ::js_sys::Object,
+        callback: &::js_sys::Function,
+    );
 }
 #[wasm_bindgen]
 pub async fn tab_groups_get(
-    groupId: ::js_sys::Number,
+    group_id: ::js_sys::Number,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    get(groupId).await
+    get(group_id).await
+}
+#[wasm_bindgen]
+pub fn tab_groups_get_callback(group_id: ::js_sys::Number, callback: &::js_sys::Function) {
+    get_callback(group_id, callback);
 }
 #[wasm_bindgen]
 pub async fn tab_groups_query(
-    queryInfo: ::js_sys::Object,
+    query_info: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    query(queryInfo).await
+    query(query_info).await
+}
+#[wasm_bindgen]
+pub fn tab_groups_query_callback(query_info: ::js_sys::Object, callback: &::js_sys::Function) {
+    query_callback(query_info, callback);
 }
 #[wasm_bindgen]
 pub async fn tab_groups_update(
-    groupId: ::js_sys::Number,
-    updateProperties: ::js_sys::Object,
+    group_id: ::js_sys::Number,
+    update_properties: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    update(groupId, updateProperties).await
+    update(group_id, update_properties).await
+}
+#[wasm_bindgen]
+pub fn tab_groups_update_callback(
+    group_id: ::js_sys::Number,
+    update_properties: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    update_callback(group_id, update_properties, callback);
 }
 #[wasm_bindgen]
 pub async fn tab_groups_move(
-    groupId: ::js_sys::Number,
-    moveProperties: ::js_sys::Object,
+    group_id: ::js_sys::Number,
+    move_properties: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    move_(groupId, moveProperties).await
+    move_(group_id, move_properties).await
+}
+#[wasm_bindgen]
+pub fn tab_groups_move_callback(
+    group_id: ::js_sys::Number,
+    move_properties: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    move_callback(group_id, move_properties, callback);
 }

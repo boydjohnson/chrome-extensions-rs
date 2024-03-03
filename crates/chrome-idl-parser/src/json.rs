@@ -49,13 +49,13 @@ impl ChromeApi {
             typ
         };
 
-        let ident_name = Ident::new(&param.name, Span::call_site());
+        let ident_name = Ident::new(&param.name.to_snake_case(), Span::call_site());
 
         quote!(#ident_name: #typ)
     }
 
     fn generate_arguments(param: &Parameter) -> TokenStream {
-        let ident_name = Ident::new(&param.name, Span::call_site());
+        let ident_name = Ident::new(&param.name.to_snake_case(), Span::call_site());
 
         quote!(#ident_name)
     }
@@ -63,12 +63,20 @@ impl ChromeApi {
     fn generate_functions(&self, internal: &mut Vec<TokenStream>, external: &mut Vec<TokenStream>) {
         for func in self.functions.iter().flat_map(|v| v.iter()) {
             let js_name = self.namespace.clone() + "." + func.name.as_str();
-            let ident = rust_ident(&func.name.clone());
+            let ident = rust_ident(&func.name.clone().to_snake_case());
+
+            let ident_callback = rust_ident(&(func.name.clone().to_snake_case() + "_callback"));
 
             let ext_rust_function_name = rust_ident(
                 &(self.namespace.clone().replace('.', "_").to_snake_case()
                     + "_"
                     + func.name.to_snake_case().as_str()),
+            );
+            let ext_rust_function_name_callback = rust_ident(
+                &(self.namespace.clone().replace('.', "_").to_snake_case()
+                    + "_"
+                    + func.name.to_snake_case().as_str()
+                    + "_callback"),
             );
 
             let params: Vec<TokenStream> = func
@@ -191,6 +199,36 @@ impl ChromeApi {
                         #[wasm_bindgen]
                         pub async fn #ext_rust_function_name(#(#params),*) -> Result<(), ::wasm_bindgen::JsValue> {
                             #ident(#(#args),*).await
+                        }
+                    ));
+                }
+                if params.is_empty() {
+                    internal.push(quote!(
+                       #[doc = #msg]
+                       #[wasm_bindgen(js_name = #js_name)]
+                        pub fn #ident_callback(callback: &::js_sys::Function);
+
+                    ));
+                    external.push(quote!(
+
+                        #[wasm_bindgen]
+                        pub fn #ext_rust_function_name_callback(callback: &::js_sys::Function) {
+                            #ident_callback(callback);
+                        }
+                    ));
+                } else {
+                    internal.push(quote!(
+                       #[doc = #msg]
+                       #[wasm_bindgen(js_name = #js_name)]
+                        pub fn #ident_callback(#(#params),*, callback: &::js_sys::Function);
+
+                    ));
+
+                    external.push(quote!(
+
+                        #[wasm_bindgen]
+                        pub fn #ext_rust_function_name_callback(#(#params),*, callback: &::js_sys::Function) {
+                            #ident_callback(#(#args),*, callback);
                         }
                     ));
                 }

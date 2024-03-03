@@ -156,135 +156,226 @@ extern "C" {
     pub fn windowIds(this: &ContextFilter) -> Option<::js_sys::Array>;
     #[doc = "Retrieves the JavaScript 'window' object for the background page running inside the current extension/app. If the background page is an event page, the system will ensure it is loaded before calling the callback. If there is no background page, an error is set."]
     #[wasm_bindgen(js_name = "runtime.getBackgroundPage", catch)]
-    pub async fn getBackgroundPage() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_background_page() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Retrieves the JavaScript 'window' object for the background page running inside the current extension/app. If the background page is an event page, the system will ensure it is loaded before calling the callback. If there is no background page, an error is set."]
+    #[wasm_bindgen(js_name = "runtime.getBackgroundPage")]
+    pub fn get_background_page_callback(callback: &::js_sys::Function);
     #[doc = "<p>Open your Extension's options page, if possible.</p><p>The precise behavior may depend on your manifest's <code><a href=\"/docs/extensions/develop/ui/options-page#embedded_options\">options_ui</a></code> or <code><a href=\"/docs/extensions/develop/ui/options-page#full_page\">options_page</a></code> key, or what Chrome happens to support at the time. For example, the page may be opened in a new tab, within chrome://extensions, within an App, or it may just focus an open options page. It will never cause the caller page to reload.</p><p>If your Extension does not declare an options page, or Chrome failed to create one for some other reason, the callback will set $(ref:lastError).</p>"]
     #[wasm_bindgen(js_name = "runtime.openOptionsPage", catch)]
-    pub async fn openOptionsPage() -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn open_options_page() -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "<p>Open your Extension's options page, if possible.</p><p>The precise behavior may depend on your manifest's <code><a href=\"/docs/extensions/develop/ui/options-page#embedded_options\">options_ui</a></code> or <code><a href=\"/docs/extensions/develop/ui/options-page#full_page\">options_page</a></code> key, or what Chrome happens to support at the time. For example, the page may be opened in a new tab, within chrome://extensions, within an App, or it may just focus an open options page. It will never cause the caller page to reload.</p><p>If your Extension does not declare an options page, or Chrome failed to create one for some other reason, the callback will set $(ref:lastError).</p>"]
+    #[wasm_bindgen(js_name = "runtime.openOptionsPage")]
+    pub fn open_options_page_callback(callback: &::js_sys::Function);
     #[doc = "Returns details about the app or extension from the manifest. The object returned is a serialization of the full <a href=\"reference/manifest\">manifest file</a>."]
     #[wasm_bindgen(js_name = "runtime.getManifest")]
-    pub fn getManifest() -> ::js_sys::Object;
+    pub fn get_manifest() -> ::js_sys::Object;
     #[doc = "Converts a relative path within an app/extension install directory to a fully-qualified URL."]
     #[wasm_bindgen(js_name = "runtime.getURL")]
-    pub fn getURL(path: ::js_sys::JsString) -> ::js_sys::JsString;
+    pub fn get_url(path: ::js_sys::JsString) -> ::js_sys::JsString;
     #[doc = "Sets the URL to be visited upon uninstallation. This may be used to clean up server-side data, do analytics, and implement surveys. Maximum 1023 characters."]
     #[wasm_bindgen(js_name = "runtime.setUninstallURL", catch)]
-    pub async fn setUninstallURL(url: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn set_uninstall_url(url: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Sets the URL to be visited upon uninstallation. This may be used to clean up server-side data, do analytics, and implement surveys. Maximum 1023 characters."]
+    #[wasm_bindgen(js_name = "runtime.setUninstallURL")]
+    pub fn set_uninstall_url_callback(url: ::js_sys::JsString, callback: &::js_sys::Function);
     #[doc = "<p>Requests an immediate update check be done for this app/extension.</p> <p><b>Important</b>: Most extensions/apps should <b>not</b> use this method, since Chrome already does automatic checks every few hours, and you can listen for the $(ref:runtime.onUpdateAvailable) event without needing to call requestUpdateCheck.</p><p>This method is only appropriate to call in very limited circumstances, such as if your extension/app talks to a backend service, and the backend service has determined that the client extension/app version is very far out of date and you'd like to prompt a user to update. Most other uses of requestUpdateCheck, such as calling it unconditionally based on a repeating timer, probably only serve to waste client, network, and server resources.</p><p>Note: When called with a callback, instead of returning an object this function will return the two properties as separate arguments passed to the callback.</p>"]
     #[wasm_bindgen(js_name = "runtime.requestUpdateCheck", catch)]
-    pub async fn requestUpdateCheck() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn request_update_check() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "<p>Requests an immediate update check be done for this app/extension.</p> <p><b>Important</b>: Most extensions/apps should <b>not</b> use this method, since Chrome already does automatic checks every few hours, and you can listen for the $(ref:runtime.onUpdateAvailable) event without needing to call requestUpdateCheck.</p><p>This method is only appropriate to call in very limited circumstances, such as if your extension/app talks to a backend service, and the backend service has determined that the client extension/app version is very far out of date and you'd like to prompt a user to update. Most other uses of requestUpdateCheck, such as calling it unconditionally based on a repeating timer, probably only serve to waste client, network, and server resources.</p><p>Note: When called with a callback, instead of returning an object this function will return the two properties as separate arguments passed to the callback.</p>"]
+    #[wasm_bindgen(js_name = "runtime.requestUpdateCheck")]
+    pub fn request_update_check_callback(callback: &::js_sys::Function);
     #[doc = "Restart the ChromeOS device when the app runs in kiosk mode after the given seconds. If called again before the time ends, the reboot will be delayed. If called with a value of -1, the reboot will be cancelled. It's a no-op in non-kiosk mode. It's only allowed to be called repeatedly by the first extension to invoke this API."]
     #[wasm_bindgen(js_name = "runtime.restartAfterDelay", catch)]
-    pub async fn restartAfterDelay(
+    pub async fn restart_after_delay(
         seconds: ::js_sys::Number,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Restart the ChromeOS device when the app runs in kiosk mode after the given seconds. If called again before the time ends, the reboot will be delayed. If called with a value of -1, the reboot will be cancelled. It's a no-op in non-kiosk mode. It's only allowed to be called repeatedly by the first extension to invoke this API."]
+    #[wasm_bindgen(js_name = "runtime.restartAfterDelay")]
+    pub fn restart_after_delay_callback(seconds: ::js_sys::Number, callback: &::js_sys::Function);
     #[doc = "Attempts to connect listeners within an extension/app (such as the background page), or other extensions/apps. This is useful for content scripts connecting to their extension processes, inter-app/extension communication, and <a href=\"/docs/extensions/manifest/externally_connectable\">web messaging</a>. Note that this does not connect to any listeners in a content script. Extensions may connect to content scripts embedded in tabs via $(ref:tabs.connect)."]
     #[wasm_bindgen(js_name = "runtime.connect")]
     pub fn connect(
-        extensionId: Option<::js_sys::JsString>,
-        connectInfo: Option<::js_sys::Object>,
+        extension_id: Option<::js_sys::JsString>,
+        connect_info: Option<::js_sys::Object>,
     ) -> Port;
     #[doc = "Connects to a native application in the host machine. This method requires the <code>\"nativeMessaging\"</code> permission. See <a href=\"develop/concepts/native-messaging\">Native Messaging</a> for more information."]
     #[wasm_bindgen(js_name = "runtime.connectNative")]
-    pub fn connectNative(application: ::js_sys::JsString) -> Port;
+    pub fn connect_native(application: ::js_sys::JsString) -> Port;
     #[doc = "Sends a single message to event listeners within your extension/app or a different extension/app. Similar to $(ref:runtime.connect) but only sends a single message, with an optional response. If sending to your extension, the $(ref:runtime.onMessage) event will be fired in every frame of your extension (except for the sender's frame), or $(ref:runtime.onMessageExternal), if a different extension. Note that extensions cannot send messages to content scripts using this method. To send messages to content scripts, use $(ref:tabs.sendMessage)."]
     #[wasm_bindgen(js_name = "runtime.sendMessage", catch)]
-    pub async fn sendMessage(
-        extensionId: Option<::js_sys::JsString>,
+    pub async fn send_message(
+        extension_id: Option<::js_sys::JsString>,
         message: ::wasm_bindgen::JsValue,
         options: Option<::js_sys::Object>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Sends a single message to event listeners within your extension/app or a different extension/app. Similar to $(ref:runtime.connect) but only sends a single message, with an optional response. If sending to your extension, the $(ref:runtime.onMessage) event will be fired in every frame of your extension (except for the sender's frame), or $(ref:runtime.onMessageExternal), if a different extension. Note that extensions cannot send messages to content scripts using this method. To send messages to content scripts, use $(ref:tabs.sendMessage)."]
+    #[wasm_bindgen(js_name = "runtime.sendMessage")]
+    pub fn send_message_callback(
+        extension_id: Option<::js_sys::JsString>,
+        message: ::wasm_bindgen::JsValue,
+        options: Option<::js_sys::Object>,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Send a single message to a native application. This method requires the <code>\"nativeMessaging\"</code> permission."]
     #[wasm_bindgen(js_name = "runtime.sendNativeMessage", catch)]
-    pub async fn sendNativeMessage(
+    pub async fn send_native_message(
         application: ::js_sys::JsString,
         message: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Send a single message to a native application. This method requires the <code>\"nativeMessaging\"</code> permission."]
+    #[wasm_bindgen(js_name = "runtime.sendNativeMessage")]
+    pub fn send_native_message_callback(
+        application: ::js_sys::JsString,
+        message: ::js_sys::Object,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Returns information about the current platform."]
     #[wasm_bindgen(js_name = "runtime.getPlatformInfo", catch)]
-    pub async fn getPlatformInfo() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_platform_info() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Returns information about the current platform."]
+    #[wasm_bindgen(js_name = "runtime.getPlatformInfo")]
+    pub fn get_platform_info_callback(callback: &::js_sys::Function);
     #[doc = "Returns a DirectoryEntry for the package directory."]
     #[wasm_bindgen(js_name = "runtime.getPackageDirectoryEntry", catch)]
-    pub async fn getPackageDirectoryEntry(
+    pub async fn get_package_directory_entry(
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Returns a DirectoryEntry for the package directory."]
+    #[wasm_bindgen(js_name = "runtime.getPackageDirectoryEntry")]
+    pub fn get_package_directory_entry_callback(callback: &::js_sys::Function);
     #[doc = "Fetches information about active contexts associated with this extension"]
     #[wasm_bindgen(js_name = "runtime.getContexts", catch)]
-    pub async fn getContexts(
+    pub async fn get_contexts(
         filter: ContextFilter,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Fetches information about active contexts associated with this extension"]
+    #[wasm_bindgen(js_name = "runtime.getContexts")]
+    pub fn get_contexts_callback(filter: ContextFilter, callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn runtime_get_background_page(
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getBackgroundPage().await
+    get_background_page().await
+}
+#[wasm_bindgen]
+pub fn runtime_get_background_page_callback(callback: &::js_sys::Function) {
+    get_background_page_callback(callback);
 }
 #[wasm_bindgen]
 pub async fn runtime_open_options_page() -> Result<(), ::wasm_bindgen::JsValue> {
-    openOptionsPage().await
+    open_options_page().await
+}
+#[wasm_bindgen]
+pub fn runtime_open_options_page_callback(callback: &::js_sys::Function) {
+    open_options_page_callback(callback);
 }
 #[wasm_bindgen]
 pub fn runtime_get_manifest() -> ::js_sys::Object {
-    getManifest()
+    get_manifest()
 }
 #[wasm_bindgen]
 pub fn runtime_get_url(path: ::js_sys::JsString) -> ::js_sys::JsString {
-    getURL(path)
+    get_url(path)
 }
 #[wasm_bindgen]
 pub async fn runtime_set_uninstall_url(
     url: ::js_sys::JsString,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    setUninstallURL(url).await
+    set_uninstall_url(url).await
+}
+#[wasm_bindgen]
+pub fn runtime_set_uninstall_url_callback(url: ::js_sys::JsString, callback: &::js_sys::Function) {
+    set_uninstall_url_callback(url, callback);
 }
 #[wasm_bindgen]
 pub async fn runtime_request_update_check(
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    requestUpdateCheck().await
+    request_update_check().await
+}
+#[wasm_bindgen]
+pub fn runtime_request_update_check_callback(callback: &::js_sys::Function) {
+    request_update_check_callback(callback);
 }
 #[wasm_bindgen]
 pub async fn runtime_restart_after_delay(
     seconds: ::js_sys::Number,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    restartAfterDelay(seconds).await
+    restart_after_delay(seconds).await
+}
+#[wasm_bindgen]
+pub fn runtime_restart_after_delay_callback(
+    seconds: ::js_sys::Number,
+    callback: &::js_sys::Function,
+) {
+    restart_after_delay_callback(seconds, callback);
 }
 #[wasm_bindgen]
 pub fn runtime_connect(
-    extensionId: Option<::js_sys::JsString>,
-    connectInfo: Option<::js_sys::Object>,
+    extension_id: Option<::js_sys::JsString>,
+    connect_info: Option<::js_sys::Object>,
 ) -> Port {
-    connect(extensionId, connectInfo)
+    connect(extension_id, connect_info)
 }
 #[wasm_bindgen]
 pub fn runtime_connect_native(application: ::js_sys::JsString) -> Port {
-    connectNative(application)
+    connect_native(application)
 }
 #[wasm_bindgen]
 pub async fn runtime_send_message(
-    extensionId: Option<::js_sys::JsString>,
+    extension_id: Option<::js_sys::JsString>,
     message: ::wasm_bindgen::JsValue,
     options: Option<::js_sys::Object>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    sendMessage(extensionId, message, options).await
+    send_message(extension_id, message, options).await
+}
+#[wasm_bindgen]
+pub fn runtime_send_message_callback(
+    extension_id: Option<::js_sys::JsString>,
+    message: ::wasm_bindgen::JsValue,
+    options: Option<::js_sys::Object>,
+    callback: &::js_sys::Function,
+) {
+    send_message_callback(extension_id, message, options, callback);
 }
 #[wasm_bindgen]
 pub async fn runtime_send_native_message(
     application: ::js_sys::JsString,
     message: ::js_sys::Object,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    sendNativeMessage(application, message).await
+    send_native_message(application, message).await
+}
+#[wasm_bindgen]
+pub fn runtime_send_native_message_callback(
+    application: ::js_sys::JsString,
+    message: ::js_sys::Object,
+    callback: &::js_sys::Function,
+) {
+    send_native_message_callback(application, message, callback);
 }
 #[wasm_bindgen]
 pub async fn runtime_get_platform_info() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>
 {
-    getPlatformInfo().await
+    get_platform_info().await
+}
+#[wasm_bindgen]
+pub fn runtime_get_platform_info_callback(callback: &::js_sys::Function) {
+    get_platform_info_callback(callback);
 }
 #[wasm_bindgen]
 pub async fn runtime_get_package_directory_entry(
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getPackageDirectoryEntry().await
+    get_package_directory_entry().await
+}
+#[wasm_bindgen]
+pub fn runtime_get_package_directory_entry_callback(callback: &::js_sys::Function) {
+    get_package_directory_entry_callback(callback);
 }
 #[wasm_bindgen]
 pub async fn runtime_get_contexts(
     filter: ContextFilter,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getContexts(filter).await
+    get_contexts(filter).await
+}
+#[wasm_bindgen]
+pub fn runtime_get_contexts_callback(filter: ContextFilter, callback: &::js_sys::Function) {
+    get_contexts_callback(filter, callback);
 }

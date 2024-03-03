@@ -112,67 +112,136 @@ extern "C" {
     pub fn showConfirmDialog(this: &UninstallOptions) -> Option<::js_sys::Boolean>;
     #[doc = "Returns a list of information about installed extensions and apps."]
     #[wasm_bindgen(js_name = "management.getAll", catch)]
-    pub async fn getAll() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_all() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Returns a list of information about installed extensions and apps."]
+    #[wasm_bindgen(js_name = "management.getAll")]
+    pub fn get_all_callback(callback: &::js_sys::Function);
     #[doc = "Returns information about the installed extension, app, or theme that has the given ID."]
     #[wasm_bindgen(js_name = "management.get", catch)]
     pub async fn get(
         id: ::js_sys::JsString,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Returns information about the installed extension, app, or theme that has the given ID."]
+    #[wasm_bindgen(js_name = "management.get")]
+    pub fn get_callback(id: ::js_sys::JsString, callback: &::js_sys::Function);
     #[doc = "Returns information about the calling extension, app, or theme. Note: This function can be used without requesting the 'management' permission in the manifest."]
     #[wasm_bindgen(js_name = "management.getSelf", catch)]
-    pub async fn getSelf() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_self() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Returns information about the calling extension, app, or theme. Note: This function can be used without requesting the 'management' permission in the manifest."]
+    #[wasm_bindgen(js_name = "management.getSelf")]
+    pub fn get_self_callback(callback: &::js_sys::Function);
     #[doc = "Returns a list of <a href='develop/concepts/permission-warnings'>permission warnings</a> for the given extension id."]
     #[wasm_bindgen(js_name = "management.getPermissionWarningsById", catch)]
-    pub async fn getPermissionWarningsById(
+    pub async fn get_permission_warnings_by_id(
         id: ::js_sys::JsString,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Returns a list of <a href='develop/concepts/permission-warnings'>permission warnings</a> for the given extension id."]
+    #[wasm_bindgen(js_name = "management.getPermissionWarningsById")]
+    pub fn get_permission_warnings_by_id_callback(
+        id: ::js_sys::JsString,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Returns a list of <a href='develop/concepts/permission-warnings'>permission warnings</a> for the given extension manifest string. Note: This function can be used without requesting the 'management' permission in the manifest."]
     #[wasm_bindgen(js_name = "management.getPermissionWarningsByManifest", catch)]
-    pub async fn getPermissionWarningsByManifest(
-        manifestStr: ::js_sys::JsString,
+    pub async fn get_permission_warnings_by_manifest(
+        manifest_str: ::js_sys::JsString,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Returns a list of <a href='develop/concepts/permission-warnings'>permission warnings</a> for the given extension manifest string. Note: This function can be used without requesting the 'management' permission in the manifest."]
+    #[wasm_bindgen(js_name = "management.getPermissionWarningsByManifest")]
+    pub fn get_permission_warnings_by_manifest_callback(
+        manifest_str: ::js_sys::JsString,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Enables or disables an app or extension. In most cases this function must be called in the context of a user gesture (e.g. an onclick handler for a button), and may present the user with a native confirmation UI as a way of preventing abuse."]
     #[wasm_bindgen(js_name = "management.setEnabled", catch)]
-    pub async fn setEnabled(
+    pub async fn set_enabled(
         id: ::js_sys::JsString,
         enabled: ::js_sys::Boolean,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Enables or disables an app or extension. In most cases this function must be called in the context of a user gesture (e.g. an onclick handler for a button), and may present the user with a native confirmation UI as a way of preventing abuse."]
+    #[wasm_bindgen(js_name = "management.setEnabled")]
+    pub fn set_enabled_callback(
+        id: ::js_sys::JsString,
+        enabled: ::js_sys::Boolean,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Uninstalls a currently installed app or extension. Note: This function does not work in managed environments when the user is not allowed to uninstall the specified extension/app. If the uninstall fails (e.g. the user cancels the dialog) the promise will be rejected or the callback will be called with $(ref:runtime.lastError) set."]
     #[wasm_bindgen(js_name = "management.uninstall", catch)]
     pub async fn uninstall(
         id: ::js_sys::JsString,
         options: Option<UninstallOptions>,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Uninstalls a currently installed app or extension. Note: This function does not work in managed environments when the user is not allowed to uninstall the specified extension/app. If the uninstall fails (e.g. the user cancels the dialog) the promise will be rejected or the callback will be called with $(ref:runtime.lastError) set."]
+    #[wasm_bindgen(js_name = "management.uninstall")]
+    pub fn uninstall_callback(
+        id: ::js_sys::JsString,
+        options: Option<UninstallOptions>,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Uninstalls the calling extension. Note: This function can be used without requesting the 'management' permission in the manifest. This function does not work in managed environments when the user is not allowed to uninstall the specified extension/app."]
     #[wasm_bindgen(js_name = "management.uninstallSelf", catch)]
-    pub async fn uninstallSelf(
+    pub async fn uninstall_self(
         options: Option<UninstallOptions>,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Uninstalls the calling extension. Note: This function can be used without requesting the 'management' permission in the manifest. This function does not work in managed environments when the user is not allowed to uninstall the specified extension/app."]
+    #[wasm_bindgen(js_name = "management.uninstallSelf")]
+    pub fn uninstall_self_callback(
+        options: Option<UninstallOptions>,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Launches an application."]
     #[wasm_bindgen(js_name = "management.launchApp", catch)]
-    pub async fn launchApp(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn launch_app(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Launches an application."]
+    #[wasm_bindgen(js_name = "management.launchApp")]
+    pub fn launch_app_callback(id: ::js_sys::JsString, callback: &::js_sys::Function);
     #[doc = "Display options to create shortcuts for an app. On Mac, only packaged app shortcuts can be created."]
     #[wasm_bindgen(js_name = "management.createAppShortcut", catch)]
-    pub async fn createAppShortcut(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn create_app_shortcut(id: ::js_sys::JsString)
+        -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Display options to create shortcuts for an app. On Mac, only packaged app shortcuts can be created."]
+    #[wasm_bindgen(js_name = "management.createAppShortcut")]
+    pub fn create_app_shortcut_callback(id: ::js_sys::JsString, callback: &::js_sys::Function);
     #[doc = "Set the launch type of an app."]
     #[wasm_bindgen(js_name = "management.setLaunchType", catch)]
-    pub async fn setLaunchType(
+    pub async fn set_launch_type(
         id: ::js_sys::JsString,
-        launchType: LaunchType,
+        launch_type: LaunchType,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Set the launch type of an app."]
+    #[wasm_bindgen(js_name = "management.setLaunchType")]
+    pub fn set_launch_type_callback(
+        id: ::js_sys::JsString,
+        launch_type: LaunchType,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Generate an app for a URL. Returns the generated bookmark app."]
     #[wasm_bindgen(js_name = "management.generateAppForLink", catch)]
-    pub async fn generateAppForLink(
+    pub async fn generate_app_for_link(
         url: ::js_sys::JsString,
         title: ::js_sys::JsString,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Generate an app for a URL. Returns the generated bookmark app."]
+    #[wasm_bindgen(js_name = "management.generateAppForLink")]
+    pub fn generate_app_for_link_callback(
+        url: ::js_sys::JsString,
+        title: ::js_sys::JsString,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Launches the replacement_web_app specified in the manifest. Prompts the user to install if not already installed."]
     #[wasm_bindgen(js_name = "management.installReplacementWebApp", catch)]
-    pub async fn installReplacementWebApp() -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn install_replacement_web_app() -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Launches the replacement_web_app specified in the manifest. Prompts the user to install if not already installed."]
+    #[wasm_bindgen(js_name = "management.installReplacementWebApp")]
+    pub fn install_replacement_web_app_callback(callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn management_get_all() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getAll().await
+    get_all().await
+}
+#[wasm_bindgen]
+pub fn management_get_all_callback(callback: &::js_sys::Function) {
+    get_all_callback(callback);
 }
 #[wasm_bindgen]
 pub async fn management_get(
@@ -181,27 +250,57 @@ pub async fn management_get(
     get(id).await
 }
 #[wasm_bindgen]
+pub fn management_get_callback(id: ::js_sys::JsString, callback: &::js_sys::Function) {
+    get_callback(id, callback);
+}
+#[wasm_bindgen]
 pub async fn management_get_self() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getSelf().await
+    get_self().await
+}
+#[wasm_bindgen]
+pub fn management_get_self_callback(callback: &::js_sys::Function) {
+    get_self_callback(callback);
 }
 #[wasm_bindgen]
 pub async fn management_get_permission_warnings_by_id(
     id: ::js_sys::JsString,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getPermissionWarningsById(id).await
+    get_permission_warnings_by_id(id).await
+}
+#[wasm_bindgen]
+pub fn management_get_permission_warnings_by_id_callback(
+    id: ::js_sys::JsString,
+    callback: &::js_sys::Function,
+) {
+    get_permission_warnings_by_id_callback(id, callback);
 }
 #[wasm_bindgen]
 pub async fn management_get_permission_warnings_by_manifest(
-    manifestStr: ::js_sys::JsString,
+    manifest_str: ::js_sys::JsString,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getPermissionWarningsByManifest(manifestStr).await
+    get_permission_warnings_by_manifest(manifest_str).await
+}
+#[wasm_bindgen]
+pub fn management_get_permission_warnings_by_manifest_callback(
+    manifest_str: ::js_sys::JsString,
+    callback: &::js_sys::Function,
+) {
+    get_permission_warnings_by_manifest_callback(manifest_str, callback);
 }
 #[wasm_bindgen]
 pub async fn management_set_enabled(
     id: ::js_sys::JsString,
     enabled: ::js_sys::Boolean,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    setEnabled(id, enabled).await
+    set_enabled(id, enabled).await
+}
+#[wasm_bindgen]
+pub fn management_set_enabled_callback(
+    id: ::js_sys::JsString,
+    enabled: ::js_sys::Boolean,
+    callback: &::js_sys::Function,
+) {
+    set_enabled_callback(id, enabled, callback);
 }
 #[wasm_bindgen]
 pub async fn management_uninstall(
@@ -211,36 +310,82 @@ pub async fn management_uninstall(
     uninstall(id, options).await
 }
 #[wasm_bindgen]
+pub fn management_uninstall_callback(
+    id: ::js_sys::JsString,
+    options: Option<UninstallOptions>,
+    callback: &::js_sys::Function,
+) {
+    uninstall_callback(id, options, callback);
+}
+#[wasm_bindgen]
 pub async fn management_uninstall_self(
     options: Option<UninstallOptions>,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    uninstallSelf(options).await
+    uninstall_self(options).await
+}
+#[wasm_bindgen]
+pub fn management_uninstall_self_callback(
+    options: Option<UninstallOptions>,
+    callback: &::js_sys::Function,
+) {
+    uninstall_self_callback(options, callback);
 }
 #[wasm_bindgen]
 pub async fn management_launch_app(id: ::js_sys::JsString) -> Result<(), ::wasm_bindgen::JsValue> {
-    launchApp(id).await
+    launch_app(id).await
+}
+#[wasm_bindgen]
+pub fn management_launch_app_callback(id: ::js_sys::JsString, callback: &::js_sys::Function) {
+    launch_app_callback(id, callback);
 }
 #[wasm_bindgen]
 pub async fn management_create_app_shortcut(
     id: ::js_sys::JsString,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    createAppShortcut(id).await
+    create_app_shortcut(id).await
+}
+#[wasm_bindgen]
+pub fn management_create_app_shortcut_callback(
+    id: ::js_sys::JsString,
+    callback: &::js_sys::Function,
+) {
+    create_app_shortcut_callback(id, callback);
 }
 #[wasm_bindgen]
 pub async fn management_set_launch_type(
     id: ::js_sys::JsString,
-    launchType: LaunchType,
+    launch_type: LaunchType,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    setLaunchType(id, launchType).await
+    set_launch_type(id, launch_type).await
+}
+#[wasm_bindgen]
+pub fn management_set_launch_type_callback(
+    id: ::js_sys::JsString,
+    launch_type: LaunchType,
+    callback: &::js_sys::Function,
+) {
+    set_launch_type_callback(id, launch_type, callback);
 }
 #[wasm_bindgen]
 pub async fn management_generate_app_for_link(
     url: ::js_sys::JsString,
     title: ::js_sys::JsString,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    generateAppForLink(url, title).await
+    generate_app_for_link(url, title).await
+}
+#[wasm_bindgen]
+pub fn management_generate_app_for_link_callback(
+    url: ::js_sys::JsString,
+    title: ::js_sys::JsString,
+    callback: &::js_sys::Function,
+) {
+    generate_app_for_link_callback(url, title, callback);
 }
 #[wasm_bindgen]
 pub async fn management_install_replacement_web_app() -> Result<(), ::wasm_bindgen::JsValue> {
-    installReplacementWebApp().await
+    install_replacement_web_app().await
+}
+#[wasm_bindgen]
+pub fn management_install_replacement_web_app_callback(callback: &::js_sys::Function) {
+    install_replacement_web_app_callback(callback);
 }

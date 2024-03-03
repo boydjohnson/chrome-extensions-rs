@@ -19,9 +19,16 @@ extern "C" {
     pub fn shortcut(this: &Command) -> Option<::js_sys::JsString>;
     #[doc = "Returns all the registered extension commands for this extension and their shortcut (if active). Before Chrome 110, this command did not return <code>_execute_action</code>."]
     #[wasm_bindgen(js_name = "commands.getAll", catch)]
-    pub async fn getAll() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_all() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Returns all the registered extension commands for this extension and their shortcut (if active). Before Chrome 110, this command did not return <code>_execute_action</code>."]
+    #[wasm_bindgen(js_name = "commands.getAll")]
+    pub fn get_all_callback(callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn commands_get_all() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getAll().await
+    get_all().await
+}
+#[wasm_bindgen]
+pub fn commands_get_all_callback(callback: &::js_sys::Function) {
+    get_all_callback(callback);
 }

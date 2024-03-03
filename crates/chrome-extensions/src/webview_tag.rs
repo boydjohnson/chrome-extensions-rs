@@ -288,30 +288,30 @@ extern "C" {
     pub type ZoomMode;
     #[doc = "Indicates whether or not it is possible to navigate backward through history. The state of this function is cached, and updated before each <code>loadcommit</code>, so the best place to call it is on <code>loadcommit</code>."]
     #[wasm_bindgen(js_name = "webviewTag.canGoBack")]
-    pub fn canGoBack() -> ::js_sys::Boolean;
+    pub fn can_go_back() -> ::js_sys::Boolean;
     #[doc = "Indicates whether or not it is possible to navigate forward through history. The state of this function is cached, and updated before each <code>loadcommit</code>, so the best place to call it is on <code>loadcommit</code>."]
     #[wasm_bindgen(js_name = "webviewTag.canGoForward")]
-    pub fn canGoForward() -> ::js_sys::Boolean;
+    pub fn can_go_forward() -> ::js_sys::Boolean;
     #[doc = "Returns Chrome's internal process ID for the guest web page's current process, allowing embedders to know how many guests would be affected by terminating the process. Two guests will share a process only if they belong to the same app and have the same <a href=\"#partition\">storage partition ID</a>. The call is synchronous and returns the embedder's cached notion of the current process ID. The process ID isn't the same as the operating system's process ID."]
     #[wasm_bindgen(js_name = "webviewTag.getProcessId")]
-    pub fn getProcessId() -> ::js_sys::Number;
+    pub fn get_process_id() -> ::js_sys::Number;
     #[doc = "Returns the user agent string used by the <code>webview</code> for guest page requests."]
     #[wasm_bindgen(js_name = "webviewTag.getUserAgent")]
-    pub fn getUserAgent() -> ::js_sys::JsString;
+    pub fn get_user_agent() -> ::js_sys::JsString;
 }
 #[wasm_bindgen]
 pub fn webview_tag_can_go_back() -> ::js_sys::Boolean {
-    canGoBack()
+    can_go_back()
 }
 #[wasm_bindgen]
 pub fn webview_tag_can_go_forward() -> ::js_sys::Boolean {
-    canGoForward()
+    can_go_forward()
 }
 #[wasm_bindgen]
 pub fn webview_tag_get_process_id() -> ::js_sys::Number {
-    getProcessId()
+    get_process_id()
 }
 #[wasm_bindgen]
 pub fn webview_tag_get_user_agent() -> ::js_sys::JsString {
-    getUserAgent()
+    get_user_agent()
 }

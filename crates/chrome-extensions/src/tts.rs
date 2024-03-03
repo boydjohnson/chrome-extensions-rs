@@ -96,12 +96,25 @@ extern "C" {
         utterance: ::js_sys::JsString,
         options: Option<TtsOptions>,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Speaks text using a text-to-speech engine."]
+    #[wasm_bindgen(js_name = "tts.speak")]
+    pub fn speak_callback(
+        utterance: ::js_sys::JsString,
+        options: Option<TtsOptions>,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Checks whether the engine is currently speaking. On Mac OS X, the result is true whenever the system speech engine is speaking, even if the speech wasn't initiated by Chrome."]
     #[wasm_bindgen(js_name = "tts.isSpeaking", catch)]
-    pub async fn isSpeaking() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn is_speaking() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Checks whether the engine is currently speaking. On Mac OS X, the result is true whenever the system speech engine is speaking, even if the speech wasn't initiated by Chrome."]
+    #[wasm_bindgen(js_name = "tts.isSpeaking")]
+    pub fn is_speaking_callback(callback: &::js_sys::Function);
     #[doc = "Gets an array of all available voices."]
     #[wasm_bindgen(js_name = "tts.getVoices", catch)]
-    pub async fn getVoices() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_voices() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Gets an array of all available voices."]
+    #[wasm_bindgen(js_name = "tts.getVoices")]
+    pub fn get_voices_callback(callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn tts_speak(
@@ -111,10 +124,26 @@ pub async fn tts_speak(
     speak(utterance, options).await
 }
 #[wasm_bindgen]
+pub fn tts_speak_callback(
+    utterance: ::js_sys::JsString,
+    options: Option<TtsOptions>,
+    callback: &::js_sys::Function,
+) {
+    speak_callback(utterance, options, callback);
+}
+#[wasm_bindgen]
 pub async fn tts_is_speaking() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    isSpeaking().await
+    is_speaking().await
+}
+#[wasm_bindgen]
+pub fn tts_is_speaking_callback(callback: &::js_sys::Function) {
+    is_speaking_callback(callback);
 }
 #[wasm_bindgen]
 pub async fn tts_get_voices() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getVoices().await
+    get_voices().await
+}
+#[wasm_bindgen]
+pub fn tts_get_voices_callback(callback: &::js_sys::Function) {
+    get_voices_callback(callback);
 }

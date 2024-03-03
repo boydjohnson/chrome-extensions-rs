@@ -64,23 +64,41 @@ extern "C" {
     pub async fn search(
         query: ::js_sys::Object,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Searches the history for the last visit time of each page matching the query."]
+    #[wasm_bindgen(js_name = "history.search")]
+    pub fn search_callback(query: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Retrieves information about visits to a URL."]
     #[wasm_bindgen(js_name = "history.getVisits", catch)]
-    pub async fn getVisits(
+    pub async fn get_visits(
         details: UrlDetails,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Retrieves information about visits to a URL."]
+    #[wasm_bindgen(js_name = "history.getVisits")]
+    pub fn get_visits_callback(details: UrlDetails, callback: &::js_sys::Function);
     #[doc = "Adds a URL to the history at the current time with a <a href='#transition_types'>transition type</a> of \"link\"."]
     #[wasm_bindgen(js_name = "history.addUrl", catch)]
-    pub async fn addUrl(details: UrlDetails) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn add_url(details: UrlDetails) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Adds a URL to the history at the current time with a <a href='#transition_types'>transition type</a> of \"link\"."]
+    #[wasm_bindgen(js_name = "history.addUrl")]
+    pub fn add_url_callback(details: UrlDetails, callback: &::js_sys::Function);
     #[doc = "Removes all occurrences of the given URL from the history."]
     #[wasm_bindgen(js_name = "history.deleteUrl", catch)]
-    pub async fn deleteUrl(details: UrlDetails) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn delete_url(details: UrlDetails) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Removes all occurrences of the given URL from the history."]
+    #[wasm_bindgen(js_name = "history.deleteUrl")]
+    pub fn delete_url_callback(details: UrlDetails, callback: &::js_sys::Function);
     #[doc = "Removes all items within the specified date range from the history.  Pages will not be removed from the history unless all visits fall within the range."]
     #[wasm_bindgen(js_name = "history.deleteRange", catch)]
-    pub async fn deleteRange(range: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn delete_range(range: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Removes all items within the specified date range from the history.  Pages will not be removed from the history unless all visits fall within the range."]
+    #[wasm_bindgen(js_name = "history.deleteRange")]
+    pub fn delete_range_callback(range: ::js_sys::Object, callback: &::js_sys::Function);
     #[doc = "Deletes all items from the history."]
     #[wasm_bindgen(js_name = "history.deleteAll", catch)]
-    pub async fn deleteAll() -> Result<(), ::wasm_bindgen::JsValue>;
+    pub async fn delete_all() -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Deletes all items from the history."]
+    #[wasm_bindgen(js_name = "history.deleteAll")]
+    pub fn delete_all_callback(callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn history_search(
@@ -89,24 +107,48 @@ pub async fn history_search(
     search(query).await
 }
 #[wasm_bindgen]
+pub fn history_search_callback(query: ::js_sys::Object, callback: &::js_sys::Function) {
+    search_callback(query, callback);
+}
+#[wasm_bindgen]
 pub async fn history_get_visits(
     details: UrlDetails,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getVisits(details).await
+    get_visits(details).await
+}
+#[wasm_bindgen]
+pub fn history_get_visits_callback(details: UrlDetails, callback: &::js_sys::Function) {
+    get_visits_callback(details, callback);
 }
 #[wasm_bindgen]
 pub async fn history_add_url(details: UrlDetails) -> Result<(), ::wasm_bindgen::JsValue> {
-    addUrl(details).await
+    add_url(details).await
+}
+#[wasm_bindgen]
+pub fn history_add_url_callback(details: UrlDetails, callback: &::js_sys::Function) {
+    add_url_callback(details, callback);
 }
 #[wasm_bindgen]
 pub async fn history_delete_url(details: UrlDetails) -> Result<(), ::wasm_bindgen::JsValue> {
-    deleteUrl(details).await
+    delete_url(details).await
+}
+#[wasm_bindgen]
+pub fn history_delete_url_callback(details: UrlDetails, callback: &::js_sys::Function) {
+    delete_url_callback(details, callback);
 }
 #[wasm_bindgen]
 pub async fn history_delete_range(range: ::js_sys::Object) -> Result<(), ::wasm_bindgen::JsValue> {
-    deleteRange(range).await
+    delete_range(range).await
+}
+#[wasm_bindgen]
+pub fn history_delete_range_callback(range: ::js_sys::Object, callback: &::js_sys::Function) {
+    delete_range_callback(range, callback);
 }
 #[wasm_bindgen]
 pub async fn history_delete_all() -> Result<(), ::wasm_bindgen::JsValue> {
-    deleteAll().await
+    delete_all().await
+}
+#[wasm_bindgen]
+pub fn history_delete_all_callback(callback: &::js_sys::Function) {
+    delete_all_callback(callback);
 }

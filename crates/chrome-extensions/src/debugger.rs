@@ -57,42 +57,88 @@ extern "C" {
     #[wasm_bindgen(js_name = "debugger.attach", catch)]
     pub async fn attach(
         target: Debuggee,
-        requiredVersion: ::js_sys::JsString,
+        required_version: ::js_sys::JsString,
     ) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Attaches debugger to the given target."]
+    #[wasm_bindgen(js_name = "debugger.attach")]
+    pub fn attach_callback(
+        target: Debuggee,
+        required_version: ::js_sys::JsString,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Detaches debugger from the given target."]
     #[wasm_bindgen(js_name = "debugger.detach", catch)]
     pub async fn detach(target: Debuggee) -> Result<(), ::wasm_bindgen::JsValue>;
+    #[doc = "Detaches debugger from the given target."]
+    #[wasm_bindgen(js_name = "debugger.detach")]
+    pub fn detach_callback(target: Debuggee, callback: &::js_sys::Function);
     #[doc = "Sends given command to the debugging target."]
     #[wasm_bindgen(js_name = "debugger.sendCommand", catch)]
-    pub async fn sendCommand(
+    pub async fn send_command(
         target: Debuggee,
         method: ::js_sys::JsString,
-        commandParams: Option<::js_sys::Object>,
+        command_params: Option<::js_sys::Object>,
     ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Sends given command to the debugging target."]
+    #[wasm_bindgen(js_name = "debugger.sendCommand")]
+    pub fn send_command_callback(
+        target: Debuggee,
+        method: ::js_sys::JsString,
+        command_params: Option<::js_sys::Object>,
+        callback: &::js_sys::Function,
+    );
     #[doc = "Returns the list of available debug targets."]
     #[wasm_bindgen(js_name = "debugger.getTargets", catch)]
-    pub async fn getTargets() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    pub async fn get_targets() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue>;
+    #[doc = "Returns the list of available debug targets."]
+    #[wasm_bindgen(js_name = "debugger.getTargets")]
+    pub fn get_targets_callback(callback: &::js_sys::Function);
 }
 #[wasm_bindgen]
 pub async fn debugger_attach(
     target: Debuggee,
-    requiredVersion: ::js_sys::JsString,
+    required_version: ::js_sys::JsString,
 ) -> Result<(), ::wasm_bindgen::JsValue> {
-    attach(target, requiredVersion).await
+    attach(target, required_version).await
+}
+#[wasm_bindgen]
+pub fn debugger_attach_callback(
+    target: Debuggee,
+    required_version: ::js_sys::JsString,
+    callback: &::js_sys::Function,
+) {
+    attach_callback(target, required_version, callback);
 }
 #[wasm_bindgen]
 pub async fn debugger_detach(target: Debuggee) -> Result<(), ::wasm_bindgen::JsValue> {
     detach(target).await
 }
 #[wasm_bindgen]
+pub fn debugger_detach_callback(target: Debuggee, callback: &::js_sys::Function) {
+    detach_callback(target, callback);
+}
+#[wasm_bindgen]
 pub async fn debugger_send_command(
     target: Debuggee,
     method: ::js_sys::JsString,
-    commandParams: Option<::js_sys::Object>,
+    command_params: Option<::js_sys::Object>,
 ) -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    sendCommand(target, method, commandParams).await
+    send_command(target, method, command_params).await
+}
+#[wasm_bindgen]
+pub fn debugger_send_command_callback(
+    target: Debuggee,
+    method: ::js_sys::JsString,
+    command_params: Option<::js_sys::Object>,
+    callback: &::js_sys::Function,
+) {
+    send_command_callback(target, method, command_params, callback);
 }
 #[wasm_bindgen]
 pub async fn debugger_get_targets() -> Result<::wasm_bindgen::JsValue, ::wasm_bindgen::JsValue> {
-    getTargets().await
+    get_targets().await
+}
+#[wasm_bindgen]
+pub fn debugger_get_targets_callback(callback: &::js_sys::Function) {
+    get_targets_callback(callback);
 }

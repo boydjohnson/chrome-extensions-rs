@@ -11,7 +11,7 @@
 | get_current               | ✅     |
 | get_current_callback      | ✅     |
 | get_last_focused          | ✅     |
-| get_last_focused_callback |        |
+| get_last_focused_callback | ✅     |
 | create                    | ✅     |
 | create_callback           | ✅     |
 | update                    |        |

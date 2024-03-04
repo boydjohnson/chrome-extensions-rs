@@ -6,6 +6,7 @@ import {
   windows_get_all,
   windows_get_current,
   windows_get_last_focused,
+  windows_get_all_callback,
 } from "../pkg/chrome_extensions";
 
 describe("windows.getAll", () => {
@@ -66,6 +67,123 @@ describe("windows.getAll", () => {
         type: "popup",
       },
     ]);
+  });
+});
+
+describe("windows.getAll callback", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("Should return windows", (done) => {
+    jest
+      .spyOn(chrome.windows, "getAll")
+      .mockImplementation(
+        (
+          queryOptions?: chrome.windows.QueryOptions,
+          callback?: (windows: chrome.windows.Window[]) => void,
+        ): Promise<chrome.windows.Window[]> => {
+          if (callback) {
+            callback([
+              { id: 123, focused: true, alwaysOnTop: false, incognito: false },
+            ]);
+          }
+
+          return Promise.resolve([
+            { id: 123, focused: true, alwaysOnTop: false, incognito: false },
+          ]);
+        },
+      );
+
+    const windows = windows_get_all_callback(
+      null,
+      (windows: chrome.windows.Window[]) => {
+        try {
+          expect(windows).toEqual([
+            { id: 123, focused: true, alwaysOnTop: false, incognito: false },
+          ]);
+          done();
+        } catch (error) {
+          done(error);
+        }
+      },
+    );
+  });
+  it("Should return only some windows with queryOptions", (done) => {
+    jest
+      .spyOn(chrome.windows, "getAll")
+      .mockImplementation(
+        (
+          queryOptions?: chrome.windows.QueryOptions,
+          callback?: (windows: chrome.windows.Window[]) => void,
+        ): Promise<chrome.windows.Window[]> => {
+          if (callback) {
+            queryOptions &&
+            queryOptions.windowTypes &&
+            queryOptions.windowTypes.includes("popup")
+              ? callback([
+                  {
+                    id: 456,
+                    focused: false,
+                    alwaysOnTop: true,
+                    incognito: true,
+                    type: "popup",
+                  },
+                ])
+              : callback([
+                  {
+                    id: 123,
+                    focused: true,
+                    alwaysOnTop: false,
+                    incognito: false,
+                    type: "normal",
+                  },
+                ]);
+          }
+
+          return Promise.resolve(
+            queryOptions &&
+              queryOptions.windowTypes &&
+              queryOptions.windowTypes.includes("popup")
+              ? [
+                  {
+                    id: 456,
+                    focused: false,
+                    alwaysOnTop: true,
+                    incognito: true,
+                    type: "popup",
+                  },
+                ]
+              : [
+                  {
+                    id: 123,
+                    focused: true,
+                    alwaysOnTop: false,
+                    incognito: false,
+                    type: "normal",
+                  },
+                ],
+          );
+        },
+      );
+
+    const queryOptions = { windowTypes: ["popup"] };
+    windows_get_all_callback(queryOptions, (windows: chrome.windows.Window) => {
+      try {
+        expect(windows).toEqual([
+          {
+            id: 456,
+            focused: false,
+            alwaysOnTop: true,
+            incognito: true,
+            type: "popup",
+          },
+        ]);
+        done();
+      } catch (error) {
+        done(error);
+      }
+    });
   });
 });
 
@@ -247,9 +365,9 @@ describe("windows.get with callback", () => {
             alwaysOnTop: false,
             incognito: false,
           });
-          done(); // Indicate that the test is complete
+          done();
         } catch (error) {
-          done(error); // Pass error to done if assertion fails
+          done(error);
         }
       },
     );

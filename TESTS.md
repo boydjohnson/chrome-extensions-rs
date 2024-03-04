@@ -7,7 +7,7 @@
 | get                       | ✅     |
 | get_callback              | ✅     |
 | get_all                   | ✅     |
-| get_all_callback          |        |
+| get_all_callback          | ✅     |
 | get_current               | ✅     |
 | get_current_callback      |        |
 | get_last_focused          | ✅     |

@@ -1,6 +1,8 @@
 import {
+  windows_create,
   windows_create_callback,
   windows_get,
+  windows_get_callback,
   windows_get_all,
   windows_get_current,
   windows_get_last_focused,
@@ -205,6 +207,55 @@ describe("windows.get", () => {
   });
 });
 
+describe("windows.get with callback", () => {
+  it("Should pass the window to the callback", (done) => {
+    jest
+      .spyOn(chrome.windows, "get")
+      .mockImplementation(
+        (
+          windowId: number,
+          queryOptions?: chrome.windows.QueryOptions,
+          callback?: (window: chrome.windows.Window) => void,
+        ): Promise<chrome.windows.Window> => {
+          {
+            if (callback) {
+              callback({
+                id: 123,
+                focused: true,
+                alwaysOnTop: false,
+                incognito: false,
+              });
+            }
+            return Promise.resolve({
+              id: 123,
+              focused: true,
+              alwaysOnTop: false,
+              incognito: false,
+            });
+          }
+        },
+      );
+
+    const window = windows_get_callback(
+      123,
+      null,
+      (window: chrome.windows.Window) => {
+        try {
+          expect(window).toEqual({
+            id: 123,
+            focused: true,
+            alwaysOnTop: false,
+            incognito: false,
+          });
+          done(); // Indicate that the test is complete
+        } catch (error) {
+          done(error); // Pass error to done if assertion fails
+        }
+      },
+    );
+  });
+});
+
 describe("windows.create", () => {
   it("Should call the callback with the created window", (done) => {
     jest
@@ -243,5 +294,37 @@ describe("windows.create", () => {
         }
       },
     );
+  });
+
+  it("Should return the Window asynchronously", async () => {
+    jest
+      .spyOn(chrome.windows, "create")
+      .mockImplementation(
+        (
+          createInfo: chrome.windows.CreateData,
+          callback?: (window: chrome.windows.Window) => any,
+        ): Promise<chrome.windows.Window> => {
+          return Promise.resolve({
+            id: 123,
+            focused: true,
+            alwaysOnTop: false,
+            incognito: false,
+          });
+        },
+      );
+
+    const window = await windows_create({
+      id: 123,
+      focused: true,
+      alwaysOnTop: false,
+      incognito: false,
+    });
+
+    expect(window).toEqual({
+      id: 123,
+      focused: true,
+      alwaysOnTop: false,
+      incognito: false,
+    });
   });
 });

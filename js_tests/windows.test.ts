@@ -9,6 +9,10 @@ import {
   windows_get_all_callback,
   windows_get_current_callback,
   windows_get_last_focused_callback,
+  windows_update,
+  windows_update_callback,
+  windows_remove,
+  windows_remove_callback,
 } from "../pkg/chrome_extensions";
 
 describe("windows.getAll", () => {
@@ -669,6 +673,115 @@ describe("windows.create", () => {
       focused: true,
       alwaysOnTop: false,
       incognito: false,
+    });
+  });
+});
+
+describe("windows.update", () => {
+  it("Should return an updated window", async () => {
+    jest
+      .spyOn(chrome.windows, "update")
+      .mockImplementation(
+        (windowId: number, updateInfo: chrome.windows.UpdateInfo) =>
+          Promise.resolve({
+            id: 123,
+            focused: true,
+            alwaysOnTop: false,
+            incognito: false,
+          }),
+      );
+
+    const window = await windows_update(123, { drawAttention: true });
+
+    expect(window).toEqual({
+      id: 123,
+      focused: true,
+      alwaysOnTop: false,
+      incognito: false,
+    });
+  });
+});
+
+describe("windows.update callback", () => {
+  it("Should return an updated window", (done) => {
+    jest
+      .spyOn(chrome.windows, "update")
+      .mockImplementation(
+        (
+          windowId: number,
+          updateInfo: chrome.windows.UpdateInfo,
+          callback?: (window: chrome.windows.Window) => void,
+        ): Promise<chrome.windows.Window> => {
+          if (callback) {
+            callback({
+              id: 123,
+              focused: true,
+              alwaysOnTop: false,
+              incognito: false,
+            });
+          }
+
+          return Promise.resolve({
+            id: 123,
+            focused: true,
+            alwaysOnTop: false,
+            incognito: false,
+          });
+        },
+      );
+
+    windows_update_callback(
+      123,
+      { drawAttention: true },
+      (window: chrome.windows.Window) => {
+        try {
+          expect(window).toEqual({
+            id: 123,
+            focused: true,
+            alwaysOnTop: false,
+            incognito: false,
+          });
+          done();
+        } catch (error) {
+          expect(window).toEqual({
+            id: 123,
+            focused: true,
+            alwaysOnTop: false,
+            incognito: false,
+          });
+          done(error);
+        }
+      },
+    );
+  });
+});
+
+describe("windows.remove", () => {
+  it("Should return an updated window", async () => {
+    jest
+      .spyOn(chrome.windows, "remove")
+      .mockImplementation((windowId: number) => Promise.resolve());
+
+    await windows_remove(123);
+  });
+});
+
+describe("windows.remove callback", () => {
+  it("Should return an updated window", (done) => {
+    jest
+      .spyOn(chrome.windows, "remove")
+      .mockImplementation(
+        (windowId: number, callback?: Function): Promise<void> => {
+          if (callback) {
+            callback();
+          }
+
+          return Promise.resolve();
+        },
+      );
+
+    windows_remove_callback(123, () => {
+      done();
     });
   });
 });

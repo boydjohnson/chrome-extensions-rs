@@ -31,7 +31,7 @@ pub fn create_fully_qualified(s: &str) -> proc_macro2::TokenStream {
 
     let c = Ident::new("crate", Span::call_site());
     let first = Ident::new(&first, Span::call_site());
-    let second = Ident::new(&second, Span::call_site());
+    let second = Ident::new(second, Span::call_site());
 
     let mut segments = Punctuated::new();
     segments.push(PathSegment::from(c));

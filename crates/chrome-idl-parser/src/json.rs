@@ -28,9 +28,9 @@ impl ChromeApi {
             generate_js_class(type_field)
         } else if let Some(ref_field) = &param.ref_field {
             if ref_field.contains('.') {
-                create_fully_qualified(&ref_field)
+                create_fully_qualified(ref_field)
             } else {
-                let ident = Ident::new(&ref_field, Span::call_site());
+                let ident = Ident::new(ref_field, Span::call_site());
 
                 quote!(#ident)
             }
@@ -41,7 +41,7 @@ impl ChromeApi {
         };
 
         let typ = if param.optional.unwrap_or(false)
-            && !param.choices.is_some()
+            && param.choices.is_none()
             && param.type_field != Some("any".to_string())
         {
             quote!(Option<#typ>)
@@ -99,9 +99,9 @@ impl ChromeApi {
                     Some(generate_js_class(type_field))
                 } else if let Some(ref_field) = &ret.ref_field {
                     if ref_field.contains('.') {
-                        Some(create_fully_qualified(&ref_field))
+                        Some(create_fully_qualified(ref_field))
                     } else {
-                        let ident = Ident::new(&ref_field, Span::call_site());
+                        let ident = Ident::new(ref_field, Span::call_site());
 
                         Some(quote!(#ident))
                     }
@@ -143,9 +143,9 @@ impl ChromeApi {
                     Some(generate_js_class(type_field))
                 } else if let Some(ref_field) = &ret.ref_field {
                     if ref_field.contains('.') {
-                        Some(create_fully_qualified(&ref_field))
+                        Some(create_fully_qualified(ref_field))
                     } else {
-                        let ident = Ident::new(&ref_field, Span::call_site());
+                        let ident = Ident::new(ref_field, Span::call_site());
 
                         Some(quote!(#ident))
                     }
@@ -157,9 +157,9 @@ impl ChromeApi {
                             Some(generate_js_class(type_field))
                         } else if let Some(ref_field) = &param.ref_field {
                             if ref_field.contains('.') {
-                                Some(create_fully_qualified(&ref_field))
+                                Some(create_fully_qualified(ref_field))
                             } else {
-                                let ident = Ident::new(&ref_field, Span::call_site());
+                                let ident = Ident::new(ref_field, Span::call_site());
 
                                 Some(quote!(#ident))
                             }
@@ -321,9 +321,9 @@ impl ChromeApi {
                             }
                         } else if let Some(r) = &value.ref_field {
                             let id = if r.contains('.') {
-                                create_fully_qualified(&r)
+                                create_fully_qualified(r)
                             } else {
-                                let ident = Ident::new(&r, Span::call_site());
+                                let ident = Ident::new(r, Span::call_site());
 
                                 quote!(#ident)
                             };

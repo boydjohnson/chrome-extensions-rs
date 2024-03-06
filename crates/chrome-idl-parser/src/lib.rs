@@ -26,7 +26,7 @@ pub fn generate(froms: &[PathBuf], to: &Path) -> Result<(), Box<dyn std::error::
                 .unwrap()
                 .ends_with("private.json")
                 || entry.file_name().into_string().unwrap().starts_with('_')
-                || entry.file_name().into_string().unwrap() == "test.json".to_string()
+                || entry.file_name().into_string().unwrap() == *"test.json"
             {
                 continue;
             }
